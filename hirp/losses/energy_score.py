@@ -1,7 +1,7 @@
 import torch
 
 
-def paired_energy_score(predictions, target, valid_mask, channel_scale=None, eps=1e-8):
+def paired_energy_score(predictions, target, valid_mask, channel_scale=None, eps=1e-8, return_details=False):
     """Unbiased off-diagonal paired ES; K=1 explicitly rejected.
 
     Each distance is RMS over valid time/channel elements, with eps under sqrt.
@@ -36,4 +36,7 @@ def paired_energy_score(predictions, target, valid_mask, channel_scale=None, eps
         for i in range(k-1):
             pair_sum = pair_sum + distance(p[:, i:i+1], p[:, i+1:]).sum(1)
         self_term = pair_sum * (2.0 / (k * (k-1)))
-        return (cross - 0.5 * self_term).mean()
+        loss = (cross - 0.5 * self_term).mean()
+        if return_details:
+            return dict(loss=loss, cross_distance=cross.mean(), self_distance=self_term.mean())
+        return loss

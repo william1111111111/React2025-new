@@ -13,7 +13,9 @@ lengths = inputs["lengths"]
 # predictions[b, :, :lengths[b]] is [10, valid_T, 25].
 ```
 
-The adapter maps existing `length` to `lengths` and never passes `target`.
+For Phase 1 use `paired_data.PairedReactionDataset` and `paired_model_inputs`.
+The model receives only `source_lengths`; the paired ES mask uses `pair_lengths`.
+The older compatibility adapter still maps legacy `length` and never passes `target`.
 The legacy paired dataset uses min(source length, paired target length) as
 `length`; inference should use source-only lengths. Existing 3DMM normalization
 uses FaceVerse mean/std. No normalization is performed inside this network.
@@ -45,6 +47,8 @@ package and validation records; there is no historical base commit. Existing
 project files and experiment artifacts remain outside this initial commit.
 No push or long training was run.
 
-Not implemented: training/data-loader pipeline, official evaluation runner,
+Phase 1 now includes an independent paired loader and bounded training runner.
+See ../PHASE1_REPORT.md for real-data results and limitations.
+Not implemented: official evaluation runner,
 group loss/sampler, local temporal noise, VAE/KL/GMM/diffusion/flow/Mamba,
 emotion query, set OT, CVaR, or additional losses.
