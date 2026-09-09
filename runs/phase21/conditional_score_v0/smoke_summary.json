@@ -1,0 +1,217 @@
+{
+  "results": {
+    "old_head": {
+      "arm": "C0",
+      "output_config": {
+        "head_pre_norm": false,
+        "projection_init": "default",
+        "small_init_std": 0.01
+      },
+      "initialization_hash": "0212bacdc3f92ba126a1387aca0b5409fcbd20362ca89194f630abecc6d8c437",
+      "parameter_count": 8728472,
+      "steps": 32,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "channel_scale_hash": "17b1cd5fd2d532602bc463328b1b24446fd68f01fe0fe872c7f24d16f67ad085",
+      "session_schedule_hash": "cef28c9477238145ca989966674795edd9d1caeaeebf2061fbd3760d12f1ded0",
+      "source_occurrence_hash": "7bddaaeedbd2e0b20e3cbd55244914ba89e65ee75686f206e97bb1c251a01967",
+      "noise_hash": "af4f29ed9c9275882679018e8aa156f140a1da2f7d917daf2beece7bf7802ce0",
+      "reference_selection_hash": null,
+      "population_reference_lookups": 0,
+      "scaler_hash": "581c3b7b058674d5bca11acd34577e0546bd0babb73bfd2a5aade3d0bc09ca2d",
+      "checkpoint_sha256": "03988fc11837ddd01ef2c8120f54d46fe696676ee7cbed42d71921806c56ea66",
+      "prior_unchanged": true,
+      "first": {
+        "step": 1,
+        "session_id": "session15",
+        "loss": 0.5368039011955261,
+        "conditional": {
+          "loss": 0.5368039011955261,
+          "cross_distance": 0.5371662378311157,
+          "self_distance": 0.0007246199529618025
+        },
+        "group": null,
+        "total_gradient_norm": 1.4090322256088257,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.4090322791437275,
+            "stems": 0.9842837064228089,
+            "encoder": 0.5758016956393055,
+            "decoder": 0.3190850020477286,
+            "base_projection": 0.6287081717310032,
+            "stochastic_projection": 0.43349827278237935,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "last": {
+        "step": 32,
+        "session_id": "session1",
+        "loss": 0.353074312210083,
+        "conditional": {
+          "loss": 0.353074312210083,
+          "cross_distance": 0.35346198081970215,
+          "self_distance": 0.0007753573008812964
+        },
+        "group": null,
+        "total_gradient_norm": 1.3047384023666382,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.3047384431071138,
+            "stems": 0.7505155991403378,
+            "encoder": 0.5447668977574888,
+            "decoder": 0.013976021765439073,
+            "base_projection": 0.9173952711046451,
+            "stochastic_projection": 0.022098752153082813,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "elapsed_seconds_including_diagnostic_probes": 1.5539182829961646,
+      "peak_allocated_bytes": 494959616
+    },
+    "pre_norm_head": {
+      "arm": "C0",
+      "output_config": {
+        "head_pre_norm": true,
+        "projection_init": "default",
+        "small_init_std": 0.01
+      },
+      "initialization_hash": "ed4c56f6bf2f33fd883c1f829c97b50a6875c81dae020be09110cf842e33c958",
+      "parameter_count": 8729496,
+      "steps": 32,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "channel_scale_hash": "17b1cd5fd2d532602bc463328b1b24446fd68f01fe0fe872c7f24d16f67ad085",
+      "session_schedule_hash": "cef28c9477238145ca989966674795edd9d1caeaeebf2061fbd3760d12f1ded0",
+      "source_occurrence_hash": "7bddaaeedbd2e0b20e3cbd55244914ba89e65ee75686f206e97bb1c251a01967",
+      "noise_hash": "af4f29ed9c9275882679018e8aa156f140a1da2f7d917daf2beece7bf7802ce0",
+      "reference_selection_hash": null,
+      "population_reference_lookups": 0,
+      "scaler_hash": "581c3b7b058674d5bca11acd34577e0546bd0babb73bfd2a5aade3d0bc09ca2d",
+      "checkpoint_sha256": "a9b47c0e81d0812284d5ada11161484c6266d295d6d55645521ed0b4943dc2a0",
+      "prior_unchanged": true,
+      "first": {
+        "step": 1,
+        "session_id": "session15",
+        "loss": 0.495393306016922,
+        "conditional": {
+          "loss": 0.495393306016922,
+          "cross_distance": 0.4956544041633606,
+          "self_distance": 0.0005222088657319546
+        },
+        "group": null,
+        "total_gradient_norm": 1.1100412607192993,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.1100412523672567,
+            "stems": 0.8018962417898353,
+            "encoder": 0.4475797351747256,
+            "decoder": 0.2588949938452071,
+            "base_projection": 0.45262688072607465,
+            "stochastic_projection": 0.34038263106223643,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "last": {
+        "step": 32,
+        "session_id": "session1",
+        "loss": 0.3148449659347534,
+        "conditional": {
+          "loss": 0.3148449659347534,
+          "cross_distance": 0.31696000695228577,
+          "self_distance": 0.004230056423693895
+        },
+        "group": null,
+        "total_gradient_norm": 0.6888847947120667,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 0.6888847835588341,
+            "stems": 0.2915274891082024,
+            "encoder": 0.25439492589562385,
+            "decoder": 0.07903764904656706,
+            "base_projection": 0.5148433188746301,
+            "stochastic_projection": 0.22954790667180427,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "elapsed_seconds_including_diagnostic_probes": 1.6283035389787983,
+      "peak_allocated_bytes": 497617920
+    }
+  },
+  "viable": {
+    "old_head": false,
+    "pre_norm_head": true
+  },
+  "selected": "pre_norm_head",
+  "selection_uses": "fixed TRAIN probe only, predeclared rule; no validation accessed",
+  "output_config": {
+    "head_pre_norm": true,
+    "projection_init": "default",
+    "small_init_std": 0.01
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "matched_controls_verified": true,
+  "arms": {
+    "C0": {
+      "arm": "C0",
+      "output_config": {
+        "head_pre_norm": true,
+        "projection_init": "default",
+        "small_init_std": 0.01
+      },
+      "initialization_hash": "ed4c56f6bf2f33fd883c1f829c97b50a6875c81dae020be09110cf842e33c958",
+      "parameter_count": 8729496,
+      "steps": 128,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "channel_scale_hash": "17b1cd5fd2d532602bc463328b1b24446fd68f01fe0fe872c7f24d16f67ad085",
+      "session_schedule_hash": "25a0a8b55f134f2e575c1547a6de65b0a5fbcd6c409f49817b8a4974bca152ee",
+      "source_occurrence_hash": "bd480fe77d8b996bc28638b9c9c0a0576685add77db0a9a354ef21cc9006eb1b",
+      "noise_hash": "150162865ea0e4b159429da42d1f8f80adfa31d88bb3c43a4541220a6292e0aa",
+      "reference_selection_hash": null,
+      "population_reference_lookups": 0,
+      "scaler_hash": "581c3b7b058674d5bca11acd34577e0546bd0babb73bfd2a5aade3d0bc09ca2d",
+      "checkpoint_sha256": "70eb775defe9ff26febaa93c0f4ed697fdb5872ae17b2260160ee06ae742db7b",
+      "prior_unchanged": true,
+      "first": {
+        "step": 1,
+        "session_id": "session15",
+        "loss": 0.495393306016922,
+        "conditional": {
+          "loss": 0.495393306016922,
+          "cross_distance": 0.4956544041633606,
+          "self_distance": 0.0005222088657319546
+        },
+        "group": null,
+        "total_gradient_norm": 1.1100412607192993,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.1100412523672567,
+            "stems": 0.8018962417898353,
+            "encoder": 0.4475797351747256,
+            "decoder": 0.2588949938452071,
+            "base_projection": 0.45262688072607465,
+            "stochastic_projection": 0.34038263106223643,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "last": {
+        "step": 128,
+        "session_id": "session13",
+        "loss": 0.2682238519191742,
+        "conditional": {
+          "loss": 0.2682238519191742,
+          "cross_distance": 0.33779293298721313,
+          "self_distance": 0.13913819193840027
+        },
+        "group": null,
+        "total_gradient_norm": 0.7291169166564941,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 0.7291169161941794,
+            "stems": 0.24267669326044009,
+            "encoder": 0.2390190768911857,
+            "decoder": 0.22329888504165263,
+            "base_projection": 0.4847493420776055,
+            "stochastic_projection": 0.36032327284745685,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 0.0,
+            "stems": 0.0,
+            "encoder": 0.0,
+            "decoder": 0.0,
+            "base_projection": 0.0,
+            "stochastic_projection": 0.0,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.0,
+          "weighted_group_over_conditional": 0.0,
+          "cosine": null,
+          "finite": true
+        }
+      },
+      "elapsed_seconds_including_diagnostic_probes": 6.412677284999518,
+      "peak_allocated_bytes": 496738816
+    },
+    "C1": {
+      "arm": "C1",
+      "output_config": {
+        "head_pre_norm": true,
+        "projection_init": "default",
+        "small_init_std": 0.01
+      },
+      "initialization_hash": "ed4c56f6bf2f33fd883c1f829c97b50a6875c81dae020be09110cf842e33c958",
+      "parameter_count": 8729496,
+      "steps": 128,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "channel_scale_hash": "17b1cd5fd2d532602bc463328b1b24446fd68f01fe0fe872c7f24d16f67ad085",
+      "session_schedule_hash": "25a0a8b55f134f2e575c1547a6de65b0a5fbcd6c409f49817b8a4974bca152ee",
+      "source_occurrence_hash": "bd480fe77d8b996bc28638b9c9c0a0576685add77db0a9a354ef21cc9006eb1b",
+      "noise_hash": "150162865ea0e4b159429da42d1f8f80adfa31d88bb3c43a4541220a6292e0aa",
+      "reference_selection_hash": "b1a9300c585d3550fd0d45ff155e55cfb4fa697bdcecb1fec3c4a6d12bb42bab",
+      "population_reference_lookups": 1024,
+      "scaler_hash": "581c3b7b058674d5bca11acd34577e0546bd0babb73bfd2a5aade3d0bc09ca2d",
+      "checkpoint_sha256": "3cb1ac7a5d0796dc9a6aa1293b577e70a54d1361d707048786b5c2c48a4ca825",
+      "prior_unchanged": true,
+      "first": {
+        "step": 1,
+        "session_id": "session15",
+        "loss": 0.6901558637619019,
+        "conditional": {
+          "loss": 0.495393306016922,
+          "cross_distance": 0.4956544041633606,
+          "self_distance": 0.0005222088657319546
+        },
+        "group": {
+          "loss": 1.9476258754730225,
+          "cross": 1.9488213062286377,
+          "self": 0.002390697132796049
+        },
+        "total_gradient_norm": 1.4977415800094604,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.1100412523672567,
+            "stems": 0.8018962417898353,
+            "encoder": 0.4475797351747256,
+            "decoder": 0.2588949938452071,
+            "base_projection": 0.45262688072607465,
+            "stochastic_projection": 0.34038263106223643,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 6.887413073202899,
+            "stems": 4.806849855624803,
+            "encoder": 2.786606677263546,
+            "decoder": 1.8918913929342827,
+            "base_projection": 2.459419721738447,
+            "stochastic_projection": 2.626711242913074,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.6887413073202899,
+          "weighted_group_over_conditional": 0.6204646051229996,
+          "cosine": 0.3509819597811364,
+          "finite": true
+        }
+      },
+      "last": {
+        "step": 128,
+        "session_id": "session13",
+        "loss": 0.40893876552581787,
+        "conditional": {
+          "loss": 0.31258565187454224,
+          "cross_distance": 0.3285052478313446,
+          "self_distance": 0.03183918818831444
+        },
+        "group": {
+          "loss": 0.963530957698822,
+          "cross": 1.0228303670883179,
+          "self": 0.11859890818595886
+        },
+        "total_gradient_norm": 0.9734001159667969,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 0.8166420299179274,
+            "stems": 0.22250648566836911,
+            "encoder": 0.23638168403470625,
+            "decoder": 0.137013301309002,
+            "base_projection": 0.6460213463432805,
+            "stochastic_projection": 0.35223685968797264,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 2.7049025735758034,
+            "stems": 1.0983792263165355,
+            "encoder": 0.8464640342385263,
+            "decoder": 0.6848626717560481,
+            "base_projection": 1.3017669027802372,
+            "stochastic_projection": 1.7940171224272952,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.27049025735758037,
+          "weighted_group_over_conditional": 0.33122255216862234,
+          "cosine": 0.4695438365640394,
+          "finite": true
+        }
+      },
+      "elapsed_seconds_including_diagnostic_probes": 6.903058382013114,
+      "peak_allocated_bytes": 531310592
+    },
+    "C2": {
+      "arm": "C2",
+      "output_config": {
+        "head_pre_norm": true,
+        "projection_init": "default",
+        "small_init_std": 0.01
+      },
+      "initialization_hash": "ed4c56f6bf2f33fd883c1f829c97b50a6875c81dae020be09110cf842e33c958",
+      "parameter_count": 8729496,
+      "steps": 128,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "channel_scale_hash": "17b1cd5fd2d532602bc463328b1b24446fd68f01fe0fe872c7f24d16f67ad085",
+      "session_schedule_hash": "25a0a8b55f134f2e575c1547a6de65b0a5fbcd6c409f49817b8a4974bca152ee",
+      "source_occurrence_hash": "bd480fe77d8b996bc28638b9c9c0a0576685add77db0a9a354ef21cc9006eb1b",
+      "noise_hash": "150162865ea0e4b159429da42d1f8f80adfa31d88bb3c43a4541220a6292e0aa",
+      "reference_selection_hash": "b1a9300c585d3550fd0d45ff155e55cfb4fa697bdcecb1fec3c4a6d12bb42bab",
+      "population_reference_lookups": 1024,
+      "scaler_hash": "581c3b7b058674d5bca11acd34577e0546bd0babb73bfd2a5aade3d0bc09ca2d",
+      "checkpoint_sha256": "a9c934df97636a008b34d3dd1f8d2eb96b957558bff60e5f1664646bd7c4e44e",
+      "prior_unchanged": true,
+      "first": {
+        "step": 1,
+        "session_id": "session15",
+        "loss": 0.6569300889968872,
+        "conditional": {
+          "loss": 0.495393306016922,
+          "cross_distance": 0.4956544041633606,
+          "self_distance": 0.0005222088657319546
+        },
+        "group": {
+          "loss": 1.615368127822876,
+          "cross": 1.9488213062286377,
+          "self": 0.666906476020813
+        },
+        "total_gradient_norm": 1.756765365600586,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.1100412523672567,
+            "stems": 0.8018962417898353,
+            "encoder": 0.4475797351747256,
+            "decoder": 0.2588949938452071,
+            "base_projection": 0.45262688072607465,
+            "stochastic_projection": 0.34038263106223643,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 11.221141125803577,
+            "stems": 7.305197930606798,
+            "encoder": 4.884898564052552,
+            "decoder": 3.297351354846971,
+            "base_projection": 4.198250384787494,
+            "stochastic_projection": 4.4809033616256215,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 1.1221141125803578,
+          "weighted_group_over_conditional": 1.010876046441837,
+          "cosine": 0.23879892650681114,
+          "finite": true
+        }
+      },
+      "last": {
+        "step": 128,
+        "session_id": "session13",
+        "loss": 0.3752155005931854,
+        "conditional": {
+          "loss": 0.2908754348754883,
+          "cross_distance": 0.3273254632949829,
+          "self_distance": 0.07290007174015045
+        },
+        "group": {
+          "loss": 0.8434005975723267,
+          "cross": 1.0722832679748535,
+          "self": 0.4577653110027313
+        },
+        "total_gradient_norm": 1.5739736557006836,
+        "prior_gradient_norm": 0.0,
+        "component_gradients": {
+          "conditional": {
+            "total": 1.3389158602940525,
+            "stems": 0.43549681309498905,
+            "encoder": 0.3622345680984667,
+            "decoder": 0.325146327585583,
+            "base_projection": 0.866825588980097,
+            "stochastic_projection": 0.781753467814978,
+            "prior": 0.0
+          },
+          "group": {
+            "total": 2.8261055417281535,
+            "stems": 1.0515933787530192,
+            "encoder": 0.7946654803964499,
+            "decoder": 0.6464054891032496,
+            "base_projection": 1.8104269259058885,
+            "stochastic_projection": 1.5937184609419972,
+            "prior": 0.0
+          },
+          "weighted_group_norm": 0.2826105541728154,
+          "weighted_group_over_conditional": 0.21107417019524177,
+          "cosine": 0.7992095448085804,
+          "finite": true
+        }
+      },
+      "elapsed_seconds_including_diagnostic_probes": 6.84870808100095,
+      "peak_allocated_bytes": 531310080
+    }
+  }
+}

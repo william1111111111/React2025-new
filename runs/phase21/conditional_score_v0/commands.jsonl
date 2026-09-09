@@ -1,0 +1,12 @@
+{"argv": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "hirp.train_phase21", "--stage", "prepare", "--device", "cuda:2"], "started_unix": 1788944991.7931948, "completed_unix": 1788944998.4323673, "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests", "-v"], "started_unix": 1788945036.285204, "completed_unix": 1788945050.8746576, "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "hirp.toy_phase21", "--output", "runs/phase21/conditional_score_v0/toy_recovery.json"], "started_unix": 1788945050.8747559, "completed_unix": 1788945057.9068897, "exit_code": 0}
+{"argv": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "hirp.train_phase21", "--stage", "smoke", "--device", "cuda:2"], "started_unix": 1788945122.152316, "completed_unix": 1788945131.8106842, "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "hirp.train_phase21", "--stage", "preflight", "--device", "cuda:2"], "exit_code": 1, "failure_log": "preflight_stdout.txt", "reason": "duplicate dictionary key in audit serialization; no training performed"}
+{"argv": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "hirp.train_phase21", "--stage", "preflight", "--device", "cuda:2"], "started_unix": 1788945330.9867835, "completed_unix": 1788945337.394076, "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests/test_phase21.py", "-q"], "exit_code": 1, "result": "1 failed, 16 passed in 8.83s", "log": "runner_regression_tests.txt", "cause": "CPU BF16 eval/no_grad upstream fused Transformer dtype issue; documented expected limitation, no AMP pilot"}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests", "-v"], "started_unix": 1788945420.2200458, "completed_unix": 1788945437.21633, "exit_code": 0}
+{"argv": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "hirp.train_phase21", "--stage", "pilot", "--device", "cuda:2"], "started_unix": 1788945501.6332242, "completed_unix": 1788945528.1649735, "exit_code": 0}
+{"argv": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "hirp.evaluate_phase21", "--run", "runs/phase21/conditional_score_v0", "--device", "cuda:2"], "started_unix": 1788945853.329631, "completed_unix": 1788945865.2865782, "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests", "-q"], "exit_code": 0, "result": "sandbox: 98 passed, 3 skipped, 1 xfailed; GPU repeat: 101 passed, 1 xfailed", "phase": "resumption"}
+{"argv": [".venv/bin/python", "-m", "hirp.summarize_phase21"], "exit_code": 0, "result": "report and paired session bootstrap generated", "phase": "resumption"}

@@ -1,0 +1,1032 @@
+diff --git a/.gitignore b/.gitignore
+index 0bd3ecb..a707e5a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -8,3 +8,5 @@ __pycache__/
+ /runs/phase15/checkpoints/
+ 
+ /runs/phase2/checkpoints/
++
++/runs/phase21/**/checkpoints/
+diff --git a/hirp/summarize_phase21.py b/hirp/summarize_phase21.py
+new file mode 100644
+index 0000000..64e630e
+--- /dev/null
++++ b/hirp/summarize_phase21.py
+@@ -0,0 +1,75 @@
++"""Reproducible report and paired-session bootstrap; no model execution."""
++import json
++from pathlib import Path
++import numpy as np
++from .train_phase21 import write
++
++
++def main():
++    run=Path('runs/phase21/conditional_score_v0')
++    def read(name):return json.loads((run/name).read_text())
++    arms=('C0','C1','C2'); cases={a:read(f'evaluation/{a}.json') for a in arms}
++    rng=np.random.default_rng(2106); indices=rng.integers(0,20,(10000,20)); bootstrap={}
++    def interval(x):
++        x=np.asarray(x); lo,hi=np.quantile(x[indices].mean(1),[.025,.975])
++        return dict(mean=float(x.mean()),lower=float(lo),upper=float(hi))
++    for a in arms:
++        rows=cases[a]['per_session']
++        bootstrap[a+'_shuffle_gap']=interval([r['conditional_shuffled']['loss']-r['conditional_correct_common']['loss'] for r in rows])
++    for b in ('C0','C1'):
++        assert [r['session_id'] for r in cases['C2']['per_session']]==[r['session_id'] for r in cases[b]['per_session']]
++        for metric in ('conditional','marginal'):
++            bootstrap[f'C2_minus_{b}_{metric}']=interval([r[metric]['loss']-s[metric]['loss'] for r,s in zip(cases['C2']['per_session'],cases[b]['per_session'])])
++    write(run/'evaluation/session_bootstrap.json',dict(seed=2106,resamples=10000,unit='20 paired sessions',contrasts=bootstrap))
++    lines=['# HiRP Phase 2.1: conditional distribution supervision',
++        '', 'Base / local HEAD at resumption: `8fbc5febddb14b0b54d27633a3edb95227cc9834`; branch `agent/hirp-phase21-conditional-score`. No later commits existed. Existing uncommitted work was retained. See resumption_audit.json and code_changes.patch. No push.',
++        '', '## Findings', '',
++        'The pre-norm output path restores measurable stochastic trainability in this bounded experiment. C0 has the best held-out paired trajectory ES. C2 improves group descriptor ES relative to C0 while worsening conditional ES; compared with C1, C2 improves both conditional and marginal ES. All three correct-input scores beat the fixed within-session shuffle. This supports input correspondence sensitivity, not recovery of each full conditional distribution.',
++        '', 'Self distance is a legitimate term of ES. A self-driven improvement is not by itself gaming; neither is improved marginal ES proof of conditional calibration. AU/expression spread remains small and expression entropy remains high relative to real references. No complete mechanism or MARS performance claim is established.',
++        '', '## Objectives and controls','',
++        '| Experiment | Paired term | Distribution term |','|---|---|---|',
++        '| Historical B2/B3/B4 | RMS(G(X,0),Y) | paired descriptor / per-input population / cross-bank group ES |',
++        '| C0 | trajectory ES over every stochastic sample | none |',
++        '| C1 | same trajectory ES | 0.1 × unchanged b3_score |',
++        '| C2 | same trajectory ES | 0.1 × unchanged b4_score |',
++        '', 'G(X,0) is diagnostic only, neither an expectation nor a median. Trajectory scores use pair_lengths and 25 unit channel scales; generated descriptors use source_lengths and the frozen train-only 75-coordinate scaler. Targets/references do not enter forward. A0 prior is frozen; encoder/decoder remain conditional on X.',
++        '', 'All arms: scratch seed 123, T=128, K_train=4, B=4, 128 steps, AdamW lr=1e-4, weight decay .01, float32, pre-norm with default projection initialization, 8,729,496 parameters. FiLM small nonzero initialization and output domains/residual formula are preserved. The optional small projection initialization was implemented/tested but not used for the pilot.',
++        '', 'The original Phase 2 schedule and independent noise were hash-verified and reused. Four source occurrences are IID with replacement, split into two banks; references are unique within a step and train-only. C1/C2 consumed identical references. C0 has zero reference lookups in its loss/step path; the shared experiment preparation loads a reference cache for C1/C2. This is not three separately isolated data-loading processes.',
++        '', 'Lambda was selected from [.01,.03,.1,.3,1] on 8 TRAIN batches × 2 arms, nearest log-distance to a median weighted group/conditional gradient ratio of .5. Selected .1; actual initial median ratio .771551. This is a reasonable fixed starting point, not optimality or balance evidence. Gradient norms/cosines recur every 16 steps; no dynamic controller.',
++        '', '## Output-path evidence','',
++        '32-step old/pre-norm smoke uses the same conditional objective, projection/backbone initialization and learning rate. The locked TRAIN-only viability rule rejected old-head and accepted pre-norm. Historical B2/B3/B4 checkpoints were only probed read-only; no structural checkpoint migration.',
++        '', '| Probe at final step | Residual saturation | Median tanh derivative | AU noise VJP | VA noise VJP | Expression noise VJP |', '|---|---:|---:|---:|---:|---:|']
++    for a in ('old_head','pre_norm_head',*arms):
++        p=read(a+'_path_diagnostics.json')[-1]
++        lines.append('| '+a+' | '+' | '.join(f'{x:.7g}' for x in [p['residual']['tanh_saturation_fraction'],p['residual']['derivative']['abs_quantiles']['p50'],*[p['noise_jacobian'][g]['vjp_norm'] for g in ('AU','VA','expression')]])+' |')
++    lines+=['','Full *_path_diagnostics.json records encoder H, decoder hidden, base/stochastic logits and final raw: valid-frame mean/std/absolute quantiles and conditional gradient norms, plus boundaries, sample std and derivative quantiles. Noise values are seeded normalized random-output VJPs, not full Jacobian norms. Prior parameters remained unchanged. These fixed TRAIN probes are not whole-dataset saturation estimates.', '', '| Historical arm | Base VA abs p95 | Final VA abs p95 | Residual saturation |','|---|---:|---:|---:|']
++    for a,v in read('historical_output_path.json').items():
++        p=v['diagnostic'];lines.append(f"| {a} | {p['paths']['base_logits']['VA']['abs_quantiles']['p95']:.6g} | {p['paths']['final_raw']['VA']['abs_quantiles']['p95']:.6g} | {p['residual']['tanh_saturation_fraction']:.6g} |")
++    lines+=['','Base and stochastic paths must both be considered: bounded stochastic residuals cannot undo arbitrarily large base logits. Pre-norm normalizes both projections; the evidence does not isolate which normalization is individually necessary.', '', '| Arm | Weighted group/conditional gradient ratio min–max | Gradient cosine min–max |', '|---|---:|---:|']
++    for a in ('C1','C2'):
++        rows=[json.loads(s)['component_gradients'] for s in (run/(a+'_training.jsonl')).read_text().splitlines()];rows=[r for r in rows if r]
++        r=[v['weighted_group_over_conditional'] for v in rows];c=[v['cosine'] for v in rows]
++        lines.append(f'| {a} | {min(r):.6g}–{max(r):.6g} | {min(c):.6g}–{max(c):.6g} |')
++    lines+=['','## Held-out fixed-80 pilot', '', 'K=32 common Gaussian bank; 4 clips × 20 sessions, all 571 unique VAL listener references. Session-macro averages; common-mask correct/shuffled comparisons. Marginal self excludes equal noise indices for every source pair. No official metrics or hidden test.', '', '| Arm | Paired ES | Cross | Self | Shuffled ES | Shuffle gap | Group ES | Central RMS (aux) |','|---|---:|---:|---:|---:|---:|---:|---:|']
++    for a in arms:
++        s=cases[a]['aggregate'];vals=[s['conditional']['loss'],s['conditional']['cross_distance'],s['conditional']['self_distance'],s['conditional_shuffled']['loss'],s['conditional_shuffle_gap']['difference'],s['marginal']['loss'],s['central']['overall']]
++        lines.append('| '+a+' | '+' | '.join(f'{v:.7f}' for v in vals)+' |')
++    lines+=['','| Arm | Marginal cross | Marginal self | Within-input descriptor self | Between-input descriptor distance |','|---|---:|---:|---:|---:|']
++    for a in arms:
++        s=cases[a]['aggregate']; vals=[s['marginal']['cross'],s['marginal']['self'],*s['spread'].values()]
++        lines.append('| '+a+' | '+' | '.join(f'{v:.7f}' for v in vals)+' |')
++    lines+=['', 'For four fixed sources, marginal self = within/4 + 3×between/4, excluding shared noise indices. Descriptor units differ from raw trajectory units.', '', '| Contrast | Mean | Session bootstrap 95% interval |','|---|---:|---|']
++    for name,v in bootstrap.items():lines.append(f"| {name} | {v['mean']:.7f} | [{v['lower']:.7f}, {v['upper']:.7f}] |")
++    lines+=['','Bootstrap uses 10,000 paired session resamples, seed 2106. It excludes training-seed, noise-bank and shuffle-permutation uncertainty.', '', '| Arm/channel | Sample std | Boundary fraction | Velocity RMS | Expression entropy |','|---|---:|---:|---:|---:|']
++    for a in arms:
++        for g in ('AU','VA','expression'):
++            v=cases[a]['aggregate']['channels'][g]
++            lines.append(f"| {a}/{g} | {v['prediction_std']:.7g} | {v['boundary_fraction']:.7g} | {v['velocity_rms']:.7g} | {v.get('expression_entropy','—')} |")
++    lines+=['','Real reference distributions/crops are saved in evaluation/real_reference.json; per-input and session metrics plus held-out path probes in evaluation/C*.json. References describe different X, not repeated conditional draws at one X.', '', '## Toy recovery','', 'Same-session Bernoulli probabilities [.1,.9], 8192 sampled labels per input, seed 2103. A two-input linear sigmoid network optimizes exact expected ES or the full sampled-label empirical objective. Initializations [.5,.5], [.2,.4], [.8,.3]; 500 steps. This validates the objective connection, not REACT generalization.', '', '| Initialization | Objective | Arm | Recovered probabilities | Conditional MAE | Marginal error |','|---|---|---|---|---:|---:|']
++    for r in read('toy_recovery.json')['rows']:
++        lines.append(f"| {r['initial']} | {r['kind']} | {r['arm']} | {str([round(v,7) for v in r['probabilities']])} | {r['conditional_probability_mae']:.7g} | {r['marginal_probability_error']:.7g} |")
++    lines+=['','Analytic C0/C2 optimum is [.1,.9]; C1 optimum is [.1363636,.8636364] at lambda=.1. The original optimum-initialized compatibility toy is unchanged.', '', '## Validation, provenance and remaining work','', 'Actual earlier stage commands and failures: commands.jsonl. Earlier full test result: 101 passed, 1 xfailed, 1 warning in pytest_before_pilot.txt. Resumed sandbox tests: 98 passed, 3 CUDA skipped, 1 xfailed, 1 warning. GPU-enabled repeat: 101 passed, 1 xfailed, 1 warning in 13.74s (pytest_resumed_gpu.txt). CPU BF16 fused Transformer eval/no_grad on PyTorch 2.1 is explicitly xfailed; pilot/evaluation use float32, and ES distances remain float32 under AMP.', '', 'Resumed evaluation command: `.venv/bin/python -m hirp.evaluate_phase21 --run runs/phase21/conditional_score_v0 --device cuda:2`. Full GPU test command: `.venv/bin/python -m pytest hirp/tests -q`. Report/bootstrap command: `.venv/bin/python -m hirp.summarize_phase21`.', '', '83 historical artifact hashes match the preparation snapshot. Runtime smoke/training archives and checkpoint hashes are retained. No old code/report/data/checkpoint/official metric changes. Development failure logs are preserved. Checkpoints are local Git-ignored files.', '', 'Not run: long training, multi-seed pilot, K=64 sensitivity, multiple shuffles/noise banks, hidden/official evaluation, small-projection-init training comparison, separate base-only/stochastic-only normalization ablations, conditional-prior learning, or push. Neither learning rate nor lambda is claimed optimal. The existing bounded pilot was reused, not repeated after validation.']
++    (run/'PHASE21_REPORT.md').write_text('\n'.join(lines)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/toy_phase21.py b/hirp/toy_phase21.py
+new file mode 100644
+index 0000000..0cca052
+--- /dev/null
++++ b/hirp/toy_phase21.py
+@@ -0,0 +1,58 @@
++"""Conditional Bernoulli recovery from non-optimal initializations.
++
++Closed-form expected ES and a tiny logistic network fit to sampled paired labels.
++This evaluates loss connections, not REACT generalization or HiRP expressivity.
++"""
++import json
++import torch
++from .phase15_audit import canonical_hash
++
++
++def bernoulli_es(p,q):
++    # Exact Euclidean ES on {-1,+1}: 2[p+q-2pq] - 2p(1-p).
++    return 2*(p+q-2*p*q)-2*p*(1-p)
++
++
++def objective(p,q,arm,weight):
++    cond = bernoulli_es(p,q).mean()
++    if arm == 'C1': return cond+weight*bernoulli_es(p,p.new_tensor(.5)).mean()
++    if arm == 'C2': return cond+weight*bernoulli_es(p.mean(),p.new_tensor(.5))
++    return cond
++
++
++def run_toy(weight=.1, steps=500, sample_count=8192):
++    q = torch.tensor([.1,.9],dtype=torch.float64)
++    rng = torch.Generator().manual_seed(2103)
++    labels = (torch.rand(2,sample_count,generator=rng,dtype=torch.float64)<q[:,None]).double()
++    empirical = labels.mean(1)
++    rows = []
++    for initial in ([.5,.5],[.2,.4],[.8,.3]):
++        for kind in ('analytic_expected','sampled_labels_logistic_network'):
++            for arm in ('C0','C1','C2'):
++                # A 2-input one-hot linear sigmoid network; no hidden oracle.
++                net = torch.nn.Linear(2,1,bias=False,dtype=torch.float64)
++                with torch.no_grad(): net.weight.copy_(torch.logit(torch.tensor(initial,dtype=torch.float64))[None])
++                optimizer = torch.optim.Adam(net.parameters(),lr=.05)
++                for _ in range(steps):
++                    p = net(torch.eye(2,dtype=torch.float64)).flatten().sigmoid()
++                    target = q if kind == 'analytic_expected' else empirical
++                    # Paired-label empirical mean is exactly the full-batch
++                    # expectation of each sampled singleton ES (cross linear in y).
++                    loss = objective(p,target,arm,weight)
++                    optimizer.zero_grad();loss.backward();optimizer.step()
++                p = net(torch.eye(2,dtype=torch.float64)).flatten().sigmoid().detach()
++                rows.append(dict(initial=initial,kind=kind,arm=arm,probabilities=p.tolist(),
++                                 conditional_probability_mae=(p-q).abs().mean().item(),
++                                 marginal_probability_error=abs(p.mean().item()-.5)))
++    return dict(true_conditional=q.tolist(),empirical_conditional=empirical.tolist(),
++                labels_per_input=sample_count,labels_hash=canonical_hash(labels.int().tolist()),
++                label_seed=2103,lambda_group=weight,steps=steps,rows=rows,
++                analytic_optima=dict(C0=q.tolist(),C1=((q+weight*.5)/(1+weight)).tolist(),C2=q.tolist()))
++
++
++if __name__ == '__main__':
++    import argparse
++    from pathlib import Path
++    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
++    args=parser.parse_args();torch.set_num_threads(2)
++    with args.output.open('x') as stream: json.dump(run_toy(),stream,indent=2)
+diff --git a/hirp/phase21_diagnostics.py b/hirp/phase21_diagnostics.py
+new file mode 100644
+index 0000000..ff049c9
+--- /dev/null
++++ b/hirp/phase21_diagnostics.py
+@@ -0,0 +1,106 @@
++"""Differentiable output-path probes and component-gradient audits (no losses added)."""
++from contextlib import contextmanager
++import math
++import torch
++from .phase21 import forward_a0, conditional_score, CHANNEL_SCALE
++from .paired_data import paired_model_inputs
++from .phase1_diagnostics import gradient_norm
++
++GROUPS = {'AU': slice(0, 15), 'VA': slice(15, 17), 'expression': slice(17, 25)}
++
++
++def stats(x):
++    x = x.detach().float().flatten()
++    q = torch.quantile(x.abs(), x.new_tensor([0., .05, .5, .95, .99, 1.])).tolist()
++    return dict(mean=x.mean().item(), std=x.std(unbiased=False).item(),
++                abs_quantiles=dict(zip(('min','p05','p50','p95','p99','max'), q)))
++
++
++def module_norms(model, gradients, params):
++    lookup = {id(p): g for p, g in zip(params, gradients)}
++    result = {}
++    for name, module in [('total',model), ('stems',model.stems), ('encoder',model.encoder),
++                         ('decoder',model.decoder), ('base_projection',model.output_head.base),
++                         ('stochastic_projection',model.output_head.stochastic), ('prior',model.prior)]:
++        gs = [lookup[id(p)] for p in module.parameters() if lookup.get(id(p)) is not None]
++        result[name] = math.sqrt(sum(g.detach().float().square().sum().item() for g in gs))
++    return result
++
++
++def component_gradients(model, conditional, group, weight):
++    params = [p for p in model.parameters() if p.requires_grad]
++    a = torch.autograd.grad(conditional, params, retain_graph=True, allow_unused=True)
++    b = (torch.autograd.grad(group, params, retain_graph=True, allow_unused=True)
++         if group is not None else [None] * len(params))
++    an, bn = module_norms(model,a,params), module_norms(model,b,params)
++    dot = sum((x.detach().float()*y.detach().float()).sum().item()
++              for x,y in zip(a,b) if x is not None and y is not None)
++    return dict(conditional=an, group=bn, weighted_group_norm=weight*bn['total'],
++                weighted_group_over_conditional=weight*bn['total']/an['total'] if an['total'] else None,
++                cosine=dot/(an['total']*bn['total']) if an['total']*bn['total'] else None,
++                finite=all(torch.isfinite(g).all().item() for g in list(a)+list(b) if g is not None))
++
++
++@contextmanager
++def capture_path(model):
++    captured = {}; hooks = []
++    def save(name, first=False):
++        def hook(module, inputs, output):
++            captured[name] = output[0] if first else output
++        return hook
++    for name, module, first in [('encoder_H',model.encoder,True), ('decoder_hidden',model.decoder,False),
++                                ('base_logits',model.output_head.base,False),
++                                ('stochastic_logits',model.output_head.stochastic,False),
++                                ('final_raw',model.output_head.raw_probe,False)]:
++        hooks.append(module.register_forward_hook(save(name,first)))
++    try:
++        yield captured
++    finally:
++        for hook in hooks: hook.remove()
++
++
++def output_path_diagnostic(model, batch, noise, channel_scale=CHANNEL_SCALE):
++    """Fixed eval probe; gradients of conditional ES at intermediates and dY/dnoise.
++
++    Noise metric is ||J^T v|| for a seeded Rademacher output cotangent v,
++    normalized by sqrt(number of valid scalar outputs), per output group.
++    This probes output Jacobians independently of loss-gradient cancellation.
++    Does not alter parameter .grad, RNG streams, or module train/eval modes.
++    """
++    modes = [(m,m.training) for m in model.modules()]
++    model.eval()
++    try:
++        with torch.enable_grad(), capture_path(model) as captured:
++            epsilon = noise.detach().clone().requires_grad_(True)
++            pred = forward_a0(model, **paired_model_inputs(batch), sample_count=noise.shape[1], noise=epsilon)
++            score = conditional_score(pred, batch, channel_scale)
++            tensors = list(captured.values())
++            grads = torch.autograd.grad(score['loss'], tensors, retain_graph=True, allow_unused=True)
++            valid = torch.arange(pred.shape[2],device=pred.device)[None] < batch['source_lengths'][:,None]
++            result = dict(conditional={k:v.item() for k,v in score.items()}, paths={}, outputs={}, noise_jacobian={})
++            for (name,value), grad in zip(captured.items(),grads):
++                mask = valid if value.ndim == 3 else valid[:,None].expand(value.shape[:3])
++                groups = GROUPS if value.shape[-1] == 25 else {'all':slice(None)}
++                result['paths'][name] = {}
++                for group, sl in groups.items():
++                    x = value[...,sl][mask]
++                    result['paths'][name][group] = dict(**stats(x),
++                        conditional_gradient_norm=grad[...,sl][mask].float().norm().item() if grad is not None else 0.)
++            mask = valid[:,None].expand(pred.shape[:3])
++            raw = captured['stochastic_logits'][mask].float()
++            result['residual'] = dict(tanh_saturation_fraction=(raw.tanh().abs()>=.99).float().mean().item(),
++                derivative=stats(1-raw.tanh().square()), abs_mean=raw.tanh().abs().mean().item())
++            for group, sl in GROUPS.items():
++                q = pred[...,sl]; values = q[mask]
++                low = -1 if group == 'VA' else 0
++                result['outputs'][group] = dict(**stats(values),
++                    boundary_fraction=((values<=low+.01)|(values>=.99)).float().mean().item(),
++                    prediction_std=q.float().std(1,unbiased=False)[valid].mean().item())
++                rng = torch.Generator(device=pred.device).manual_seed(2105)
++                v = (torch.randint(2,q.shape,generator=rng,device=q.device)*2-1).to(q.dtype)
++                v = v.masked_fill(~mask[...,None],0)/math.sqrt(values.numel())
++                g = torch.autograd.grad((q*v).sum(),epsilon,retain_graph=True)[0]
++                result['noise_jacobian'][group] = dict(vjp_norm=g.float().norm().item(),finite=torch.isfinite(g).all().item())
++            return result
++    finally:
++        for module,mode in modes: module.training = mode
+diff --git a/hirp/phase21.py b/hirp/phase21.py
+new file mode 100644
+index 0000000..d3b7473
+--- /dev/null
++++ b/hirp/phase21.py
+@@ -0,0 +1,110 @@
++"""Phase 2.1 opt-in output path and conditional trajectory scoring.
++
++The historical model, Phase 2 trainer, and group estimators remain untouched.
++No target/reference is accepted by the generator or forward_a0 adapter.
++"""
++from dataclasses import dataclass
++import torch
++from torch import nn
++from . import HiRPNet
++from .losses import paired_energy_score
++from .paired_data import paired_model_inputs, pair_valid_mask
++from .phase1_diagnostics import prior_mode
++from .train_phase2 import description
++from .group_scores import b3_score, b4_score
++
++CHANNEL_SCALE = (1.0,) * 25
++
++
++@dataclass(frozen=True)
++class OutputConfig:
++    head_pre_norm: bool = False
++    projection_init: str = 'default'
++    small_init_std: float = .01
++
++
++class Phase21OutputHead(nn.Module):
++    """Original activation/residual formula, with optional per-frame pre-norm.
++
++    Reuse freshly initialized own-HiRP projections so default old/pre-norm
++    comparisons share exactly the same backbone and projection tensors.
++    Identity raw_probe exposes the actual differentiable final raw for audit.
++    """
++    def __init__(self, original, d_model, config):
++        super().__init__()
++        if config.projection_init not in ('default', 'small'):
++            raise ValueError('projection_init must be default or small')
++        if config.small_init_std <= 0:
++            raise ValueError('small_init_std must be positive')
++        self.base, self.stochastic = original.base, original.stochastic
++        self.base_norm = nn.LayerNorm(d_model) if config.head_pre_norm else nn.Identity()
++        self.stochastic_norm = nn.LayerNorm(d_model) if config.head_pre_norm else nn.Identity()
++        self.raw_probe = nn.Identity()
++        if config.projection_init == 'small':
++            for layer in (self.base, self.stochastic):
++                nn.init.normal_(layer.weight, std=config.small_init_std)
++                nn.init.zeros_(layer.bias)
++
++    def forward(self, h, decoded, valid_mask):
++        raw = self.raw_probe(self.base(self.base_norm(h))[:, None]
++                             + self.stochastic(self.stochastic_norm(decoded)).tanh())
++        reaction = torch.cat((raw[..., :15].sigmoid(), raw[..., 15:17].tanh(),
++                              raw[..., 17:].softmax(-1)), -1)
++        return reaction.masked_fill(~valid_mask[:, None, :, None], 0)
++
++
++def make_model(device='cpu', output_config=None, config=None, seed=123):
++    torch.manual_seed(seed)
++    if torch.cuda.is_available():
++        torch.cuda.manual_seed_all(seed)
++    model = HiRPNet(config)
++    model.output_head = Phase21OutputHead(model.output_head, model.config.d_model,
++                                          output_config or OutputConfig())
++    # Frozen deliberately; retained in state_dict and capacity accounting.
++    model.prior.requires_grad_(False)
++    return model.to(device)
++
++
++def forward_a0(model, speaker_audio, speaker_emotion, speaker_3dmm, lengths,
++               sample_count=4, noise=None, return_aux=False):
++    """Source-only forward adapter; cast explicit noise to AMP prior dtype.
++
++    Cast preserves the supplied random numbers to compute precision and their
++    autograd connection. Never resamples. Core forward's strict contract stays.
++    """
++    device_type = speaker_audio.device.type
++    # Installed PyTorch 2.1 uses separate CPU/CUDA autocast accessors.
++    enabled = torch.is_autocast_cpu_enabled() if device_type == 'cpu' else torch.is_autocast_enabled()
++    amp_dtype = torch.get_autocast_cpu_dtype() if device_type == 'cpu' else torch.get_autocast_gpu_dtype()
++    dtype = amp_dtype if enabled else next(model.prior.parameters()).dtype
++    if noise is not None:
++        noise = noise.to(dtype=dtype)  # Device mismatch still rejected by core.
++    with prior_mode(model, 'A0'):
++        return model(speaker_audio, speaker_emotion, speaker_3dmm, lengths,
++                     sample_count=sample_count, noise=noise, return_aux=return_aux)
++
++
++def conditional_score(predictions, batch, channel_scale=CHANNEL_SCALE):
++    return paired_energy_score(predictions, batch['paired_target'], pair_valid_mask(batch),
++                               channel_scale=channel_scale, return_details=True)
++
++
++def losses_for_batch(model, batch, noise, scaler, arm, references=None,
++                     lambda_group=0.1, channel_scale=CHANNEL_SCALE):
++    if noise.shape[1] < 2:
++        raise ValueError('conditional trajectory ES requires K >= 2')
++    if arm not in ('C0', 'C1', 'C2'):
++        raise ValueError('unknown Phase 2.1 arm')
++    if arm == 'C0' and references is not None:
++        raise ValueError('C0 must not receive population references')
++    if arm != 'C0' and references is None:
++        raise ValueError('C1/C2 require session references')
++    predictions = forward_a0(model, **paired_model_inputs(batch),
++                             sample_count=noise.shape[1], noise=noise)
++    conditional = conditional_score(predictions, batch, channel_scale)
++    group = None
++    if arm != 'C0':
++        phi, valid = description(predictions, batch['source_lengths'], scaler)
++        group = (b3_score if arm == 'C1' else b4_score)(phi, valid, *references)
++    total = conditional['loss'] if group is None else conditional['loss'] + lambda_group * group['loss']
++    return dict(total=total, conditional=conditional, group=group, predictions=predictions)
+diff --git a/hirp/evaluate_phase21.py b/hirp/evaluate_phase21.py
+new file mode 100644
+index 0000000..29af71d
+--- /dev/null
++++ b/hirp/evaluate_phase21.py
+@@ -0,0 +1,143 @@
++"""Read-only fixed-80 Phase 2.1 validation, all-K conditional trajectory ES."""
++import argparse
++from collections import defaultdict
++import json
++from pathlib import Path
++import sys
++import time
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from . import HiRPConfig
++from .phase21 import OutputConfig, make_model, forward_a0, CHANNEL_SCALE
++from .phase21_diagnostics import output_path_diagnostic
++from .paired_data import paired_model_inputs
++from .session_data import SessionPopulation
++from .group_features import DescriptorScaler
++from .group_scores import descriptor_es, session_mixture_score, paired_correspondence
++from .losses import paired_energy_score
++from .train_phase2 import description
++from .train_phase21 import configure, write, source_hashes, sync
++from .train_phase1 import to_device, take_batch, state_hash
++from .phase15_audit import sha256_file, canonical_hash
++from .phase15_metrics import channel_metrics, aggregate_channels
++from .phase15_interventions import within_session_permutation
++from .evaluate_phase2 import reference_cache_and_baseline, numbers, mean_dict
++
++
++@torch.no_grad()
++def evaluate_model(model,batch,refs,scaler_cpu,scaler_gpu,bank,permutation,device,k=32):
++    if k<2:raise ValueError('Phase 2.1 evaluation requires K >= 2')
++    outputs=[];centers=[];channel_rows=[];phis=[];validities=[]
++    sync(device);started=time.perf_counter()
++    if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats(device)
++    for start in range(0,len(batch['clip_id']),4):
++        indices=torch.arange(start,min(start+4,len(batch['clip_id'])))
++        small=to_device(take_batch(batch,indices),device)
++        noise=bank[:,:k].to(device).expand(len(indices),-1,-1)
++        pred=forward_a0(model,**paired_model_inputs(small),sample_count=k,noise=noise)
++        center=forward_a0(model,**paired_model_inputs(small),sample_count=1,noise=torch.zeros_like(noise[:,:1]))[:,0]
++        phi,valid=description(pred,small['source_lengths'],scaler_gpu)
++        outputs.append(pred.cpu());centers.append(center.cpu());phis.append(phi.cpu());validities.append(valid.cpu())
++        channel_rows.extend(channel_metrics(pred,small['paired_target'],small['pair_lengths']))
++    p=torch.cat(outputs);central=torch.cat(centers);phi=torch.cat(phis);valid=torch.cat(validities)
++    per_input=[];groups=defaultdict(list)
++    t=p.shape[2]
++    for i,session in enumerate(batch['session_id']):
++        groups[session].append(i)
++        j=int(permutation[i]);length=batch['pair_lengths'][i:i+1]
++        common=torch.minimum(length,batch['source_lengths'][j:j+1])
++        target=batch['paired_target'][i:i+1]
++        mask=torch.arange(t)[None]<length[:,None]
++        common_mask=torch.arange(t)[None]<common[:,None]
++        def score(pred,mask):
++            return numbers(paired_energy_score(pred,target,mask,channel_scale=CHANNEL_SCALE,return_details=True))
++        per_input.append(dict(clip_id=batch['clip_id'][i],session_id=session,shuffle_donor=batch['clip_id'][j],
++            pair_length=int(length),common_shuffle_length=int(common),
++            conditional=score(p[i:i+1],mask),
++            conditional_correct_common=score(p[i:i+1],common_mask),
++            conditional_shuffled=score(p[j:j+1],common_mask),
++            central=numbers(paired_correspondence(central[i:i+1],target,length)),
++            central_correct_common=numbers(paired_correspondence(central[i:i+1],target,common)),
++            central_shuffled=numbers(paired_correspondence(central[j:j+1],target,common)),
++            per_input_population=numbers(descriptor_es(phi[i],valid[i],*refs[session])),
++            diversity=channel_rows[i]))
++    sessions=[]
++    for session,indices in sorted(groups.items()):
++        selected=[per_input[i] for i in indices]
++        marginal=numbers(session_mixture_score(phi[indices],valid[indices],*refs[session]))
++        within=float(np.mean([r['per_input_population']['self'] for r in selected]))
++        n=len(indices)
++        between=(marginal['self']-within/n)/(1-1/n)
++        row=dict(session_id=session,source_count=n,reference_count=len(refs[session][0]),marginal=marginal,
++                 spread=dict(within_input_descriptor_self=within,between_input_descriptor_distance=between))
++        for key in ('conditional','conditional_correct_common','conditional_shuffled','central','central_correct_common',
++                    'central_shuffled','per_input_population'):
++            row[key]=mean_dict([r[key] for r in selected])
++        sessions.append(row)
++    aggregate={key:mean_dict([r[key] for r in sessions]) for key in ('marginal','spread','conditional',
++        'conditional_correct_common','conditional_shuffled','central','central_correct_common','central_shuffled','per_input_population')}
++    for prefix,field in [('conditional','loss'),('central','overall')]:
++        a=aggregate[prefix+'_correct_common'][field];b=aggregate[prefix+'_shuffled'][field]
++        aggregate[prefix+'_shuffle_gap']=dict(correct=a,shuffled=b,ratio=b/a if a else None,difference=b-a)
++    aggregate['channels']=aggregate_channels(channel_rows)
++    sync(device)
++    return dict(aggregate=aggregate,per_input=per_input,per_session=sessions,
++        evaluation_seconds=time.perf_counter()-started,
++        peak_allocated_bytes=torch.cuda.max_memory_allocated(device) if device.startswith('cuda') else None)
++
++
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--run',type=Path,default=Path('runs/phase21/conditional_score_v0'))
++    parser.add_argument('--device',default='cuda:2');parser.add_argument('--output',type=Path)
++    args=parser.parse_args();configure();started=time.time()
++    root=Path(__file__).resolve().parents[1];run=args.run
++    manifest=json.loads((run/'training_manifest.json').read_text())
++    trained=json.loads((run/'training_summary.json').read_text())
++    assert sha256_file(run/'descriptor_stats.json')==manifest['scaler_hash']
++    for row in manifest['data_files']+manifest['normalization']:
++        assert sha256_file(root/row['path'])==row['sha256'],row['path']
++    out=args.output or run/'evaluation';out.mkdir(parents=True,exist_ok=False)
++    pool=SessionPopulation(root/'data','val')
++    batch=default_collate([pool.dataset[i] for i in manifest['validation_indices']])
++    assert batch['clip_id']==manifest['validation_ids']
++    scaler=DescriptorScaler.load(run/'descriptor_stats.json')
++    scaler_gpu=DescriptorScaler.load(run/'descriptor_stats.json').to(args.device)
++    refs,real=reference_cache_and_baseline(pool,scaler)
++    write(out/'real_reference.json',real)
++    bank=torch.from_numpy(np.load(root/'runs/phase2/evaluation/common_noise_K32.npy'))
++    np.save(out/'common_noise_K32.npy',bank.numpy())
++    permutation=within_session_permutation(batch['session_id'],1502)
++    results={};checkpoints={}
++    for arm in ('C0','C1','C2'):
++        path=run/'checkpoints'/f'{arm}.pt';digest=sha256_file(path)
++        assert digest==trained['arms'][arm]['checkpoint_sha256']
++        saved=torch.load(path,map_location='cpu',weights_only=True)
++        assert saved['manifest_hash']==sha256_file(run/'training_manifest.json')
++        assert saved['output_config']==manifest['output_config'] and saved['prior_mode']=='A0'
++        assert saved['channel_scale']==list(CHANNEL_SCALE)
++        model=make_model(args.device,OutputConfig(**saved['output_config']),HiRPConfig(**saved['config'])).eval()
++        model.load_state_dict(saved['model'],strict=True);before=state_hash(model)
++        result=evaluate_model(model,batch,refs,scaler,scaler_gpu,bank,permutation,args.device)
++        probe=to_device(take_batch(batch,torch.arange(4)),args.device)
++        result['heldout_output_path_probe']=output_path_diagnostic(model,probe,bank[:,:4].to(args.device).expand(4,-1,-1))
++        assert state_hash(model)==before and sha256_file(path)==digest
++        write(out/f'{arm}.json',result);results[arm]=result['aggregate'];checkpoints[arm]=digest
++        print('EVAL',arm,json.dumps(result['aggregate']),flush=True)
++        del model,saved
++        if args.device.startswith('cuda'):torch.cuda.empty_cache()
++    write(out/'summary.json',results)
++    write(out/'manifest.json',dict(validation_ids=batch['clip_id'],validation_ids_hash=canonical_hash(batch['clip_id']),
++        validation_indices=manifest['validation_indices'],K=32,prior_mode='A0',channel_scale=list(CHANNEL_SCALE),
++        scaler_sha256=sha256_file(run/'descriptor_stats.json'),checkpoint_hashes=checkpoints,
++        noise_sha256=sha256_file(out/'common_noise_K32.npy'),
++        shuffle=[dict(recipient=batch['clip_id'][i],donor=batch['clip_id'][j]) for i,j in enumerate(permutation.tolist())],
++        conditionality_comparison_mask='min(recipient pair length, donor source length), same for correct and shuffled',
++        group_self='unchanged session_mixture_score: exclude same noise index for every source pair',
++        aggregation='macro 20 sessions x 4 clips; unique uniform within-session VAL refs',source_sha256=source_hashes()))
++    with (run/'commands.jsonl').open('a') as stream:
++        stream.write(json.dumps(dict(argv=[sys.executable,'-m','hirp.evaluate_phase21']+sys.argv[1:],
++            started_unix=started,completed_unix=time.time(),exit_code=0))+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/train_phase21.py b/hirp/train_phase21.py
+new file mode 100644
+index 0000000..150b1b7
+--- /dev/null
++++ b/hirp/train_phase21.py
+@@ -0,0 +1,266 @@
++"""Staged, bounded Phase 2.1 experiment. Every stage refuses to overwrite results."""
++import argparse
++from dataclasses import asdict
++import hashlib
++import json
++from pathlib import Path
++import shutil
++import subprocess
++import sys
++import time
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from .phase21 import OutputConfig, make_model, losses_for_batch, CHANNEL_SCALE
++from .phase21_diagnostics import output_path_diagnostic, component_gradients
++from .phase1_diagnostics import gradient_norm
++from .phase15_audit import sha256_file, canonical_hash
++from .session_data import SessionPopulation, make_schedule
++from .group_features import DescriptorScaler, reaction_descriptor
++from .train_phase1 import to_device, state_hash
++
++ROOT = Path(__file__).resolve().parents[1]
++BASE = '8fbc5febddb14b0b54d27633a3edb95227cc9834'
++ARMS = ('C0','C1','C2')
++
++
++def write(path,value):
++    with path.open('x') as stream: json.dump(value,stream,indent=2,allow_nan=False)
++
++
++def configure():
++    torch.set_num_threads(2)
++    torch.backends.cuda.matmul.allow_tf32=False
++    torch.backends.cudnn.allow_tf32=False
++    torch.backends.cudnn.benchmark=False
++    torch.backends.cudnn.deterministic=True
++
++
++def source_hashes():
++    return {str(p.relative_to(ROOT)):sha256_file(p) for p in sorted((ROOT/'hirp').rglob('*.py'))}
++
++
++def prepare(run,device):
++    run.mkdir(parents=True,exist_ok=False)
++    old=ROOT/'runs/phase2'
++    manifest=json.loads((old/'training_manifest.json').read_text())
++    # Verify every actual selected datum, normalization and scaler, not just IDs.
++    for row in manifest['data_files']+manifest['normalization']:
++        assert sha256_file(ROOT/row['path'])==row['sha256'],row['path']
++    assert sha256_file(old/'descriptor_stats.json')==manifest['scaler_hash']
++    for name in ('descriptor_stats.json','schedule.json','training_noise.npy'):
++        shutil.copyfile(old/name,run/name)
++    pool=SessionPopulation(ROOT/'data','train')
++    records,noise,hashes=make_schedule(pool)
++    saved=json.loads((run/'schedule.json').read_text())
++    assert records==saved['records'] and hashes==saved['hashes']
++    assert np.array_equal(noise.numpy(),np.load(run/'training_noise.npy'))
++    for record in records:
++        for i in record['source_indices']:
++            assert pool.dataset[i]['pair_lengths']>0
++    history={str(p.relative_to(ROOT)):sha256_file(p) for p in sorted((ROOT/'runs').rglob('*'))
++             if p.is_file() and not p.is_relative_to(run.resolve())}
++    write(run/'historical_artifacts.json',history)
++    manifest.update(phase='2.1',base_commit=BASE,
++        local_head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
++        branch=subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip(),
++        config=dict(T=128,K_train=4,B=4,R_max=8,pilot_steps=128,smoke_steps=32,lr=1e-4,
++                    weight_decay=.01,optimizer='AdamW',prior_mode='A0',channel_scale=list(CHANNEL_SCALE),
++                    precision='float32; AMP tested separately, not used in pilot',gradient_audit_interval=16,
++                    preflight_batches=8,lambda_candidates=[.01,.03,.1,.3,1.],gradient_target_ratio=.5),
++        old_definition='central_RMS(G(X,0),paired_Y) + descriptor_distribution_loss',
++        new_definition='paired_trajectory_ES(all K stochastic predictions,Y) + optional lambda*group_descriptor_ES',
++        center_role='diagnostic only; not an expectation or median',
++        scaler_provenance='unchanged frozen TRAIN-only Phase 2 scaler, hash-verified; never refit',
++        smoke_selection_rule='Both use conditional ES only. Viable iff finite nonzero group noise VJP, '
++            'residual derivative median > 1e-3 and every group boundary < .95. Prefer pre-norm if old fails '
++            'or it reduces residual saturation by at least .05; otherwise retain old. If neither passes stop.',
++        device=device,source_sha256=source_hashes())
++    write(run/'preparation_manifest.json',manifest)
++    (run/'checkpoints').mkdir();(run/'smoke').mkdir()
++
++
++def load_data(run,device):
++    pool=SessionPopulation(ROOT/'data','train')
++    records=json.loads((run/'schedule.json').read_text())['records']
++    noise=torch.from_numpy(np.load(run/'training_noise.npy'))
++    scaler=DescriptorScaler.load(run/'descriptor_stats.json')
++    ids=sorted({i for r in records for i in r['source_indices']})
++    sources={i:pool.dataset[i] for i in ids}
++    refs={}
++    # Shared preprocessing; C0's step path never indexes this cache.
++    with torch.no_grad():
++        for ref_id in sorted({i for r in records for i in r['reference_ids']}):
++            item=pool.load_reference(ref_id)
++            refs[ref_id]=scaler(*reaction_descriptor(item['reaction'],item['length']))
++    return records,noise,scaler.to(device),sources,refs
++
++
++def step_batch(record,sources,refs,arm,device):
++    batch=to_device(default_collate([sources[i] for i in record['source_indices']]),device)
++    if arm=='C0':return batch,None
++    chosen=[refs[r] for r in record['reference_ids']]
++    return batch,tuple(torch.stack([r[j] for r in chosen]).to(device) for j in (0,1))
++
++
++def sync(device):
++    if device.startswith('cuda'):torch.cuda.synchronize(device)
++
++
++def train(run,label,arm,output_config,weight,steps,data,device,manifest_hash=None):
++    records,noises,scaler,sources,refs=data
++    logfile=run/(label+'_training.jsonl')
++    if logfile.exists():raise FileExistsError(logfile)
++    model=make_model(device,output_config).train()
++    initial=state_hash(model);prior={k:v.detach().clone() for k,v in model.prior.state_dict().items()}
++    optimizer=torch.optim.AdamW(model.parameters(),lr=1e-4,weight_decay=.01)
++    probe_batch,_=step_batch(records[0],sources,refs,'C0',device)
++    probe_noise=noises[0].to(device)
++    probes=[dict(step=0,**output_path_diagnostic(model,probe_batch,probe_noise))]
++    sessions=[];occurrences=[];references=[];noise_hash=hashlib.sha256();rows=[]
++    if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats(device)
++    sync(device);started=time.perf_counter()
++    with logfile.open('x') as stream:
++        for record,noise in zip(records[:steps],noises[:steps]):
++            batch,selected=step_batch(record,sources,refs,arm,device)
++            optimizer.zero_grad(set_to_none=True)
++            values=losses_for_batch(model,batch,noise.to(device),scaler,arm,selected,lambda_group=weight)
++            audit_step=record['step']==1 or record['step']%16==0
++            audit=component_gradients(model,values['conditional']['loss'],
++                                     values['group']['loss'] if values['group'] else None,weight) if audit_step else None
++            values['total'].backward()
++            finite=all(torch.isfinite(p.grad).all().item() for p in model.parameters() if p.grad is not None)
++            if not finite:raise RuntimeError('nonfinite gradient; stopping bounded run')
++            row=dict(step=record['step'],session_id=record['session_id'],loss=values['total'].item(),
++                conditional={k:v.item() for k,v in values['conditional'].items()},
++                group={k:v.item() for k,v in values['group'].items()} if values['group'] else None,
++                total_gradient_norm=gradient_norm(model),prior_gradient_norm=gradient_norm(model.prior),
++                component_gradients=audit)
++            optimizer.step()
++            stream.write(json.dumps(row,allow_nan=False)+'\n');stream.flush();rows.append(row)
++            sessions.append(record['session_id']);occurrences.append(record['source_indices'])
++            noise_hash.update(noise.numpy().tobytes())
++            if arm!='C0':references.append(record['reference_ids'])
++            if record['step']%16==0 or record['step']==steps:
++                probes.append(dict(step=record['step'],**output_path_diagnostic(model,probe_batch,probe_noise)))
++                print(label,record['step'],json.dumps(row['conditional']),flush=True)
++    sync(device);elapsed=time.perf_counter()-started
++    assert all(torch.equal(prior[k],v) for k,v in model.prior.state_dict().items())
++    path=run/'checkpoints'/(label+'.pt');path.parent.mkdir(exist_ok=True)
++    if path.exists():raise FileExistsError(path)
++    torch.save(dict(model={k:v.detach().cpu() for k,v in model.state_dict().items()},
++        config=asdict(model.config),output_config=asdict(output_config),prior_mode='A0',arm=arm,steps=steps,
++        channel_scale=list(CHANNEL_SCALE),lambda_group=weight,manifest_hash=manifest_hash),path)
++    write(run/(label+'_path_diagnostics.json'),probes)
++    result=dict(arm=arm,output_config=asdict(output_config),initialization_hash=initial,
++        parameter_count=sum(p.numel() for p in model.parameters()),steps=steps,
++        optimizer=dict(name='AdamW',lr=1e-4,weight_decay=.01),channel_scale_hash=canonical_hash(CHANNEL_SCALE),
++        session_schedule_hash=canonical_hash(sessions),source_occurrence_hash=canonical_hash(occurrences),
++        noise_hash=noise_hash.hexdigest(),reference_selection_hash=canonical_hash(references) if references else None,
++        population_reference_lookups=sum(map(len,references)),scaler_hash=sha256_file(run/'descriptor_stats.json'),
++        checkpoint_sha256=sha256_file(path),prior_unchanged=True,first=rows[0],last=rows[-1],
++        elapsed_seconds_including_diagnostic_probes=elapsed,
++        peak_allocated_bytes=torch.cuda.max_memory_allocated(device) if device.startswith('cuda') else None)
++    del model,optimizer
++    if device.startswith('cuda'):torch.cuda.empty_cache()
++    return result,probes[-1]
++
++
++def viable(probe):
++    return (all(v['finite'] and v['vjp_norm']>1e-8 for v in probe['noise_jacobian'].values())
++            and probe['residual']['derivative']['abs_quantiles']['p50']>1e-3
++            and all(v['boundary_fraction']<.95 for v in probe['outputs'].values()))
++
++
++def smoke(run,device):
++    if (run/'smoke_summary.json').exists():raise FileExistsError('smoke already completed')
++    data=load_data(run,device)
++    probe,_=step_batch(data[0][0],data[3],data[4],'C0',device)
++    historical={}
++    for arm in ('B2','B3','B4'):
++        path=ROOT/'runs/phase2/checkpoints'/f'{arm}.pt'
++        if not path.exists():
++            historical[arm]=dict(unavailable=True);continue
++        digest=sha256_file(path)
++        saved=torch.load(path,map_location='cpu',weights_only=True)
++        model=make_model(device)
++        # No norm params in this configuration; strict load + identical state.
++        model.load_state_dict(saved['model'],strict=True)
++        before=state_hash(model)
++        historical[arm]=dict(checkpoint_sha256=digest,objective_for_gradient='new paired trajectory ES, read-only probe',
++                            diagnostic=output_path_diagnostic(model,probe,data[1][0].to(device)))
++        assert before==state_hash(model) and digest==sha256_file(path)
++        del model,saved
++    write(run/'historical_output_path.json',historical)
++    results={};last={}
++    for name,config in [('old_head',OutputConfig()),('pre_norm_head',OutputConfig(head_pre_norm=True))]:
++        results[name],last[name]=train(run,name,'C0',config,0.,32,data,device)
++    eligible={name:viable(p) for name,p in last.items()}
++    chosen=None
++    if eligible['old_head']:chosen='old_head'
++    if eligible['pre_norm_head'] and (not eligible['old_head'] or
++        last['pre_norm_head']['residual']['tanh_saturation_fraction'] <= last['old_head']['residual']['tanh_saturation_fraction']-.05):
++        chosen='pre_norm_head'
++    write(run/'smoke_summary.json',dict(results=results,viable=eligible,selected=chosen,
++        selection_uses='fixed TRAIN probe only, predeclared rule; no validation accessed',
++        output_config=results[chosen]['output_config'] if chosen else None))
++    print('SMOKE',eligible,'selected',chosen,flush=True)
++
++
++def preflight(run,device):
++    selected=json.loads((run/'smoke_summary.json').read_text())
++    if selected['selected'] is None:raise RuntimeError('neither output path viable; no pilot permitted')
++    config=OutputConfig(**selected['output_config']);data=load_data(run,device)
++    records,noises,scaler,sources,refs=data;rows=[]
++    for arm in ('C1','C2'):
++        model=make_model(device,config).train()
++        for record,noise in zip(records[:8],noises[:8]):
++            batch,reference=step_batch(record,sources,refs,arm,device)
++            values=losses_for_batch(model,batch,noise.to(device),scaler,arm,reference,lambda_group=1.)
++            audit=component_gradients(model,values['conditional']['loss'],values['group']['loss'],1.)
++            if not audit['finite']:raise RuntimeError('nonfinite preflight gradient')
++            rows.append(dict(arm=arm,step=record['step'],session_id=record['session_id'],
++                             conditional_loss_magnitude=values['conditional']['loss'].item(),group_loss_magnitude=values['group']['loss'].item(),**audit))
++        del model
++    ratios=[row['weighted_group_over_conditional'] for row in rows]
++    candidates=[.01,.03,.1,.3,1.]
++    median=float(np.median(ratios))
++    weight=min(candidates,key=lambda w:abs(np.log(w*median/.5)))
++    manifest=json.loads((run/'preparation_manifest.json').read_text())
++    manifest.update(output_config=asdict(config),lambda_group=weight,source_sha256=source_hashes(),
++        selection=dict(rule='nearest log-distance to median weighted group/conditional grad ratio .5 over 8 train batches x C1/C2',
++                       unweighted_median_ratio=median,candidate_weighted_medians={str(w):w*median for w in candidates},
++                       no_dynamic_controller=True,head_selection=selected['selected']))
++    write(run/'gradient_preflight.json',dict(rows=rows,selected_lambda=weight,median_unweighted_ratio=median))
++    write(run/'training_manifest.json',manifest)
++    print('LOCKED lambda',weight,'median weighted ratio',weight*median,flush=True)
++
++
++def pilot(run,device):
++    manifest=json.loads((run/'training_manifest.json').read_text())
++    data=load_data(run,device);results={}
++    for arm in ARMS:
++        results[arm],_=train(run,arm,arm,OutputConfig(**manifest['output_config']),manifest['lambda_group'],
++                            128,data,device,sha256_file(run/'training_manifest.json'))
++    for key in ('initialization_hash','parameter_count','steps','session_schedule_hash','source_occurrence_hash',
++                'noise_hash','scaler_hash','channel_scale_hash'):
++        assert len({r[key] for r in results.values()})==1,key
++    assert results['C1']['reference_selection_hash']==results['C2']['reference_selection_hash']
++    assert results['C0']['population_reference_lookups']==0
++    write(run/'training_summary.json',dict(matched_controls_verified=True,arms=results))
++
++
++def main():
++    parser=argparse.ArgumentParser()
++    parser.add_argument('--run',type=Path,default=Path('runs/phase21/conditional_score_v0'))
++    parser.add_argument('--device',default='cuda:2')
++    parser.add_argument('--stage',choices=('prepare','smoke','preflight','pilot'),required=True)
++    args=parser.parse_args();configure()
++    stage=globals()[args.stage]
++    started=time.time();stage(args.run,args.device)
++    with (args.run/'commands.jsonl').open('a') as stream:
++        stream.write(json.dumps(dict(argv=[sys.executable,'-m','hirp.train_phase21']+sys.argv[1:],
++                                    started_unix=started,completed_unix=time.time(),exit_code=0))+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/tests/test_phase21.py b/hirp/tests/test_phase21.py
+new file mode 100644
+index 0000000..2c9b4a0
+--- /dev/null
++++ b/hirp/tests/test_phase21.py
+@@ -0,0 +1,222 @@
++import inspect
++import pytest
++import torch
++from hirp import HiRPConfig
++from hirp.model.temporal_decoder import FiLM
++from hirp.phase21 import (OutputConfig, make_model, forward_a0, conditional_score,
++                          losses_for_batch, CHANNEL_SCALE)
++from hirp.phase21_diagnostics import output_path_diagnostic, component_gradients
++from hirp.group_features import DescriptorScaler
++from hirp.paired_data import paired_model_inputs, pair_valid_mask
++from hirp.losses import paired_energy_score
++from hirp.toy_phase21 import run_toy
++
++
++def setup_batch():
++    batch=dict(speaker_audio=torch.randn(4,12,768),speaker_emotion=torch.randn(4,12,25),
++               speaker_3dmm=torch.randn(4,12,58),source_lengths=torch.tensor([12,9,8,7]),
++               paired_target=torch.rand(4,12,25),pair_lengths=torch.tensor([8,7,6,4]))
++    scaler=DescriptorScaler(torch.zeros(75),torch.ones(75),torch.ones(75))
++    return batch,scaler,torch.randn(4,4,32)
++
++
++def small_model(pre_norm=False):
++    return make_model(output_config=OutputConfig(head_pre_norm=pre_norm),
++                      config=HiRPConfig(d_model=32,nhead=4,num_layers=1,dim_feedforward=64,dropout=0.,dilations=(1,2))).eval()
++
++
++def test_all_samples_receive_conditional_gradient():
++    batch,_,_=setup_batch()
++    p=torch.randn(4,4,12,25,requires_grad=True)
++    d=conditional_score(p,batch)
++    d['loss'].backward()
++    assert (p.grad.square().sum((2,3))>0).all()
++    assert p.grad[0,:,8:].count_nonzero()==0
++    for k in range(4):
++        changed=p.detach().clone();changed[:,k,:4]+=1
++        assert not torch.equal(conditional_score(changed,batch)['loss'],d['loss'])
++
++
++def test_common_conditional_objective_and_generator_isolation():
++    batch,scaler,noise=setup_batch();model=small_model()
++    refs=(torch.rand(3,75),torch.ones(3,75,dtype=torch.bool))
++    seen=[]
++    hook=model.register_forward_pre_hook(lambda m,args,kwargs:seen.append(set(kwargs)),with_kwargs=True)
++    try:
++        results=[losses_for_batch(model,batch,noise,scaler,arm,None if arm=='C0' else refs)
++                 for arm in ('C0','C1','C2')]
++    finally:hook.remove()
++    for result in results:
++        assert torch.equal(result['conditional']['loss'],results[0]['conditional']['loss'])
++        exact=paired_energy_score(result['predictions'],batch['paired_target'],pair_valid_mask(batch),
++                                  channel_scale=CHANNEL_SCALE)
++        assert torch.equal(exact,result['conditional']['loss'])
++    assert torch.equal(results[0]['total'],results[0]['conditional']['loss'])
++    assert len(seen)==3 and all('target' not in str(keys) and 'ref' not in str(keys) for keys in seen)
++    for fn in (model.forward,forward_a0):
++        assert not any('target' in k or 'ref' in k for k in inspect.signature(fn).parameters)
++    with pytest.raises(ValueError,match='C0'):
++        losses_for_batch(model,batch,noise,scaler,'C0',refs)
++    with pytest.raises(ValueError,match='K >= 2'):
++        losses_for_batch(model,batch,noise[:,:1],scaler,'C0')
++
++
++def test_source_pair_padding_and_length_separation():
++    batch,_,noise=setup_batch();model=small_model(True)
++    p=forward_a0(model,**paired_model_inputs(batch),noise=noise)
++    changed={k:v.clone() for k,v in batch.items()}
++    for i in range(4):
++        changed['paired_target'][i,int(batch['pair_lengths'][i]):]=999
++        for key in ('speaker_audio','speaker_emotion','speaker_3dmm'):
++            changed[key][i,int(batch['source_lengths'][i]):]=-999
++    q=forward_a0(model,**paired_model_inputs(changed),noise=noise)
++    torch.testing.assert_close(p,q,rtol=0,atol=0)
++    assert torch.equal(conditional_score(p,batch)['loss'],conditional_score(q,changed)['loss'])
++    seen=[]
++    hook=model.encoder.register_forward_pre_hook(lambda m,args:seen.append(args[1]))
++    try:forward_a0(model,**paired_model_inputs(batch),noise=noise)
++    finally:hook.remove()
++    assert torch.equal(seen[0].sum(1),batch['source_lengths'])
++    assert not torch.equal(seen[0].sum(1),batch['pair_lengths'])
++
++
++@pytest.mark.parametrize('pre_norm',[False,True])
++def test_new_head_sampling_contract(pre_norm):
++    batch,_,_=setup_batch();model=small_model(pre_norm)
++    noise=torch.randn(4,10,32)
++    p=forward_a0(model,**paired_model_inputs(batch),sample_count=10,noise=noise)
++    q=forward_a0(model,**paired_model_inputs(batch),sample_count=4,noise=noise[:,:4])
++    torch.testing.assert_close(p[:,:4],q,atol=2e-6,rtol=2e-5)
++    perm=torch.randperm(10)
++    r=forward_a0(model,**paired_model_inputs(batch),sample_count=10,noise=noise[:,perm])
++    torch.testing.assert_close(r,p[:,perm],atol=2e-6,rtol=2e-5)
++    torch.testing.assert_close(p,forward_a0(model,**paired_model_inputs(batch),sample_count=10,noise=noise),rtol=0,atol=0)
++    mask=torch.arange(12)[None]<batch['source_lengths'][:,None]
++    valid=mask[:,None].expand(4,10,12)
++    assert p.shape==(4,10,12,25) and (p[~valid]==0).all()
++    assert (p[valid][:,:15]>=0).all() and (p[valid][:,:15]<=1).all()
++    assert (p[valid][:,15:17].abs()<=1).all()
++    torch.testing.assert_close(p[...,17:].sum(-1)[valid],torch.ones_like(p[...,0][valid]))
++
++
++def test_frozen_prior_nonzero_noise_path_and_diagnostic_gradients():
++    batch,_,noise=setup_batch();model=small_model(True)
++    before={k:v.clone() for k,v in model.prior.state_dict().items()}
++    diag=output_path_diagnostic(model,batch,noise)
++    assert all(v['finite'] and v['vjp_norm']>0 for v in diag['noise_jacobian'].values())
++    assert all(p.grad is None for p in model.parameters())
++    optimizer=torch.optim.AdamW(model.parameters(),lr=1e-4)
++    epsilon=noise.clone().requires_grad_()
++    p=forward_a0(model,**paired_model_inputs(batch),noise=epsilon)
++    conditional_score(p,batch)['loss'].backward()
++    assert torch.isfinite(epsilon.grad).all() and epsilon.grad.norm()>0
++    assert all(p.grad is None for p in model.prior.parameters())
++    optimizer.step()
++    assert all(torch.equal(before[k],v) for k,v in model.prior.state_dict().items())
++
++
++def test_zero_film_blocks_initial_prior_gradient_regression():
++    batch,_,noise=setup_batch()
++    norms=[]
++    for zero in (False,True):
++        model=small_model();model.prior.requires_grad_(True)
++        if zero:
++            with torch.no_grad():
++                for module in model.modules():
++                    if isinstance(module,FiLM):module.projection.weight.zero_();module.projection.bias.zero_()
++        pred=model(**paired_model_inputs(batch),noise=noise)
++        conditional_score(pred,batch)['loss'].backward()
++        grad=model.prior.log_sigma.weight.grad
++        assert torch.isfinite(grad).all()
++        norms.append(grad.norm().item())
++    assert norms[0]>0 and norms[1]==0
++
++
++def test_gradient_cosine_finite():
++    batch,scaler,noise=setup_batch();model=small_model(True)
++    refs=(torch.rand(3,75),torch.ones(3,75,dtype=torch.bool))
++    result=losses_for_batch(model,batch,noise,scaler,'C2',refs)
++    audit=component_gradients(model,result['conditional']['loss'],result['group']['loss'],.1)
++    assert audit['finite'] and -1.00001<=audit['cosine']<=1.00001
++    assert audit['conditional']['prior']==audit['group']['prior']==0
++
++
++@pytest.mark.parametrize('device',['cpu','cuda:2'])
++@pytest.mark.parametrize('mode',['train','eval'])
++def test_amp_explicit_noise_prior_dtype_float32_distance(device,mode):
++    if device.startswith('cuda') and (not torch.cuda.is_available() or torch.cuda.device_count()<3):
++        pytest.skip('CUDA 2 unavailable')
++    batch,_,noise=setup_batch();model=small_model(True).to(device)
++    model.train(mode=='train')
++    batch={k:v.to(device) for k,v in batch.items()};noise=noise.to(device).requires_grad_()
++    with torch.autocast(device_type=device.split(':')[0],dtype=torch.bfloat16):
++        aux=forward_a0(model,**paired_model_inputs(batch),noise=noise,return_aux=True)
++        score=conditional_score(aux['predictions'],batch)
++    assert aux['noise'].dtype==aux['latent_mu'].dtype==torch.bfloat16
++    assert torch.equal(aux['noise'],noise.to(torch.bfloat16))
++    assert score['loss'].dtype==torch.float32
++    score['loss'].backward()
++    assert torch.isfinite(noise.grad).all() and noise.grad.norm()>0
++
++
++def test_toy_recovers_from_nonoptimal_initialization():
++    result=run_toy(steps=300,sample_count=8192)
++    for row in result['rows']:
++        assert row['initial']!=[.1,.9]
++        assert row['marginal_probability_error']<.02
++        if row['arm'] in ('C0','C2'):assert row['conditional_probability_mae']<.02
++        else:assert .02<row['conditional_probability_mae']<.06
++
++
++
++def test_optional_head_shared_initialization_and_small_projection():
++    from hirp import HiRPNet
++    torch.manual_seed(123);original=HiRPNet()
++    old=make_model();normalized=make_model(output_config=OutputConfig(head_pre_norm=True))
++    small=make_model(output_config=OutputConfig(projection_init='small'))
++    for name,value in original.state_dict().items():
++        assert torch.equal(value,old.state_dict()[name])
++        assert torch.equal(value,normalized.state_dict()[name])
++        if not name.startswith('output_head.'):
++            assert torch.equal(value,small.state_dict()[name])
++    assert 0<small.output_head.stochastic.weight.std()<.02
++    assert all(m.projection.weight.count_nonzero()>0 for m in small.modules() if isinstance(m,FiLM))
++
++
++def test_runner_preflight_and_matched_training(tmp_path,monkeypatch):
++    import json
++    from hirp import train_phase21 as runner
++    batch,scaler,noise=setup_batch()
++    sources={i:{k:v[i] for k,v in batch.items()} for i in range(4)}
++    records=[dict(step=i+1,session_id='s',source_indices=[0,1,2,3],reference_ids=['r0','r1']) for i in range(8)]
++    refs={name:(torch.rand(75),torch.ones(75,dtype=torch.bool)) for name in ('r0','r1')}
++    data=(records,noise[None].expand(8,-1,-1,-1).clone(),scaler,sources,refs)
++    monkeypatch.setattr(runner,'load_data',lambda *args:data)
++    monkeypatch.setattr(runner,'make_model',lambda *args:small_model(True))
++    (tmp_path/'smoke_summary.json').write_text(json.dumps({'selected':'pre_norm_head','output_config':{'head_pre_norm':True}}))
++    (tmp_path/'preparation_manifest.json').write_text('{}')
++    (tmp_path/'descriptor_stats.json').write_text('{}')
++    runner.preflight(tmp_path,'cpu')
++    audit=json.loads((tmp_path/'gradient_preflight.json').read_text())
++    assert len(audit['rows'])==16 and audit['selected_lambda']>0
++    results={arm:runner.train(tmp_path,arm,arm,OutputConfig(head_pre_norm=True),audit['selected_lambda'],
++                             2,data,'cpu')[0] for arm in ('C0','C1','C2')}
++    for key in ('initialization_hash','noise_hash','source_occurrence_hash','session_schedule_hash','scaler_hash','channel_scale_hash'):
++        assert len({r[key] for r in results.values()})==1
++    assert results['C0']['population_reference_lookups']==0
++    assert results['C1']['reference_selection_hash']==results['C2']['reference_selection_hash']
++
++
++@pytest.mark.parametrize('device',['cpu','cuda:2'])
++def test_amp_no_grad_evaluation(device):
++    if device == 'cpu' and torch.__version__.startswith('2.1.'):
++        pytest.xfail('PyTorch 2.1 CPU fused Transformer eval/no_grad ignores CPU autocast; not supported or used by this float32 pilot')
++    if device.startswith('cuda') and (not torch.cuda.is_available() or torch.cuda.device_count()<3):
++        pytest.skip('CUDA 2 unavailable')
++    batch,_,noise=setup_batch();batch={k:v.to(device) for k,v in batch.items()}
++    model=small_model(True).to(device).eval()
++    with torch.no_grad(),torch.autocast(device_type=device.split(':')[0],dtype=torch.bfloat16):
++        aux=forward_a0(model,**paired_model_inputs(batch),noise=noise.to(device),return_aux=True)
++        score=conditional_score(aux['predictions'],batch)
++    assert score['loss'].dtype==torch.float32 and torch.isfinite(score['loss'])
++    assert aux['noise'].dtype==aux['latent_mu'].dtype==torch.bfloat16

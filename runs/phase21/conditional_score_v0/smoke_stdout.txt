@@ -1,0 +1,7 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+old_head 16 {"loss": 0.4499950408935547, "cross_distance": 0.45087799429893494, "self_distance": 0.0017658346332609653}
+old_head 32 {"loss": 0.353074312210083, "cross_distance": 0.35346198081970215, "self_distance": 0.0007753573008812964}
+pre_norm_head 16 {"loss": 0.4035578668117523, "cross_distance": 0.4048609435558319, "self_distance": 0.0026061171665787697}
+pre_norm_head 32 {"loss": 0.3148449659347534, "cross_distance": 0.31696000695228577, "self_distance": 0.004230056423693895}
+SMOKE {'old_head': False, 'pre_norm_head': True} selected pre_norm_head

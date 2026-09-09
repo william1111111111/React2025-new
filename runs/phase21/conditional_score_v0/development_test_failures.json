@@ -1,0 +1,6 @@
+{
+  "command": ".venv/bin/python -m pytest hirp/tests/test_phase21.py -q",
+  "result": "10 failed, 3 passed in 6.43s",
+  "cause": "torch.is_autocast_enabled(device_type) unavailable in installed PyTorch 2.1",
+  "resolution": "Use installed separate CPU/CUDA autocast accessors in new adapter; 13 passed after fix"
+}
