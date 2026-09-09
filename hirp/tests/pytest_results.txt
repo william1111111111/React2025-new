@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.19, pytest-9.1.1, pluggy-1.6.0 -- /home/zhengshiyi/react2025/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/zhengshiyi/react2025
+plugins: hydra-core-1.3.2, anyio-4.14.2
+collecting ... collected 38 items
+
+hirp/tests/test_energy_score.py::test_hand_calculation PASSED
+hirp/tests/test_energy_score.py::test_reference_and_mask_gradient PASSED
+hirp/tests/test_energy_score.py::test_k1_rejected PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale0] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale1] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale2] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale3] PASSED
+hirp/tests/test_energy_score.py::test_amp_float32 PASSED
+hirp/tests/test_energy_score.py::test_sample_permutation_and_translation_invariance PASSED
+hirp/tests/test_gradients.py::test_gradients GRADIENT_NORM audio_stem 0.36091116070747375
+GRADIENT_NORM speaker_encoder 0.47149595618247986
+GRADIENT_NORM prior_mu 0.00023481038806494325
+GRADIENT_NORM prior_log_sigma 0.0005680278409272432
+GRADIENT_NORM decoder 0.24759134650230408
+GRADIENT_NORM output_head 0.5442758798599243
+PASSED
+hirp/tests/test_masks.py::test_padding_invariance PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths0] PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths1] PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths2] PASSED
+hirp/tests/test_model_shapes.py::test_shape_domains_aux FORWARD_SHAPE (2, 4, 32, 25)
+PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[1] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[2] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[4] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[10] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[32] PASSED
+hirp/tests/test_model_shapes.py::test_adapter PASSED
+hirp/tests/test_sampling_contract.py::test_reproducibility_prefix K_PREFIX_MAX_ERROR 0.0
+PASSED
+hirp/tests/test_sampling_contract.py::test_sensitivities PASSED
+hirp/tests/test_sampling_contract.py::test_sample_wrapper PASSED
+hirp/tests/test_sampling_contract.py::test_api_and_independence PASSED
+hirp/tests/test_sampling_contract.py::test_explicit_noise_no_rng PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[0] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[-1] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[1.5] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[True] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_audio] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_emotion] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_3dmm] PASSED
+hirp/tests/test_sampling_contract.py::test_prior_clamp PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise0] PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise1] PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise2] PASSED
+hirp/tests/test_sampling_contract.py::test_sample_restores_mixed_modes_after_exception PASSED
+
+============================== 38 passed in 4.96s ==============================
