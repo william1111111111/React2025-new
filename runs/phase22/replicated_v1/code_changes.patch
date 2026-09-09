@@ -1,0 +1,1069 @@
+diff --git a/.gitignore b/.gitignore
+index a707e5a..c2efde0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -10,3 +10,6 @@ __pycache__/
+ /runs/phase2/checkpoints/
+ 
+ /runs/phase21/**/checkpoints/
++
++/runs/phase22/**/checkpoints/
++/runs/phase22/**/audit_checkpoints/
+diff --git a/hirp/audit_phase22.py b/hirp/audit_phase22.py
+new file mode 100644
+index 0000000..d8a2443
+--- /dev/null
++++ b/hirp/audit_phase22.py
+@@ -0,0 +1,71 @@
++"""Real-checkpoint equivalence and short GPU resume audit; no long training."""
++from pathlib import Path
++from dataclasses import asdict
++import argparse
++import torch
++from torch.utils.data import default_collate
++from . import HiRPConfig
++from .phase21 import make_model as old_model, forward_a0, OutputConfig
++from .phase22 import make_model,load_checkpoint,eval_adapter,official_adapter,model_metadata
++from .train_phase22 import write,TrainConfig,schedule,train,RealData,prepare
++from .train_phase21 import configure
++from .session_data import SessionPopulation
++from .paired_data import paired_model_inputs
++from .train_phase1 import to_device,state_hash
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--device',default='cuda:4');a=p.parse_args();configure()
++    pool=SessionPopulation(Path('data'),'train');batch=to_device(default_collate([pool.dataset[i] for i in range(4)]),a.device)
++    inputs=paired_model_inputs(batch);noise=torch.randn(4,32,32,generator=torch.Generator().manual_seed(2201)).to(a.device)
++    result={}
++    for label in ('initial','C0','C1','C2'):
++        if label=='initial':
++            old=old_model(a.device,OutputConfig(head_pre_norm=True)).eval();new=make_model(123,device=a.device).eval()
++        else:
++            path=Path('runs/phase21/conditional_score_v0/checkpoints')/(label+'.pt')
++            if not path.exists():result[label]={'executed':False,'reason':'checkpoint missing'};continue
++            new,saved=load_checkpoint(path,a.device,path.parent.parent/'training_manifest.json')
++            old=old_model(a.device,OutputConfig(**saved['output_config']),HiRPConfig(**saved['config'])).eval();old.load_state_dict(saved['model'])
++        cases=[]
++        for k in (1,4,10,32):
++            eps=noise[:,:k]
++            with torch.no_grad():
++                historical=forward_a0(old,**inputs,sample_count=k,noise=eps)
++                bare=old.sample(**inputs,sample_count=k,noise=eps)
++                direct=new(**inputs,sample_count=k,noise=eps)
++                sample=new.sample(**inputs,sample_count=k,noise=eps)
++                adapter=eval_adapter(new,**inputs,noise=eps)
++                chunk=torch.cat([eval_adapter(new,**inputs,noise=eps[:,i:i+3]) for i in range(0,k,3)],1)
++            errors=dict(old_hook_vs_bare=float((historical-bare).abs().max()),new_vs_old=float((direct-historical).abs().max()),
++                        forward_sample=float((direct-sample).abs().max()),adapter=float((direct-adapter).abs().max()),chunks=float((direct-chunk).abs().max()))
++            assert all(v<=2e-6 for key,v in errors.items() if key!='old_hook_vs_bare')
++            cases.append(dict(K=k,**errors))
++        scales=getattr(new,'scale_metadata',dict(channel_scale=[1.]*25,descriptor_scaler_sha256='audit-only',descriptor_dimension=75,training_T=128))
++        rt=a.run/'audit_checkpoints'/(label+'.pt');rt.parent.mkdir(parents=True,exist_ok=True)
++        if rt.exists():raise FileExistsError(rt)
++        torch.save(dict(**model_metadata(new,scales),model=new.state_dict()),rt)
++        loaded,_=load_checkpoint(rt,a.device)
++        error=float((eval_adapter(new,**inputs,noise=noise)-eval_adapter(loaded,**inputs,noise=noise)).abs().max());assert error<=2e-6
++        result[label]=dict(executed=True,cases=cases,roundtrip_error=error)
++        del old,new,loaded
++    write(a.run/'public_contract_errors.json',result)
++    # Full architecture, real data, dropout enabled, exact same schedule on GPU.
++    cfg=TrainConfig(max_steps=8,checkpoint_interval=4,eval_interval=4,diagnostic_interval=4,fixed_checkpoints=(4,8))
++    m=prepare(a.run/'resume_smoke',cfg);records,eps,_=schedule(pool,cfg,32)
++    results={}
++    for arm in ('C0','C1','C2'):
++        data=RealData(m,cfg,arm,a.device)
++        full,mf,of=train(a.run/'resume_smoke'/('full_'+arm),cfg,arm,records,eps,data,m,a.device)
++        stop,ms,os=train(a.run/'resume_smoke'/('split_'+arm),cfg,arm,records,eps,data,m,a.device,stop_after=4)
++        del ms,os
++        resumed,mr,orr=train(a.run/'resume_smoke'/('split_'+arm),cfg,arm,records,eps,data,m,a.device,resume=stop['checkpoints'][-1]['path'])
++        error=max(float((v-mr.state_dict()[k]).abs().max()) for k,v in mf.state_dict().items())
++        assert state_hash(mf)==state_hash(mr) and error==0
++        results[arm]=dict(parameter_max_error=error,stopped_completed=stop['completed'],requested=cfg.max_steps,
++                          actual=resumed['actual_optimizer_steps'],full=full,resumed=resumed)
++        del data,mf,of,mr,orr;torch.cuda.empty_cache()
++    write(a.run/'resume_gpu_results.json',results)
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/evaluate_phase22.py b/hirp/evaluate_phase22.py
+new file mode 100644
+index 0000000..3ddd159
+--- /dev/null
++++ b/hirp/evaluate_phase22.py
+@@ -0,0 +1,207 @@
++"""Development-set evaluation via the public sampler; locked banks and shuffles."""
++import argparse
++from collections import defaultdict
++import json
++from pathlib import Path
++import time
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from .phase22 import load_checkpoint,eval_adapter
++from .phase21 import CHANNEL_SCALE
++from .train_phase22 import ROOT,write
++from .train_phase21 import configure,sync
++from .train_phase1 import to_device,take_batch,state_hash
++from .paired_data import paired_model_inputs
++from .session_data import SessionPopulation
++from .group_features import DescriptorScaler
++from .group_scores import descriptor_es,session_mixture_score,paired_correspondence
++from .losses import paired_energy_score
++from .train_phase2 import description
++from .phase15_metrics import channel_metrics,aggregate_channels
++from .phase15_interventions import within_session_permutation
++from .phase15_audit import sha256_file,canonical_hash
++from .evaluate_phase2 import reference_cache_and_baseline,numbers,mean_dict
++
++@torch.no_grad()
++def evaluate_model(model,batch,refs,scaler_cpu,scaler_gpu,bank,permutation,device,k=32):
++    if k<2:raise ValueError('Phase 2.1 evaluation requires K >= 2')
++    outputs=[];centers=[];channel_rows=[];phis=[];validities=[]
++    sync(device);started=time.perf_counter()
++    if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats(device)
++    for start in range(0,len(batch['clip_id']),4):
++        indices=torch.arange(start,min(start+4,len(batch['clip_id'])))
++        small=to_device(take_batch(batch,indices),device)
++        noise=bank[:,:k].to(device).expand(len(indices),-1,-1)
++        pred=eval_adapter(model,**paired_model_inputs(small),noise=noise)
++        center=eval_adapter(model,**paired_model_inputs(small),noise=torch.zeros_like(noise[:,:1]))[:,0]
++        phi,valid=description(pred,small['source_lengths'],scaler_gpu)
++        outputs.append(pred.cpu());centers.append(center.cpu());phis.append(phi.cpu());validities.append(valid.cpu())
++        channel_rows.extend(channel_metrics(pred,small['paired_target'],small['pair_lengths']))
++    p=torch.cat(outputs);central=torch.cat(centers);phi=torch.cat(phis);valid=torch.cat(validities)
++    per_input=[];groups=defaultdict(list)
++    t=p.shape[2]
++    for i,session in enumerate(batch['session_id']):
++        groups[session].append(i)
++        j=int(permutation[i]);length=batch['pair_lengths'][i:i+1]
++        common=torch.minimum(length,batch['source_lengths'][j:j+1])
++        target=batch['paired_target'][i:i+1]
++        mask=torch.arange(t)[None]<length[:,None]
++        common_mask=torch.arange(t)[None]<common[:,None]
++        def score(pred,mask):
++            return numbers(paired_energy_score(pred,target,mask,channel_scale=CHANNEL_SCALE,return_details=True))
++        per_input.append(dict(clip_id=batch['clip_id'][i],session_id=session,shuffle_donor=batch['clip_id'][j],
++            pair_length=int(length),common_shuffle_length=int(common),
++            conditional=score(p[i:i+1],mask),
++            conditional_correct_common=score(p[i:i+1],common_mask),
++            conditional_shuffled=score(p[j:j+1],common_mask),
++            central=numbers(paired_correspondence(central[i:i+1],target,length)),
++            central_correct_common=numbers(paired_correspondence(central[i:i+1],target,common)),
++            central_shuffled=numbers(paired_correspondence(central[j:j+1],target,common)),
++            per_input_population=numbers(descriptor_es(phi[i],valid[i],*refs[session])),
++            diversity=channel_rows[i]))
++    sessions=[]
++    for session,indices in sorted(groups.items()):
++        selected=[per_input[i] for i in indices]
++        marginal=numbers(session_mixture_score(phi[indices],valid[indices],*refs[session]))
++        within=float(np.mean([r['per_input_population']['self'] for r in selected]))
++        n=len(indices)
++        between=(marginal['self']-within/n)/(1-1/n)
++        row=dict(session_id=session,source_count=n,reference_count=len(refs[session][0]),marginal=marginal,
++                 spread=dict(within_input_descriptor_self=within,between_input_descriptor_distance=between))
++        for key in ('conditional','conditional_correct_common','conditional_shuffled','central','central_correct_common',
++                    'central_shuffled','per_input_population'):
++            row[key]=mean_dict([r[key] for r in selected])
++        sessions.append(row)
++    aggregate={key:mean_dict([r[key] for r in sessions]) for key in ('marginal','spread','conditional',
++        'conditional_correct_common','conditional_shuffled','central','central_correct_common','central_shuffled','per_input_population')}
++    for prefix,field in [('conditional','loss'),('central','overall')]:
++        a=aggregate[prefix+'_correct_common'][field];b=aggregate[prefix+'_shuffled'][field]
++        aggregate[prefix+'_shuffle_gap']=dict(correct=a,shuffled=b,ratio=b/a if a else None,difference=b-a)
++    aggregate['channels']=aggregate_channels(channel_rows)
++    sync(device)
++    return dict(all_predictions=p,aggregate=aggregate,per_input=per_input,per_session=sessions,
++        evaluation_seconds=time.perf_counter()-started,
++        peak_allocated_bytes=torch.cuda.max_memory_allocated(device) if device.startswith('cuda') else None)
++
++
++def freeze_plan(root):
++    protocol=json.loads((root/'locked_protocol.json').read_text())
++    old=json.loads((ROOT/'runs/phase21/conditional_score_v0/training_manifest.json').read_text())
++    pool=SessionPopulation(ROOT/'data','val',128)
++    batch=default_collate([pool.dataset[i] for i in old['validation_indices']])
++    assert batch['clip_id']==old['validation_ids']
++    out=root/'evaluation_plan';out.mkdir(exist_ok=False)
++    plans=[]
++    for seed in protocol['evaluation_noise_seeds']:
++        bank=torch.randn(1,64,32,generator=torch.Generator().manual_seed(seed))
++        path=out/f'noise_{seed}.npy';np.save(path,bank.numpy())
++        plans.append(dict(seed=seed,path=str(path),sha256=sha256_file(path)))
++    perms=[dict(seed=s,donors=within_session_permutation(batch['session_id'],s).tolist()) for s in protocol['permutation_seeds']]
++    assert len({tuple(p['donors']) for p in perms})==len(perms)
++    paths=set(pool.reference_paths.values())
++    for i in old['validation_indices']:
++        path=pool.dataset.records[i];rel=path.relative_to(pool.dataset.directory/'facial-attributes')
++        paths.update([path,pool.dataset.directory/'audio-features'/rel,pool.dataset.directory/'coefficients'/rel])
++    files=[dict(path=str(p),sha256=sha256_file(p)) for p in sorted(paths)]
++    train=SessionPopulation(ROOT/'data','train',128)
++    # Audit candidate unused validation clips without treating session IDs as participant IDs.
++    train_names={p.stem for p in train.dataset.records};val_names={p.stem for p in pool.dataset.records}
++    development=set(old['validation_indices'])
++    candidate=[dict(index=i,clip_id=p.relative_to(pool.dataset.directory/'facial-attributes').with_suffix('').as_posix()) for i,p in enumerate(pool.dataset.records) if i not in development]
++    write(out/'confirmation_candidate_audit.json',dict(candidate_unused_val=candidate,
++        train_val_recording_basename_overlap=sorted(train_names&val_names),
++        train_val_session_overlap=sorted(set(train.sources)&set(pool.sources)),
++        participant_mapping_available=False,independent_confirmation_approved=False,
++        reason='No authoritative participant/interaction crosswalk for these Camera/session feature directories. CSV identifiers use a different dataset naming scheme. Candidate list is sealed but NOT used as independent confirmation.',
++        resampling_unit='session clusters for development summaries; repeated participants across sessions cannot be ruled out; frame counts are not independent units'))
++    write(out/'manifest.json',dict(role='development, repeatedly used 80 clips',indices=old['validation_indices'],clip_ids=batch['clip_id'],
++        clip_ids_hash=canonical_hash(batch['clip_id']),source_lengths=batch['source_lengths'].tolist(),pair_lengths=batch['pair_lengths'].tolist(),
++        sessions=batch['session_id'],banks=plans,permutations=perms,data_files=files,data_hash=canonical_hash(files),
++        normalization=old['normalization'],scaler_sha256=old['scaler_hash'],T=128,main_K=32,stability_K=64,
++        fixed_visualization_indices=[0,20,40,60],aggregation='macro 20 sessions; bank0/K32 is learning-curve reference; final all predeclared banks/derangements',
++        group_self='exclude equal noise index across every source pair'))
++
++
++@torch.no_grad()
++def extra_shuffles(pred,batch,permutations):
++    result=[];t=pred.shape[2]
++    for perm in permutations:
++        rows=[]
++        for i,j in enumerate(perm['donors']):
++            n=min(int(batch['pair_lengths'][i]),int(batch['source_lengths'][j]));mask=torch.arange(t)[None]<n
++            target=batch['paired_target'][i:i+1]
++            c=float(paired_energy_score(pred[i:i+1],target,mask,channel_scale=CHANNEL_SCALE))
++            s=float(paired_energy_score(pred[j:j+1],target,mask,channel_scale=CHANNEL_SCALE))
++            rows.append(dict(clip_id=batch['clip_id'][i],session_id=batch['session_id'][i],donor_id=batch['clip_id'][j],
++                             common_length=n,correct=c,shuffled=s,gap=s-c))
++        grouped=defaultdict(list)
++        for row in rows:grouped[row['session_id']].append(row)
++        sessions=[dict(session_id=s,**{key:float(np.mean([r[key] for r in grouped[s]])) for key in ('correct','shuffled','gap')}) for s in sorted(grouped)]
++        result.append(dict(seed=perm['seed'],per_input=rows,per_session=sessions,mean_gap=float(np.mean([r['gap'] for r in sessions]))))
++    return result
++
++
++def evaluate(root,seed,device):
++    plan=json.loads((root/'evaluation_plan/manifest.json').read_text())
++    run=root/f'seed_{seed}';manifest=json.loads((run/'manifest.json').read_text())
++    for row in plan['data_files']+plan['normalization']:
++        if sha256_file(row['path'])!=row['sha256']:raise ValueError('evaluation data hash mismatch')
++    for row in plan['banks']:
++        if sha256_file(row['path'])!=row['sha256']:raise ValueError('bank hash mismatch')
++    if sha256_file(manifest['scaler_path'])!=plan['scaler_sha256']:raise ValueError('scaler hash mismatch')
++    pool=SessionPopulation(ROOT/'data','val',128);batch=default_collate([pool.dataset[i] for i in plan['indices']])
++    assert batch['clip_id']==plan['clip_ids']
++    scaler=DescriptorScaler.load(manifest['scaler_path']);scaler_gpu=DescriptorScaler.load(manifest['scaler_path']).to(device)
++    refs,real=reference_cache_and_baseline(pool,scaler)
++    out=run/'evaluation';out.mkdir(exist_ok=True)
++    if not (out/'real_reference.json').exists():write(out/'real_reference.json',real)
++    completed=[]
++    for arm in ('C0','C1','C2'):
++        summaries=sorted((run/arm).glob('attempt_*/summary.json'))
++        all_ckpts={}
++        for summary in summaries:
++            for ck in json.loads(summary.read_text())['checkpoints']:all_ckpts[ck['step']]=ck
++        for step in manifest['eval_steps']:
++            if step not in all_ckpts:raise ValueError(f'missing {arm} checkpoint {step}')
++            ck=all_ckpts[step]
++            if sha256_file(ck['path'])!=ck['sha256']:raise ValueError('checkpoint fingerprint mismatch')
++            model,saved=load_checkpoint(ck['path'],device)
++            if saved['global_step']!=step or saved['scales']!=manifest['scales']:raise ValueError('loaded step/scales mismatch')
++            before=state_hash(model)
++            for bi,bank_info in enumerate(plan['banks'] if step==manifest['config']['max_steps'] else plan['banks'][:1]):
++                bank=torch.from_numpy(np.load(bank_info['path']))
++                for k in ((32,64) if step==manifest['config']['max_steps'] else (32,)):
++                    label=f'{arm}_step{step}_bank{bi}_K{k}';path=out/(label+'.json')
++                    if path.exists():
++                        previous=json.loads(path.read_text())
++                        if previous['checkpoint_sha256']!=ck['sha256']:raise ValueError('existing evaluation checkpoint mismatch')
++                        completed.append(dict(arm=arm,step=step,bank=bi,K=k,path=str(path)));continue
++                    r=evaluate_model(model,batch,refs,scaler,scaler_gpu,bank[:,:k],torch.tensor(plan['permutations'][0]['donors']),device,k)
++                    pred=r.pop('all_predictions')
++                    r['permutations']=extra_shuffles(pred,batch,plan['permutations'])
++                    r.update(arm=arm,training_seed=seed,step=step,bank_seed=bank_info['seed'],K=k,checkpoint_sha256=ck['sha256'],
++                             evaluation_plan_sha256=sha256_file(root/'evaluation_plan/manifest.json'))
++                    if step==manifest['config']['max_steps'] and bi==0 and k==32:
++                        ids=plan['fixed_visualization_indices']
++                        np.savez_compressed(out/(label+'_fixed_cases.npz'),predictions=pred[ids,:10].numpy(),
++                            targets=batch['paired_target'][ids].numpy(),lengths=batch['pair_lengths'][ids].numpy(),
++                            clip_ids=np.array([batch['clip_id'][i] for i in ids]))
++                    assert state_hash(model)==before
++                    write(path,r);completed.append(dict(arm=arm,step=step,bank=bi,K=k,path=str(path)))
++                    print('EVAL',seed,label,'conditional',r['aggregate']['conditional']['loss'],'group',r['aggregate']['marginal']['loss'],flush=True)
++            assert sha256_file(ck['path'])==ck['sha256']
++            del model,saved
++            if device.startswith('cuda'):torch.cuda.empty_cache()
++    write(out/'completed.json',completed)
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--seed',type=int,default=123)
++    p.add_argument('--device',default='cuda:4');p.add_argument('--prepare',action='store_true')
++    a=p.parse_args();configure()
++    if a.prepare:freeze_plan(a.root)
++    else:evaluate(a.root,a.seed,a.device)
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/phase22.py b/hirp/phase22.py
+new file mode 100644
+index 0000000..ab5ed9a
+--- /dev/null
++++ b/hirp/phase22.py
+@@ -0,0 +1,135 @@
++"""Versioned public prior semantics; historical HiRP/Phase 2.1 stay unchanged."""
++from dataclasses import asdict
++from pathlib import Path
++import json
++import torch
++from . import HiRPConfig, HiRPNet
++from .phase21 import OutputConfig, Phase21OutputHead, CHANNEL_SCALE
++from .paired_data import paired_model_inputs, pair_valid_mask
++from .losses import paired_energy_score
++from .train_phase2 import description
++from .group_scores import b3_score, b4_score
++from .phase15_audit import sha256_file
++
++
++class HiRP22(HiRPNet):
++    def __init__(self, config, output_config, prior_mode):
++        super().__init__(config)
++        if prior_mode not in ('standard_normal', 'conditional_gaussian'):
++            raise ValueError('explicit prior_mode required')
++        self.prior_mode = prior_mode
++        self.output_config = output_config
++        self.output_head = Phase21OutputHead(self.output_head, config.d_model, output_config)
++        self.prior.requires_grad_(prior_mode == 'conditional_gaussian')
++
++    def forward(self, speaker_audio, speaker_emotion, speaker_3dmm, lengths,
++                sample_count=4, noise=None, return_aux=False):
++        if isinstance(sample_count, bool) or not isinstance(sample_count, int) or sample_count < 1:
++            raise ValueError('sample_count must be a positive integer')
++        if speaker_audio.ndim != 3:
++            raise ValueError('speaker_audio must be [B,T,768]')
++        b,t,_=speaker_audio.shape
++        for value,width in ((speaker_audio,768),(speaker_emotion,25),(speaker_3dmm,58)):
++            if value.shape != (b,t,width):raise ValueError('source shape mismatch')
++        if lengths.shape != (b,) or lengths.dtype not in (torch.int32,torch.int64):
++            raise ValueError('lengths must be integer [B]')
++        if b == 0 or t == 0 or ((lengths < 1) | (lengths > t)).any():
++            raise ValueError('each length must be in [1,T]')
++        valid=torch.arange(t,device=speaker_audio.device)[None] < lengths.to(speaker_audio.device)[:,None]
++        inputs=[v.masked_fill(~valid[...,None],0) for v in (speaker_audio,speaker_emotion,speaker_3dmm)]
++        h,context=self.encoder(self.stems(*inputs),valid)
++        if self.prior_mode == 'conditional_gaussian':
++            mu,log_sigma=self.prior(context)
++        else:
++            # No conditional prior computation. Match the context precision under AMP.
++            mu=context.new_zeros(b,self.config.latent_dim);log_sigma=torch.zeros_like(mu)
++        if noise is None:
++            noise=torch.randn(b,sample_count,self.config.latent_dim,device=mu.device,dtype=mu.dtype)
++        elif noise.shape != (b,sample_count,self.config.latent_dim) or noise.device != mu.device:
++            raise ValueError('explicit noise shape/device mismatch')
++        elif not noise.is_floating_point():raise ValueError('noise must be floating point')
++        noise=noise.to(mu.dtype)
++        z=noise if self.prior_mode == 'standard_normal' else mu[:,None]+log_sigma.exp()[:,None]*noise
++        predictions=self.output_head(h,self.decoder(h,z,valid),valid)
++        if return_aux:
++            return dict(predictions=predictions,latent_mu=mu,latent_log_sigma=log_sigma,
++                        latent_z=z,noise=noise,context=context,valid_mask=valid)
++        return predictions
++
++
++def make_model(seed, config=None, device='cpu', prior_mode='standard_normal', output_config=None):
++    torch.manual_seed(seed)
++    if torch.cuda.is_available():torch.cuda.manual_seed_all(seed)
++    return HiRP22(config or HiRPConfig(),output_config or OutputConfig(head_pre_norm=True),prior_mode).to(device)
++
++
++def model_metadata(model, scales):
++    return dict(format_version=22,config=asdict(model.config),output_config=asdict(model.output_config),
++                prior_mode=model.prior_mode,latent_dim=model.config.latent_dim,scales=scales)
++
++
++def load_checkpoint(path, device='cpu', legacy_manifest=None, overrides=None):
++    """Only loader. Missing semantic metadata is an error, never an inferred default.
++
++    Historical A0 checkpoints require the matching manifest (or explicit scales).
++    Loader construction preserves caller RNG; resume restores checkpoint RNG separately.
++    """
++    saved=torch.load(path,map_location='cpu',weights_only=True)
++    meta={**saved,**(overrides or {})}
++    for field in ('config','output_config','prior_mode'):
++        if field not in meta:raise ValueError(f'missing checkpoint semantic field: {field}')
++    if meta['prior_mode']=='A0':meta['prior_mode']='standard_normal'
++    if saved.get('format_version')!=22:
++        if 'latent_dim' not in meta['config']:raise ValueError('missing latent_dim')
++        meta['latent_dim']=meta['config']['latent_dim']
++        if 'scales' not in meta:
++            if legacy_manifest is None:raise ValueError('legacy checkpoint requires explicit matching manifest/scales')
++            manifest=json.loads(Path(legacy_manifest).read_text())
++            if sha256_file(legacy_manifest)!=saved.get('manifest_hash'):raise ValueError('legacy manifest mismatch')
++            if 'channel_scale' not in saved or 'scaler_hash' not in manifest:raise ValueError('missing legacy scale metadata')
++            meta['scales']=dict(channel_scale=saved['channel_scale'],descriptor_scaler_sha256=manifest['scaler_hash'],
++                                descriptor_dimension=75,training_T=manifest['config']['T'])
++    for field in ('latent_dim','scales'):
++        if field not in meta:raise ValueError(f'missing {field}')
++    for field in ('channel_scale','descriptor_scaler_sha256','descriptor_dimension','training_T'):
++        if field not in meta['scales']:raise ValueError(f'missing scale metadata: {field}')
++    if meta['latent_dim']!=meta['config']['latent_dim']:raise ValueError('latent_dim mismatch')
++    scale=torch.tensor(meta['scales']['channel_scale'],dtype=torch.float32)
++    if scale.shape!=(25,) or not torch.isfinite(scale).all() or not (scale>0).all():
++        raise ValueError('25 finite positive channel scales required')
++    if meta['scales']['descriptor_dimension']!=75 or not meta['scales']['descriptor_scaler_sha256']:
++        raise ValueError('invalid descriptor metadata')
++    with torch.random.fork_rng(devices=list(range(torch.cuda.device_count()))):
++        model=HiRP22(HiRPConfig(**meta['config']),OutputConfig(**meta['output_config']),meta['prior_mode'])
++    model.load_state_dict(saved['model'],strict=True)
++    model.scale_metadata=meta['scales']
++    return model.to(device).eval(),saved
++
++
++def eval_adapter(model, *, speaker_audio, speaker_emotion, speaker_3dmm, lengths, noise):
++    return model.sample(speaker_audio,speaker_emotion,speaker_3dmm,lengths,sample_count=noise.shape[1],noise=noise)
++
++
++def official_adapter(model, *, speaker_audio, speaker_emotion, speaker_3dmm, source_lengths, noise):
++    """Ten raw legal-domain reactions; preprocessing/source lengths supplied explicitly.
++
++    No GT selection, reranking or inverse normalization of reaction attributes.
++    This source-only adapter is not an official evaluator invocation.
++    """
++    if noise.shape[1]!=10:raise ValueError('official adapter requires K=10')
++    return eval_adapter(model,speaker_audio=speaker_audio,speaker_emotion=speaker_emotion,
++                        speaker_3dmm=speaker_3dmm,lengths=source_lengths,noise=noise)
++
++
++def losses_for_batch(model,batch,noise,scaler,arm,references=None,lambda_group=.1):
++    if arm not in ('C0','C1','C2'):raise ValueError('unknown arm')
++    if (arm=='C0') != (references is None):raise ValueError('reference contract mismatch')
++    pred=model(**paired_model_inputs(batch),sample_count=noise.shape[1],noise=noise)
++    conditional=paired_energy_score(pred,batch['paired_target'],pair_valid_mask(batch),
++                                     channel_scale=CHANNEL_SCALE,return_details=True)
++    group=None
++    if arm!='C0':
++        phi,valid=description(pred,batch['source_lengths'],scaler)
++        group=(b3_score if arm=='C1' else b4_score)(phi,valid,*references)
++    return dict(total=conditional['loss']+(lambda_group*group['loss'] if group else 0),
++                conditional=conditional,group=group,predictions=pred)
+diff --git a/hirp/summarize_phase22.py b/hirp/summarize_phase22.py
+new file mode 100644
+index 0000000..90f5880
+--- /dev/null
++++ b/hirp/summarize_phase22.py
+@@ -0,0 +1,147 @@
++"""Summarize only completed runs; seed variability and conditional bootstrap stay separate."""
++import csv
++import json
++from pathlib import Path
++import numpy as np
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from .train_phase22 import write
++
++ROOT=Path('runs/phase22/replicated_v1')
++ARMS=('C0','C1','C2')
++
++
++def read(path):return json.loads(path.read_text())
++
++
++def main():
++    out=ROOT/'report';out.mkdir(exist_ok=False)
++    seeds=[s for s in (123,42,2026) if (ROOT/f'seed_{s}/evaluation/completed.json').exists()]
++    if not seeds:raise RuntimeError('no completed evaluated seeds')
++    final={};table=[];learning=[];training=[];audits={}
++    for seed in seeds:
++        run=ROOT/f'seed_{seed}';summaries={}
++        for arm in ARMS:
++            summary=read(sorted((run/arm).glob('attempt_*/summary.json'))[-1]);summaries[arm]=summary
++            assert summary['completed'] and summary['actual_optimizer_steps']==summary['requested_steps']==summary['training_rows']==2000
++            for p in sorted((run/'evaluation').glob(f'{arm}_step*_bank0_K32.json')):
++                r=read(p);a=r['aggregate'];learning.append(dict(seed=seed,arm=arm,step=r['step'],conditional=a['conditional']['loss'],group=a['marginal']['loss']))
++            rows=[json.loads(s) for s in sorted((run/arm).glob('attempt_*/training.jsonl'))[-1].read_text().splitlines()]
++            training.extend(dict(seed=seed,arm=arm,step=r['step'],conditional=r['conditional']['loss'],total=r['loss']) for r in rows)
++            for k in (32,64):
++                cases=[read(run/'evaluation'/f'{arm}_step2000_bank{b}_K{k}.json') for b in (0,1)]
++                final[seed,arm,k]=cases
++                aggregates=[c['aggregate'] for c in cases]
++                row=dict(seed=seed,arm=arm,K=k,actual_steps=summary['actual_optimizer_steps'],source_occurrences=summary['source_occurrences'],
++                    unique_sources=summary['unique_sources'],reference_exposures=summary['reference_exposures'],parameters=summary['parameter_count'],
++                    compute_seconds=summary['optimizer_compute_seconds'],wall_seconds=summary['attempt_wall_seconds'],
++                    sources_per_second=summary['attempt_sources_per_compute_second'],peak_MiB=summary['peak_allocated_bytes']/2**20)
++                for metric,key in [('conditional','conditional'),('marginal','marginal'),('spread','spread')]:
++                    for field in aggregates[0][key]:row[metric+'_'+field]=float(np.mean([a[key][field] for a in aggregates]))
++                for field in ('correct','shuffled','gap'):
++                    row['shuffle_'+field]=float(np.mean([np.mean([s[field] for s in p['per_session']]) for c in cases for p in c['permutations']]))
++                for group in ('AU','VA','expression'):
++                    for field in aggregates[0]['channels'][group]:row[group+'_'+field]=float(np.mean([a['channels'][group][field] for a in aggregates]))
++                table.append(row)
++        for key in ('initialization_hash','consumed_hashes','actual_optimizer_steps','parameter_count'):
++            assert all(summaries[a][key]==summaries['C0'][key] for a in ARMS),key
++        assert summaries['C0']['reference_exposures']==0
++        assert summaries['C1']['reference_exposures']==summaries['C2']['reference_exposures']
++        audits[str(seed)]={a:{k:v for k,v in s.items() if k!='checkpoints'} for a,s in summaries.items()}
++    if len(seeds)>1:
++        assert len({audits[str(s)]['C0']['initialization_hash'] for s in seeds})==len(seeds)
++        for key in ('source_hash','noise_hash','reference_hash'):
++            assert len({audits[str(s)]['C0']['consumed_hashes'][key] for s in seeds})==len(seeds)
++    write(out/'matched_controls.json',dict(seeds=seeds,all_assertions_passed=True,details=audits))
++    for name,rows in [('per_seed_metrics',table),('development_learning_curves',learning),('training_curves',training)]:
++        with (out/(name+'.csv')).open('x') as f:
++            w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
++    grouped={}
++    metrics=['conditional_loss','conditional_cross_distance','conditional_self_distance','marginal_loss','marginal_cross','marginal_self','shuffle_correct','shuffle_shuffled','shuffle_gap','spread_within_input_descriptor_self','spread_between_input_descriptor_distance']
++    for k in (32,64):
++        grouped[str(k)]={}
++        for arm in ARMS:
++            rows=[r for r in table if r['arm']==arm and r['K']==k]
++            grouped[str(k)][arm]={name:dict(values=[r[name] for r in rows],mean=float(np.mean([r[name] for r in rows])),std=float(np.std([r[name] for r in rows],ddof=1)) if len(rows)>1 else None) for name in metrics}
++    robustness=[]
++    for (seed,arm,k),cases in final.items():
++        for bank,c in enumerate(cases):
++            robustness.append(dict(seed=seed,arm=arm,K=k,bank=bank,conditional=c['aggregate']['conditional']['loss'],marginal=c['aggregate']['marginal']['loss'],shuffle_gaps={str(p['seed']):p['mean_gap'] for p in c['permutations']}))
++    write(out/'noise_permutation_stability.json',robustness)
++    write(out/'seed_summary.json',dict(seeds=seeds,definition='average two pre-fixed banks within model; shuffle averages three fixed derangements; sample std across training seeds',metrics=grouped))
++    # Paired contrasts computed BEFORE bootstrap, within each fixed training seed.
++    boot={};rng=np.random.default_rng(22201);ix=rng.integers(0,20,(10000,20))
++    for seed in seeds:
++        per={}
++        for arm in ARMS:
++            cases=final[seed,arm,32]
++            ids=[r['session_id'] for r in cases[0]['per_session']]
++            assert all([r['session_id'] for r in c['per_session']]==ids for c in cases)
++            per[arm]={metric:np.mean([[s[metric]['loss'] for s in c['per_session']] for c in cases],axis=0) for metric in ('conditional','marginal')}
++            per[arm]['gap']=np.mean([[s['gap'] for s in p['per_session']] for c in cases for p in c['permutations']],axis=0)
++        for base in ('C0','C1'):
++            for metric in ('conditional','marginal','gap'):
++                delta=per['C2'][metric]-per[base][metric];lo,hi=np.quantile(delta[ix].mean(1),[.025,.975])
++                boot[f'seed{seed}_C2_minus_{base}_{metric}']=dict(mean=float(delta.mean()),lower=float(lo),upper=float(hi),session_deltas=delta.tolist())
++    write(out/'paired_session_bootstrap.json',dict(seed=22201,resamples=10000,unit='20 session clusters',
++        caveat='conditional on each trained model and fixed development list/banks/shuffles; unknown participant links may induce additional dependencies; not training-seed inference',contrasts=boot))
++    colors=dict(C0='#2563eb',C1='#d97706',C2='#059669')
++    fig,axes=plt.subplots(1,2,figsize=(11,4))
++    for arm in ARMS:
++        for ax,metric in zip(axes,('conditional','group')):
++            for seed in seeds:
++                rows=sorted([r for r in learning if r['arm']==arm and r['seed']==seed],key=lambda r:r['step'])
++                ax.plot([r['step'] for r in rows],[r[metric] for r in rows],color=colors[arm],alpha=.3,lw=1)
++            steps=sorted({r['step'] for r in learning});means=[np.mean([r[metric] for r in learning if r['arm']==arm and r['step']==s]) for s in steps]
++            ax.plot(steps,means,'o-',color=colors[arm],label=arm)
++            ax.set(xlabel='Actual optimizer steps',ylabel=metric+' ES (development)',title='Fixed bank 0, K=32');ax.grid(alpha=.2);ax.legend()
++    fig.tight_layout();fig.savefig(out/'learning_curves.png',dpi=180);fig.savefig(out/'learning_curves.svg');plt.close(fig)
++    fig,axes=plt.subplots(len(seeds),1,figsize=(10,3*len(seeds)),squeeze=False)
++    for row,seed in zip(axes,seeds):
++        ax=row[0]
++        for arm in ARMS:
++            vals=[r['conditional'] for r in training if r['seed']==seed and r['arm']==arm]
++            smoothed=np.convolve(vals,np.ones(100)/100,mode='valid');ax.plot(np.arange(100,len(vals)+1),smoothed,label=arm,color=colors[arm])
++        ax.set(title=f'Seed {seed}; 100-step moving average',xlabel='Actual steps',ylabel='TRAIN paired ES');ax.legend();ax.grid(alpha=.2)
++    fig.tight_layout();fig.savefig(out/'training_curves.png',dpi=180);plt.close(fig)
++    for seed in seeds:
++        for arm in ARMS:
++            file=ROOT/f'seed_{seed}/evaluation/{arm}_step2000_bank0_K32_fixed_cases.npz';d=np.load(file)
++            fig,axes=plt.subplots(3,4,figsize=(14,7),sharex=True)
++            for col in range(4):
++                n=int(d['lengths'][col]);x=np.arange(n)
++                for ax,ch,label in zip(axes[:,col],(0,15,17),('AU0','Valence','Expression0')):
++                    ax.plot(x,d['predictions'][col,:,:n,ch].T,color=colors[arm],alpha=.3,lw=.7)
++                    ax.plot(x,d['targets'][col,:n,ch],color='black',lw=1.2,label='paired target')
++                    ax.set_ylabel(label);ax.grid(alpha=.15)
++                axes[0,col].set_title(str(d['clip_ids'][col]).split('/')[-1],fontsize=7)
++                axes[-1,col].set_xlabel('Crop-relative frame')
++            fig.suptitle(f'{arm}, seed {seed}, step 2000: 10 fixed noise samples; black = paired target')
++            fig.tight_layout();fig.savefig(out/f'fixed_cases_seed{seed}_{arm}.png',dpi=150);plt.close(fig)
++    lines=['# HiRP Phase 2.2 replicated development pilot','',
++        'Baseline: acfdda2ef02ebf5340ed13c78084a5d1bc518043. Branch: agent/hirp-phase22-replicated-pilot. No later commits or uncommitted user files at entry. CODEX_PHASE22.md was not found; the full user-supplied task text was used. Review of Phase 2.1 logs was not an independent rerun of historical training.', '',
++        '## Sampling and training contracts','',
++        'HiRP22 stores standard_normal / conditional_gaussian as a public forward contract. Standard normal uses z=epsilon without executing the retained prior module. The same inherited sample, eval adapter and strict loader share this rule. Historical A0 migration requires the matching manifest and scale metadata. Missing semantics fail explicitly. No historical model, objective, checkpoint or run was rewritten.', '',
++        'Actual GPU equivalence: forward/sample/adapter/roundtrip vs historical forward_a0 maximum error 0 for initial and C0/C1/C2 checkpoints at K=1/4/10/32. Candidate chunking maximum error 7.3761e-7 (declared atol 2e-6). Old bare sample mismatch is retained in public_contract_errors.json, not silently corrected in historical code.', '',
++        'All three real-data GPU 8-step continuous versus 4+4 resumed runs had exactly identical model parameters. CPU regression verifies optimizer state and per-step rows, with dropout active. An additional cold-start audit found that the first PyTorch 2.1 AdamW construction consumed Python RNG (tensor states/results were identical). The final runner re-seeds only Python RNG after optimizer construction on a fresh run; resumed RNG is restored unchanged. rng_fix_resume/verification.json verifies model, optimizer, all RNG states and logs exactly, and unchanged model/optimizer versus original smoke. The original mismatch record remains in resume_gpu_optimizer_verification.json. Checkpoints retain all configs, scales, split hash, optimizer, global step, full Python/NumPy/CPU/CUDA RNG, and consumed schedule/noise hashes. Diagnostics preserve parameters and RNG. Premature stop reports completed=false. Budget extension uses a NEW manifest/run and explicit resume, never overwrites historical checkpoints.', '',
++        'Fixed training: T=128, K=4, B=4, pre-norm/default projection, A0, FP32, AdamW lr=1e-4 wd=.01; C0 lambda=0, C1/C2 lambda=.1. Each seed drives initialization, sampler and independent Gaussian noise; source/reference substreams are separately derived. Full 2000-entry schedules are generated, not repeated from Phase 2. C0 does not load reference tensors. C1/C2 references are unique per step and matched. Source occurrences are IID with replacement under p(session)=n_s/N. The unchanged cross-bank estimator and equal-noise-index exclusion are preserved.', '',
++        '## Completed results','',f'Completed training seeds: {seeds}. Each completed arm has requested=actual=training_rows=2000; 8000 source occurrences / 1660 = 4.819277 exposure multiples, not epochs. See matched_controls.json for full assertions and resource accounting.', '',
++        'Main final numbers average two pre-fixed independent banks at K=32, and three pre-fixed same-session derangements for the shuffle columns. Per-seed values precede mean/std; raw per-example/session values remain in seed_*/evaluation. This is the repeatedly used 80-clip development set, NOT hidden or independent test.', '',
++        '| Seed | Arm | Conditional ES | Cross | Self | Group ES | Group cross | Group self | Shuffle gap |', '|---|---|---:|---:|---:|---:|---:|---:|---:|']
++    for r in table:
++        if r['K']==32:lines.append('| '+str(r['seed'])+' | '+r['arm']+' | '+' | '.join(f'{r[k]:.6f}' for k in ('conditional_loss','conditional_cross_distance','conditional_self_distance','marginal_loss','marginal_cross','marginal_self','shuffle_gap'))+' |')
++    lines+=['','| Arm | Conditional ES mean ± seed std | Group ES mean ± seed std | Shuffle gap mean ± seed std |','|---|---:|---:|---:|']
++    for arm in ARMS:
++        d=grouped['32'][arm];lines.append('| '+arm+' | '+' | '.join(f"{d[k]['mean']:.6f} ± {d[k]['std']:.6f}" if d[k]['std'] is not None else f"{d[k]['mean']:.6f} (one seed)" for k in ('conditional_loss','marginal_loss','shuffle_gap'))+' |')
++    lines+=['','![Development learning curves](learning_curves.png)','','![Training curves](training_curves.png)','',
++        'K=64 values, channel ES/distribution/velocity/entropy, within/between spread, per-seed exposure and resource metrics are in per_seed_metrics.csv. All 45 fixed checkpoint evaluations are included, plus final bank/K stability cases. Fixed trajectory panels show 10 predeclared noise samples and paired targets for indices 0,20,40,60; they are illustrative development cases, not selected best samples.', '',
++        '## Interpretation limits and remaining work','',
++        'Direct paired gap_C2-gap_C1 and gap_C2-gap_C0 session bootstrap is in paired_session_bootstrap.json, separately for each training seed. Its intervals are conditional on model/development cases/evaluation draws; they do not replace seed replication. Mean/std over three training seeds is descriptive, not a strong population significance claim. Self is a legitimate score term; conditional and marginal scores must be interpreted together with shape diagnostics.', '',
++        'Feature-byte hashes and split-local paths are verified; the extraction model/version is not independently established. The data audit found overlapping recording basenames across split/session labels, but no byte-identical files in the audited development inputs and full VAL listener reference set versus TRAIN. Participant/interaction crosswalk is unavailable and CSV identifiers use a different naming scheme. The unused VAL candidate list was sealed, but no independent confirmation claim or evaluation was made. Session resampling cannot rule out cross-session participant dependence.', '',
++        'Not run: independent confirmation, official metrics/full-sequence generation or T=750 validation, budgets beyond 2000, lambda sweeps, architecture changes, push. Official adapter K=10 source-only contract is tested; local legacy loader/postprocessor sources and assets were inspected without importing/modifying metric code. Assets exist, but independent provenance and long-sequence integration remain unresolved. See official_adapter_audit.json.', '',
++        'Full command logs, runtime source archives, initial/final history hashes and checkpoint fingerprints accompany the run. GPU compute_seconds measures synchronized optimization including scheduled gradient probes; wall seconds additionally include IO/diagnostics/checkpointing, not preparation/evaluation. No best-checkpoint selection or added budget used development outcomes.']
++    (out/'PHASE22_REPORT.md').write_text('\n'.join(lines)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/train_phase22.py b/hirp/train_phase22.py
+new file mode 100644
+index 0000000..8c5477f
+--- /dev/null
++++ b/hirp/train_phase22.py
+@@ -0,0 +1,277 @@
++"""Configurable finite schedules, immutable checkpoints and exact resume state."""
++import argparse
++from dataclasses import asdict, dataclass
++import hashlib
++import json
++from pathlib import Path
++import random
++import sys
++import time
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from . import HiRPConfig
++from .phase22 import make_model, model_metadata, load_checkpoint, losses_for_batch
++from .phase21 import CHANNEL_SCALE
++from .phase21_diagnostics import component_gradients, output_path_diagnostic
++from .train_phase21 import configure, sync, source_hashes
++from .train_phase1 import to_device, state_hash
++from .phase15_audit import canonical_hash, sha256_file
++from .session_data import SessionPopulation
++from .group_features import DescriptorScaler, reaction_descriptor
++
++ROOT=Path(__file__).resolve().parents[1]
++
++
++def write(path,value):
++    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
++    with path.open('x') as f:json.dump(value,f,indent=2,allow_nan=False)
++
++
++@dataclass(frozen=True)
++class TrainConfig:
++    init_seed:int=123
++    sampler_seed:int=123
++    noise_seed:int=123
++    max_steps:int=2000
++    lr:float=1e-4
++    lambda_group:float=.1
++    weight_decay:float=.01
++    T:int=128
++    K:int=4
++    B:int=4
++    eval_interval:int=500
++    checkpoint_interval:int=500
++    diagnostic_interval:int=100
++    fixed_checkpoints:tuple=(128,500,1000,2000)
++
++    def validate(self):
++        if self.B!=4:raise ValueError('unchanged C2 estimator requires B=4')
++        if min(self.max_steps,self.T,self.eval_interval,self.checkpoint_interval,self.diagnostic_interval)<1 or self.K<2:
++            raise ValueError('invalid budget/interval/T/K')
++        if self.lr<=0 or self.lambda_group<0:raise ValueError('invalid lr/lambda')
++
++
++def schedule(pool,cfg,latent_dim):
++    cfg.validate()
++    # Independent source/reference substreams; no reference draws perturb sources.
++    session_rng=torch.Generator().manual_seed(cfg.sampler_seed)
++    source_rng=torch.Generator().manual_seed(cfg.sampler_seed+1000003)
++    ref_rng=torch.Generator().manual_seed(cfg.sampler_seed+2000003)
++    noise_rng=torch.Generator().manual_seed(cfg.noise_seed)
++    sessions=sorted(pool.sources)
++    weights=torch.tensor([len(pool.sources[s]) for s in sessions],dtype=torch.float64)
++    records=[];noises=[]
++    for i in range(cfg.max_steps):
++        s=sessions[int(torch.multinomial(weights,1,generator=session_rng))]
++        ids=pool.sources[s];refs=pool.references[s]
++        records.append(dict(step=i+1,session_id=s,
++            source_indices=[ids[j] for j in torch.randint(len(ids),(cfg.B,),generator=source_rng).tolist()],
++            reference_ids=[refs[j] for j in torch.randperm(len(refs),generator=ref_rng)[:8].tolist()],banks=[[0,1],[2,3]]))
++        noises.append(torch.randn(cfg.B,cfg.K,latent_dim,generator=noise_rng))
++    noise=torch.stack(noises)
++    return records,noise,stream_hashes(records,noise)
++
++
++def stream_hashes(records,noise):
++    return dict(source_hash=canonical_hash([r['source_indices'] for r in records]),
++                session_hash=canonical_hash([r['session_id'] for r in records]),
++                reference_hash=canonical_hash([r['reference_ids'] for r in records]),
++                noise_hash=hashlib.sha256(noise.cpu().numpy().tobytes()).hexdigest())
++
++
++def rng_state():
++    n=np.random.get_state()
++    return dict(python=random.getstate(),numpy=[n[0],n[1].tolist(),n[2],n[3],n[4]],
++                torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [])
++
++
++def restore_rng(s):
++    random.setstate(s['python']);n=s['numpy'];np.random.set_state((n[0],np.array(n[1],dtype=np.uint32),n[2],n[3],n[4]))
++    torch.set_rng_state(s['torch'].cpu())
++    if s['cuda']:
++        if len(s['cuda'])!=torch.cuda.device_count():raise ValueError('CUDA RNG topology differs on resume')
++        torch.cuda.set_rng_state_all([x.cpu() for x in s['cuda']])
++
++
++class RealData:
++    def __init__(self,manifest,cfg,arm,device):
++        self.pool=SessionPopulation(ROOT/'data','train',cfg.T)
++        self.scaler=DescriptorScaler.load(manifest['scaler_path']).to(device)
++        self.sources={};self.refs={};self.arm=arm;self.device=device
++    def batch(self,record):
++        for i in record['source_indices']:
++            if i not in self.sources:self.sources[i]=self.pool.dataset[i]
++        batch=to_device(default_collate([self.sources[i] for i in record['source_indices']]),self.device)
++        if self.arm=='C0':return batch,None
++        for r in record['reference_ids']:
++            if r not in self.refs:
++                item=self.pool.load_reference(r)
++                with torch.no_grad():
++                    self.refs[r]=self.scaler(*reaction_descriptor(item['reaction'].to(self.device),item['length'].to(self.device)))
++        return batch,tuple(torch.stack([self.refs[r][j] for r in record['reference_ids']]) for j in (0,1))
++
++
++def prepare(run,cfg):
++    cfg.validate();run.mkdir(parents=True,exist_ok=False)
++    pool=SessionPopulation(ROOT/'data','train',cfg.T)
++    scaler_path=ROOT/'runs/phase2/descriptor_stats.json'
++    # Keep the train-only scaler fitted at T=128 fixed; record the requested crop T.
++    records,noise,hashes=schedule(pool,cfg,HiRPConfig().latent_dim)
++    write(run/'schedule.json',dict(records=records,hashes=hashes))
++    np.save(run/'noise.npy',noise.numpy())
++    write(run/'config.json',asdict(cfg))
++    # Full TRAIN file provenance; new schedules may access any source/ref.
++    paths=set()
++    for path in pool.dataset.records:
++        rel=path.relative_to(pool.dataset.directory/'facial-attributes')
++        paths.update((path,pool.dataset.directory/'audio-features'/rel,pool.dataset.directory/'coefficients'/rel))
++    paths.update(pool.reference_paths.values())
++    file_rows=[dict(path=str(p),sha256=sha256_file(p)) for p in sorted(paths)]
++    normalization=[dict(path=str(ROOT/'external/FaceVerse'/n),sha256=sha256_file(ROOT/'external/FaceVerse'/n)) for n in ('mean_face.npy','std_face.npy')]
++    manifest=dict(config=asdict(cfg),model_config=asdict(HiRPConfig()),scaler_path=str(scaler_path),
++        scales=dict(channel_scale=list(CHANNEL_SCALE),descriptor_scaler_sha256=sha256_file(scaler_path),descriptor_dimension=75,training_T=cfg.T),
++        split_hash=canonical_hash(file_rows),data_files=file_rows,normalization=normalization,
++        population=pool.audit(),schedule=hashes,noise_file_sha256=sha256_file(run/'noise.npy'),source_sha256=source_hashes(),
++        output_config=dict(head_pre_norm=True,projection_init='default',small_init_std=.01),prior_mode='standard_normal',
++        budget=f'fixed {cfg.max_steps}-step budget; no validation-driven budget extension',
++        evaluation='replay saved fixed checkpoints after training, development set only; no optimizer/RNG effect',
++        eval_steps=sorted({s for s in cfg.fixed_checkpoints if s<=cfg.max_steps}|set(range(cfg.eval_interval,cfg.max_steps+1,cfg.eval_interval))|{cfg.max_steps}))
++    write(run/'manifest.json',manifest)
++    return manifest
++
++
++def train(arm_dir,cfg,arm,records,noises,data,manifest,device,resume=None,stop_after=None,model_config=None):
++    cfg.validate()
++    if len(records)!=cfg.max_steps or len(noises)!=cfg.max_steps:raise ValueError('schedule length must equal requested steps')
++    if arm not in ('C0','C1','C2'):raise ValueError('unknown arm')
++    arm_dir.mkdir(parents=True,exist_ok=True)
++    attempt=arm_dir/f'attempt_{len(list(arm_dir.glob("attempt_*"))):03d}'
++    attempt.mkdir(exist_ok=False);(attempt/'checkpoints').mkdir()
++    random.seed(cfg.init_seed);np.random.seed(cfg.init_seed)
++    model=make_model(cfg.init_seed,model_config or HiRPConfig(**manifest['model_config']),device)
++    initial_hash=state_hash(model);prior={k:v.detach().clone() for k,v in model.prior.state_dict().items()}
++    optimizer=torch.optim.AdamW(model.parameters(),lr=cfg.lr,weight_decay=cfg.weight_decay)
++    rows=[];global_step=0;previous_seconds=0.;checkpoint_paths=[]
++    if resume:
++        model,saved=load_checkpoint(resume,device)
++        old=saved['train_config'];new=asdict(cfg)
++        if any(old[k]!=v for k,v in new.items() if k!='max_steps') or cfg.max_steps<old['max_steps']:
++            raise ValueError('resume config differs beyond nondecreasing max_steps')
++        if saved['arm']!=arm or saved['split_hash']!=manifest['split_hash'] or saved['scales']!=manifest['scales']:
++            raise ValueError('resume arm/split/scales mismatch')
++        optimizer=torch.optim.AdamW(model.parameters(),lr=cfg.lr,weight_decay=cfg.weight_decay)
++        optimizer.load_state_dict(saved['optimizer'])
++        global_step=saved['global_step'];rows=saved['training_rows'];previous_seconds=saved['training_seconds']
++        if global_step!=len(rows) or global_step!=saved['schedule_position']:raise ValueError('resume step count mismatch')
++        if stream_hashes(records[:global_step],noises[:global_step])!=saved['consumed_hashes']:raise ValueError('resume schedule prefix mismatch')
++        initial_hash=saved['initialization_hash'];restore_rng(saved['rng'])
++    # PyTorch 2.1's first AdamW construction lazily imports modules that consume
++    # Python random state. Normalize that non-tensor stream after construction.
++    # Torch RNG is untouched, preserving model initialization/dropout semantics.
++    if not resume:random.seed(cfg.init_seed)
++    model.train()
++    weight=0. if arm=='C0' else cfg.lambda_group
++    start_step=global_step;started=time.perf_counter();compute_seconds=0.
++    if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats(device)
++    all_sources=[i for r in records[:global_step] for i in r['source_indices']]
++    def checkpoint(completed):
++        sync(device)
++        path=attempt/'checkpoints'/f'step_{global_step:06d}.pt'
++        saved=dict(**model_metadata(model,manifest['scales']),model=model.state_dict(),optimizer=optimizer.state_dict(),
++                   global_step=global_step,requested_steps=cfg.max_steps,actual_optimizer_steps=global_step,
++                   schedule_position=global_step,train_config=asdict(cfg),rng=rng_state(),arm=arm,
++                   split_hash=manifest['split_hash'],consumed_hashes=stream_hashes(records[:global_step],noises[:global_step]),
++                   training_rows=rows,completed=completed,initialization_hash=initial_hash,
++                   training_seconds=previous_seconds+time.perf_counter()-started)
++        if path.exists():raise FileExistsError(path)
++        torch.save(saved,path);checkpoint_paths.append(dict(step=global_step,path=str(path),sha256=sha256_file(path)))
++    failure=None
++    try:
++        with (attempt/'training.jsonl').open('x') as log:
++            for row in rows:log.write(json.dumps(row)+'\n')
++            while global_step<cfg.max_steps:
++                record=records[global_step];noise=noises[global_step].to(device)
++                if record['step']!=global_step+1:raise ValueError('schedule step discontinuity')
++                batch,refs=data.batch(record);optimizer.zero_grad(set_to_none=True)
++                sync(device);step_start=time.perf_counter()
++                values=losses_for_batch(model,batch,noise,data.scaler,arm,refs,weight)
++                audit=component_gradients(model,values['conditional']['loss'],values['group']['loss'] if values['group'] else None,weight) if (global_step+1)%cfg.diagnostic_interval==0 or global_step==0 else None
++                values['total'].backward()
++                if not all(torch.isfinite(p.grad).all().item() for p in model.parameters() if p.grad is not None):raise RuntimeError('nonfinite gradient')
++                optimizer.step();sync(device);compute_seconds+=time.perf_counter()-step_start;global_step+=1
++                row=dict(step=global_step,loss=float(values['total']),conditional={k:float(v) for k,v in values['conditional'].items()},
++                         group={k:float(v) for k,v in values['group'].items()} if values['group'] else None,
++                         gradients=audit,source_indices=record['source_indices'],session_id=record['session_id'],
++                         reference_ids=record['reference_ids'] if arm!='C0' else [])
++                rows.append(row);all_sources.extend(record['source_indices'])
++                log.write(json.dumps(row,allow_nan=False)+'\n');log.flush()
++                if global_step%cfg.diagnostic_interval==0:
++                    before=state_hash(model);rstate=rng_state()
++                    # Frozen-prior public forward has the same semantics under this legacy diagnostic.
++                    diag=output_path_diagnostic(model,batch,noise)
++                    assert before==state_hash(model)
++                    assert torch.equal(rstate['torch'],torch.get_rng_state())
++                    assert all(torch.equal(a,b) for a,b in zip(rstate['cuda'],torch.cuda.get_rng_state_all()))
++                    write(attempt/f'diagnostic_{global_step:06d}.json',diag)
++                    print(arm,global_step,'conditional',row['conditional']['loss'],flush=True)
++                should_stop=stop_after is not None and global_step>=stop_after
++                if global_step in cfg.fixed_checkpoints or global_step%cfg.checkpoint_interval==0 or global_step%cfg.eval_interval==0 or global_step==cfg.max_steps or should_stop:
++                    checkpoint(global_step==cfg.max_steps)
++                if should_stop:break
++    except BaseException as exc:
++        failure=repr(exc)
++        write(attempt/'failure.json',dict(completed=False,actual_optimizer_steps=global_step,requested_steps=cfg.max_steps,
++                                         training_rows=len(rows),error=failure,last_durable_checkpoints=checkpoint_paths))
++        raise
++    finally:
++        sync(device)
++        elapsed=time.perf_counter()-started
++        completed=global_step==cfg.max_steps and failure is None
++        if completed:assert global_step==cfg.max_steps==len(rows)
++        assert all(torch.equal(prior[k],v) for k,v in model.prior.state_dict().items())
++        summary=dict(completed=completed,requested_steps=cfg.max_steps,actual_optimizer_steps=global_step,training_rows=len(rows),
++            initialization_hash=initial_hash,consumed_hashes=stream_hashes(records[:global_step],noises[:global_step]),
++            source_occurrences=len(all_sources),unique_sources=len(set(all_sources)),
++            source_population=manifest['population']['source_population'],
++            exposure_multiple=len(all_sources)/manifest['population']['source_population'],
++            reference_exposures=sum(len(r['reference_ids']) for r in rows),
++            unique_references=len({x for r in rows for x in r['reference_ids']}),parameter_count=sum(p.numel() for p in model.parameters()),
++            prior_unchanged=True,attempt_steps=global_step-start_step,attempt_wall_seconds=elapsed,
++            cumulative_wall_seconds=previous_seconds+elapsed,optimizer_compute_seconds=compute_seconds,
++            attempt_sources_per_compute_second=(global_step-start_step)*cfg.B/compute_seconds if compute_seconds else None,
++            peak_allocated_bytes=torch.cuda.max_memory_allocated(device) if device.startswith('cuda') else None,
++            device=device,checkpoints=checkpoint_paths,resumed_from=str(resume) if resume else None)
++        write(attempt/'summary.json',summary)
++    return summary,model,optimizer
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--device',default='cuda:2')
++    p.add_argument('--arm',choices=['C0','C1','C2','all'],default='all');p.add_argument('--resume',type=Path)
++    p.add_argument('--stop-after',type=int)
++    for k,v in asdict(TrainConfig()).items():
++        if k=='fixed_checkpoints':p.add_argument('--fixed-checkpoints',type=int,nargs='+',default=list(v))
++        else:p.add_argument('--'+k.replace('_','-'),type=type(v),default=v)
++    a=p.parse_args();configure();cfg=TrainConfig(**{k:tuple(getattr(a,k)) if k=='fixed_checkpoints' else getattr(a,k) for k in asdict(TrainConfig())})
++    if (a.run/'manifest.json').exists():
++        manifest=json.loads((a.run/'manifest.json').read_text())
++        expected=json.loads(json.dumps(asdict(cfg)))
++        if manifest['config']!=expected:raise ValueError('existing run config mismatch; budget extension requires a new run manifest')
++    else:manifest=prepare(a.run,cfg)
++    for row in manifest['data_files']+manifest['normalization']:
++        if sha256_file(row['path'])!=row['sha256']:raise ValueError('data provenance mismatch')
++    if sha256_file(manifest['scaler_path'])!=manifest['scales']['descriptor_scaler_sha256']:raise ValueError('scaler mismatch')
++    records=json.loads((a.run/'schedule.json').read_text())['records'];noises=torch.from_numpy(np.load(a.run/'noise.npy'))
++    if stream_hashes(records,noises)!=manifest['schedule']:raise ValueError('schedule/noise hash mismatch')
++    if a.resume and a.arm=='all':raise ValueError('resume requires one explicit arm')
++    for arm in ('C0','C1','C2') if a.arm=='all' else (a.arm,):
++        if (a.run/arm).exists() and not a.resume:raise FileExistsError('arm already exists; explicit resume required')
++        data=RealData(manifest,cfg,arm,a.device)
++        result,model,opt=train(a.run/arm,cfg,arm,records,noises,data,manifest,a.device,a.resume,a.stop_after)
++        del data,model,opt
++        if a.device.startswith('cuda'):torch.cuda.empty_cache()
++        print('RESULT',arm,json.dumps(result),flush=True)
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/verify_resume_phase22.py b/hirp/verify_resume_phase22.py
+new file mode 100644
+index 0000000..297c3d5
+--- /dev/null
++++ b/hirp/verify_resume_phase22.py
+@@ -0,0 +1,40 @@
++"""Exact optimizer/log/RNG comparison after cold-start Python RNG correction."""
++import argparse
++import json
++from pathlib import Path
++import torch
++import numpy as np
++from .train_phase21 import configure
++from .train_phase22 import TrainConfig,RealData,train,write
++
++
++def equal(a,b):
++    if torch.is_tensor(a):return torch.equal(a,b)
++    if isinstance(a,dict):return a.keys()==b.keys() and all(equal(a[k],b[k]) for k in a)
++    if isinstance(a,(list,tuple)):return len(a)==len(b) and all(equal(x,y) for x,y in zip(a,b))
++    return a==b
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--device',default='cuda:4');a=p.parse_args();configure()
++    root=a.root;old=root/'resume_smoke';out=root/'rng_fix_resume';out.mkdir(exist_ok=False)
++    m=json.loads((old/'manifest.json').read_text());config=m['config'];config['fixed_checkpoints']=tuple(config['fixed_checkpoints']);cfg=TrainConfig(**config)
++    records=json.loads((old/'schedule.json').read_text())['records'];noise=torch.from_numpy(np.load(old/'noise.npy'));results={}
++    for arm in ('C0','C1','C2'):
++        data=RealData(m,cfg,arm,a.device)
++        full,model,opt=train(out/('full_'+arm),cfg,arm,records,noise,data,m,a.device);del model,opt
++        stop,model,opt=train(out/('split_'+arm),cfg,arm,records,noise,data,m,a.device,stop_after=4);del model,opt
++        resumed,model,opt=train(out/('split_'+arm),cfg,arm,records,noise,data,m,a.device,resume=stop['checkpoints'][-1]['path']);del model,opt
++        x=torch.load(full['checkpoints'][-1]['path'],weights_only=True,map_location='cpu');y=torch.load(resumed['checkpoints'][-1]['path'],weights_only=True,map_location='cpu')
++        checks={k:equal(x[k],y[k]) for k in ('model','optimizer','training_rows','rng','global_step','consumed_hashes')}
++        # Compare tensor training results with the already archived original smoke.
++        previous=torch.load(old/('full_'+arm)/'attempt_000/checkpoints/step_000008.pt',weights_only=True,map_location='cpu')
++        checks['unchanged_from_original_model']=equal(x['model'],previous['model'])
++        checks['unchanged_from_original_optimizer']=equal(x['optimizer'],previous['optimizer'])
++        assert all(checks.values()),checks
++        results[arm]=checks
++        del data,x,y,previous
++    write(out/'verification.json',results)
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/tests/test_phase22.py b/hirp/tests/test_phase22.py
+new file mode 100644
+index 0000000..d8432e4
+--- /dev/null
++++ b/hirp/tests/test_phase22.py
+@@ -0,0 +1,139 @@
++import json
++from dataclasses import asdict, replace
++from pathlib import Path
++from types import SimpleNamespace
++import pytest
++import torch
++from hirp import HiRPConfig
++from hirp.phase21 import make_model as old_model, forward_a0, OutputConfig
++from hirp.phase22 import make_model, model_metadata, load_checkpoint, eval_adapter, official_adapter
++from hirp.train_phase22 import TrainConfig, schedule, train, rng_state
++from hirp.group_features import DescriptorScaler
++from hirp.paired_data import paired_model_inputs
++from hirp.train_phase1 import state_hash
++
++CONFIG=HiRPConfig(d_model=32,nhead=4,num_layers=1,dim_feedforward=64,dropout=.1,dilations=(1,2))
++SCALES=dict(channel_scale=[1.]*25,descriptor_scaler_sha256='test-scaler',descriptor_dimension=75,training_T=12)
++
++
++def batch():
++    g=torch.Generator().manual_seed(73)
++    return dict(speaker_audio=torch.randn(4,12,768,generator=g),speaker_emotion=torch.randn(4,12,25,generator=g),
++        speaker_3dmm=torch.randn(4,12,58,generator=g),source_lengths=torch.tensor([12,10,8,6]),
++        pair_lengths=torch.tensor([10,9,7,5]),paired_target=torch.rand(4,12,25,generator=g))
++
++
++@pytest.mark.parametrize('k',[1,4,10,32])
++def test_public_paths_roundtrip_and_legacy_equivalence(tmp_path,k):
++    b=batch();inputs=paired_model_inputs(b);noise=torch.randn(4,k,32)
++    old=old_model(config=CONFIG,output_config=OutputConfig(head_pre_norm=True)).eval()
++    new=make_model(123,CONFIG).eval();new.load_state_dict(old.state_dict())
++    with torch.no_grad():
++        a=forward_a0(old,**inputs,sample_count=k,noise=noise)
++        p=new(**inputs,sample_count=k,noise=noise)
++    torch.testing.assert_close(a,p,rtol=0,atol=0)
++    path=tmp_path/'model.pt';torch.save(dict(**model_metadata(new,SCALES),model=new.state_dict()),path)
++    rng=torch.get_rng_state();restored,_=load_checkpoint(path)
++    assert torch.equal(rng,torch.get_rng_state())
++    for q in [new.sample(**inputs,sample_count=k,noise=noise),restored.sample(**inputs,sample_count=k,noise=noise),eval_adapter(restored,**inputs,noise=noise)]:
++        torch.testing.assert_close(p,q,rtol=0,atol=0)
++    perm=torch.randperm(k)
++    torch.testing.assert_close(new.sample(**inputs,sample_count=k,noise=noise[:,perm]),p[:,perm],atol=2e-6,rtol=2e-5)
++    chunks=torch.cat([new.sample(**inputs,sample_count=min(3,k-i),noise=noise[:,i:i+3]) for i in range(0,k,3)],1)
++    torch.testing.assert_close(chunks,p,atol=2e-6,rtol=2e-5)
++    prefix=new.sample(**inputs,sample_count=1,noise=noise[:,:1])
++    torch.testing.assert_close(prefix,p[:,:1],atol=2e-6,rtol=2e-5)
++    if k==10:
++        torch.testing.assert_close(official_adapter(new,**{k:v for k,v in b.items() if k.startswith('speaker_') or k=='source_lengths'},noise=noise),p,rtol=0,atol=0)
++
++
++def test_historical_bare_sample_mismatch_is_real():
++    b=batch();old=old_model(config=CONFIG,output_config=OutputConfig(head_pre_norm=True)).eval();noise=torch.randn(4,4,32)
++    hooked=forward_a0(old,**paired_model_inputs(b),noise=noise)
++    bare=old.sample(**paired_model_inputs(b),noise=noise)
++    assert (hooked-bare).abs().max()>0
++
++
++def test_standard_normal_does_not_call_prior_and_conditional_does():
++    b=batch();noise=torch.randn(4,4,32)
++    for mode in ('standard_normal','conditional_gaussian'):
++        model=make_model(123,CONFIG,prior_mode=mode).eval();calls=[]
++        hook=model.prior.register_forward_hook(lambda *args:calls.append(1))
++        try:aux=model(**paired_model_inputs(b),noise=noise,return_aux=True)
++        finally:hook.remove()
++        assert bool(calls)==(mode=='conditional_gaussian')
++        if mode=='standard_normal':assert torch.equal(aux['latent_z'],noise)
++        else:assert not torch.equal(aux['latent_z'],noise)
++
++
++def test_loader_rejects_missing_semantics(tmp_path):
++    model=make_model(123,CONFIG);full=dict(**model_metadata(model,SCALES),model=model.state_dict())
++    for key in ('prior_mode','output_config','config','scales','latent_dim'):
++        p=tmp_path/(key+'.pt');torch.save({k:v for k,v in full.items() if k!=key},p)
++        with pytest.raises(ValueError):load_checkpoint(p)
++
++
++@pytest.mark.parametrize('arm',['C0','C1','C2'])
++def test_exact_resume_and_step_budget(tmp_path,arm):
++    cfg=TrainConfig(max_steps=6,T=12,eval_interval=3,checkpoint_interval=3,diagnostic_interval=3,fixed_checkpoints=(3,6))
++    pool=SimpleNamespace(sources={'s':[0,1,2,3,4]},references={'s':['a','b','c']})
++    records,noise,_=schedule(pool,cfg,32)
++    scaler=DescriptorScaler(torch.zeros(75),torch.ones(75),torch.ones(75))
++    g=torch.Generator().manual_seed(33);refs=(torch.rand(3,75,generator=g),torch.ones(3,75,dtype=torch.bool))
++    data=SimpleNamespace(scaler=scaler,batch=lambda r:(batch(),None if arm=='C0' else refs))
++    manifest=dict(model_config=asdict(CONFIG),scales=SCALES,split_hash='test-split',population=dict(source_population=5))
++    a,ma,oa=train(tmp_path/'full',cfg,arm,records,noise,data,manifest,'cpu',model_config=CONFIG)
++    stopped,_,_=train(tmp_path/'resume',cfg,arm,records,noise,data,manifest,'cpu',stop_after=3,model_config=CONFIG)
++    assert not stopped['completed'] and stopped['actual_optimizer_steps']==3
++    b,mb,ob=train(tmp_path/'resume',cfg,arm,records,noise,data,manifest,'cpu',resume=stopped['checkpoints'][-1]['path'],model_config=CONFIG)
++    assert a['completed'] and b['completed'] and b['actual_optimizer_steps']==b['requested_steps']==6
++    assert state_hash(ma)==state_hash(mb)
++    sa=torch.load(a['checkpoints'][-1]['path'],weights_only=True);sb=torch.load(b['checkpoints'][-1]['path'],weights_only=True)
++    assert sa['training_rows']==sb['training_rows']
++    for key,value in oa.state_dict()['state'].items():
++        for k,v in value.items():
++            torch.testing.assert_close(v,ob.state_dict()['state'][key][k],rtol=0,atol=0)
++    with pytest.raises(ValueError,match='schedule length'):
++        train(tmp_path/'bad',replace(cfg,max_steps=2000),arm,records,noise,data,manifest,'cpu',model_config=CONFIG)
++
++
++def test_long_schedule_seed_independence_and_extension():
++    pool=SimpleNamespace(sources={'s':[0,1,2],'t':[3,4]},references={'s':['a','b'],'t':['c','d']})
++    configs=[TrainConfig(init_seed=s,sampler_seed=s,noise_seed=s) for s in (123,42,2026)]
++    runs=[schedule(pool,c,32) for c in configs]
++    assert all(len(r)==len(n)==2000 for r,n,h in runs)
++    assert len({h['source_hash'] for r,n,h in runs})==len({h['noise_hash'] for r,n,h in runs})==3
++    short,noise,_=schedule(pool,replace(configs[0],max_steps=128),32)
++    assert short==runs[0][0][:128] and torch.equal(noise,runs[0][1][:128])
++    assert not torch.equal(runs[0][1][:128],runs[0][1][128:256])
++    assert len({state_hash(make_model(c.init_seed,CONFIG)) for c in configs})==3
++
++
++def test_real_phase21_checkpoint_equivalence():
++    path=Path('runs/phase21/conditional_score_v0/checkpoints/C0.pt')
++    if not path.exists():pytest.skip('actual Phase 2.1 checkpoint missing')
++    model,saved=load_checkpoint(path,legacy_manifest=path.parent.parent/'training_manifest.json')
++    old=old_model(config=HiRPConfig(**saved['config']),output_config=OutputConfig(**saved['output_config'])).eval()
++    old.load_state_dict(saved['model']);b=batch();noise=torch.randn(4,4,32)
++    with torch.no_grad():
++        p=forward_a0(old,**paired_model_inputs(b),noise=noise)
++        q=model.sample(**paired_model_inputs(b),noise=noise)
++    torch.testing.assert_close(p,q,rtol=0,atol=0)
++
++
++def test_evaluation_uses_public_sampler_and_common_masks():
++    from hirp.evaluate_phase22 import evaluate_model,extra_shuffles
++    from hirp.evaluate_phase21 import evaluate_model as old_evaluate
++    from hirp.group_features import DescriptorScaler
++    b=batch();b['clip_id']=['a','b','c','d'];b['session_id']=['s']*4
++    m=make_model(123,CONFIG).eval();scaler=DescriptorScaler(torch.zeros(75),torch.ones(75),torch.ones(75))
++    refs={'s':(torch.rand(3,75),torch.ones(3,75,dtype=torch.bool))};bank=torch.randn(1,4,32);perm=torch.tensor([1,2,3,0])
++    r=evaluate_model(m,b,refs,scaler,scaler,bank,perm,'cpu',4)
++    original=old_evaluate(m,b,refs,scaler,scaler,bank,perm,'cpu',4)
++    assert r['aggregate']==original['aggregate']
++    rows=extra_shuffles(r['all_predictions'],b,[dict(seed=0,donors=perm.tolist())])[0]['per_input']
++    for row,i in zip(rows,range(4)):
++        assert row['common_length']==min(int(b['pair_lengths'][i]),int(b['source_lengths'][perm[i]]))
++        assert row['correct']==r['per_input'][i]['conditional_correct_common']['loss']
++    with pytest.raises(TypeError):m(**paired_model_inputs(b),target=b['paired_target'])
++    with pytest.raises(TypeError):eval_adapter(m,**paired_model_inputs(b),noise=bank.expand(4,-1,-1),session_id=b['session_id'])

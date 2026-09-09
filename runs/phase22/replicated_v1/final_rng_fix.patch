@@ -1,0 +1,13 @@
+--- runtime/hirp/train_phase22.py
++++ final/hirp/train_phase22.py
+@@ -166,6 +166,10 @@
+         if global_step!=len(rows) or global_step!=saved['schedule_position']:raise ValueError('resume step count mismatch')
+         if stream_hashes(records[:global_step],noises[:global_step])!=saved['consumed_hashes']:raise ValueError('resume schedule prefix mismatch')
+         initial_hash=saved['initialization_hash'];restore_rng(saved['rng'])
++    # PyTorch 2.1's first AdamW construction lazily imports modules that consume
++    # Python random state. Normalize that non-tensor stream after construction.
++    # Torch RNG is untouched, preserving model initialization/dropout semantics.
++    if not resume:random.seed(cfg.init_seed)
+     model.train()
+     weight=0. if arm=='C0' else cfg.lambda_group
+     start_step=global_step;started=time.perf_counter();compute_seconds=0.

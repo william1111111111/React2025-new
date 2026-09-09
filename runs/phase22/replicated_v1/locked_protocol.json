@@ -1,0 +1,74 @@
+{
+  "seeds": [
+    123,
+    42,
+    2026
+  ],
+  "init_sampler_noise_seed_rule": "each equal to seed label, reference/source substreams +2000003/+1000003",
+  "max_steps": 2000,
+  "T": 128,
+  "K_train": 4,
+  "B": 4,
+  "lr": 0.0001,
+  "weight_decay": 0.01,
+  "lambda_group": 0.1,
+  "arms": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "eval_steps": [
+    128,
+    500,
+    1000,
+    1500,
+    2000
+  ],
+  "checkpoint_steps": [
+    128,
+    500,
+    1000,
+    1500,
+    2000
+  ],
+  "evaluation_noise_seeds": [
+    22001,
+    22002
+  ],
+  "permutation_seeds": [
+    22101,
+    22102,
+    22103
+  ],
+  "K_main": 32,
+  "K_stability": 64,
+  "development": "same 80 clips; not independent confirmation",
+  "conditional_scales": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "lambda_sweep": false
+}

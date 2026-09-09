@@ -1,0 +1,21 @@
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests/test_phase22.py", "-q"], "exit_code": 0, "log": "tests_initial.txt"}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests/test_phase22.py", "-q"], "exit_code": 0, "log": "tests_evaluator.txt"}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests", "-q"], "environment": {"CUDA_VISIBLE_DEVICES": "4,6,7"}, "exit_code": 0, "log": "tests_full_gpu.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.audit_phase22", "--run", "runs/phase22/replicated_v1", "--device", "cuda:4"], "exit_code": 0, "log": "audit_gpu_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.evaluate_phase22", "--root", "runs/phase22/replicated_v1", "--prepare"], "exit_code": 0}
+{"argv": [".venv/bin/python", "-m", "hirp.train_phase22", "--run", "runs/phase22/replicated_v1/seed_123", "--device", "cuda:4", "--init-seed", "123", "--sampler-seed", "123", "--noise-seed", "123", "--max-steps", "2000", "--lr", "0.0001", "--lambda-group", "0.1", "--T", "128", "--K", "4", "--B", "4", "--eval-interval", "500", "--checkpoint-interval", "500"], "status": "completed", "log": "seed_123_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.train_phase22", "--run", "runs/phase22/replicated_v1/seed_42", "--device", "cuda:4", "--init-seed", "42", "--sampler-seed", "42", "--noise-seed", "42", "--max-steps", "2000", "--lr", "0.0001", "--lambda-group", "0.1", "--T", "128", "--K", "4", "--B", "4", "--eval-interval", "500", "--checkpoint-interval", "500"], "status": "launched", "log": "seed_42_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.train_phase22", "--run", "runs/phase22/replicated_v1/seed_2026", "--device", "cuda:6", "--init-seed", "2026", "--sampler-seed", "2026", "--noise-seed", "2026", "--max-steps", "2000", "--lr", "0.0001", "--lambda-group", "0.1", "--T", "128", "--K", "4", "--B", "4", "--eval-interval", "500", "--checkpoint-interval", "500"], "status": "launched", "log": "seed_2026_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.evaluate_phase22", "--root", "runs/phase22/replicated_v1", "--seed", "123", "--device", "cuda:7"], "status": "launched", "log": "evaluation_123_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.evaluate_phase22", "--root", "runs/phase22/replicated_v1", "--seed", "42", "--device", "cuda:4"], "status": "launched", "log": "evaluation_42_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.evaluate_phase22", "--root", "runs/phase22/replicated_v1", "--seed", "2026", "--device", "cuda:6"], "status": "launched", "log": "evaluation_2026_stdout.txt"}
+{"stage": "train", "seed": 123, "exit_code": 0, "actual_optimizer_steps": [2000, 2000, 2000]}
+{"stage": "train", "seed": 42, "exit_code": 0, "actual_optimizer_steps": [2000, 2000, 2000]}
+{"stage": "train", "seed": 2026, "exit_code": 0, "actual_optimizer_steps": [2000, 2000, 2000]}
+{"stage": "evaluation", "seed": 123, "exit_code": 0, "log": "evaluation_123_stdout.txt"}
+{"stage": "evaluation", "seed": 42, "exit_code": 0, "log": "evaluation_42_stdout.txt"}
+{"stage": "evaluation", "seed": 2026, "exit_code": 0, "log": "evaluation_2026_stdout.txt"}
+{"stage": "additional_rng_snapshot_comparison", "exit_code": 1, "reason": "cold first AdamW construction consumes Python RNG; all tensor/optimizer/training-row comparisons passed", "evidence": "resume_gpu_optimizer_verification.json"}
+{"argv": [".venv/bin/python", "-m", "hirp.verify_resume_phase22", "--root", "runs/phase22/replicated_v1", "--device", "cuda:4"], "exit_code": 0, "log": "rng_fix_stdout.txt"}
+{"argv": [".venv/bin/python", "-m", "pytest", "hirp/tests/test_phase22.py", "-q"], "exit_code": 0, "log": "tests_rng_fix.txt"}
+{"argv": [".venv/bin/python", "-m", "hirp.summarize_phase22"], "exit_code": 0, "log": null}

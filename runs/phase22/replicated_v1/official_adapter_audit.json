@@ -1,0 +1,16 @@
+{
+  "scope": "read-only local official integration review; no official metric execution",
+  "source_hashes": {
+    "/home/zhengshiyi/react2025/regnn/eval_conditional_regnn_official_test.py": "a6d44a2bbad7fb25eff960cb7229c7ac6a7f90c0e2aeb74677413a147d690c6c",
+    "/home/zhengshiyi/react2025/dataset/react_2025.py": "042b9c43af0200d1af0a58a7128086a9dc9b575b85ea6e76e823c92137a01f47",
+    "/home/zhengshiyi/react2025/framework/modules/post_processor.py": "b33b12035dc5002b10c4acc1ce586d8e9e1efdd01c07ade434f764ac6490ccd6"
+  },
+  "K": 10,
+  "source_lengths": "original test loader supplies full speaker sequence length; input modalities must cover it; chunk generator uses valid chunk lengths",
+  "preprocessing": "speaker 3DMM uses FaceVerse mean/std; speaker attributes remain stored units; generated 25 attributes already legal-domain",
+  "postprocessing": "legacy Processor aligns target lengths using pretrained autoencoder, does not select/reorder generated candidates; no metric definitions modified",
+  "clip_length": "750 is configured generation chunk length in legacy offline runner; Processor target alignment uses 1000; neither is validated by T=128 training",
+  "assets_present": true,
+  "adapter": "hirp.phase22.official_adapter supplies 10 stochastic samples from explicit noise and source-only inputs, tested against public sample at supported short input length",
+  "not_executed": "official metrics, full-sequence/chunk stitching and T=750 capability; independent confirmation provenance remains unresolved, and this is a fixed development pilot"
+}
