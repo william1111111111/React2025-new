@@ -1,0 +1,4666 @@
+{
+  "channels": {
+    "overall": {
+      "cross_distance": 0.41643765978515146,
+      "self_distance": 0.15570617904886602,
+      "ES": 0.33858456946909427,
+      "prediction_std": 0.05465531083755195,
+      "boundary_fraction": 0.2127763632684946,
+      "temporal_mean": 0.16838426338508725,
+      "temporal_std": 0.04155082949437201,
+      "velocity_abs_mean": 0.01958062071353197,
+      "velocity_rms": 0.05212061726488173,
+      "expression_entropy": 1.19683286100626
+    },
+    "AU": {
+      "cross_distance": 0.3744198987260461,
+      "self_distance": 0.06815475332550705,
+      "ES": 0.3403425237163901,
+      "prediction_std": 0.03528871319722384,
+      "boundary_fraction": 0.1421531245810911,
+      "temporal_mean": 0.16517424639314413,
+      "temporal_std": 0.03769616223871708,
+      "velocity_abs_mean": 0.01779766374384053,
+      "velocity_rms": 0.03378127629403025
+    },
+    "VA": {
+      "cross_distance": 0.8139774151146412,
+      "self_distance": 0.4616519007831812,
+      "ES": 0.5831514656543731,
+      "prediction_std": 0.28096547853201626,
+      "boundary_fraction": 0.5005577087402344,
+      "temporal_mean": 0.3659965781494975,
+      "temporal_std": 0.10188773861154914,
+      "velocity_abs_mean": 0.046757598873227835,
+      "velocity_rms": 0.14267968707717954
+    },
+    "expression": {
+      "cross_distance": 0.313644278049469,
+      "self_distance": 0.060460980189964174,
+      "ES": 0.283413786906749,
+      "prediction_std": 0.03439014989417046,
+      "boundary_fraction": 0.27324962615966797,
+      "temporal_mean": 0.125,
+      "temporal_std": 0.03369411125313491,
+      "velocity_abs_mean": 0.01612941889325157,
+      "velocity_rms": 0.033901472412981096,
+      "expression_entropy": 1.19683286100626
+    }
+  },
+  "prior": {
+    "latent_mu_mean": 0.2128818929195404,
+    "latent_mu_std_across_batch": 0.13524650037288666,
+    "sigma_mean": 4.740359306335449,
+    "sigma_std": 3.2682838439941406,
+    "sigma_min": 0.06776764243841171,
+    "sigma_max": 7.389056205749512,
+    "log_sigma_lower_clamp_fraction": 0.0,
+    "log_sigma_upper_clamp_fraction": 0.540234386920929,
+    "effective_sigma_mean": 4.740359306335449
+  },
+  "residual": {
+    "stochastic_raw_abs_mean": 6.598326778411865,
+    "stochastic_residual_abs_mean": 0.9495942510664463,
+    "tanh_saturation_fraction": 0.8014258854091167
+  },
+  "spread_distributions": {
+    "overall": {
+      "count": 80,
+      "mean": 0.15570617904886602,
+      "std": 0.018488661857407235,
+      "p05": 0.11809394881129265,
+      "p50": 0.1560940071940422,
+      "p95": 0.18299429640173911
+    },
+    "AU": {
+      "count": 80,
+      "mean": 0.06815475332550705,
+      "std": 0.017602739490980374,
+      "p05": 0.043426160141825675,
+      "p50": 0.06407284736633301,
+      "p95": 0.09669868797063827
+    },
+    "VA": {
+      "count": 80,
+      "mean": 0.4616519007831812,
+      "std": 0.07408875471404854,
+      "p05": 0.32277402132749555,
+      "p50": 0.45032307505607605,
+      "p95": 0.579048889875412
+    },
+    "expression": {
+      "count": 80,
+      "mean": 0.060460980189964174,
+      "std": 0.01637299156572656,
+      "p05": 0.032192545011639595,
+      "p50": 0.06219912879168987,
+      "p95": 0.08533938936889171
+    }
+  },
+  "per_example": [
+    {
+      "clip_id": "speaker/session0/Camera-2024-10-17-143648-143743",
+      "session_id": "session0",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.42418456077575684,
+          "self_distance": 0.17942535877227783,
+          "ES": 0.3344718813896179,
+          "prediction_std": 0.06017740070819855,
+          "boundary_fraction": 0.17786620557308197,
+          "temporal_mean": 0.19768129289150238,
+          "temporal_std": 0.031194305047392845,
+          "velocity_abs_mean": 0.009651790373027325,
+          "velocity_rms": 0.02246711775660515,
+          "expression_entropy": 1.3093143701553345
+        },
+        "AU": {
+          "cross_distance": 0.4029562771320343,
+          "self_distance": 0.09003891050815582,
+          "ES": 0.357936829328537,
+          "prediction_std": 0.04279652610421181,
+          "boundary_fraction": 0.16250000894069672,
+          "temporal_mean": 0.20407351851463318,
+          "temporal_std": 0.028416786342859268,
+          "velocity_abs_mean": 0.008611807599663734,
+          "velocity_rms": 0.017171863466501236
+        },
+        "VA": {
+          "cross_distance": 0.8932321071624756,
+          "self_distance": 0.5320537686347961,
+          "ES": 0.6272052526473999,
+          "prediction_std": 0.33932211995124817,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.44046497344970703,
+          "temporal_std": 0.08413169533014297,
+          "velocity_abs_mean": 0.01837168261408806,
+          "velocity_rms": 0.05471467599272728
+        },
+        "expression": {
+          "cross_distance": 0.2261972427368164,
+          "self_distance": 0.03767775371670723,
+          "ES": 0.20735836029052734,
+          "prediction_std": 0.022980360314249992,
+          "boundary_fraction": 0.1261444091796875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.023167809471488,
+          "velocity_abs_mean": 0.009421784430742264,
+          "velocity_rms": 0.016616253182291985,
+          "expression_entropy": 1.3093143701553345
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.69049072265625,
+        "stochastic_residual_abs_mean": 0.9588590860366821,
+        "tanh_saturation_fraction": 0.8244823813438416
+      }
+    },
+    {
+      "clip_id": "speaker/session0/Camera-2024-10-21-144916-144926",
+      "session_id": "session0",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.27817901968955994,
+          "self_distance": 0.11130422353744507,
+          "ES": 0.2225269079208374,
+          "prediction_std": 0.03921090066432953,
+          "boundary_fraction": 0.30785155296325684,
+          "temporal_mean": 0.14891600608825684,
+          "temporal_std": 0.040676746517419815,
+          "velocity_abs_mean": 0.024836119264364243,
+          "velocity_rms": 0.062448251992464066,
+          "expression_entropy": 0.8543412685394287
+        },
+        "AU": {
+          "cross_distance": 0.1874183714389801,
+          "self_distance": 0.043466463685035706,
+          "ES": 0.16568514704704285,
+          "prediction_std": 0.02262992598116398,
+          "boundary_fraction": 0.16354981064796448,
+          "temporal_mean": 0.151017963886261,
+          "temporal_std": 0.036884985864162445,
+          "velocity_abs_mean": 0.022161876782774925,
+          "velocity_rms": 0.04402614384889603
+        },
+        "VA": {
+          "cross_distance": 0.7517701387405396,
+          "self_distance": 0.3217083215713501,
+          "ES": 0.5909159779548645,
+          "prediction_std": 0.18232402205467224,
+          "boundary_fraction": 0.51092529296875,
+          "temporal_mean": 0.22881561517715454,
+          "temporal_std": 0.09911960363388062,
+          "velocity_abs_mean": 0.05715663731098175,
+          "velocity_rms": 0.15370287001132965
+        },
+        "expression": {
+          "cross_distance": 0.1816588193178177,
+          "self_distance": 0.06894276291131973,
+          "ES": 0.14718744158744812,
+          "prediction_std": 0.034521959722042084,
+          "boundary_fraction": 0.52764892578125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03317558765411377,
+          "velocity_abs_mean": 0.021770184859633446,
+          "velocity_rms": 0.05144285410642624,
+          "expression_entropy": 0.8543412685394287
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.205878257751465,
+        "stochastic_residual_abs_mean": 0.9407066702842712,
+        "tanh_saturation_fraction": 0.7623681426048279
+      }
+    },
+    {
+      "clip_id": "speaker/session0/Camera-2024-10-18-154049-154118",
+      "session_id": "session0",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5783382654190063,
+          "self_distance": 0.1692153811454773,
+          "ES": 0.4937305748462677,
+          "prediction_std": 0.047157276421785355,
+          "boundary_fraction": 0.21860839426517487,
+          "temporal_mean": 0.1743059903383255,
+          "temporal_std": 0.04325022175908089,
+          "velocity_abs_mean": 0.019109835848212242,
+          "velocity_rms": 0.06342168897390366,
+          "expression_entropy": 0.5071642398834229
+        },
+        "AU": {
+          "cross_distance": 0.5248313546180725,
+          "self_distance": 0.05054587870836258,
+          "ES": 0.4995584189891815,
+          "prediction_std": 0.02852325700223446,
+          "boundary_fraction": 0.0460611991584301,
+          "temporal_mean": 0.16744276881217957,
+          "temporal_std": 0.04616667702794075,
+          "velocity_abs_mean": 0.020536376163363457,
+          "velocity_rms": 0.03697608411312103
+        },
+        "VA": {
+          "cross_distance": 1.0918830633163452,
+          "self_distance": 0.5653688311576843,
+          "ES": 0.8091986179351807,
+          "prediction_std": 0.3273816704750061,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4230044186115265,
+          "temporal_std": 0.13670647144317627,
+          "velocity_abs_mean": 0.05700671672821045,
+          "velocity_rms": 0.19723640382289886
+        },
+        "expression": {
+          "cross_distance": 0.46497422456741333,
+          "self_distance": 0.02407902479171753,
+          "ES": 0.45293471217155457,
+          "prediction_std": 0.012039965018630028,
+          "boundary_fraction": 0.4717864990234375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.01441781222820282,
+          "velocity_abs_mean": 0.0069608562625944614,
+          "velocity_rms": 0.01675150915980339,
+          "expression_entropy": 0.5071642398834229
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.0576043128967285,
+        "stochastic_residual_abs_mean": 0.9429510235786438,
+        "tanh_saturation_fraction": 0.7677196860313416
+      }
+    },
+    {
+      "clip_id": "speaker/session0/Camera-2024-10-17-151556-151626",
+      "session_id": "session0",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3745182752609253,
+          "self_distance": 0.17527198791503906,
+          "ES": 0.28688228130340576,
+          "prediction_std": 0.053504329174757004,
+          "boundary_fraction": 0.2351660132408142,
+          "temporal_mean": 0.15503858029842377,
+          "temporal_std": 0.04627922922372818,
+          "velocity_abs_mean": 0.026372810825705528,
+          "velocity_rms": 0.08427505195140839,
+          "expression_entropy": 0.9493904113769531
+        },
+        "AU": {
+          "cross_distance": 0.2753655016422272,
+          "self_distance": 0.0502663254737854,
+          "ES": 0.2502323389053345,
+          "prediction_std": 0.02556258626282215,
+          "boundary_fraction": 0.09837239980697632,
+          "temporal_mean": 0.13802047073841095,
+          "temporal_std": 0.03995385020971298,
+          "velocity_abs_mean": 0.022687554359436035,
+          "velocity_rms": 0.04227350652217865
+        },
+        "VA": {
+          "cross_distance": 0.8351434469223022,
+          "self_distance": 0.5588409900665283,
+          "ES": 0.5557229518890381,
+          "prediction_std": 0.322950154542923,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.40282872319221497,
+          "temporal_std": 0.13395220041275024,
+          "velocity_abs_mean": 0.08319007605314255,
+          "velocity_rms": 0.25875142216682434
+        },
+        "expression": {
+          "cross_distance": 0.3472396731376648,
+          "self_distance": 0.07279865443706512,
+          "ES": 0.31084033846855164,
+          "prediction_std": 0.03853364288806915,
+          "boundary_fraction": 0.425445556640625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03622107580304146,
+          "velocity_abs_mean": 0.019078349694609642,
+          "velocity_rms": 0.045889511704444885,
+          "expression_entropy": 0.9493904113769531
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.349468231201172,
+        "stochastic_residual_abs_mean": 0.948104977607727,
+        "tanh_saturation_fraction": 0.7940478324890137
+      }
+    },
+    {
+      "clip_id": "speaker/session1/Camera-2024-10-17-151556-151626",
+      "session_id": "session1",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.42089971899986267,
+          "self_distance": 0.17098909616470337,
+          "ES": 0.335405170917511,
+          "prediction_std": 0.0589495450258255,
+          "boundary_fraction": 0.1788037121295929,
+          "temporal_mean": 0.16922466456890106,
+          "temporal_std": 0.039973869919776917,
+          "velocity_abs_mean": 0.017765438184142113,
+          "velocity_rms": 0.053187038749456406,
+          "expression_entropy": 1.2543916702270508
+        },
+        "AU": {
+          "cross_distance": 0.3717946410179138,
+          "self_distance": 0.06332451850175858,
+          "ES": 0.34013238549232483,
+          "prediction_std": 0.0350370779633522,
+          "boundary_fraction": 0.06035156548023224,
+          "temporal_mean": 0.14976133406162262,
+          "temporal_std": 0.0351957343518734,
+          "velocity_abs_mean": 0.016469044610857964,
+          "velocity_rms": 0.03381697088479996
+        },
+        "VA": {
+          "cross_distance": 0.8472245931625366,
+          "self_distance": 0.5311934947967529,
+          "ES": 0.5816278457641602,
+          "prediction_std": 0.3314387798309326,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4920981824398041,
+          "temporal_std": 0.10563266277313232,
+          "velocity_abs_mean": 0.03968663141131401,
+          "velocity_rms": 0.15023797750473022
+        },
+        "expression": {
+          "cross_distance": 0.3365357518196106,
+          "self_distance": 0.05667709931731224,
+          "ES": 0.3081972002983093,
+          "prediction_std": 0.03566311299800873,
+          "boundary_fraction": 0.3206024169921875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0325181819498539,
+          "velocity_abs_mean": 0.014715874567627907,
+          "velocity_rms": 0.032451529055833817,
+          "expression_entropy": 1.2543916702270508
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.642464637756348,
+        "stochastic_residual_abs_mean": 0.9479490518569946,
+        "tanh_saturation_fraction": 0.8003564476966858
+      }
+    },
+    {
+      "clip_id": "speaker/session1/Camera-2024-10-18-162224-162332",
+      "session_id": "session1",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5618695020675659,
+          "self_distance": 0.15879753232002258,
+          "ES": 0.4824707508087158,
+          "prediction_std": 0.046138983219861984,
+          "boundary_fraction": 0.20561034977436066,
+          "temporal_mean": 0.16246959567070007,
+          "temporal_std": 0.04745456203818321,
+          "velocity_abs_mean": 0.02152884379029274,
+          "velocity_rms": 0.06479231268167496,
+          "expression_entropy": 0.6197819113731384
+        },
+        "AU": {
+          "cross_distance": 0.5430872440338135,
+          "self_distance": 0.05379759520292282,
+          "ES": 0.5161884427070618,
+          "prediction_std": 0.029018880799412727,
+          "boundary_fraction": 0.04690755531191826,
+          "temporal_mean": 0.1540442705154419,
+          "temporal_std": 0.05053981393575668,
+          "velocity_abs_mean": 0.022617308422923088,
+          "velocity_rms": 0.04105842486023903
+        },
+        "VA": {
+          "cross_distance": 0.9507898092269897,
+          "self_distance": 0.5185996294021606,
+          "ES": 0.6914899945259094,
+          "prediction_std": 0.30190107226371765,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.37553808093070984,
+          "temporal_std": 0.1430971324443817,
+          "velocity_abs_mean": 0.06073854863643646,
+          "velocity_rms": 0.1953466236591339
+        },
+        "expression": {
+          "cross_distance": 0.4437212347984314,
+          "self_distance": 0.02776072919368744,
+          "ES": 0.4298408627510071,
+          "prediction_std": 0.014298668131232262,
+          "boundary_fraction": 0.4295806884765625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.017759069800376892,
+          "velocity_abs_mean": 0.009685549885034561,
+          "velocity_rms": 0.020443739369511604,
+          "expression_entropy": 0.6197819113731384
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.313413143157959,
+        "stochastic_residual_abs_mean": 0.9459398984909058,
+        "tanh_saturation_fraction": 0.78895503282547
+      }
+    },
+    {
+      "clip_id": "speaker/session1/Camera-2024-07-15-110902-110933",
+      "session_id": "session1",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3894491493701935,
+          "self_distance": 0.14263735711574554,
+          "ES": 0.3181304633617401,
+          "prediction_std": 0.05133429542183876,
+          "boundary_fraction": 0.20336425304412842,
+          "temporal_mean": 0.1434939056634903,
+          "temporal_std": 0.0442277267575264,
+          "velocity_abs_mean": 0.021709395572543144,
+          "velocity_rms": 0.05644340068101883,
+          "expression_entropy": 1.2374236583709717
+        },
+        "AU": {
+          "cross_distance": 0.2657511234283447,
+          "self_distance": 0.05213470011949539,
+          "ES": 0.23968377709388733,
+          "prediction_std": 0.027630046010017395,
+          "boundary_fraction": 0.08348795771598816,
+          "temporal_mean": 0.13306620717048645,
+          "temporal_std": 0.03862718865275383,
+          "velocity_abs_mean": 0.019593385979533195,
+          "velocity_rms": 0.038155581802129745
+        },
+        "VA": {
+          "cross_distance": 0.9093376398086548,
+          "self_distance": 0.40616142749786377,
+          "ES": 0.7062569260597229,
+          "prediction_std": 0.2438996136188507,
+          "boundary_fraction": 0.5029296875,
+          "temporal_mean": 0.29567742347717285,
+          "temporal_std": 0.10587551444768906,
+          "velocity_abs_mean": 0.04718489572405815,
+          "velocity_rms": 0.14970193803310394
+        },
+        "expression": {
+          "cross_distance": 0.3605068325996399,
+          "self_distance": 0.085405632853508,
+          "ES": 0.3178040087223053,
+          "prediction_std": 0.047638438642024994,
+          "boundary_fraction": 0.353240966796875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03931679576635361,
+          "velocity_abs_mean": 0.01930803805589676,
+          "velocity_rms": 0.04029169678688049,
+          "expression_entropy": 1.2374236583709717
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.530644416809082,
+        "stochastic_residual_abs_mean": 0.9507663249969482,
+        "tanh_saturation_fraction": 0.8018115162849426
+      }
+    },
+    {
+      "clip_id": "speaker/session1/Camera-2024-10-21-153924-153959",
+      "session_id": "session1",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5214533805847168,
+          "self_distance": 0.1654343456029892,
+          "ES": 0.4387362003326416,
+          "prediction_std": 0.05515589565038681,
+          "boundary_fraction": 0.19941894710063934,
+          "temporal_mean": 0.163608580827713,
+          "temporal_std": 0.049614522606134415,
+          "velocity_abs_mean": 0.023762788623571396,
+          "velocity_rms": 0.06369947642087936,
+          "expression_entropy": 1.003321647644043
+        },
+        "AU": {
+          "cross_distance": 0.5047348737716675,
+          "self_distance": 0.07545012980699539,
+          "ES": 0.4670098125934601,
+          "prediction_std": 0.039105646312236786,
+          "boundary_fraction": 0.08009440451860428,
+          "temporal_mean": 0.16084147989749908,
+          "temporal_std": 0.047633133828639984,
+          "velocity_abs_mean": 0.0236253272742033,
+          "velocity_rms": 0.040937162935733795
+        },
+        "VA": {
+          "cross_distance": 0.9301128387451172,
+          "self_distance": 0.5122234225273132,
+          "ES": 0.6740010976791382,
+          "prediction_std": 0.297509104013443,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3387965261936188,
+          "temporal_std": 0.12894690036773682,
+          "velocity_abs_mean": 0.05480797216296196,
+          "velocity_rms": 0.18312956392765045
+        },
+        "expression": {
+          "cross_distance": 0.38728708028793335,
+          "self_distance": 0.04785271733999252,
+          "ES": 0.363360732793808,
+          "prediction_std": 0.024661805480718613,
+          "boundary_fraction": 0.3480072021484375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03349653631448746,
+          "velocity_abs_mean": 0.01625923253595829,
+          "velocity_rms": 0.03396676853299141,
+          "expression_entropy": 1.003321647644043
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.250175476074219,
+        "stochastic_residual_abs_mean": 0.9486547708511353,
+        "tanh_saturation_fraction": 0.7913720607757568
+      }
+    },
+    {
+      "clip_id": "speaker/session10/Camera-2024-10-23-151539-151613",
+      "session_id": "session10",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3422570824623108,
+          "self_distance": 0.13733333349227905,
+          "ES": 0.27359041571617126,
+          "prediction_std": 0.060868434607982635,
+          "boundary_fraction": 0.16740234196186066,
+          "temporal_mean": 0.18628504872322083,
+          "temporal_std": 0.032222989946603775,
+          "velocity_abs_mean": 0.010322652757167816,
+          "velocity_rms": 0.019127143546938896,
+          "expression_entropy": 1.6834537982940674
+        },
+        "AU": {
+          "cross_distance": 0.27962321043014526,
+          "self_distance": 0.0873110443353653,
+          "ES": 0.2359676957130432,
+          "prediction_std": 0.048350509256124496,
+          "boundary_fraction": 0.20118002593517303,
+          "temporal_mean": 0.19917598366737366,
+          "temporal_std": 0.030065057799220085,
+          "velocity_abs_mean": 0.009644770994782448,
+          "velocity_rms": 0.015486346557736397
+        },
+        "VA": {
+          "cross_distance": 0.6979883909225464,
+          "self_distance": 0.34837016463279724,
+          "ES": 0.5238032937049866,
+          "prediction_std": 0.23474664986133575,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.33474332094192505,
+          "temporal_std": 0.06571197509765625,
+          "velocity_abs_mean": 0.019519701600074768,
+          "velocity_rms": 0.04355985298752785
+        },
+        "expression": {
+          "cross_distance": 0.30933916568756104,
+          "self_distance": 0.06467622518539429,
+          "ES": 0.2770010530948639,
+          "prediction_std": 0.040869999676942825,
+          "boundary_fraction": 0.0209197998046875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.027896873652935028,
+          "velocity_abs_mean": 0.009294421412050724,
+          "velocity_rms": 0.014806521125137806,
+          "expression_entropy": 1.6834537982940674
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.109622001647949,
+        "stochastic_residual_abs_mean": 0.9544239044189453,
+        "tanh_saturation_fraction": 0.8271044492721558
+      }
+    },
+    {
+      "clip_id": "speaker/session10/Camera-2024-07-11-134401-134311",
+      "session_id": "session10",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.37787383794784546,
+          "self_distance": 0.1538977324962616,
+          "ES": 0.30092495679855347,
+          "prediction_std": 0.06096337363123894,
+          "boundary_fraction": 0.14899413287639618,
+          "temporal_mean": 0.17470546066761017,
+          "temporal_std": 0.028137220069766045,
+          "velocity_abs_mean": 0.009245517663657665,
+          "velocity_rms": 0.017526734620332718,
+          "expression_entropy": 1.6805171966552734
+        },
+        "AU": {
+          "cross_distance": 0.3259141445159912,
+          "self_distance": 0.08031158149242401,
+          "ES": 0.2857583463191986,
+          "prediction_std": 0.04137639328837395,
+          "boundary_fraction": 0.15675456821918488,
+          "temporal_mean": 0.1726997196674347,
+          "temporal_std": 0.024579061195254326,
+          "velocity_abs_mean": 0.007780399173498154,
+          "velocity_rms": 0.013255998492240906
+        },
+        "VA": {
+          "cross_distance": 0.679533064365387,
+          "self_distance": 0.42463040351867676,
+          "ES": 0.4672178626060486,
+          "prediction_std": 0.2889041602611542,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.38857054710388184,
+          "temporal_std": 0.05448250472545624,
+          "velocity_abs_mean": 0.018304310739040375,
+          "velocity_rms": 0.039844002574682236
+        },
+        "expression": {
+          "cross_distance": 0.3601515293121338,
+          "self_distance": 0.061148859560489655,
+          "ES": 0.32957708835601807,
+          "prediction_std": 0.040703773498535156,
+          "boundary_fraction": 0.04669189453125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.028222452849149704,
+          "velocity_abs_mean": 0.009727916680276394,
+          "velocity_rms": 0.015283770859241486,
+          "expression_entropy": 1.6805171966552734
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.931392669677734,
+        "stochastic_residual_abs_mean": 0.9564265012741089,
+        "tanh_saturation_fraction": 0.8209912180900574
+      }
+    },
+    {
+      "clip_id": "speaker/session10/Camera-2024-10-14-135007-134930",
+      "session_id": "session10",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.39998334646224976,
+          "self_distance": 0.13704369962215424,
+          "ES": 0.33146148920059204,
+          "prediction_std": 0.05171459913253784,
+          "boundary_fraction": 0.17821288108825684,
+          "temporal_mean": 0.1484769731760025,
+          "temporal_std": 0.04881395399570465,
+          "velocity_abs_mean": 0.025801492854952812,
+          "velocity_rms": 0.06302273273468018,
+          "expression_entropy": 1.2423397302627563
+        },
+        "AU": {
+          "cross_distance": 0.3839779198169708,
+          "self_distance": 0.06112504377961159,
+          "ES": 0.3534153997898102,
+          "prediction_std": 0.032124362885951996,
+          "boundary_fraction": 0.1164550855755806,
+          "temporal_mean": 0.14397718012332916,
+          "temporal_std": 0.04548120126128197,
+          "velocity_abs_mean": 0.023484086617827415,
+          "velocity_rms": 0.04547904431819916
+        },
+        "VA": {
+          "cross_distance": 0.7201380729675293,
+          "self_distance": 0.3766164183616638,
+          "ES": 0.531829833984375,
+          "prediction_std": 0.2203717827796936,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.2761335074901581,
+          "temporal_std": 0.1037236899137497,
+          "velocity_abs_mean": 0.05418714880943298,
+          "velocity_rms": 0.15622718632221222
+        },
+        "expression": {
+          "cross_distance": 0.3034195303916931,
+          "self_distance": 0.08637521415948868,
+          "ES": 0.2602319121360779,
+          "prediction_std": 0.046282000839710236,
+          "boundary_fraction": 0.21356201171875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04133543372154236,
+          "velocity_abs_mean": 0.023050211369991302,
+          "velocity_rms": 0.04931733012199402,
+          "expression_entropy": 1.2423397302627563
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.732714653015137,
+        "stochastic_residual_abs_mean": 0.9485894441604614,
+        "tanh_saturation_fraction": 0.8016747832298279
+      }
+    },
+    {
+      "clip_id": "speaker/session10/Camera-2024-07-11-142837-142758",
+      "session_id": "session10",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.36227038502693176,
+          "self_distance": 0.13828641176223755,
+          "ES": 0.293127179145813,
+          "prediction_std": 0.03981482982635498,
+          "boundary_fraction": 0.3310839831829071,
+          "temporal_mean": 0.169259712100029,
+          "temporal_std": 0.034730516374111176,
+          "velocity_abs_mean": 0.02446426823735237,
+          "velocity_rms": 0.07503825426101685,
+          "expression_entropy": 0.5625236630439758
+        },
+        "AU": {
+          "cross_distance": 0.3239535689353943,
+          "self_distance": 0.04166680574417114,
+          "ES": 0.3031201660633087,
+          "prediction_std": 0.021663848310709,
+          "boundary_fraction": 0.1754150539636612,
+          "temporal_mean": 0.1709204763174057,
+          "temporal_std": 0.0297063160687685,
+          "velocity_abs_mean": 0.02270844206213951,
+          "velocity_rms": 0.045055363327264786
+        },
+        "VA": {
+          "cross_distance": 0.908613920211792,
+          "self_distance": 0.4515889286994934,
+          "ES": 0.6828194856643677,
+          "prediction_std": 0.25988906621932983,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.333842933177948,
+          "temporal_std": 0.13151152431964874,
+          "velocity_abs_mean": 0.08207641541957855,
+          "velocity_rms": 0.22573663294315338
+        },
+        "expression": {
+          "cross_distance": 0.07445372641086578,
+          "self_distance": 0.03507320582866669,
+          "ES": 0.05691712349653244,
+          "prediction_std": 0.018829364329576492,
+          "boundary_fraction": 0.5807342529296875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.019955642521381378,
+          "velocity_abs_mean": 0.013353396207094193,
+          "velocity_rms": 0.03241271898150444,
+          "expression_entropy": 0.5625236630439758
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.147973537445068,
+        "stochastic_residual_abs_mean": 0.9403855800628662,
+        "tanh_saturation_fraction": 0.7662402391433716
+      }
+    },
+    {
+      "clip_id": "speaker/session11/Camera-2024-07-15-110902-110933",
+      "session_id": "session11",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.32937559485435486,
+          "self_distance": 0.11703231185674667,
+          "ES": 0.2708594501018524,
+          "prediction_std": 0.04055105894804001,
+          "boundary_fraction": 0.31000974774360657,
+          "temporal_mean": 0.1414683312177658,
+          "temporal_std": 0.04069148749113083,
+          "velocity_abs_mean": 0.02348237857222557,
+          "velocity_rms": 0.059865329414606094,
+          "expression_entropy": 0.8503008484840393
+        },
+        "AU": {
+          "cross_distance": 0.2325211465358734,
+          "self_distance": 0.042660392820835114,
+          "ES": 0.21119095385074615,
+          "prediction_std": 0.021514520049095154,
+          "boundary_fraction": 0.17434082925319672,
+          "temporal_mean": 0.1432255357503891,
+          "temporal_std": 0.03504011780023575,
+          "velocity_abs_mean": 0.01955488882958889,
+          "velocity_rms": 0.03710683062672615
+        },
+        "VA": {
+          "cross_distance": 0.9024701118469238,
+          "self_distance": 0.32283011078834534,
+          "ES": 0.7410550713539124,
+          "prediction_std": 0.18872638046741486,
+          "boundary_fraction": 0.501953125,
+          "temporal_mean": 0.19416260719299316,
+          "temporal_std": 0.07926112413406372,
+          "velocity_abs_mean": 0.05540425702929497,
+          "velocity_rms": 0.15343931317329407
+        },
+        "expression": {
+          "cross_distance": 0.18042826652526855,
+          "self_distance": 0.08022508025169373,
+          "ES": 0.1403157263994217,
+          "prediction_std": 0.03920075297355652,
+          "boundary_fraction": 0.5164031982421875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04164540022611618,
+          "velocity_abs_mean": 0.02286595106124878,
+          "velocity_rms": 0.05226786062121391,
+          "expression_entropy": 0.8503008484840393
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.115715026855469,
+        "stochastic_residual_abs_mean": 0.9435877203941345,
+        "tanh_saturation_fraction": 0.7706982493400574
+      }
+    },
+    {
+      "clip_id": "speaker/session11/Camera-2024-10-17-143648-143743",
+      "session_id": "session11",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4420899450778961,
+          "self_distance": 0.14868015050888062,
+          "ES": 0.3677498698234558,
+          "prediction_std": 0.04488913342356682,
+          "boundary_fraction": 0.30440428853034973,
+          "temporal_mean": 0.1657695770263672,
+          "temporal_std": 0.04237326607108116,
+          "velocity_abs_mean": 0.023827120661735535,
+          "velocity_rms": 0.06701108813285828,
+          "expression_entropy": 0.7483531832695007
+        },
+        "AU": {
+          "cross_distance": 0.419546902179718,
+          "self_distance": 0.04492500424385071,
+          "ES": 0.39708441495895386,
+          "prediction_std": 0.02240530401468277,
+          "boundary_fraction": 0.14417318999767303,
+          "temporal_mean": 0.16424834728240967,
+          "temporal_std": 0.037041760981082916,
+          "velocity_abs_mean": 0.02196531556546688,
+          "velocity_rms": 0.0415291003882885
+        },
+        "VA": {
+          "cross_distance": 0.7332426309585571,
+          "self_distance": 0.47539037466049194,
+          "ES": 0.49554744362831116,
+          "prediction_std": 0.27732422947883606,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.34025752544403076,
+          "temporal_std": 0.11880563199520111,
+          "velocity_abs_mean": 0.06701397895812988,
+          "velocity_rms": 0.19075046479701996
+        },
+        "expression": {
+          "cross_distance": 0.37996751070022583,
+          "self_distance": 0.05444655567407608,
+          "ES": 0.3527442216873169,
+          "prediction_std": 0.028937555849552155,
+          "boundary_fraction": 0.555938720703125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.033261738717556,
+          "velocity_abs_mean": 0.016521291807293892,
+          "velocity_rms": 0.041262365877628326,
+          "expression_entropy": 0.7483531832695007
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 5.889517784118652,
+        "stochastic_residual_abs_mean": 0.9356648325920105,
+        "tanh_saturation_fraction": 0.7446826100349426
+      }
+    },
+    {
+      "clip_id": "speaker/session11/Camera-2024-10-21-135251-135252",
+      "session_id": "session11",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.512222170829773,
+          "self_distance": 0.17134186625480652,
+          "ES": 0.4265512228012085,
+          "prediction_std": 0.059882134199142456,
+          "boundary_fraction": 0.15153320133686066,
+          "temporal_mean": 0.18886058032512665,
+          "temporal_std": 0.034300532191991806,
+          "velocity_abs_mean": 0.011760537512600422,
+          "velocity_rms": 0.03154660388827324,
+          "expression_entropy": 1.4352703094482422
+        },
+        "AU": {
+          "cross_distance": 0.5179007053375244,
+          "self_distance": 0.08521713316440582,
+          "ES": 0.4752921462059021,
+          "prediction_std": 0.042360980063676834,
+          "boundary_fraction": 0.1287841796875,
+          "temporal_mean": 0.19324634969234467,
+          "temporal_std": 0.03014133870601654,
+          "velocity_abs_mean": 0.01043008454144001,
+          "velocity_rms": 0.022099990397691727
+        },
+        "VA": {
+          "cross_distance": 0.8281540274620056,
+          "self_distance": 0.5057021379470825,
+          "ES": 0.5753029584884644,
+          "prediction_std": 0.3166602551937103,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4114101529121399,
+          "temporal_std": 0.08497823774814606,
+          "velocity_abs_mean": 0.024809904396533966,
+          "velocity_rms": 0.08291534334421158
+        },
+        "expression": {
+          "cross_distance": 0.371465265750885,
+          "self_distance": 0.04726879298686981,
+          "ES": 0.3478308618068695,
+          "prediction_std": 0.028539787977933884,
+          "boundary_fraction": 0.1070709228515625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0294295996427536,
+          "velocity_abs_mean": 0.010992792434990406,
+          "velocity_rms": 0.021804973483085632,
+          "expression_entropy": 1.4352703094482422
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.559126377105713,
+        "stochastic_residual_abs_mean": 0.9556500315666199,
+        "tanh_saturation_fraction": 0.8163378834724426
+      }
+    },
+    {
+      "clip_id": "speaker/session11/Camera-2024-10-18-144417-144442",
+      "session_id": "session11",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3835151791572571,
+          "self_distance": 0.16065581142902374,
+          "ES": 0.3031872808933258,
+          "prediction_std": 0.06645844876766205,
+          "boundary_fraction": 0.1876269429922104,
+          "temporal_mean": 0.20475925505161285,
+          "temporal_std": 0.031758442521095276,
+          "velocity_abs_mean": 0.011156724765896797,
+          "velocity_rms": 0.02212556079030037,
+          "expression_entropy": 1.5568065643310547
+        },
+        "AU": {
+          "cross_distance": 0.3609437346458435,
+          "self_distance": 0.10166575759649277,
+          "ES": 0.310110867023468,
+          "prediction_std": 0.0543004535138607,
+          "boundary_fraction": 0.21401368081569672,
+          "temporal_mean": 0.22297081351280212,
+          "temporal_std": 0.02819713018834591,
+          "velocity_abs_mean": 0.01028844341635704,
+          "velocity_rms": 0.017458925023674965
+        },
+        "VA": {
+          "cross_distance": 0.6318459510803223,
+          "self_distance": 0.4284535348415375,
+          "ES": 0.41761916875839233,
+          "prediction_std": 0.2821240723133087,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3872098922729492,
+          "temporal_std": 0.07252254337072372,
+          "velocity_abs_mean": 0.021556122228503227,
+          "velocity_rms": 0.05211232602596283
+        },
+        "expression": {
+          "cross_distance": 0.3385167121887207,
+          "self_distance": 0.057331383228302,
+          "ES": 0.3098510205745697,
+          "prediction_std": 0.03533829748630524,
+          "boundary_fraction": 0.06005859375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.028244879096746445,
+          "velocity_abs_mean": 0.010184899903833866,
+          "velocity_rms": 0.01671418361365795,
+          "expression_entropy": 1.5568065643310547
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.094970703125,
+        "stochastic_residual_abs_mean": 0.9538329839706421,
+        "tanh_saturation_fraction": 0.8312939405441284
+      }
+    },
+    {
+      "clip_id": "speaker/session12/Camera-2024-10-18-140432-140500",
+      "session_id": "session12",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.38426846265792847,
+          "self_distance": 0.1475207358598709,
+          "ES": 0.3105081021785736,
+          "prediction_std": 0.05999189615249634,
+          "boundary_fraction": 0.1887841820716858,
+          "temporal_mean": 0.20229867100715637,
+          "temporal_std": 0.03148786351084709,
+          "velocity_abs_mean": 0.011488785967230797,
+          "velocity_rms": 0.02375076338648796,
+          "expression_entropy": 1.4959406852722168
+        },
+        "AU": {
+          "cross_distance": 0.332388699054718,
+          "self_distance": 0.09865318983793259,
+          "ES": 0.2830621004104614,
+          "prediction_std": 0.051925014704465866,
+          "boundary_fraction": 0.21764324605464935,
+          "temporal_mean": 0.2268725037574768,
+          "temporal_std": 0.029649585485458374,
+          "velocity_abs_mean": 0.010900567285716534,
+          "velocity_rms": 0.019376249983906746
+        },
+        "VA": {
+          "cross_distance": 0.7682815790176392,
+          "self_distance": 0.38894370198249817,
+          "ES": 0.5738097429275513,
+          "prediction_std": 0.2530038356781006,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.32718992233276367,
+          "temporal_std": 0.07203610241413116,
+          "velocity_abs_mean": 0.02367059513926506,
+          "velocity_rms": 0.056531038135290146
+        },
+        "expression": {
+          "cross_distance": 0.326177716255188,
+          "self_distance": 0.04238542541861534,
+          "ES": 0.30498501658439636,
+          "prediction_std": 0.026864323765039444,
+          "boundary_fraction": 0.0568695068359375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.02479758858680725,
+          "velocity_abs_mean": 0.009546244516968727,
+          "velocity_rms": 0.016122058033943176,
+          "expression_entropy": 1.4959406852722168
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.177020072937012,
+        "stochastic_residual_abs_mean": 0.9539011716842651,
+        "tanh_saturation_fraction": 0.8363720774650574
+      }
+    },
+    {
+      "clip_id": "speaker/session12/Camera-2024-10-21-162915-162924",
+      "session_id": "session12",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4472501277923584,
+          "self_distance": 0.14080306887626648,
+          "ES": 0.37684857845306396,
+          "prediction_std": 0.050605658441782,
+          "boundary_fraction": 0.20462889969348907,
+          "temporal_mean": 0.17083992063999176,
+          "temporal_std": 0.025196697562932968,
+          "velocity_abs_mean": 0.007699892856180668,
+          "velocity_rms": 0.01631813682615757,
+          "expression_entropy": 1.5226253271102905
+        },
+        "AU": {
+          "cross_distance": 0.45188069343566895,
+          "self_distance": 0.08567669242620468,
+          "ES": 0.4090423583984375,
+          "prediction_std": 0.04084135591983795,
+          "boundary_fraction": 0.2201334685087204,
+          "temporal_mean": 0.1772572547197342,
+          "temporal_std": 0.01988142915070057,
+          "velocity_abs_mean": 0.006027247291058302,
+          "velocity_rms": 0.011745212599635124
+        },
+        "VA": {
+          "cross_distance": 0.7577875852584839,
+          "self_distance": 0.38733869791030884,
+          "ES": 0.5641182661056519,
+          "prediction_std": 0.25281673669815063,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.30606967210769653,
+          "temporal_std": 0.061632949858903885,
+          "velocity_abs_mean": 0.015621455386281013,
+          "velocity_rms": 0.03707381337881088
+        },
+        "expression": {
+          "cross_distance": 0.31142422556877136,
+          "self_distance": 0.0276411734521389,
+          "ES": 0.29760363698005676,
+          "prediction_std": 0.018360957503318787,
+          "boundary_fraction": 0.101715087890625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.026053767651319504,
+          "velocity_abs_mean": 0.008855712600052357,
+          "velocity_rms": 0.015161029994487762,
+          "expression_entropy": 1.5226253271102905
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.936320781707764,
+        "stochastic_residual_abs_mean": 0.9586212635040283,
+        "tanh_saturation_fraction": 0.8315283060073853
+      }
+    },
+    {
+      "clip_id": "speaker/session12/Camera-2024-07-15-123346-123414",
+      "session_id": "session12",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.36372649669647217,
+          "self_distance": 0.14493140578269958,
+          "ES": 0.2912607789039612,
+          "prediction_std": 0.059705328196287155,
+          "boundary_fraction": 0.18608886003494263,
+          "temporal_mean": 0.18208080530166626,
+          "temporal_std": 0.030202945694327354,
+          "velocity_abs_mean": 0.009444000199437141,
+          "velocity_rms": 0.018641222268342972,
+          "expression_entropy": 1.5506218671798706
+        },
+        "AU": {
+          "cross_distance": 0.3041519522666931,
+          "self_distance": 0.09162160754203796,
+          "ES": 0.25834113359451294,
+          "prediction_std": 0.04788021370768547,
+          "boundary_fraction": 0.22756348550319672,
+          "temporal_mean": 0.19334034621715546,
+          "temporal_std": 0.027079448103904724,
+          "velocity_abs_mean": 0.008846098557114601,
+          "velocity_rms": 0.015602607280015945
+        },
+        "VA": {
+          "cross_distance": 0.7184162139892578,
+          "self_distance": 0.38281700015068054,
+          "ES": 0.5270076990127563,
+          "prediction_std": 0.25062626600265503,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.32595765590667725,
+          "temporal_std": 0.0661453828215599,
+          "velocity_abs_mean": 0.017287831753492355,
+          "velocity_rms": 0.041677821427583694
+        },
+        "expression": {
+          "cross_distance": 0.3323637843132019,
+          "self_distance": 0.05330481752753258,
+          "ES": 0.30571138858795166,
+          "prediction_std": 0.034147195518016815,
+          "boundary_fraction": 0.02984619140625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.027073897421360016,
+          "velocity_abs_mean": 0.00860410276800394,
+          "velocity_rms": 0.013971743173897266,
+          "expression_entropy": 1.5506218671798706
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.130450248718262,
+        "stochastic_residual_abs_mean": 0.9577389359474182,
+        "tanh_saturation_fraction": 0.8303808569908142
+      }
+    },
+    {
+      "clip_id": "speaker/session12/Camera-2024-10-17-151556-151626",
+      "session_id": "session12",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.39529505372047424,
+          "self_distance": 0.15751150250434875,
+          "ES": 0.31653928756713867,
+          "prediction_std": 0.06405498087406158,
+          "boundary_fraction": 0.14523924887180328,
+          "temporal_mean": 0.17415393888950348,
+          "temporal_std": 0.029506539925932884,
+          "velocity_abs_mean": 0.009950858540832996,
+          "velocity_rms": 0.019527507945895195,
+          "expression_entropy": 1.752621054649353
+        },
+        "AU": {
+          "cross_distance": 0.3766423165798187,
+          "self_distance": 0.08930899947881699,
+          "ES": 0.33198782801628113,
+          "prediction_std": 0.04599163681268692,
+          "boundary_fraction": 0.16592611372470856,
+          "temporal_mean": 0.17059308290481567,
+          "temporal_std": 0.024466119706630707,
+          "velocity_abs_mean": 0.00807990413159132,
+          "velocity_rms": 0.013458209112286568
+        },
+        "VA": {
+          "cross_distance": 0.7347696423530579,
+          "self_distance": 0.4247773289680481,
+          "ES": 0.5223809480667114,
+          "prediction_std": 0.2853294610977173,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3974761962890625,
+          "temporal_std": 0.061481427401304245,
+          "velocity_abs_mean": 0.02100057154893875,
+          "velocity_rms": 0.048296600580215454
+        },
+        "expression": {
+          "cross_distance": 0.293843537569046,
+          "self_distance": 0.06277254223823547,
+          "ES": 0.2624572515487671,
+          "prediction_std": 0.04260515421628952,
+          "boundary_fraction": 0.01776123046875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.030963603407144547,
+          "velocity_abs_mean": 0.010696467012166977,
+          "velocity_rms": 0.01639784686267376,
+          "expression_entropy": 1.752621054649353
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.980225563049316,
+        "stochastic_residual_abs_mean": 0.9568315148353577,
+        "tanh_saturation_fraction": 0.8168652057647705
+      }
+    },
+    {
+      "clip_id": "speaker/session13/Camera-2024-10-21-144916-144926",
+      "session_id": "session13",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.29070597887039185,
+          "self_distance": 0.14654545485973358,
+          "ES": 0.21743324398994446,
+          "prediction_std": 0.04826844111084938,
+          "boundary_fraction": 0.22193847596645355,
+          "temporal_mean": 0.16256912052631378,
+          "temporal_std": 0.04956364631652832,
+          "velocity_abs_mean": 0.03098679520189762,
+          "velocity_rms": 0.08122280985116959,
+          "expression_entropy": 0.985460638999939
+        },
+        "AU": {
+          "cross_distance": 0.18685972690582275,
+          "self_distance": 0.049859918653964996,
+          "ES": 0.16192977130413055,
+          "prediction_std": 0.025689488276839256,
+          "boundary_fraction": 0.0937500074505806,
+          "temporal_mean": 0.1611502319574356,
+          "temporal_std": 0.04300735145807266,
+          "velocity_abs_mean": 0.026625553146004677,
+          "velocity_rms": 0.04880582168698311
+        },
+        "VA": {
+          "cross_distance": 0.7835219502449036,
+          "self_distance": 0.4490572214126587,
+          "ES": 0.5589933395385742,
+          "prediction_std": 0.26181912422180176,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3234873414039612,
+          "temporal_std": 0.11172379553318024,
+          "velocity_abs_mean": 0.07679560780525208,
+          "velocity_rms": 0.22233594954013824
+        },
+        "expression": {
+          "cross_distance": 0.20874354243278503,
+          "self_distance": 0.07222094386816025,
+          "ES": 0.1726330667734146,
+          "prediction_std": 0.03721632808446884,
+          "boundary_fraction": 0.3927764892578125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04631666839122772,
+          "velocity_abs_mean": 0.027711912989616394,
+          "velocity_rms": 0.06157510355114937,
+          "expression_entropy": 0.985460638999939
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.131142616271973,
+        "stochastic_residual_abs_mean": 0.9393817186355591,
+        "tanh_saturation_fraction": 0.7717919945716858
+      }
+    },
+    {
+      "clip_id": "speaker/session13/Camera-2024-10-18-144417-144442",
+      "session_id": "session13",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3887222409248352,
+          "self_distance": 0.16100133955478668,
+          "ES": 0.30822157859802246,
+          "prediction_std": 0.04820374399423599,
+          "boundary_fraction": 0.19428710639476776,
+          "temporal_mean": 0.1649152785539627,
+          "temporal_std": 0.049946945160627365,
+          "velocity_abs_mean": 0.028288964182138443,
+          "velocity_rms": 0.07954283803701401,
+          "expression_entropy": 0.8207513093948364
+        },
+        "AU": {
+          "cross_distance": 0.33380579948425293,
+          "self_distance": 0.051726579666137695,
+          "ES": 0.3079425096511841,
+          "prediction_std": 0.028166109696030617,
+          "boundary_fraction": 0.05034179985523224,
+          "temporal_mean": 0.15732413530349731,
+          "temporal_std": 0.05256669968366623,
+          "velocity_abs_mean": 0.028183680027723312,
+          "velocity_rms": 0.04936738684773445
+        },
+        "VA": {
+          "cross_distance": 0.7190017104148865,
+          "self_distance": 0.5230129361152649,
+          "ES": 0.45749524235725403,
+          "prediction_std": 0.30685311555862427,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3815101683139801,
+          "temporal_std": 0.12302032113075256,
+          "velocity_abs_mean": 0.0765138790011406,
+          "velocity_rms": 0.23685909807682037
+        },
+        "expression": {
+          "cross_distance": 0.36591076850891113,
+          "self_distance": 0.04208747297525406,
+          "ES": 0.3448670208454132,
+          "prediction_std": 0.02111198380589485,
+          "boundary_fraction": 0.38775634765625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.026766564697027206,
+          "velocity_abs_mean": 0.016430146992206573,
+          "velocity_rms": 0.034305669367313385,
+          "expression_entropy": 0.8207513093948364
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.398209095001221,
+        "stochastic_residual_abs_mean": 0.947333037853241,
+        "tanh_saturation_fraction": 0.7956591844558716
+      }
+    },
+    {
+      "clip_id": "speaker/session13/Camera-2024-10-17-151556-151626",
+      "session_id": "session13",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4109252095222473,
+          "self_distance": 0.1736731231212616,
+          "ES": 0.3240886330604553,
+          "prediction_std": 0.05081160366535187,
+          "boundary_fraction": 0.2336718738079071,
+          "temporal_mean": 0.1634873002767563,
+          "temporal_std": 0.04445863515138626,
+          "velocity_abs_mean": 0.021943645551800728,
+          "velocity_rms": 0.06609230488538742,
+          "expression_entropy": 0.6843717098236084
+        },
+        "AU": {
+          "cross_distance": 0.3306092619895935,
+          "self_distance": 0.047393009066581726,
+          "ES": 0.30691275000572205,
+          "prediction_std": 0.025736821815371513,
+          "boundary_fraction": 0.05357259511947632,
+          "temporal_mean": 0.15356330573558807,
+          "temporal_std": 0.044565409421920776,
+          "velocity_abs_mean": 0.02201288565993309,
+          "velocity_rms": 0.04053877294063568
+        },
+        "VA": {
+          "cross_distance": 0.8032897710800171,
+          "self_distance": 0.5622743368148804,
+          "ES": 0.5221526026725769,
+          "prediction_std": 0.3305039405822754,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.39186662435531616,
+          "temporal_std": 0.12421983480453491,
+          "velocity_abs_mean": 0.0560339018702507,
+          "velocity_rms": 0.19325612485408783
+        },
+        "expression": {
+          "cross_distance": 0.4009912312030792,
+          "self_distance": 0.054655227810144424,
+          "ES": 0.37366360425949097,
+          "prediction_std": 0.027903757989406586,
+          "boundary_fraction": 0.5047760009765625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.024318145588040352,
+          "velocity_abs_mean": 0.01329126302152872,
+          "velocity_rms": 0.035103533416986465,
+          "expression_entropy": 0.6843717098236084
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.03953742980957,
+        "stochastic_residual_abs_mean": 0.9458978176116943,
+        "tanh_saturation_fraction": 0.7769579887390137
+      }
+    },
+    {
+      "clip_id": "speaker/session13/Camera-2024-10-21-162915-162924",
+      "session_id": "session13",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4537222385406494,
+          "self_distance": 0.1786797046661377,
+          "ES": 0.36438238620758057,
+          "prediction_std": 0.055076245218515396,
+          "boundary_fraction": 0.18541991710662842,
+          "temporal_mean": 0.1605851650238037,
+          "temporal_std": 0.049959976226091385,
+          "velocity_abs_mean": 0.027980534359812737,
+          "velocity_rms": 0.07819122821092606,
+          "expression_entropy": 0.8676299452781677
+        },
+        "AU": {
+          "cross_distance": 0.3708418011665344,
+          "self_distance": 0.05690339207649231,
+          "ES": 0.34239012002944946,
+          "prediction_std": 0.031070536002516747,
+          "boundary_fraction": 0.03806152567267418,
+          "temporal_mean": 0.14793802797794342,
+          "temporal_std": 0.04802161455154419,
+          "velocity_abs_mean": 0.02736739255487919,
+          "velocity_rms": 0.046589743345975876
+        },
+        "VA": {
+          "cross_distance": 0.939484179019928,
+          "self_distance": 0.5716462135314941,
+          "ES": 0.6536610722541809,
+          "prediction_std": 0.338016152381897,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3977797031402588,
+          "temporal_std": 0.12882989645004272,
+          "velocity_abs_mean": 0.07044723629951477,
+          "velocity_rms": 0.23120586574077606
+        },
+        "expression": {
+          "cross_distance": 0.40543508529663086,
+          "self_distance": 0.05845145136117935,
+          "ES": 0.3762093484401703,
+          "prediction_std": 0.029351990669965744,
+          "boundary_fraction": 0.3830718994140625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.033876944333314896,
+          "velocity_abs_mean": 0.018513498827815056,
+          "velocity_rms": 0.04088906943798065,
+          "expression_entropy": 0.8676299452781677
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.228976249694824,
+        "stochastic_residual_abs_mean": 0.9482011198997498,
+        "tanh_saturation_fraction": 0.7953173518180847
+      }
+    },
+    {
+      "clip_id": "speaker/session14/Camera-2024-10-17-143648-143743",
+      "session_id": "session14",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.39862149953842163,
+          "self_distance": 0.17390458285808563,
+          "ES": 0.3116692006587982,
+          "prediction_std": 0.06070023402571678,
+          "boundary_fraction": 0.21646972000598907,
+          "temporal_mean": 0.19941489398479462,
+          "temporal_std": 0.024637941271066666,
+          "velocity_abs_mean": 0.007792381569743156,
+          "velocity_rms": 0.016737135127186775,
+          "expression_entropy": 1.3285818099975586
+        },
+        "AU": {
+          "cross_distance": 0.3758555054664612,
+          "self_distance": 0.09379255026578903,
+          "ES": 0.32895922660827637,
+          "prediction_std": 0.04540586844086647,
+          "boundary_fraction": 0.22819826006889343,
+          "temporal_mean": 0.2094687521457672,
+          "temporal_std": 0.021129166707396507,
+          "velocity_abs_mean": 0.006766458973288536,
+          "velocity_rms": 0.012853950262069702
+        },
+        "VA": {
+          "cross_distance": 0.6585702896118164,
+          "self_distance": 0.5022151470184326,
+          "ES": 0.4074627161026001,
+          "prediction_std": 0.3313952684402466,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.42167073488235474,
+          "temporal_std": 0.060453981161117554,
+          "velocity_abs_mean": 0.015830742195248604,
+          "velocity_rms": 0.039966028183698654
+        },
+        "expression": {
+          "cross_distance": 0.348812460899353,
+          "self_distance": 0.0337035097181797,
+          "ES": 0.3319607079029083,
+          "prediction_std": 0.021703418344259262,
+          "boundary_fraction": 0.12359619140625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.022262893617153168,
+          "velocity_abs_mean": 0.0077063958160579205,
+          "velocity_rms": 0.012895560823380947,
+          "expression_entropy": 1.3285818099975586
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.935379505157471,
+        "stochastic_residual_abs_mean": 0.9601364731788635,
+        "tanh_saturation_fraction": 0.8343065977096558
+      }
+    },
+    {
+      "clip_id": "speaker/session14/Camera-2024-10-17-161111-161220",
+      "session_id": "session14",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3286551833152771,
+          "self_distance": 0.14853288233280182,
+          "ES": 0.2543887495994568,
+          "prediction_std": 0.05623754486441612,
+          "boundary_fraction": 0.17333984375,
+          "temporal_mean": 0.1537521928548813,
+          "temporal_std": 0.050018757581710815,
+          "velocity_abs_mean": 0.020233185961842537,
+          "velocity_rms": 0.0521368645131588,
+          "expression_entropy": 1.313286304473877
+        },
+        "AU": {
+          "cross_distance": 0.28538787364959717,
+          "self_distance": 0.06614096462726593,
+          "ES": 0.2523173987865448,
+          "prediction_std": 0.03574347123503685,
+          "boundary_fraction": 0.05091146007180214,
+          "temporal_mean": 0.1428588330745697,
+          "temporal_std": 0.04348964989185333,
+          "velocity_abs_mean": 0.018674951046705246,
+          "velocity_rms": 0.03601616621017456
+        },
+        "VA": {
+          "cross_distance": 0.6976569890975952,
+          "self_distance": 0.4310283064842224,
+          "ES": 0.482142835855484,
+          "prediction_std": 0.25184282660484314,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3504611849784851,
+          "temporal_std": 0.1198580414056778,
+          "velocity_abs_mean": 0.04452122747898102,
+          "velocity_rms": 0.13830161094665527
+        },
+        "expression": {
+          "cross_distance": 0.2464619278907776,
+          "self_distance": 0.07906307280063629,
+          "ES": 0.20693039894104004,
+          "prediction_std": 0.045762620866298676,
+          "boundary_fraction": 0.32122802734375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0448010228574276,
+          "velocity_abs_mean": 0.01708286441862583,
+          "velocity_rms": 0.03578437864780426,
+          "expression_entropy": 1.313286304473877
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.624502182006836,
+        "stochastic_residual_abs_mean": 0.9506403207778931,
+        "tanh_saturation_fraction": 0.7953564524650574
+      }
+    },
+    {
+      "clip_id": "speaker/session14/Camera-2024-10-21-144916-144926",
+      "session_id": "session14",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4502813220024109,
+          "self_distance": 0.19257330894470215,
+          "ES": 0.3539946675300598,
+          "prediction_std": 0.0654866173863411,
+          "boundary_fraction": 0.14089354872703552,
+          "temporal_mean": 0.18269653618335724,
+          "temporal_std": 0.04359738156199455,
+          "velocity_abs_mean": 0.016972748562693596,
+          "velocity_rms": 0.054225046187639236,
+          "expression_entropy": 1.3512015342712402
+        },
+        "AU": {
+          "cross_distance": 0.4452704191207886,
+          "self_distance": 0.0883852168917656,
+          "ES": 0.4010778069496155,
+          "prediction_std": 0.044480979442596436,
+          "boundary_fraction": 0.0831298902630806,
+          "temporal_mean": 0.16903771460056305,
+          "temporal_std": 0.03901223465800285,
+          "velocity_abs_mean": 0.015307354740798473,
+          "velocity_rms": 0.030378766357898712
+        },
+        "VA": {
+          "cross_distance": 0.8346002101898193,
+          "self_distance": 0.5911552906036377,
+          "ES": 0.5390225648880005,
+          "prediction_std": 0.3552302122116089,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.5159240365028381,
+          "temporal_std": 0.11688032746315002,
+          "velocity_abs_mean": 0.03984151408076286,
+          "velocity_rms": 0.1619977504014969
+        },
+        "expression": {
+          "cross_distance": 0.2876094579696655,
+          "self_distance": 0.05530168488621712,
+          "ES": 0.2599586248397827,
+          "prediction_std": 0.032436303794384,
+          "boundary_fraction": 0.159423828125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03387381136417389,
+          "velocity_abs_mean": 0.014378163032233715,
+          "velocity_rms": 0.029956841841340065,
+          "expression_entropy": 1.3512015342712402
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.530810356140137,
+        "stochastic_residual_abs_mean": 0.9510488510131836,
+        "tanh_saturation_fraction": 0.8022363185882568
+      }
+    },
+    {
+      "clip_id": "speaker/session14/Camera-2024-10-21-135251-135252",
+      "session_id": "session14",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5454062819480896,
+          "self_distance": 0.17650695145130157,
+          "ES": 0.4571528136730194,
+          "prediction_std": 0.06079500913619995,
+          "boundary_fraction": 0.2326367199420929,
+          "temporal_mean": 0.19860917329788208,
+          "temporal_std": 0.025836801156401634,
+          "velocity_abs_mean": 0.007408643141388893,
+          "velocity_rms": 0.01600397378206253,
+          "expression_entropy": 1.326432228088379
+        },
+        "AU": {
+          "cross_distance": 0.5730883479118347,
+          "self_distance": 0.0935174897313118,
+          "ES": 0.5263295769691467,
+          "prediction_std": 0.045239850878715515,
+          "boundary_fraction": 0.25526532530784607,
+          "temporal_mean": 0.2067672610282898,
+          "temporal_std": 0.022240202873945236,
+          "velocity_abs_mean": 0.006426525302231312,
+          "velocity_rms": 0.012203514575958252
+        },
+        "VA": {
+          "cross_distance": 0.8479547500610352,
+          "self_distance": 0.5154887437820435,
+          "ES": 0.5902103781700134,
+          "prediction_std": 0.33742833137512207,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.43186041712760925,
+          "temporal_std": 0.06991073489189148,
+          "velocity_abs_mean": 0.01517152227461338,
+          "velocity_rms": 0.03820497915148735
+        },
+        "expression": {
+          "cross_distance": 0.3543354272842407,
+          "self_distance": 0.03242579847574234,
+          "ES": 0.33812251687049866,
+          "prediction_std": 0.020802613347768784,
+          "boundary_fraction": 0.1233673095703125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.021561944857239723,
+          "velocity_abs_mean": 0.00730939581990242,
+          "velocity_rms": 0.01250025350600481,
+          "expression_entropy": 1.326432228088379
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.919349193572998,
+        "stochastic_residual_abs_mean": 0.9606612920761108,
+        "tanh_saturation_fraction": 0.8335888385772705
+      }
+    },
+    {
+      "clip_id": "speaker/session15/Camera-2024-10-17-151556-151626",
+      "session_id": "session15",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.33749231696128845,
+          "self_distance": 0.1752970963716507,
+          "ES": 0.2498437762260437,
+          "prediction_std": 0.0564553402364254,
+          "boundary_fraction": 0.20937010645866394,
+          "temporal_mean": 0.15025967359542847,
+          "temporal_std": 0.04848562926054001,
+          "velocity_abs_mean": 0.030927004292607307,
+          "velocity_rms": 0.08607204258441925,
+          "expression_entropy": 1.1176261901855469
+        },
+        "AU": {
+          "cross_distance": 0.1903119683265686,
+          "self_distance": 0.05479591339826584,
+          "ES": 0.16291400790214539,
+          "prediction_std": 0.028088845312595367,
+          "boundary_fraction": 0.09893392771482468,
+          "temporal_mean": 0.12861840426921844,
+          "temporal_std": 0.039932556450366974,
+          "velocity_abs_mean": 0.025630393996834755,
+          "velocity_rms": 0.04556160792708397
+        },
+        "VA": {
+          "cross_distance": 0.787041425704956,
+          "self_distance": 0.5490152835845947,
+          "ES": 0.5125337839126587,
+          "prediction_std": 0.3221493065357208,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.41360801458358765,
+          "temporal_std": 0.12694936990737915,
+          "velocity_abs_mean": 0.08729111403226852,
+          "velocity_rms": 0.2533504068851471
+        },
+        "expression": {
+          "cross_distance": 0.36431044340133667,
+          "self_distance": 0.07872383296489716,
+          "ES": 0.3249485194683075,
+          "prediction_std": 0.04321903735399246,
+          "boundary_fraction": 0.343780517578125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04490672051906586,
+          "velocity_abs_mean": 0.02676711417734623,
+          "velocity_rms": 0.056677982211112976,
+          "expression_entropy": 1.1176261901855469
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.506402492523193,
+        "stochastic_residual_abs_mean": 0.9509069323539734,
+        "tanh_saturation_fraction": 0.8016894459724426
+      }
+    },
+    {
+      "clip_id": "speaker/session15/Camera-2024-07-15-123346-123414",
+      "session_id": "session15",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.36501580476760864,
+          "self_distance": 0.13582926988601685,
+          "ES": 0.2971011698246002,
+          "prediction_std": 0.04826543852686882,
+          "boundary_fraction": 0.2613818347454071,
+          "temporal_mean": 0.12429902702569962,
+          "temporal_std": 0.04466516524553299,
+          "velocity_abs_mean": 0.02574547752737999,
+          "velocity_rms": 0.06595461070537567,
+          "expression_entropy": 1.1359562873840332
+        },
+        "AU": {
+          "cross_distance": 0.2219851315021515,
+          "self_distance": 0.058712318539619446,
+          "ES": 0.19262897968292236,
+          "prediction_std": 0.027714556083083153,
+          "boundary_fraction": 0.17897136509418488,
+          "temporal_mean": 0.10522425174713135,
+          "temporal_std": 0.0391361266374588,
+          "velocity_abs_mean": 0.023000434041023254,
+          "velocity_rms": 0.04392903670668602
+        },
+        "VA": {
+          "cross_distance": 0.9630976915359497,
+          "self_distance": 0.3913096785545349,
+          "ES": 0.7674428224563599,
+          "prediction_std": 0.2241670787334442,
+          "boundary_fraction": 0.5028076171875,
+          "temporal_mean": 0.2645561099052429,
+          "temporal_std": 0.11288104206323624,
+          "velocity_abs_mean": 0.05931190028786659,
+          "velocity_rms": 0.1760730743408203
+        },
+        "expression": {
+          "cross_distance": 0.3015141487121582,
+          "self_distance": 0.07928623259067535,
+          "ES": 0.2618710398674011,
+          "prediction_std": 0.0428229384124279,
+          "boundary_fraction": 0.3555450439453125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0379781611263752,
+          "velocity_abs_mean": 0.02250082977116108,
+          "velocity_rms": 0.04717041924595833,
+          "expression_entropy": 1.1359562873840332
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.431051254272461,
+        "stochastic_residual_abs_mean": 0.9491599202156067,
+        "tanh_saturation_fraction": 0.7936718463897705
+      }
+    },
+    {
+      "clip_id": "speaker/session15/Camera-2024-07-15-115034-115115",
+      "session_id": "session15",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3054209351539612,
+          "self_distance": 0.11814982444047928,
+          "ES": 0.24634602665901184,
+          "prediction_std": 0.04271937161684036,
+          "boundary_fraction": 0.2673388719558716,
+          "temporal_mean": 0.1168910413980484,
+          "temporal_std": 0.043316248804330826,
+          "velocity_abs_mean": 0.02873333916068077,
+          "velocity_rms": 0.06899718195199966,
+          "expression_entropy": 1.1697943210601807
+        },
+        "AU": {
+          "cross_distance": 0.22945865988731384,
+          "self_distance": 0.05258714780211449,
+          "ES": 0.20316508412361145,
+          "prediction_std": 0.024790287017822266,
+          "boundary_fraction": 0.2581787109375,
+          "temporal_mean": 0.09847851097583771,
+          "temporal_std": 0.037513140588998795,
+          "velocity_abs_mean": 0.024420009925961494,
+          "velocity_rms": 0.04902784898877144
+        },
+        "VA": {
+          "cross_distance": 0.7729625105857849,
+          "self_distance": 0.32140472531318665,
+          "ES": 0.6122601628303528,
+          "prediction_std": 0.18641115725040436,
+          "boundary_fraction": 0.50189208984375,
+          "temporal_mean": 0.22254914045333862,
+          "temporal_std": 0.09077715873718262,
+          "velocity_abs_mean": 0.06098925322294235,
+          "velocity_rms": 0.1662645787000656
+        },
+        "expression": {
+          "cross_distance": 0.20426291227340698,
+          "self_distance": 0.07604257762432098,
+          "ES": 0.1662416160106659,
+          "prediction_std": 0.040413472801446915,
+          "boundary_fraction": 0.2258758544921875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.042331866919994354,
+          "velocity_abs_mean": 0.028756851330399513,
+          "velocity_rms": 0.058812741190195084,
+          "expression_entropy": 1.1697943210601807
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.657626628875732,
+        "stochastic_residual_abs_mean": 0.9528379440307617,
+        "tanh_saturation_fraction": 0.81043940782547
+      }
+    },
+    {
+      "clip_id": "speaker/session15/Camera-2024-10-21-135251-135252",
+      "session_id": "session15",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5215896368026733,
+          "self_distance": 0.1665368527173996,
+          "ES": 0.43832120299339294,
+          "prediction_std": 0.06878554821014404,
+          "boundary_fraction": 0.14912597835063934,
+          "temporal_mean": 0.1857932209968567,
+          "temporal_std": 0.037107914686203,
+          "velocity_abs_mean": 0.012552700936794281,
+          "velocity_rms": 0.030482489615678787,
+          "expression_entropy": 1.6462602615356445
+        },
+        "AU": {
+          "cross_distance": 0.5342928767204285,
+          "self_distance": 0.09229949861764908,
+          "ES": 0.48814311623573303,
+          "prediction_std": 0.05038047954440117,
+          "boundary_fraction": 0.14946289360523224,
+          "temporal_mean": 0.183822900056839,
+          "temporal_std": 0.03542635962367058,
+          "velocity_abs_mean": 0.01112817507237196,
+          "velocity_rms": 0.019748743623495102
+        },
+        "VA": {
+          "cross_distance": 0.864046573638916,
+          "self_distance": 0.4620470702648163,
+          "ES": 0.6330230236053467,
+          "prediction_std": 0.3013768196105957,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.44374382495880127,
+          "temporal_std": 0.07321936637163162,
+          "velocity_abs_mean": 0.023844007402658463,
+          "velocity_rms": 0.08227530866861343
+        },
+        "expression": {
+          "cross_distance": 0.35008424520492554,
+          "self_distance": 0.07117607444524765,
+          "ES": 0.3144962191581726,
+          "prediction_std": 0.04514726996421814,
+          "boundary_fraction": 0.0607757568359375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.031232967972755432,
+          "velocity_abs_mean": 0.012400859966874123,
+          "velocity_rms": 0.0219115037471056,
+          "expression_entropy": 1.6462602615356445
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.940574645996094,
+        "stochastic_residual_abs_mean": 0.9522275328636169,
+        "tanh_saturation_fraction": 0.81800776720047
+      }
+    },
+    {
+      "clip_id": "speaker/session16/Camera-2024-10-17-143648-143743",
+      "session_id": "session16",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.40624892711639404,
+          "self_distance": 0.17822390794754028,
+          "ES": 0.3171369731426239,
+          "prediction_std": 0.06575097888708115,
+          "boundary_fraction": 0.12158203125,
+          "temporal_mean": 0.16282472014427185,
+          "temporal_std": 0.050429753959178925,
+          "velocity_abs_mean": 0.027169670909643173,
+          "velocity_rms": 0.07369568943977356,
+          "expression_entropy": 1.5299016237258911
+        },
+        "AU": {
+          "cross_distance": 0.3860289454460144,
+          "self_distance": 0.08194197714328766,
+          "ES": 0.34505796432495117,
+          "prediction_std": 0.04414521902799606,
+          "boundary_fraction": 0.07294108718633652,
+          "temporal_mean": 0.1486501395702362,
+          "temporal_std": 0.04693255200982094,
+          "velocity_abs_mean": 0.023828765377402306,
+          "velocity_rms": 0.04184412583708763
+        },
+        "VA": {
+          "cross_distance": 0.6886205077171326,
+          "self_distance": 0.5268179178237915,
+          "ES": 0.4252115488052368,
+          "prediction_std": 0.3185644745826721,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.42043301463127136,
+          "temporal_std": 0.11388888955116272,
+          "velocity_abs_mean": 0.06507392972707748,
+          "velocity_rms": 0.21639053523540497
+        },
+        "expression": {
+          "cross_distance": 0.3416721224784851,
+          "self_distance": 0.07218671590089798,
+          "ES": 0.3055787682533264,
+          "prediction_std": 0.04305840656161308,
+          "boundary_fraction": 0.1181793212890625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04112222418189049,
+          "velocity_abs_mean": 0.02395780012011528,
+          "velocity_rms": 0.044529061764478683,
+          "expression_entropy": 1.5299016237258911
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.904479026794434,
+        "stochastic_residual_abs_mean": 0.9515787959098816,
+        "tanh_saturation_fraction": 0.8193212747573853
+      }
+    },
+    {
+      "clip_id": "speaker/session16/Camera-2024-07-15-110902-110933",
+      "session_id": "session16",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4608161449432373,
+          "self_distance": 0.1521226316690445,
+          "ES": 0.38475483655929565,
+          "prediction_std": 0.051488034427165985,
+          "boundary_fraction": 0.21030761301517487,
+          "temporal_mean": 0.15065011382102966,
+          "temporal_std": 0.049929797649383545,
+          "velocity_abs_mean": 0.026639506220817566,
+          "velocity_rms": 0.07207251340150833,
+          "expression_entropy": 1.124647855758667
+        },
+        "AU": {
+          "cross_distance": 0.3707333505153656,
+          "self_distance": 0.05095075070858002,
+          "ES": 0.345257967710495,
+          "prediction_std": 0.027549538761377335,
+          "boundary_fraction": 0.07602539658546448,
+          "temporal_mean": 0.14036576449871063,
+          "temporal_std": 0.045315150171518326,
+          "velocity_abs_mean": 0.022916311398148537,
+          "velocity_rms": 0.042562246322631836
+        },
+        "VA": {
+          "cross_distance": 1.0233259201049805,
+          "self_distance": 0.4615408182144165,
+          "ES": 0.7925555109977722,
+          "prediction_std": 0.27057862281799316,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.33038344979286194,
+          "temporal_std": 0.1213112473487854,
+          "velocity_abs_mean": 0.06873778998851776,
+          "velocity_rms": 0.20350810885429382
+        },
+        "expression": {
+          "cross_distance": 0.37036606669425964,
+          "self_distance": 0.0759747326374054,
+          "ES": 0.33237868547439575,
+          "prediction_std": 0.04160007834434509,
+          "boundary_fraction": 0.3896636962890625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04073692113161087,
+          "velocity_abs_mean": 0.02309592068195343,
+          "velocity_rms": 0.04982081428170204,
+          "expression_entropy": 1.124647855758667
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.352389812469482,
+        "stochastic_residual_abs_mean": 0.9467443823814392,
+        "tanh_saturation_fraction": 0.7880859375
+      }
+    },
+    {
+      "clip_id": "speaker/session16/Camera-2024-10-21-162915-162924",
+      "session_id": "session16",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4647248685359955,
+          "self_distance": 0.18592184782028198,
+          "ES": 0.3717639446258545,
+          "prediction_std": 0.06572858989238739,
+          "boundary_fraction": 0.16782714426517487,
+          "temporal_mean": 0.19563262164592743,
+          "temporal_std": 0.03475699946284294,
+          "velocity_abs_mean": 0.013560907915234566,
+          "velocity_rms": 0.0417589470744133,
+          "expression_entropy": 1.5017244815826416
+        },
+        "AU": {
+          "cross_distance": 0.4935784339904785,
+          "self_distance": 0.09303348511457443,
+          "ES": 0.447061687707901,
+          "prediction_std": 0.046808551996946335,
+          "boundary_fraction": 0.16347657144069672,
+          "temporal_mean": 0.19663943350315094,
+          "temporal_std": 0.028894254937767982,
+          "velocity_abs_mean": 0.011483103036880493,
+          "velocity_rms": 0.02470390498638153
+        },
+        "VA": {
+          "cross_distance": 0.8287752866744995,
+          "self_distance": 0.5499252080917358,
+          "ES": 0.5538126826286316,
+          "prediction_std": 0.34767016768455505,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4706122577190399,
+          "temporal_std": 0.0837889313697815,
+          "velocity_abs_mean": 0.028979171067476273,
+          "velocity_rms": 0.11753559112548828
+        },
+        "expression": {
+          "cross_distance": 0.21273742616176605,
+          "self_distance": 0.049429748207330704,
+          "ES": 0.18802255392074585,
+          "prediction_std": 0.030718283727765083,
+          "boundary_fraction": 0.0929412841796875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03349167853593826,
+          "velocity_abs_mean": 0.013602223247289658,
+          "velocity_rms": 0.02917996235191822,
+          "expression_entropy": 1.5017244815826416
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.954626083374023,
+        "stochastic_residual_abs_mean": 0.957115888595581,
+        "tanh_saturation_fraction": 0.8298730254173279
+      }
+    },
+    {
+      "clip_id": "speaker/session16/Camera-2024-10-21-135251-135252",
+      "session_id": "session16",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5038416385650635,
+          "self_distance": 0.1722247153520584,
+          "ES": 0.41772928833961487,
+          "prediction_std": 0.061653804033994675,
+          "boundary_fraction": 0.19408690929412842,
+          "temporal_mean": 0.15782445669174194,
+          "temporal_std": 0.05411846190690994,
+          "velocity_abs_mean": 0.02700471691787243,
+          "velocity_rms": 0.0731150284409523,
+          "expression_entropy": 1.2950012683868408
+        },
+        "AU": {
+          "cross_distance": 0.49261966347694397,
+          "self_distance": 0.0691884234547615,
+          "ES": 0.4580254554748535,
+          "prediction_std": 0.03756808117032051,
+          "boundary_fraction": 0.08576660603284836,
+          "temporal_mean": 0.1397983282804489,
+          "temporal_std": 0.050811123102903366,
+          "velocity_abs_mean": 0.024247657507658005,
+          "velocity_rms": 0.0447327084839344
+        },
+        "VA": {
+          "cross_distance": 0.8076310753822327,
+          "self_distance": 0.5206937193870544,
+          "ES": 0.5472842454910278,
+          "prediction_std": 0.3114953637123108,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.42431819438934326,
+          "temporal_std": 0.11710219085216522,
+          "velocity_abs_mean": 0.06234104931354523,
+          "velocity_rms": 0.20596930384635925
+        },
+        "expression": {
+          "cross_distance": 0.40655428171157837,
+          "self_distance": 0.07898921519517899,
+          "ES": 0.3670596778392792,
+          "prediction_std": 0.04435417056083679,
+          "boundary_fraction": 0.320709228515625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.044573791325092316,
+          "velocity_abs_mean": 0.023340122774243355,
+          "velocity_rms": 0.04845520108938217,
+          "expression_entropy": 1.2950012683868408
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.737196445465088,
+        "stochastic_residual_abs_mean": 0.948993980884552,
+        "tanh_saturation_fraction": 0.8065966367721558
+      }
+    },
+    {
+      "clip_id": "speaker/session17/Camera-2024-07-15-110902-110933",
+      "session_id": "session17",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5489656329154968,
+          "self_distance": 0.1456788033246994,
+          "ES": 0.47612622380256653,
+          "prediction_std": 0.05092296376824379,
+          "boundary_fraction": 0.21165527403354645,
+          "temporal_mean": 0.1538727581501007,
+          "temporal_std": 0.049548063427209854,
+          "velocity_abs_mean": 0.025755882263183594,
+          "velocity_rms": 0.06938943266868591,
+          "expression_entropy": 1.2285574674606323
+        },
+        "AU": {
+          "cross_distance": 0.5006586313247681,
+          "self_distance": 0.054403264075517654,
+          "ES": 0.473457008600235,
+          "prediction_std": 0.02915467694401741,
+          "boundary_fraction": 0.11825358867645264,
+          "temporal_mean": 0.1442059874534607,
+          "temporal_std": 0.043099626898765564,
+          "velocity_abs_mean": 0.023358166217803955,
+          "velocity_rms": 0.04620657116174698
+        },
+        "VA": {
+          "cross_distance": 1.1036686897277832,
+          "self_distance": 0.4430956542491913,
+          "ES": 0.8821208477020264,
+          "prediction_std": 0.2572858929634094,
+          "boundary_fraction": 0.5013427734375,
+          "temporal_mean": 0.3418644964694977,
+          "temporal_std": 0.13367201387882233,
+          "velocity_abs_mean": 0.06170918047428131,
+          "velocity_rms": 0.1886654496192932
+        },
+        "expression": {
+          "cross_distance": 0.3962634205818176,
+          "self_distance": 0.07156794518232346,
+          "ES": 0.3604794442653656,
+          "prediction_std": 0.040147777646780014,
+          "boundary_fraction": 0.314361572265625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.040607914328575134,
+          "velocity_abs_mean": 0.021263273432850838,
+          "velocity_rms": 0.04631052911281586,
+          "expression_entropy": 1.2285574674606323
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.645101070404053,
+        "stochastic_residual_abs_mean": 0.9509313106536865,
+        "tanh_saturation_fraction": 0.8026171922683716
+      }
+    },
+    {
+      "clip_id": "speaker/session17/Camera-2024-10-17-151556-151626",
+      "session_id": "session17",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5166795253753662,
+          "self_distance": 0.1837998777627945,
+          "ES": 0.42477959394454956,
+          "prediction_std": 0.05856349691748619,
+          "boundary_fraction": 0.19294433295726776,
+          "temporal_mean": 0.1690036952495575,
+          "temporal_std": 0.047735411673784256,
+          "velocity_abs_mean": 0.023494498804211617,
+          "velocity_rms": 0.07278013974428177,
+          "expression_entropy": 1.0805703401565552
+        },
+        "AU": {
+          "cross_distance": 0.5071272850036621,
+          "self_distance": 0.06094671040773392,
+          "ES": 0.47665393352508545,
+          "prediction_std": 0.03322909027338028,
+          "boundary_fraction": 0.05795898661017418,
+          "temporal_mean": 0.15281642973423004,
+          "temporal_std": 0.043106287717819214,
+          "velocity_abs_mean": 0.021513057872653008,
+          "velocity_rms": 0.03894779831171036
+        },
+        "VA": {
+          "cross_distance": 0.8577346801757812,
+          "self_distance": 0.5898661613464355,
+          "ES": 0.5628015995025635,
+          "prediction_std": 0.3447866439819336,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.46642306447029114,
+          "temporal_std": 0.13305625319480896,
+          "velocity_abs_mean": 0.06045231968164444,
+          "velocity_rms": 0.22090119123458862
+        },
+        "expression": {
+          "cross_distance": 0.39861130714416504,
+          "self_distance": 0.06208868697285652,
+          "ES": 0.3675669729709625,
+          "prediction_std": 0.03450974076986313,
+          "boundary_fraction": 0.3692779541015625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03508482128381729,
+          "velocity_abs_mean": 0.017970239743590355,
+          "velocity_rms": 0.03885079175233841,
+          "expression_entropy": 1.0805703401565552
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.56815767288208,
+        "stochastic_residual_abs_mean": 0.952544093132019,
+        "tanh_saturation_fraction": 0.8088134527206421
+      }
+    },
+    {
+      "clip_id": "speaker/session17/Camera-2024-10-21-135251-135252",
+      "session_id": "session17",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.543537437915802,
+          "self_distance": 0.15287065505981445,
+          "ES": 0.4671021103858948,
+          "prediction_std": 0.05569063872098923,
+          "boundary_fraction": 0.2330615222454071,
+          "temporal_mean": 0.16993293166160583,
+          "temporal_std": 0.048470545560121536,
+          "velocity_abs_mean": 0.025401044636964798,
+          "velocity_rms": 0.06887444853782654,
+          "expression_entropy": 1.2191935777664185
+        },
+        "AU": {
+          "cross_distance": 0.5709118247032166,
+          "self_distance": 0.0579407662153244,
+          "ES": 0.5419414639472961,
+          "prediction_std": 0.0307473111897707,
+          "boundary_fraction": 0.1486002653837204,
+          "temporal_mean": 0.16803710162639618,
+          "temporal_std": 0.04009011760354042,
+          "velocity_abs_mean": 0.02130679227411747,
+          "velocity_rms": 0.04166213050484657
+        },
+        "VA": {
+          "cross_distance": 0.742129921913147,
+          "self_distance": 0.4457736909389496,
+          "ES": 0.519243061542511,
+          "prediction_std": 0.2655819058418274,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.363883376121521,
+          "temporal_std": 0.11057821661233902,
+          "velocity_abs_mean": 0.060357604175806046,
+          "velocity_rms": 0.1854402869939804
+        },
+        "expression": {
+          "cross_distance": 0.4118228256702423,
+          "self_distance": 0.09209950268268585,
+          "ES": 0.36577308177948,
+          "prediction_std": 0.04998656362295151,
+          "boundary_fraction": 0.3246917724609375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04865691810846329,
+          "velocity_abs_mean": 0.024338625371456146,
+          "velocity_rms": 0.054520681500434875,
+          "expression_entropy": 1.2191935777664185
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.696897029876709,
+        "stochastic_residual_abs_mean": 0.944718599319458,
+        "tanh_saturation_fraction": 0.7948632836341858
+      }
+    },
+    {
+      "clip_id": "speaker/session17/Camera-2024-10-21-144916-144926",
+      "session_id": "session17",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3199073076248169,
+          "self_distance": 0.16216117143630981,
+          "ES": 0.238826721906662,
+          "prediction_std": 0.059411484748125076,
+          "boundary_fraction": 0.1671142578125,
+          "temporal_mean": 0.1596546173095703,
+          "temporal_std": 0.05144434794783592,
+          "velocity_abs_mean": 0.03229917213320732,
+          "velocity_rms": 0.07988129556179047,
+          "expression_entropy": 1.3681998252868652
+        },
+        "AU": {
+          "cross_distance": 0.23289768397808075,
+          "self_distance": 0.06701015681028366,
+          "ES": 0.19939260184764862,
+          "prediction_std": 0.03555925562977791,
+          "boundary_fraction": 0.0941162183880806,
+          "temporal_mean": 0.1498531997203827,
+          "temporal_std": 0.04550182819366455,
+          "velocity_abs_mean": 0.029074586927890778,
+          "velocity_rms": 0.05528963729739189
+        },
+        "VA": {
+          "cross_distance": 0.8005998134613037,
+          "self_distance": 0.4773240387439728,
+          "ES": 0.5619378089904785,
+          "prediction_std": 0.28527331352233887,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.371783971786499,
+          "temporal_std": 0.10921327769756317,
+          "velocity_abs_mean": 0.07254005968570709,
+          "velocity_rms": 0.20946013927459717
+        },
+        "expression": {
+          "cross_distance": 0.23779234290122986,
+          "self_distance": 0.08533590286970139,
+          "ES": 0.19512438774108887,
+          "prediction_std": 0.047668978571891785,
+          "boundary_fraction": 0.22076416015625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.048144347965717316,
+          "velocity_abs_mean": 0.028285043314099312,
+          "velocity_rms": 0.056925684213638306,
+          "expression_entropy": 1.3681998252868652
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.806309700012207,
+        "stochastic_residual_abs_mean": 0.9470792412757874,
+        "tanh_saturation_fraction": 0.8116357326507568
+      }
+    },
+    {
+      "clip_id": "speaker/session18/Camera-2024-06-28-112322-112419",
+      "session_id": "session18",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.32310065627098083,
+          "self_distance": 0.12864059209823608,
+          "ES": 0.2587803602218628,
+          "prediction_std": 0.048212695866823196,
+          "boundary_fraction": 0.2597363293170929,
+          "temporal_mean": 0.15987566113471985,
+          "temporal_std": 0.04501321539282799,
+          "velocity_abs_mean": 0.026949141174554825,
+          "velocity_rms": 0.06686688214540482,
+          "expression_entropy": 1.0843615531921387
+        },
+        "AU": {
+          "cross_distance": 0.2650575041770935,
+          "self_distance": 0.06407549977302551,
+          "ES": 0.23301975429058075,
+          "prediction_std": 0.030828403308987617,
+          "boundary_fraction": 0.1654866635799408,
+          "temporal_mean": 0.16780602931976318,
+          "temporal_std": 0.040045395493507385,
+          "velocity_abs_mean": 0.02489677257835865,
+          "velocity_rms": 0.05291729047894478
+        },
+        "VA": {
+          "cross_distance": 0.7769168615341187,
+          "self_distance": 0.3490664064884186,
+          "ES": 0.6023836731910706,
+          "prediction_std": 0.20105895400047302,
+          "boundary_fraction": 0.5042724609375,
+          "temporal_mean": 0.2399006485939026,
+          "temporal_std": 0.09196506440639496,
+          "velocity_abs_mean": 0.05629175156354904,
+          "velocity_rms": 0.15571896731853485
+        },
+        "expression": {
+          "cross_distance": 0.20517751574516296,
+          "self_distance": 0.07956147938966751,
+          "ES": 0.1653967797756195,
+          "prediction_std": 0.04259667918086052,
+          "boundary_fraction": 0.3753204345703125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04258992150425911,
+          "velocity_abs_mean": 0.02346166968345642,
+          "velocity_rms": 0.05157410353422165,
+          "expression_entropy": 1.0843615531921387
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.632769584655762,
+        "stochastic_residual_abs_mean": 0.946548581123352,
+        "tanh_saturation_fraction": 0.7941113114356995
+      }
+    },
+    {
+      "clip_id": "speaker/session18/Camera-2024-07-22-155059-155140",
+      "session_id": "session18",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3584860563278198,
+          "self_distance": 0.15410920977592468,
+          "ES": 0.2814314365386963,
+          "prediction_std": 0.0598938874900341,
+          "boundary_fraction": 0.20969726145267487,
+          "temporal_mean": 0.1711178869009018,
+          "temporal_std": 0.043342240154743195,
+          "velocity_abs_mean": 0.02259383164346218,
+          "velocity_rms": 0.059708867222070694,
+          "expression_entropy": 1.3410539627075195
+        },
+        "AU": {
+          "cross_distance": 0.2857084274291992,
+          "self_distance": 0.08373630791902542,
+          "ES": 0.2438402771949768,
+          "prediction_std": 0.04360474273562431,
+          "boundary_fraction": 0.17613118886947632,
+          "temporal_mean": 0.17019113898277283,
+          "temporal_std": 0.041638799011707306,
+          "velocity_abs_mean": 0.020934417843818665,
+          "velocity_rms": 0.04127437248826027
+        },
+        "VA": {
+          "cross_distance": 0.9222594499588013,
+          "self_distance": 0.4370564818382263,
+          "ES": 0.7037311792373657,
+          "prediction_std": 0.26690664887428284,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3625403642654419,
+          "temporal_std": 0.09379199147224426,
+          "velocity_abs_mean": 0.05172464996576309,
+          "velocity_rms": 0.16069647669792175
+        },
+        "expression": {
+          "cross_distance": 0.18569545447826385,
+          "self_distance": 0.06289087980985641,
+          "ES": 0.15425001084804535,
+          "prediction_std": 0.03868286311626434,
+          "boundary_fraction": 0.2000579833984375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.033923763781785965,
+          "velocity_abs_mean": 0.018422532826662064,
+          "velocity_rms": 0.03861410170793533,
+          "expression_entropy": 1.3410539627075195
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.940927505493164,
+        "stochastic_residual_abs_mean": 0.9502900242805481,
+        "tanh_saturation_fraction": 0.8117724657058716
+      }
+    },
+    {
+      "clip_id": "speaker/session18/Camera-2024-10-21-162915-162924",
+      "session_id": "session18",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5170298218727112,
+          "self_distance": 0.1829518973827362,
+          "ES": 0.4255538582801819,
+          "prediction_std": 0.060776617377996445,
+          "boundary_fraction": 0.1716894507408142,
+          "temporal_mean": 0.1863386183977127,
+          "temporal_std": 0.04109901189804077,
+          "velocity_abs_mean": 0.01362550538033247,
+          "velocity_rms": 0.03939143568277359,
+          "expression_entropy": 1.360854148864746
+        },
+        "AU": {
+          "cross_distance": 0.5293682813644409,
+          "self_distance": 0.06792362779378891,
+          "ES": 0.49540647864341736,
+          "prediction_std": 0.03708473592996597,
+          "boundary_fraction": 0.11607259511947632,
+          "temporal_mean": 0.17387515306472778,
+          "temporal_std": 0.034518707543611526,
+          "velocity_abs_mean": 0.012512809596955776,
+          "velocity_rms": 0.02417140267789364
+        },
+        "VA": {
+          "cross_distance": 0.883033275604248,
+          "self_distance": 0.5789527893066406,
+          "ES": 0.5935568809509277,
+          "prediction_std": 0.3535764217376709,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.5251689553260803,
+          "temporal_std": 0.10304377973079681,
+          "velocity_abs_mean": 0.02484865114092827,
+          "velocity_rms": 0.10882297158241272
+        },
+        "expression": {
+          "cross_distance": 0.33740419149398804,
+          "self_distance": 0.05206362530589104,
+          "ES": 0.3113723695278168,
+          "prediction_std": 0.031998950988054276,
+          "boundary_fraction": 0.1938934326171875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03795089200139046,
+          "velocity_abs_mean": 0.012906022369861603,
+          "velocity_rms": 0.02815892919898033,
+          "expression_entropy": 1.360854148864746
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.8589606285095215,
+        "stochastic_residual_abs_mean": 0.9535662531852722,
+        "tanh_saturation_fraction": 0.8233300447463989
+      }
+    },
+    {
+      "clip_id": "speaker/session18/Camera-2024-08-08-153226-153307",
+      "session_id": "session18",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3546912670135498,
+          "self_distance": 0.14566582441329956,
+          "ES": 0.2818583548069,
+          "prediction_std": 0.05912057310342789,
+          "boundary_fraction": 0.18922363221645355,
+          "temporal_mean": 0.16787365078926086,
+          "temporal_std": 0.03357496112585068,
+          "velocity_abs_mean": 0.012049783021211624,
+          "velocity_rms": 0.022998597472906113,
+          "expression_entropy": 1.740929126739502
+        },
+        "AU": {
+          "cross_distance": 0.3241947293281555,
+          "self_distance": 0.07794024050235748,
+          "ES": 0.2852246165275574,
+          "prediction_std": 0.04172242805361748,
+          "boundary_fraction": 0.22893881797790527,
+          "temporal_mean": 0.16298063099384308,
+          "temporal_std": 0.029644910246133804,
+          "velocity_abs_mean": 0.011008385568857193,
+          "velocity_rms": 0.01832403987646103
+        },
+        "VA": {
+          "cross_distance": 0.7046042084693909,
+          "self_distance": 0.3982292413711548,
+          "ES": 0.5054895877838135,
+          "prediction_std": 0.2643187642097473,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3760659098625183,
+          "temporal_std": 0.06683676689863205,
+          "velocity_abs_mean": 0.021366456523537636,
+          "velocity_rms": 0.05284244939684868
+        },
+        "expression": {
+          "cross_distance": 0.26712721586227417,
+          "self_distance": 0.06430581212043762,
+          "ES": 0.23497430980205536,
+          "prediction_std": 0.04044255614280701,
+          "boundary_fraction": 0.0370635986328125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0326283723115921,
+          "velocity_abs_mean": 0.011673232540488243,
+          "velocity_rms": 0.018035318702459335,
+          "expression_entropy": 1.740929126739502
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.153509140014648,
+        "stochastic_residual_abs_mean": 0.9557134509086609,
+        "tanh_saturation_fraction": 0.8319531083106995
+      }
+    },
+    {
+      "clip_id": "speaker/session19/Camera-2024-10-18-162224-162332",
+      "session_id": "session19",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3944181203842163,
+          "self_distance": 0.1526527851819992,
+          "ES": 0.3180917203426361,
+          "prediction_std": 0.05128032714128494,
+          "boundary_fraction": 0.25716307759284973,
+          "temporal_mean": 0.17047522962093353,
+          "temporal_std": 0.04301752150058746,
+          "velocity_abs_mean": 0.02255617454648018,
+          "velocity_rms": 0.06462452560663223,
+          "expression_entropy": 0.9881932139396667
+        },
+        "AU": {
+          "cross_distance": 0.311151385307312,
+          "self_distance": 0.06837403029203415,
+          "ES": 0.27696436643600464,
+          "prediction_std": 0.032091185450553894,
+          "boundary_fraction": 0.19047851860523224,
+          "temporal_mean": 0.17506520450115204,
+          "temporal_std": 0.03792054206132889,
+          "velocity_abs_mean": 0.0201131459325552,
+          "velocity_rms": 0.04236472770571709
+        },
+        "VA": {
+          "cross_distance": 0.7612048387527466,
+          "self_distance": 0.4484463334083557,
+          "ES": 0.5369817018508911,
+          "prediction_std": 0.26312172412872314,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.31795135140419006,
+          "temporal_std": 0.11129768937826157,
+          "velocity_abs_mean": 0.05765112116932869,
+          "velocity_rms": 0.17924301326274872
+        },
+        "expression": {
+          "cross_distance": 0.3967936336994171,
+          "self_distance": 0.06773249059915543,
+          "ES": 0.3629273772239685,
+          "prediction_std": 0.034299638122320175,
+          "boundary_fraction": 0.3214874267578125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.035504311323165894,
+          "velocity_abs_mean": 0.018363110721111298,
+          "velocity_rms": 0.040667202323675156,
+          "expression_entropy": 0.9881932139396667
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.771049499511719,
+        "stochastic_residual_abs_mean": 0.9469635486602783,
+        "tanh_saturation_fraction": 0.805102527141571
+      }
+    },
+    {
+      "clip_id": "speaker/session19/Camera-2024-10-21-162915-162924",
+      "session_id": "session19",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.49390363693237305,
+          "self_distance": 0.14632830023765564,
+          "ES": 0.42073947191238403,
+          "prediction_std": 0.05333692580461502,
+          "boundary_fraction": 0.23278319835662842,
+          "temporal_mean": 0.16908565163612366,
+          "temporal_std": 0.04513772949576378,
+          "velocity_abs_mean": 0.016607942059636116,
+          "velocity_rms": 0.044107384979724884,
+          "expression_entropy": 1.360613226890564
+        },
+        "AU": {
+          "cross_distance": 0.4856278598308563,
+          "self_distance": 0.0640701949596405,
+          "ES": 0.45359277725219727,
+          "prediction_std": 0.03165222704410553,
+          "boundary_fraction": 0.2159830778837204,
+          "temporal_mean": 0.16525158286094666,
+          "temporal_std": 0.038343001157045364,
+          "velocity_abs_mean": 0.014192330650985241,
+          "velocity_rms": 0.029581744223833084
+        },
+        "VA": {
+          "cross_distance": 0.9279300570487976,
+          "self_distance": 0.432890921831131,
+          "ES": 0.7114846110343933,
+          "prediction_std": 0.2603755593299866,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3741840422153473,
+          "temporal_std": 0.11694836616516113,
+          "velocity_abs_mean": 0.03626362979412079,
+          "velocity_rms": 0.11492780596017838
+        },
+        "expression": {
+          "cross_distance": 0.31826549768447876,
+          "self_distance": 0.07108024507761002,
+          "ES": 0.28272536396980286,
+          "prediction_std": 0.042236074805259705,
+          "boundary_fraction": 0.197479248046875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03992519527673721,
+          "velocity_abs_mean": 0.01622328720986843,
+          "velocity_rms": 0.03371485695242882,
+          "expression_entropy": 1.360613226890564
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.9387407302856445,
+        "stochastic_residual_abs_mean": 0.9472448229789734,
+        "tanh_saturation_fraction": 0.8130175471305847
+      }
+    },
+    {
+      "clip_id": "speaker/session19/Camera-2024-10-18-154049-154118",
+      "session_id": "session19",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.49686622619628906,
+          "self_distance": 0.1651831865310669,
+          "ES": 0.4142746329307556,
+          "prediction_std": 0.05565981566905975,
+          "boundary_fraction": 0.1686718761920929,
+          "temporal_mean": 0.18536920845508575,
+          "temporal_std": 0.052630648016929626,
+          "velocity_abs_mean": 0.0181497260928154,
+          "velocity_rms": 0.047865815460681915,
+          "expression_entropy": 1.2075071334838867
+        },
+        "AU": {
+          "cross_distance": 0.4993063807487488,
+          "self_distance": 0.06756755709648132,
+          "ES": 0.4655225872993469,
+          "prediction_std": 0.037621188908815384,
+          "boundary_fraction": 0.05771484598517418,
+          "temporal_mean": 0.18619652092456818,
+          "temporal_std": 0.0510055236518383,
+          "velocity_abs_mean": 0.017166556790471077,
+          "velocity_rms": 0.03131495416164398
+        },
+        "VA": {
+          "cross_distance": 0.8565561175346375,
+          "self_distance": 0.5191811323165894,
+          "ES": 0.5969655513763428,
+          "prediction_std": 0.30830180644989014,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4206410050392151,
+          "temporal_std": 0.11875655502080917,
+          "velocity_abs_mean": 0.037981536239385605,
+          "velocity_rms": 0.13188984990119934
+        },
+        "expression": {
+          "cross_distance": 0.3386688232421875,
+          "self_distance": 0.04639019817113876,
+          "ES": 0.315473735332489,
+          "prediction_std": 0.02632175013422966,
+          "boundary_fraction": 0.29388427734375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03914628177881241,
+          "velocity_abs_mean": 0.015035217627882957,
+          "velocity_rms": 0.031183233484625816,
+          "expression_entropy": 1.2075071334838867
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.5517258644104,
+        "stochastic_residual_abs_mean": 0.9497400522232056,
+        "tanh_saturation_fraction": 0.8037450909614563
+      }
+    },
+    {
+      "clip_id": "speaker/session19/Camera-2024-10-17-161111-161220",
+      "session_id": "session19",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3826839029788971,
+          "self_distance": 0.15577229857444763,
+          "ES": 0.3047977685928345,
+          "prediction_std": 0.056578561663627625,
+          "boundary_fraction": 0.17482420802116394,
+          "temporal_mean": 0.15090666711330414,
+          "temporal_std": 0.05453232303261757,
+          "velocity_abs_mean": 0.02976425550878048,
+          "velocity_rms": 0.07627665251493454,
+          "expression_entropy": 1.3439178466796875
+        },
+        "AU": {
+          "cross_distance": 0.35505151748657227,
+          "self_distance": 0.06336331367492676,
+          "ES": 0.3233698606491089,
+          "prediction_std": 0.033239517360925674,
+          "boundary_fraction": 0.08603516221046448,
+          "temporal_mean": 0.13594621419906616,
+          "temporal_std": 0.04819997027516365,
+          "velocity_abs_mean": 0.02515963278710842,
+          "velocity_rms": 0.047348156571388245
+        },
+        "VA": {
+          "cross_distance": 0.7292789220809937,
+          "self_distance": 0.45709073543548584,
+          "ES": 0.5007335543632507,
+          "prediction_std": 0.27402567863464355,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.36673682928085327,
+          "temporal_std": 0.1119801327586174,
+          "velocity_abs_mean": 0.07115813344717026,
+          "velocity_rms": 0.20669519901275635
+        },
+        "expression": {
+          "cross_distance": 0.2947462201118469,
+          "self_distance": 0.08095290511846542,
+          "ES": 0.2542697787284851,
+          "prediction_std": 0.04597751051187515,
+          "boundary_fraction": 0.260009765625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.05204354226589203,
+          "velocity_abs_mean": 0.028049450367689133,
+          "velocity_rms": 0.057423483580350876,
+          "expression_entropy": 1.3439178466796875
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.774252891540527,
+        "stochastic_residual_abs_mean": 0.9511744976043701,
+        "tanh_saturation_fraction": 0.8089599609375
+      }
+    },
+    {
+      "clip_id": "speaker/session2/Camera-2024-07-30-161637-161715",
+      "session_id": "session2",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4044913351535797,
+          "self_distance": 0.10423117130994797,
+          "ES": 0.35237574577331543,
+          "prediction_std": 0.03467068076133728,
+          "boundary_fraction": 0.34554198384284973,
+          "temporal_mean": 0.15959490835666656,
+          "temporal_std": 0.037482764571905136,
+          "velocity_abs_mean": 0.019096560776233673,
+          "velocity_rms": 0.052809953689575195,
+          "expression_entropy": 0.590718686580658
+        },
+        "AU": {
+          "cross_distance": 0.38235750794410706,
+          "self_distance": 0.04224109649658203,
+          "ES": 0.36123695969581604,
+          "prediction_std": 0.022323084995150566,
+          "boundary_fraction": 0.18106283247470856,
+          "temporal_mean": 0.17176032066345215,
+          "temporal_std": 0.037248868495225906,
+          "velocity_abs_mean": 0.019598418846726418,
+          "velocity_rms": 0.03860311582684517
+        },
+        "VA": {
+          "cross_distance": 0.7493621706962585,
+          "self_distance": 0.3192096948623657,
+          "ES": 0.5897573232650757,
+          "prediction_std": 0.1773599237203598,
+          "boundary_fraction": 0.51025390625,
+          "temporal_mean": 0.20673415064811707,
+          "temporal_std": 0.11077255010604858,
+          "velocity_abs_mean": 0.04971195384860039,
+          "velocity_rms": 0.1433318555355072
+        },
+        "expression": {
+          "cross_distance": 0.3108366131782532,
+          "self_distance": 0.04363502934575081,
+          "ES": 0.2890191078186035,
+          "prediction_std": 0.022150114178657532,
+          "boundary_fraction": 0.612762451171875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.01959889382123947,
+          "velocity_abs_mean": 0.010501726530492306,
+          "velocity_rms": 0.028020575642585754,
+          "expression_entropy": 0.590718686580658
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 5.656986713409424,
+        "stochastic_residual_abs_mean": 0.9315609335899353,
+        "tanh_saturation_fraction": 0.7207812070846558
+      }
+    },
+    {
+      "clip_id": "speaker/session2/Camera-2024-07-26-103222-103252",
+      "session_id": "session2",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4780161678791046,
+          "self_distance": 0.1807975023984909,
+          "ES": 0.38761740922927856,
+          "prediction_std": 0.05739767104387283,
+          "boundary_fraction": 0.19124023616313934,
+          "temporal_mean": 0.1916060447692871,
+          "temporal_std": 0.047866057604551315,
+          "velocity_abs_mean": 0.025037482380867004,
+          "velocity_rms": 0.07421861588954926,
+          "expression_entropy": 0.9189232587814331
+        },
+        "AU": {
+          "cross_distance": 0.4522894322872162,
+          "self_distance": 0.06972506642341614,
+          "ES": 0.4174268841743469,
+          "prediction_std": 0.036707744002342224,
+          "boundary_fraction": 0.07596029341220856,
+          "temporal_mean": 0.18828272819519043,
+          "temporal_std": 0.04592025652527809,
+          "velocity_abs_mean": 0.024775177240371704,
+          "velocity_rms": 0.047322627156972885
+        },
+        "VA": {
+          "cross_distance": 0.8262687921524048,
+          "self_distance": 0.5750793218612671,
+          "ES": 0.5387291312217712,
+          "prediction_std": 0.34393346309661865,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.48295527696609497,
+          "temporal_std": 0.133732870221138,
+          "velocity_abs_mean": 0.061456017196178436,
+          "velocity_rms": 0.21609076857566833
+        },
+        "expression": {
+          "cross_distance": 0.39789873361587524,
+          "self_distance": 0.04496515542268753,
+          "ES": 0.3754161596298218,
+          "prediction_std": 0.024557335302233696,
+          "boundary_fraction": 0.3302001953125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03004775568842888,
+          "velocity_abs_mean": 0.016424668952822685,
+          "velocity_rms": 0.03661995753645897,
+          "expression_entropy": 0.9189232587814331
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.515272617340088,
+        "stochastic_residual_abs_mean": 0.9453517198562622,
+        "tanh_saturation_fraction": 0.7995312213897705
+      }
+    },
+    {
+      "clip_id": "speaker/session2/Camera-2024-07-11-134401-134311",
+      "session_id": "session2",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.49808335304260254,
+          "self_distance": 0.13441364467144012,
+          "ES": 0.4308765232563019,
+          "prediction_std": 0.046774767339229584,
+          "boundary_fraction": 0.21998046338558197,
+          "temporal_mean": 0.14365720748901367,
+          "temporal_std": 0.042097482830286026,
+          "velocity_abs_mean": 0.01922900788486004,
+          "velocity_rms": 0.05643809586763382,
+          "expression_entropy": 1.1665167808532715
+        },
+        "AU": {
+          "cross_distance": 0.5143425464630127,
+          "self_distance": 0.04958103224635124,
+          "ES": 0.48955202102661133,
+          "prediction_std": 0.025848615914583206,
+          "boundary_fraction": 0.11407064646482468,
+          "temporal_mean": 0.12743248045444489,
+          "temporal_std": 0.03403972089290619,
+          "velocity_abs_mean": 0.016494503244757652,
+          "velocity_rms": 0.03510427474975586
+        },
+        "VA": {
+          "cross_distance": 0.7281430959701538,
+          "self_distance": 0.41016265749931335,
+          "ES": 0.5230617523193359,
+          "prediction_std": 0.24574638903141022,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.33997178077697754,
+          "temporal_std": 0.10712683200836182,
+          "velocity_abs_mean": 0.05152500793337822,
+          "velocity_rms": 0.1575251817703247
+        },
+        "expression": {
+          "cross_distance": 0.37468352913856506,
+          "self_distance": 0.06044350564479828,
+          "ES": 0.3444617688655853,
+          "prediction_std": 0.036268413066864014,
+          "boundary_fraction": 0.3485565185546875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04094844311475754,
+          "velocity_abs_mean": 0.016282204538583755,
+          "velocity_rms": 0.03794477880001068,
+          "expression_entropy": 1.1665167808532715
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.364188194274902,
+        "stochastic_residual_abs_mean": 0.9472694396972656,
+        "tanh_saturation_fraction": 0.78932124376297
+      }
+    },
+    {
+      "clip_id": "speaker/session2/Camera-2024-07-11-103159-103100",
+      "session_id": "session2",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.40280479192733765,
+          "self_distance": 0.1379726529121399,
+          "ES": 0.3338184654712677,
+          "prediction_std": 0.04189542308449745,
+          "boundary_fraction": 0.38408201932907104,
+          "temporal_mean": 0.16494838893413544,
+          "temporal_std": 0.03635004162788391,
+          "velocity_abs_mean": 0.024178173393011093,
+          "velocity_rms": 0.07078544795513153,
+          "expression_entropy": 0.7480235695838928
+        },
+        "AU": {
+          "cross_distance": 0.3472209870815277,
+          "self_distance": 0.04060233011841774,
+          "ES": 0.326919823884964,
+          "prediction_std": 0.019503522664308548,
+          "boundary_fraction": 0.2449137568473816,
+          "temporal_mean": 0.17103281617164612,
+          "temporal_std": 0.03048871085047722,
+          "velocity_abs_mean": 0.019673550501465797,
+          "velocity_rms": 0.0391935296356678
+        },
+        "VA": {
+          "cross_distance": 0.7671567797660828,
+          "self_distance": 0.4305335581302643,
+          "ES": 0.5518900156021118,
+          "prediction_std": 0.2517073154449463,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.2791087031364441,
+          "temporal_std": 0.10463785380125046,
+          "velocity_abs_mean": 0.07167356461286545,
+          "velocity_rms": 0.2034917175769806
+        },
+        "expression": {
+          "cross_distance": 0.36498233675956726,
+          "self_distance": 0.05800304934382439,
+          "ES": 0.3359808027744293,
+          "prediction_std": 0.03142726421356201,
+          "boundary_fraction": 0.6160430908203125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03026808425784111,
+          "velocity_abs_mean": 0.020750492811203003,
+          "velocity_rms": 0.049250297248363495,
+          "expression_entropy": 0.7480235695838928
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 5.772461891174316,
+        "stochastic_residual_abs_mean": 0.9318090081214905,
+        "tanh_saturation_fraction": 0.7320556640625
+      }
+    },
+    {
+      "clip_id": "speaker/session21/Camera-2024-07-15-110902-110933",
+      "session_id": "session21",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.422305166721344,
+          "self_distance": 0.16318237781524658,
+          "ES": 0.3407139778137207,
+          "prediction_std": 0.059393204748630524,
+          "boundary_fraction": 0.22224609553813934,
+          "temporal_mean": 0.19066458940505981,
+          "temporal_std": 0.02720220945775509,
+          "velocity_abs_mean": 0.008579183369874954,
+          "velocity_rms": 0.01809256337583065,
+          "expression_entropy": 1.4174513816833496
+        },
+        "AU": {
+          "cross_distance": 0.3897522985935211,
+          "self_distance": 0.09024281054735184,
+          "ES": 0.3446308970451355,
+          "prediction_std": 0.0450904481112957,
+          "boundary_fraction": 0.24919435381889343,
+          "temporal_mean": 0.20007063448429108,
+          "temporal_std": 0.024137577041983604,
+          "velocity_abs_mean": 0.0076986863277852535,
+          "velocity_rms": 0.014751059003174305
+        },
+        "VA": {
+          "cross_distance": 0.8991463780403137,
+          "self_distance": 0.4623842239379883,
+          "ES": 0.6679542660713196,
+          "prediction_std": 0.30357998609542847,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.38277798891067505,
+          "temporal_std": 0.06589046865701675,
+          "velocity_abs_mean": 0.016968630254268646,
+          "velocity_rms": 0.04177431762218475
+        },
+        "expression": {
+          "cross_distance": 0.24806533753871918,
+          "self_distance": 0.03942036256194115,
+          "ES": 0.22835515439510345,
+          "prediction_std": 0.02516418695449829,
+          "boundary_fraction": 0.1022796630859375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.023276325315237045,
+          "velocity_abs_mean": 0.00813275296241045,
+          "velocity_rms": 0.013367066159844398,
+          "expression_entropy": 1.4174513816833496
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.972025394439697,
+        "stochastic_residual_abs_mean": 0.9605368375778198,
+        "tanh_saturation_fraction": 0.8305370807647705
+      }
+    },
+    {
+      "clip_id": "speaker/session21/Camera-2024-10-21-162915-162924",
+      "session_id": "session21",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.45167624950408936,
+          "self_distance": 0.15867458283901215,
+          "ES": 0.3723389506340027,
+          "prediction_std": 0.05157013610005379,
+          "boundary_fraction": 0.21241210401058197,
+          "temporal_mean": 0.1789335161447525,
+          "temporal_std": 0.028292179107666016,
+          "velocity_abs_mean": 0.008880923502147198,
+          "velocity_rms": 0.023512551560997963,
+          "expression_entropy": 1.2698054313659668
+        },
+        "AU": {
+          "cross_distance": 0.4652930796146393,
+          "self_distance": 0.08383843302726746,
+          "ES": 0.42337387800216675,
+          "prediction_std": 0.039407987147569656,
+          "boundary_fraction": 0.21156413853168488,
+          "temporal_mean": 0.18327949941158295,
+          "temporal_std": 0.023087332025170326,
+          "velocity_abs_mean": 0.007489335257560015,
+          "velocity_rms": 0.015961702913045883
+        },
+        "VA": {
+          "cross_distance": 0.7412877082824707,
+          "self_distance": 0.4688773453235626,
+          "ES": 0.5068490505218506,
+          "prediction_std": 0.2914436459541321,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3620727062225342,
+          "temporal_std": 0.08270014077425003,
+          "velocity_abs_mean": 0.019679872319102287,
+          "velocity_rms": 0.06290940940380096
+        },
+        "expression": {
+          "cross_distance": 0.3068258762359619,
+          "self_distance": 0.023245129734277725,
+          "ES": 0.295203298330307,
+          "prediction_std": 0.014405809342861176,
+          "boundary_fraction": 0.1421051025390625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.02444927953183651,
+          "velocity_abs_mean": 0.008790414780378342,
+          "velocity_rms": 0.016140684485435486,
+          "expression_entropy": 1.2698054313659668
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.786807060241699,
+        "stochastic_residual_abs_mean": 0.9577763676643372,
+        "tanh_saturation_fraction": 0.8250195384025574
+      }
+    },
+    {
+      "clip_id": "speaker/session21/Camera-2024-10-18-140432-140500",
+      "session_id": "session21",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3958665728569031,
+          "self_distance": 0.1453169733285904,
+          "ES": 0.3232080936431885,
+          "prediction_std": 0.06004897132515907,
+          "boundary_fraction": 0.1991845667362213,
+          "temporal_mean": 0.19498750567436218,
+          "temporal_std": 0.03279381990432739,
+          "velocity_abs_mean": 0.010376440361142159,
+          "velocity_rms": 0.020818209275603294,
+          "expression_entropy": 1.4805586338043213
+        },
+        "AU": {
+          "cross_distance": 0.37561893463134766,
+          "self_distance": 0.09665416926145554,
+          "ES": 0.3272918462753296,
+          "prediction_std": 0.050685733556747437,
+          "boundary_fraction": 0.23285320401191711,
+          "temporal_mean": 0.21399621665477753,
+          "temporal_std": 0.030371470376849174,
+          "velocity_abs_mean": 0.009499555453658104,
+          "velocity_rms": 0.017125669866800308
+        },
+        "VA": {
+          "cross_distance": 0.6741628646850586,
+          "self_distance": 0.37985581159591675,
+          "ES": 0.4842349588871002,
+          "prediction_std": 0.24907587468624115,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.33237236738204956,
+          "temporal_std": 0.06730642914772034,
+          "velocity_abs_mean": 0.021188953891396523,
+          "velocity_rms": 0.04722126945853233
+        },
+        "expression": {
+          "cross_distance": 0.3332963287830353,
+          "self_distance": 0.04894765466451645,
+          "ES": 0.30882251262664795,
+          "prediction_std": 0.030348310247063637,
+          "boundary_fraction": 0.06085205078125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.028707576915621758,
+          "velocity_abs_mean": 0.009317470714449883,
+          "velocity_rms": 0.015715913847088814,
+          "expression_entropy": 1.4805586338043213
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.155038833618164,
+        "stochastic_residual_abs_mean": 0.9547492861747742,
+        "tanh_saturation_fraction": 0.83228999376297
+      }
+    },
+    {
+      "clip_id": "speaker/session21/Camera-2024-10-18-162224-162332",
+      "session_id": "session21",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.42550063133239746,
+          "self_distance": 0.15671491622924805,
+          "ES": 0.34714317321777344,
+          "prediction_std": 0.06324112415313721,
+          "boundary_fraction": 0.1933007836341858,
+          "temporal_mean": 0.2013382464647293,
+          "temporal_std": 0.03090422973036766,
+          "velocity_abs_mean": 0.010096577927470207,
+          "velocity_rms": 0.020749706774950027,
+          "expression_entropy": 1.5190281867980957
+        },
+        "AU": {
+          "cross_distance": 0.40381479263305664,
+          "self_distance": 0.09754454344511032,
+          "ES": 0.3550425171852112,
+          "prediction_std": 0.050606753677129745,
+          "boundary_fraction": 0.22278647124767303,
+          "temporal_mean": 0.21861708164215088,
+          "temporal_std": 0.027745451778173447,
+          "velocity_abs_mean": 0.009105457924306393,
+          "velocity_rms": 0.016355346888303757
+        },
+        "VA": {
+          "cross_distance": 0.7059357166290283,
+          "self_distance": 0.422267884016037,
+          "ES": 0.49480175971984863,
+          "prediction_std": 0.27813926339149475,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.37709999084472656,
+          "temporal_std": 0.07355307042598724,
+          "velocity_abs_mean": 0.02100595273077488,
+          "velocity_rms": 0.049351971596479416
+        },
+        "expression": {
+          "cross_distance": 0.3657723069190979,
+          "self_distance": 0.05406450480222702,
+          "ES": 0.3387400507926941,
+          "prediction_std": 0.03320605307817459,
+          "boundary_fraction": 0.06134033203125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.026164742186665535,
+          "velocity_abs_mean": 0.009227580390870571,
+          "velocity_rms": 0.015329970978200436,
+          "expression_entropy": 1.5190281867980957
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.11871337890625,
+        "stochastic_residual_abs_mean": 0.9534019827842712,
+        "tanh_saturation_fraction": 0.8329931497573853
+      }
+    },
+    {
+      "clip_id": "speaker/session3/Camera-2024-10-17-161111-161220",
+      "session_id": "session3",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.42411649227142334,
+          "self_distance": 0.1738097369670868,
+          "ES": 0.33721160888671875,
+          "prediction_std": 0.05207808315753937,
+          "boundary_fraction": 0.2499365210533142,
+          "temporal_mean": 0.15479053556919098,
+          "temporal_std": 0.047242503613233566,
+          "velocity_abs_mean": 0.02514270506799221,
+          "velocity_rms": 0.07614955306053162,
+          "expression_entropy": 0.7050361633300781
+        },
+        "AU": {
+          "cross_distance": 0.4259708523750305,
+          "self_distance": 0.054904185235500336,
+          "ES": 0.39851877093315125,
+          "prediction_std": 0.02877241186797619,
+          "boundary_fraction": 0.09331869333982468,
+          "temporal_mean": 0.13781724870204926,
+          "temporal_std": 0.046860355883836746,
+          "velocity_abs_mean": 0.025001054629683495,
+          "velocity_rms": 0.04540879279375076
+        },
+        "VA": {
+          "cross_distance": 0.7084828615188599,
+          "self_distance": 0.560719907283783,
+          "ES": 0.4281229078769684,
+          "prediction_std": 0.326270192861557,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4012523293495178,
+          "temporal_std": 0.1293170154094696,
+          "velocity_abs_mean": 0.0662904754281044,
+          "velocity_rms": 0.22631609439849854
+        },
+        "expression": {
+          "cross_distance": 0.30791085958480835,
+          "self_distance": 0.05478416010737419,
+          "ES": 0.2805187702178955,
+          "prediction_std": 0.027228206396102905,
+          "boundary_fraction": 0.4810791015625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.027440408244729042,
+          "velocity_abs_mean": 0.015121348202228546,
+          "velocity_rms": 0.03808137774467468,
+          "expression_entropy": 0.7050361633300781
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.143718719482422,
+        "stochastic_residual_abs_mean": 0.9478713870048523,
+        "tanh_saturation_fraction": 0.7841162085533142
+      }
+    },
+    {
+      "clip_id": "speaker/session3/Camera-2024-10-21-135251-135252",
+      "session_id": "session3",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5266387462615967,
+          "self_distance": 0.1779477894306183,
+          "ES": 0.43766486644744873,
+          "prediction_std": 0.052874382585287094,
+          "boundary_fraction": 0.21259276568889618,
+          "temporal_mean": 0.15557079017162323,
+          "temporal_std": 0.047341156750917435,
+          "velocity_abs_mean": 0.024216845631599426,
+          "velocity_rms": 0.07413260638713837,
+          "expression_entropy": 0.814269483089447
+        },
+        "AU": {
+          "cross_distance": 0.5046819448471069,
+          "self_distance": 0.05336574837565422,
+          "ES": 0.4779990613460541,
+          "prediction_std": 0.027574270963668823,
+          "boundary_fraction": 0.07278646528720856,
+          "temporal_mean": 0.13497194647789001,
+          "temporal_std": 0.044562652707099915,
+          "velocity_abs_mean": 0.02331368811428547,
+          "velocity_rms": 0.043691739439964294
+        },
+        "VA": {
+          "cross_distance": 0.891988217830658,
+          "self_distance": 0.5808748006820679,
+          "ES": 0.601550817489624,
+          "prediction_std": 0.3355295658111572,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.43234527111053467,
+          "temporal_std": 0.14075255393981934,
+          "velocity_abs_mean": 0.06491978466510773,
+          "velocity_rms": 0.22133012115955353
+        },
+        "expression": {
+          "cross_distance": 0.42783862352371216,
+          "self_distance": 0.058921024203300476,
+          "ES": 0.3983781039714813,
+          "prediction_std": 0.029648298397660255,
+          "boundary_fraction": 0.4028778076171875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.02919800765812397,
+          "velocity_abs_mean": 0.015734534710645676,
+          "velocity_rms": 0.03671259805560112,
+          "expression_entropy": 0.814269483089447
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.179450988769531,
+        "stochastic_residual_abs_mean": 0.9451929926872253,
+        "tanh_saturation_fraction": 0.779956042766571
+      }
+    },
+    {
+      "clip_id": "speaker/session3/Camera-2024-10-18-154049-154118",
+      "session_id": "session3",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.5330246686935425,
+          "self_distance": 0.16960889101028442,
+          "ES": 0.44822022318840027,
+          "prediction_std": 0.05418476462364197,
+          "boundary_fraction": 0.17170898616313934,
+          "temporal_mean": 0.19183315336704254,
+          "temporal_std": 0.04427468031644821,
+          "velocity_abs_mean": 0.01720478944480419,
+          "velocity_rms": 0.053539782762527466,
+          "expression_entropy": 1.0128092765808105
+        },
+        "AU": {
+          "cross_distance": 0.481363445520401,
+          "self_distance": 0.05940178409218788,
+          "ES": 0.451662540435791,
+          "prediction_std": 0.03460635617375374,
+          "boundary_fraction": 0.03085123933851719,
+          "temporal_mean": 0.1949596256017685,
+          "temporal_std": 0.04225654900074005,
+          "velocity_abs_mean": 0.017239632084965706,
+          "velocity_rms": 0.03265777975320816
+        },
+        "VA": {
+          "cross_distance": 1.057945728302002,
+          "self_distance": 0.5438953042030334,
+          "ES": 0.7859981060028076,
+          "prediction_std": 0.3245691657066345,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.43571725487709045,
+          "temporal_std": 0.1153126209974289,
+          "velocity_abs_mean": 0.04161820560693741,
+          "velocity_rms": 0.15884190797805786
+        },
+        "expression": {
+          "cross_distance": 0.39972513914108276,
+          "self_distance": 0.04168771579861641,
+          "ES": 0.3788812756538391,
+          "prediction_std": 0.02329818345606327,
+          "boundary_fraction": 0.3537445068359375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03029920905828476,
+          "velocity_abs_mean": 0.011036105453968048,
+          "velocity_rms": 0.025503043085336685,
+          "expression_entropy": 1.0128092765808105
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.275824546813965,
+        "stochastic_residual_abs_mean": 0.9455790519714355,
+        "tanh_saturation_fraction": 0.7870165705680847
+      }
+    },
+    {
+      "clip_id": "speaker/session3/Camera-2024-10-21-153924-153959",
+      "session_id": "session3",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4663853645324707,
+          "self_distance": 0.17334944009780884,
+          "ES": 0.3797106444835663,
+          "prediction_std": 0.050995998084545135,
+          "boundary_fraction": 0.19770018756389618,
+          "temporal_mean": 0.16194923222064972,
+          "temporal_std": 0.04568861797451973,
+          "velocity_abs_mean": 0.02576323039829731,
+          "velocity_rms": 0.08144426345825195,
+          "expression_entropy": 0.8151399493217468
+        },
+        "AU": {
+          "cross_distance": 0.4377203583717346,
+          "self_distance": 0.05191298574209213,
+          "ES": 0.41176387667655945,
+          "prediction_std": 0.027983756735920906,
+          "boundary_fraction": 0.06442057341337204,
+          "temporal_mean": 0.14899681508541107,
+          "temporal_std": 0.04486914724111557,
+          "velocity_abs_mean": 0.02498432621359825,
+          "velocity_rms": 0.04753204062581062
+        },
+        "VA": {
+          "cross_distance": 0.7782723307609558,
+          "self_distance": 0.563218891620636,
+          "ES": 0.4966628849506378,
+          "prediction_std": 0.3310588002204895,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.40688925981521606,
+          "temporal_std": 0.12366798520088196,
+          "velocity_abs_mean": 0.06934709846973419,
+          "velocity_rms": 0.24504123628139496
+        },
+        "expression": {
+          "cross_distance": 0.4040239453315735,
+          "self_distance": 0.047967564314603806,
+          "ES": 0.38004016876220703,
+          "prediction_std": 0.024128252640366554,
+          "boundary_fraction": 0.3720245361328125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.027730301022529602,
+          "velocity_abs_mean": 0.01632770337164402,
+          "velocity_rms": 0.03848597779870033,
+          "expression_entropy": 0.8151399493217468
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.407674789428711,
+        "stochastic_residual_abs_mean": 0.949804961681366,
+        "tanh_saturation_fraction": 0.805834949016571
+      }
+    },
+    {
+      "clip_id": "speaker/session4/Camera-2024-07-15-123346-123414",
+      "session_id": "session4",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.38230445981025696,
+          "self_distance": 0.1116287112236023,
+          "ES": 0.3264901041984558,
+          "prediction_std": 0.040861181914806366,
+          "boundary_fraction": 0.3106982409954071,
+          "temporal_mean": 0.13579697906970978,
+          "temporal_std": 0.04069965332746506,
+          "velocity_abs_mean": 0.024806873872876167,
+          "velocity_rms": 0.06275859475135803,
+          "expression_entropy": 0.9909768104553223
+        },
+        "AU": {
+          "cross_distance": 0.2948683202266693,
+          "self_distance": 0.04896269366145134,
+          "ES": 0.2703869640827179,
+          "prediction_std": 0.02415897324681282,
+          "boundary_fraction": 0.2207438200712204,
+          "temporal_mean": 0.12964436411857605,
+          "temporal_std": 0.03653589263558388,
+          "velocity_abs_mean": 0.02239130809903145,
+          "velocity_rms": 0.04557948559522629
+        },
+        "VA": {
+          "cross_distance": 0.8495794534683228,
+          "self_distance": 0.31474438309669495,
+          "ES": 0.6922072768211365,
+          "prediction_std": 0.1807696521282196,
+          "boundary_fraction": 0.50677490234375,
+          "temporal_mean": 0.22512947022914886,
+          "temporal_std": 0.09213968366384506,
+          "velocity_abs_mean": 0.05560849606990814,
+          "velocity_rms": 0.15419581532478333
+        },
+        "expression": {
+          "cross_distance": 0.33492666482925415,
+          "self_distance": 0.0685005635023117,
+          "ES": 0.3006763756275177,
+          "prediction_std": 0.03720070421695709,
+          "boundary_fraction": 0.4303436279296875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0356467068195343,
+          "velocity_abs_mean": 0.02163565903902054,
+          "velocity_rms": 0.04968774691224098,
+          "expression_entropy": 0.9909768104553223
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.260775089263916,
+        "stochastic_residual_abs_mean": 0.9450452923774719,
+        "tanh_saturation_fraction": 0.7752343416213989
+      }
+    },
+    {
+      "clip_id": "speaker/session4/Camera-2024-10-17-143648-143743",
+      "session_id": "session4",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3658292889595032,
+          "self_distance": 0.18402253091335297,
+          "ES": 0.2738180160522461,
+          "prediction_std": 0.05563053861260414,
+          "boundary_fraction": 0.22451171278953552,
+          "temporal_mean": 0.1582091748714447,
+          "temporal_std": 0.044867150485515594,
+          "velocity_abs_mean": 0.027124062180519104,
+          "velocity_rms": 0.07652665674686432,
+          "expression_entropy": 0.7395888566970825
+        },
+        "AU": {
+          "cross_distance": 0.35156869888305664,
+          "self_distance": 0.05803303048014641,
+          "ES": 0.3225521743297577,
+          "prediction_std": 0.02961154840886593,
+          "boundary_fraction": 0.0541992224752903,
+          "temporal_mean": 0.1370781809091568,
+          "temporal_std": 0.04419470205903053,
+          "velocity_abs_mean": 0.026598524302244186,
+          "velocity_rms": 0.047129783779382706
+        },
+        "VA": {
+          "cross_distance": 0.8022347688674927,
+          "self_distance": 0.589201033115387,
+          "ES": 0.5076342821121216,
+          "prediction_std": 0.3517487049102783,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.4495285153388977,
+          "temporal_std": 0.1286657154560089,
+          "velocity_abs_mean": 0.07034718990325928,
+          "velocity_rms": 0.22366994619369507
+        },
+        "expression": {
+          "cross_distance": 0.1541350781917572,
+          "self_distance": 0.056007515639066696,
+          "ES": 0.1261313259601593,
+          "prediction_std": 0.030386608093976974,
+          "boundary_fraction": 0.4749755859375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.025178367272019386,
+          "velocity_abs_mean": 0.01730366237461567,
+          "velocity_rms": 0.04036318138241768,
+          "expression_entropy": 0.7395888566970825
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.078255653381348,
+        "stochastic_residual_abs_mean": 0.9450886249542236,
+        "tanh_saturation_fraction": 0.7802636623382568
+      }
+    },
+    {
+      "clip_id": "speaker/session4/Camera-2024-07-15-115034-115115",
+      "session_id": "session4",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.40970927476882935,
+          "self_distance": 0.15481843054294586,
+          "ES": 0.332300066947937,
+          "prediction_std": 0.059955060482025146,
+          "boundary_fraction": 0.1255224645137787,
+          "temporal_mean": 0.16698752343654633,
+          "temporal_std": 0.049794744700193405,
+          "velocity_abs_mean": 0.018166877329349518,
+          "velocity_rms": 0.04005774110555649,
+          "expression_entropy": 1.597973346710205
+        },
+        "AU": {
+          "cross_distance": 0.4124146103858948,
+          "self_distance": 0.07174243777990341,
+          "ES": 0.37654340267181396,
+          "prediction_std": 0.03808719292283058,
+          "boundary_fraction": 0.0808105543255806,
+          "temporal_mean": 0.15985141694545746,
+          "temporal_std": 0.04580605402588844,
+          "velocity_abs_mean": 0.01673903875052929,
+          "velocity_rms": 0.03029746562242508
+        },
+        "VA": {
+          "cross_distance": 0.7214094996452332,
+          "self_distance": 0.43572404980659485,
+          "ES": 0.5035474896430969,
+          "prediction_std": 0.27899760007858276,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3884586691856384,
+          "temporal_std": 0.10432542860507965,
+          "velocity_abs_mean": 0.033730801194906235,
+          "velocity_rms": 0.09822384268045425
+        },
+        "expression": {
+          "cross_distance": 0.27403801679611206,
+          "self_distance": 0.07482088357210159,
+          "ES": 0.23662757873535156,
+          "prediction_std": 0.04619668796658516,
+          "boundary_fraction": 0.1157379150390625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04364088550209999,
+          "velocity_abs_mean": 0.016953090205788612,
+          "velocity_rms": 0.029687264934182167,
+          "expression_entropy": 1.597973346710205
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.537247180938721,
+        "stochastic_residual_abs_mean": 0.9507753252983093,
+        "tanh_saturation_fraction": 0.8029345273971558
+      }
+    },
+    {
+      "clip_id": "speaker/session4/Camera-2024-10-21-135251-135252",
+      "session_id": "session4",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.49346068501472473,
+          "self_distance": 0.1699797660112381,
+          "ES": 0.4084708094596863,
+          "prediction_std": 0.054024484008550644,
+          "boundary_fraction": 0.2729150354862213,
+          "temporal_mean": 0.19034865498542786,
+          "temporal_std": 0.041585519909858704,
+          "velocity_abs_mean": 0.022073354572057724,
+          "velocity_rms": 0.06650485843420029,
+          "expression_entropy": 0.9101226329803467
+        },
+        "AU": {
+          "cross_distance": 0.4727589190006256,
+          "self_distance": 0.06326396763324738,
+          "ES": 0.4411269426345825,
+          "prediction_std": 0.03101097047328949,
+          "boundary_fraction": 0.15634766221046448,
+          "temporal_mean": 0.19872838258743286,
+          "temporal_std": 0.03303266316652298,
+          "velocity_abs_mean": 0.01843053288757801,
+          "velocity_rms": 0.0390913262963295
+        },
+        "VA": {
+          "cross_distance": 0.8788607120513916,
+          "self_distance": 0.5301455855369568,
+          "ES": 0.6137878894805908,
+          "prediction_std": 0.3105960488319397,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.38889554142951965,
+          "temporal_std": 0.12544134259223938,
+          "velocity_abs_mean": 0.05953340604901314,
+          "velocity_rms": 0.1875992715358734
+        },
+        "expression": {
+          "cross_distance": 0.37715989351272583,
+          "self_distance": 0.062309570610523224,
+          "ES": 0.3460051119327545,
+          "prediction_std": 0.033031947910785675,
+          "boundary_fraction": 0.4347076416015625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.036658186465501785,
+          "velocity_abs_mean": 0.019538627937436104,
+          "velocity_rms": 0.0464535616338253,
+          "expression_entropy": 0.9101226329803467
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.185416221618652,
+        "stochastic_residual_abs_mean": 0.9387471675872803,
+        "tanh_saturation_fraction": 0.7636620998382568
+      }
+    },
+    {
+      "clip_id": "speaker/session5/Camera-2024-07-15-115034-115115",
+      "session_id": "session5",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.36880257725715637,
+          "self_distance": 0.14199185371398926,
+          "ES": 0.29780665040016174,
+          "prediction_std": 0.04647951200604439,
+          "boundary_fraction": 0.24885253608226776,
+          "temporal_mean": 0.1493055522441864,
+          "temporal_std": 0.0512060783803463,
+          "velocity_abs_mean": 0.020057858899235725,
+          "velocity_rms": 0.05791575834155083,
+          "expression_entropy": 0.9740536212921143
+        },
+        "AU": {
+          "cross_distance": 0.34879469871520996,
+          "self_distance": 0.05135306343436241,
+          "ES": 0.3231181800365448,
+          "prediction_std": 0.02625858597457409,
+          "boundary_fraction": 0.14409179985523224,
+          "temporal_mean": 0.13941574096679688,
+          "temporal_std": 0.046916402876377106,
+          "velocity_abs_mean": 0.01896977424621582,
+          "velocity_rms": 0.03996962681412697
+        },
+        "VA": {
+          "cross_distance": 0.7367834448814392,
+          "self_distance": 0.44026926159858704,
+          "ES": 0.5166488289833069,
+          "prediction_std": 0.2515742778778076,
+          "boundary_fraction": 0.50146484375,
+          "temporal_mean": 0.3207014203071594,
+          "temporal_std": 0.1341651976108551,
+          "velocity_abs_mean": 0.048466507345438004,
+          "velocity_rms": 0.15540571510791779
+        },
+        "expression": {
+          "cross_distance": 0.24584540724754333,
+          "self_distance": 0.06307050585746765,
+          "ES": 0.2143101543188095,
+          "prediction_std": 0.0331200435757637,
+          "boundary_fraction": 0.3821258544921875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03850945085287094,
+          "velocity_abs_mean": 0.014995849691331387,
+          "velocity_rms": 0.03806314989924431,
+          "expression_entropy": 0.9740536212921143
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.630930423736572,
+        "stochastic_residual_abs_mean": 0.9510879516601562,
+        "tanh_saturation_fraction": 0.8043310642242432
+      }
+    },
+    {
+      "clip_id": "speaker/session5/Camera-2024-10-21-162915-162924",
+      "session_id": "session5",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.41585034132003784,
+          "self_distance": 0.1335846334695816,
+          "ES": 0.34905803203582764,
+          "prediction_std": 0.04382198676466942,
+          "boundary_fraction": 0.29533690214157104,
+          "temporal_mean": 0.15584111213684082,
+          "temporal_std": 0.04354451224207878,
+          "velocity_abs_mean": 0.025784814730286598,
+          "velocity_rms": 0.07018746435642242,
+          "expression_entropy": 0.9356204271316528
+        },
+        "AU": {
+          "cross_distance": 0.31792151927948,
+          "self_distance": 0.04435160011053085,
+          "ES": 0.29574573040008545,
+          "prediction_std": 0.021636992692947388,
+          "boundary_fraction": 0.17269694805145264,
+          "temporal_mean": 0.15787164866924286,
+          "temporal_std": 0.03600054606795311,
+          "velocity_abs_mean": 0.0211680568754673,
+          "velocity_rms": 0.0415501706302166
+        },
+        "VA": {
+          "cross_distance": 0.9274469017982483,
+          "self_distance": 0.398269921541214,
+          "ES": 0.7283119559288025,
+          "prediction_std": 0.22976054251194,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.26397669315338135,
+          "temporal_std": 0.10535642504692078,
+          "velocity_abs_mean": 0.06913253664970398,
+          "velocity_rms": 0.19248650968074799
+        },
+        "expression": {
+          "cross_distance": 0.3663627505302429,
+          "self_distance": 0.07738455384969711,
+          "ES": 0.32767048478126526,
+          "prediction_std": 0.03893423080444336,
+          "boundary_fraction": 0.47412109375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04223648086190224,
+          "velocity_abs_mean": 0.02360430359840393,
+          "velocity_rms": 0.05380362272262573,
+          "expression_entropy": 0.9356204271316528
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.147005558013916,
+        "stochastic_residual_abs_mean": 0.9389864802360535,
+        "tanh_saturation_fraction": 0.7673388719558716
+      }
+    },
+    {
+      "clip_id": "speaker/session5/Camera-2024-10-17-161111-161220",
+      "session_id": "session5",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3793599009513855,
+          "self_distance": 0.1516653150320053,
+          "ES": 0.30352723598480225,
+          "prediction_std": 0.050234124064445496,
+          "boundary_fraction": 0.2352929562330246,
+          "temporal_mean": 0.15971781313419342,
+          "temporal_std": 0.05175403505563736,
+          "velocity_abs_mean": 0.029171714559197426,
+          "velocity_rms": 0.07952847331762314,
+          "expression_entropy": 1.0262830257415771
+        },
+        "AU": {
+          "cross_distance": 0.38584309816360474,
+          "self_distance": 0.05298934876918793,
+          "ES": 0.3593484163284302,
+          "prediction_std": 0.026966819539666176,
+          "boundary_fraction": 0.12025553733110428,
+          "temporal_mean": 0.15173541009426117,
+          "temporal_std": 0.0481015145778656,
+          "velocity_abs_mean": 0.024993816390633583,
+          "velocity_rms": 0.04972109943628311
+        },
+        "VA": {
+          "cross_distance": 0.7415728569030762,
+          "self_distance": 0.46589863300323486,
+          "ES": 0.5086235404014587,
+          "prediction_std": 0.27195024490356445,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3584573566913605,
+          "temporal_std": 0.13046157360076904,
+          "velocity_abs_mean": 0.07599116861820221,
+          "velocity_rms": 0.21707357466220856
+        },
+        "expression": {
+          "cross_distance": 0.17213797569274902,
+          "self_distance": 0.070885568857193,
+          "ES": 0.13669519126415253,
+          "prediction_std": 0.03843129426240921,
+          "boundary_fraction": 0.3848114013671875,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0389256477355957,
+          "velocity_abs_mean": 0.02530040219426155,
+          "velocity_rms": 0.05787351727485657,
+          "expression_entropy": 1.0262830257415771
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.344760417938232,
+        "stochastic_residual_abs_mean": 0.9446703791618347,
+        "tanh_saturation_fraction": 0.7844628691673279
+      }
+    },
+    {
+      "clip_id": "speaker/session5/Camera-2024-10-18-144417-144442",
+      "session_id": "session5",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.30498063564300537,
+          "self_distance": 0.16453154385089874,
+          "ES": 0.2227148711681366,
+          "prediction_std": 0.050381921231746674,
+          "boundary_fraction": 0.21259276568889618,
+          "temporal_mean": 0.15219226479530334,
+          "temporal_std": 0.04601816460490227,
+          "velocity_abs_mean": 0.025718171149492264,
+          "velocity_rms": 0.07487194240093231,
+          "expression_entropy": 0.831282913684845
+        },
+        "AU": {
+          "cross_distance": 0.22900882363319397,
+          "self_distance": 0.06297475844621658,
+          "ES": 0.19752144813537598,
+          "prediction_std": 0.03222326561808586,
+          "boundary_fraction": 0.08535970747470856,
+          "temporal_mean": 0.1349189579486847,
+          "temporal_std": 0.04289345070719719,
+          "velocity_abs_mean": 0.02567920833826065,
+          "velocity_rms": 0.050179801881313324
+        },
+        "VA": {
+          "cross_distance": 0.8329800963401794,
+          "self_distance": 0.5286149978637695,
+          "ES": 0.5686725974082947,
+          "prediction_std": 0.30553895235061646,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.39051148295402527,
+          "temporal_std": 0.1395529806613922,
+          "velocity_abs_mean": 0.06983492523431778,
+          "velocity_rms": 0.2167426347732544
+        },
+        "expression": {
+          "cross_distance": 0.13523787260055542,
+          "self_distance": 0.038146257400512695,
+          "ES": 0.11616474390029907,
+          "prediction_std": 0.020640157163143158,
+          "boundary_fraction": 0.379302978515625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.028493324294686317,
+          "velocity_abs_mean": 0.014762037433683872,
+          "velocity_rms": 0.03244277834892273,
+          "expression_entropy": 0.831282913684845
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.7089385986328125,
+        "stochastic_residual_abs_mean": 0.9501609802246094,
+        "tanh_saturation_fraction": 0.8118212819099426
+      }
+    },
+    {
+      "clip_id": "speaker/session6/Camera-2024-10-18-162224-162332",
+      "session_id": "session6",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3698193430900574,
+          "self_distance": 0.15128524601459503,
+          "ES": 0.29417672753334045,
+          "prediction_std": 0.06394191086292267,
+          "boundary_fraction": 0.18980956077575684,
+          "temporal_mean": 0.19772911071777344,
+          "temporal_std": 0.05339662358164787,
+          "velocity_abs_mean": 0.017947396263480186,
+          "velocity_rms": 0.03657914325594902,
+          "expression_entropy": 1.5557465553283691
+        },
+        "AU": {
+          "cross_distance": 0.34071987867355347,
+          "self_distance": 0.08913273364305496,
+          "ES": 0.2961535155773163,
+          "prediction_std": 0.047862228006124496,
+          "boundary_fraction": 0.1654052883386612,
+          "temporal_mean": 0.21056990325450897,
+          "temporal_std": 0.055519651621580124,
+          "velocity_abs_mean": 0.017622051760554314,
+          "velocity_rms": 0.03199317306280136
+        },
+        "VA": {
+          "cross_distance": 0.7177319526672363,
+          "self_distance": 0.4032435715198517,
+          "ES": 0.5161101818084717,
+          "prediction_std": 0.2674095034599304,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3923396170139313,
+          "temporal_std": 0.07537669688463211,
+          "velocity_abs_mean": 0.02984529919922352,
+          "velocity_rms": 0.07652297616004944
+        },
+        "expression": {
+          "cross_distance": 0.2836817502975464,
+          "self_distance": 0.07136305421590805,
+          "ES": 0.24800021946430206,
+          "prediction_std": 0.043224435299634933,
+          "boundary_fraction": 0.15802001953125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04392092674970627,
+          "velocity_abs_mean": 0.015582941472530365,
+          "velocity_rms": 0.028253013268113136,
+          "expression_entropy": 1.5557465553283691
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.932875633239746,
+        "stochastic_residual_abs_mean": 0.9507858753204346,
+        "tanh_saturation_fraction": 0.8141796588897705
+      }
+    },
+    {
+      "clip_id": "speaker/session6/Camera-2024-07-15-110902-110933",
+      "session_id": "session6",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3826749920845032,
+          "self_distance": 0.14850054681301117,
+          "ES": 0.308424711227417,
+          "prediction_std": 0.06120932474732399,
+          "boundary_fraction": 0.1964746117591858,
+          "temporal_mean": 0.17984001338481903,
+          "temporal_std": 0.02995193377137184,
+          "velocity_abs_mean": 0.00975477322936058,
+          "velocity_rms": 0.019210128113627434,
+          "expression_entropy": 1.6639593839645386
+        },
+        "AU": {
+          "cross_distance": 0.328163206577301,
+          "self_distance": 0.07198157161474228,
+          "ES": 0.2921724319458008,
+          "prediction_std": 0.04059207811951637,
+          "boundary_fraction": 0.21621908247470856,
+          "temporal_mean": 0.18345153331756592,
+          "temporal_std": 0.026032043620944023,
+          "velocity_abs_mean": 0.008771154098212719,
+          "velocity_rms": 0.014422434382140636
+        },
+        "VA": {
+          "cross_distance": 0.8036885261535645,
+          "self_distance": 0.4108651578426361,
+          "ES": 0.5982559323310852,
+          "prediction_std": 0.27199721336364746,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3721136748790741,
+          "temporal_std": 0.06796970963478088,
+          "velocity_abs_mean": 0.020371796563267708,
+          "velocity_rms": 0.04732237756252289
+        },
+        "expression": {
+          "cross_distance": 0.29611843824386597,
+          "self_distance": 0.0752091258764267,
+          "ES": 0.258513867855072,
+          "prediction_std": 0.04716969281435013,
+          "boundary_fraction": 0.0835723876953125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.027797289192676544,
+          "velocity_abs_mean": 0.008944801054894924,
+          "velocity_rms": 0.014260130934417248,
+          "expression_entropy": 1.6639593839645386
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.031265735626221,
+        "stochastic_residual_abs_mean": 0.9564094543457031,
+        "tanh_saturation_fraction": 0.8254736065864563
+      }
+    },
+    {
+      "clip_id": "speaker/session6/Camera-2024-07-15-123346-123414",
+      "session_id": "session6",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.34061551094055176,
+          "self_distance": 0.14173024892807007,
+          "ES": 0.2697503864765167,
+          "prediction_std": 0.06136012449860573,
+          "boundary_fraction": 0.1576855480670929,
+          "temporal_mean": 0.13461577892303467,
+          "temporal_std": 0.03486165031790733,
+          "velocity_abs_mean": 0.01121741347014904,
+          "velocity_rms": 0.022955087944865227,
+          "expression_entropy": 1.5510308742523193
+        },
+        "AU": {
+          "cross_distance": 0.23908936977386475,
+          "self_distance": 0.08188565820455551,
+          "ES": 0.1981465369462967,
+          "prediction_std": 0.04390572011470795,
+          "boundary_fraction": 0.09157714992761612,
+          "temporal_mean": 0.11607933789491653,
+          "temporal_std": 0.030815137550234795,
+          "velocity_abs_mean": 0.009608465246856213,
+          "velocity_rms": 0.017157740890979767
+        },
+        "VA": {
+          "cross_distance": 0.822437047958374,
+          "self_distance": 0.35926997661590576,
+          "ES": 0.6428020596504211,
+          "prediction_std": 0.2333255112171173,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3121023178100586,
+          "temporal_std": 0.06587588787078857,
+          "velocity_abs_mean": 0.02095578983426094,
+          "velocity_rms": 0.05250198021531105
+        },
+        "expression": {
+          "cross_distance": 0.29074081778526306,
+          "self_distance": 0.08048763126134872,
+          "ES": 0.2504970133304596,
+          "prediction_std": 0.051095813512802124,
+          "boundary_fraction": 0.1960601806640625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03469530865550041,
+          "velocity_abs_mean": 0.011799597181379795,
+          "velocity_rms": 0.020139092579483986,
+          "expression_entropy": 1.5510308742523193
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.5631327629089355,
+        "stochastic_residual_abs_mean": 0.9459462761878967,
+        "tanh_saturation_fraction": 0.7753661870956421
+      }
+    },
+    {
+      "clip_id": "speaker/session6/Camera-2024-10-21-162915-162924",
+      "session_id": "session6",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.43236830830574036,
+          "self_distance": 0.1562269926071167,
+          "ES": 0.354254812002182,
+          "prediction_std": 0.062243618071079254,
+          "boundary_fraction": 0.1594824194908142,
+          "temporal_mean": 0.17993737757205963,
+          "temporal_std": 0.03511091694235802,
+          "velocity_abs_mean": 0.011557385325431824,
+          "velocity_rms": 0.023685278370976448,
+          "expression_entropy": 1.540435791015625
+        },
+        "AU": {
+          "cross_distance": 0.3059392273426056,
+          "self_distance": 0.0831717923283577,
+          "ES": 0.26435333490371704,
+          "prediction_std": 0.045350439846515656,
+          "boundary_fraction": 0.16566570103168488,
+          "temporal_mean": 0.18215705454349518,
+          "temporal_std": 0.032549284398555756,
+          "velocity_abs_mean": 0.010621106252074242,
+          "velocity_rms": 0.018350835889577866
+        },
+        "VA": {
+          "cross_distance": 1.0641545057296753,
+          "self_distance": 0.4366890788078308,
+          "ES": 0.8458099365234375,
+          "prediction_std": 0.28081214427948,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3830394148826599,
+          "temporal_std": 0.07501569390296936,
+          "velocity_abs_mean": 0.02115226350724697,
+          "velocity_rms": 0.056047793477773666
+        },
+        "expression": {
+          "cross_distance": 0.3508096933364868,
+          "self_distance": 0.06254653632640839,
+          "ES": 0.319536417722702,
+          "prediction_std": 0.03927621990442276,
+          "boundary_fraction": 0.0627593994140625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.029937786981463432,
+          "velocity_abs_mean": 0.010914189741015434,
+          "velocity_rms": 0.018339853733778,
+          "expression_entropy": 1.540435791015625
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.023717880249023,
+        "stochastic_residual_abs_mean": 0.953516960144043,
+        "tanh_saturation_fraction": 0.8197363018989563
+      }
+    },
+    {
+      "clip_id": "speaker/session7/Camera-2024-10-21-153924-153959",
+      "session_id": "session7",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3642956614494324,
+          "self_distance": 0.14589077234268188,
+          "ES": 0.29135027527809143,
+          "prediction_std": 0.055825307965278625,
+          "boundary_fraction": 0.16221190989017487,
+          "temporal_mean": 0.16520728170871735,
+          "temporal_std": 0.048130836337804794,
+          "velocity_abs_mean": 0.017497742548584938,
+          "velocity_rms": 0.04185378551483154,
+          "expression_entropy": 1.46806800365448
+        },
+        "AU": {
+          "cross_distance": 0.2570217251777649,
+          "self_distance": 0.06807082891464233,
+          "ES": 0.22298631072044373,
+          "prediction_std": 0.03676600381731987,
+          "boundary_fraction": 0.13422039151191711,
+          "temporal_mean": 0.15549258887767792,
+          "temporal_std": 0.045926690101623535,
+          "velocity_abs_mean": 0.01632070168852806,
+          "velocity_rms": 0.032295335084199905
+        },
+        "VA": {
+          "cross_distance": 0.9205805063247681,
+          "self_distance": 0.43103745579719543,
+          "ES": 0.7050617933273315,
+          "prediction_std": 0.2629706859588623,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3988966941833496,
+          "temporal_std": 0.11315298080444336,
+          "velocity_abs_mean": 0.033051375299692154,
+          "velocity_rms": 0.10150035470724106
+        },
+        "expression": {
+          "cross_distance": 0.27804669737815857,
+          "self_distance": 0.06514471769332886,
+          "ES": 0.24547433853149414,
+          "prediction_std": 0.03977517783641815,
+          "boundary_fraction": 0.1302490234375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.0360080860555172,
+          "velocity_abs_mean": 0.015816280618309975,
+          "velocity_rms": 0.030708326026797295,
+          "expression_entropy": 1.46806800365448
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.847362041473389,
+        "stochastic_residual_abs_mean": 0.9465256333351135,
+        "tanh_saturation_fraction": 0.8024657964706421
+      }
+    },
+    {
+      "clip_id": "speaker/session7/Camera-2024-10-17-161111-161220",
+      "session_id": "session7",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.33886194229125977,
+          "self_distance": 0.17200380563735962,
+          "ES": 0.25286003947257996,
+          "prediction_std": 0.061955638229846954,
+          "boundary_fraction": 0.19517089426517487,
+          "temporal_mean": 0.1827426701784134,
+          "temporal_std": 0.03132593259215355,
+          "velocity_abs_mean": 0.010186173021793365,
+          "velocity_rms": 0.025851814076304436,
+          "expression_entropy": 1.5581409931182861
+        },
+        "AU": {
+          "cross_distance": 0.2732202708721161,
+          "self_distance": 0.08818495273590088,
+          "ES": 0.22912779450416565,
+          "prediction_std": 0.04333627223968506,
+          "boundary_fraction": 0.20810547471046448,
+          "temporal_mean": 0.1787475049495697,
+          "temporal_std": 0.02570427395403385,
+          "velocity_abs_mean": 0.008534973487257957,
+          "velocity_rms": 0.01646694354712963
+        },
+        "VA": {
+          "cross_distance": 0.7016254663467407,
+          "self_distance": 0.5032057762145996,
+          "ES": 0.4500225782394409,
+          "prediction_std": 0.32179832458496094,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.44367730617523193,
+          "temporal_std": 0.07732433080673218,
+          "velocity_abs_mean": 0.021069219335913658,
+          "velocity_rms": 0.07076206803321838
+        },
+        "expression": {
+          "cross_distance": 0.3022387623786926,
+          "self_distance": 0.05082659423351288,
+          "ES": 0.2768254578113556,
+          "prediction_std": 0.031906284391880035,
+          "boundary_fraction": 0.0947113037109375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.030366946011781693,
+          "velocity_abs_mean": 0.010561413131654263,
+          "velocity_rms": 0.018117554485797882,
+          "expression_entropy": 1.5581409931182861
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.953763484954834,
+        "stochastic_residual_abs_mean": 0.9588354229927063,
+        "tanh_saturation_fraction": 0.8226171731948853
+      }
+    },
+    {
+      "clip_id": "speaker/session7/Camera-2024-07-15-115034-115115",
+      "session_id": "session7",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3248564600944519,
+          "self_distance": 0.1424231082201004,
+          "ES": 0.2536449134349823,
+          "prediction_std": 0.051043689250946045,
+          "boundary_fraction": 0.2555859386920929,
+          "temporal_mean": 0.12678135931491852,
+          "temporal_std": 0.04566848650574684,
+          "velocity_abs_mean": 0.02561168745160103,
+          "velocity_rms": 0.06486865878105164,
+          "expression_entropy": 1.1739709377288818
+        },
+        "AU": {
+          "cross_distance": 0.25908151268959045,
+          "self_distance": 0.0561225563287735,
+          "ES": 0.2310202419757843,
+          "prediction_std": 0.02746729925274849,
+          "boundary_fraction": 0.16079916059970856,
+          "temporal_mean": 0.10720618814229965,
+          "temporal_std": 0.04195430129766464,
+          "velocity_abs_mean": 0.022161226719617844,
+          "velocity_rms": 0.04136844351887703
+        },
+        "VA": {
+          "cross_distance": 0.7787284851074219,
+          "self_distance": 0.40214207768440247,
+          "ES": 0.5776574611663818,
+          "prediction_std": 0.23927627503871918,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.28072071075439453,
+          "temporal_std": 0.09091796725988388,
+          "velocity_abs_mean": 0.0598345585167408,
+          "velocity_rms": 0.1736029088497162
+        },
+        "expression": {
+          "cross_distance": 0.2225298434495926,
+          "self_distance": 0.08823379874229431,
+          "ES": 0.17841294407844543,
+          "prediction_std": 0.048191286623477936,
+          "boundary_fraction": 0.3722076416015625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.041320234537124634,
+          "velocity_abs_mean": 0.02352558635175228,
+          "velocity_rms": 0.04905661940574646,
+          "expression_entropy": 1.1739709377288818
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.490607261657715,
+        "stochastic_residual_abs_mean": 0.9497101902961731,
+        "tanh_saturation_fraction": 0.7965917587280273
+      }
+    },
+    {
+      "clip_id": "speaker/session7/Camera-2024-10-17-143648-143743",
+      "session_id": "session7",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4248899221420288,
+          "self_distance": 0.16144199669361115,
+          "ES": 0.34416893124580383,
+          "prediction_std": 0.06617160141468048,
+          "boundary_fraction": 0.20482909679412842,
+          "temporal_mean": 0.18894435465335846,
+          "temporal_std": 0.03414474055171013,
+          "velocity_abs_mean": 0.011054913513362408,
+          "velocity_rms": 0.021558834239840508,
+          "expression_entropy": 1.6640498638153076
+        },
+        "AU": {
+          "cross_distance": 0.42167314887046814,
+          "self_distance": 0.09634827077388763,
+          "ES": 0.3734990060329437,
+          "prediction_std": 0.050014760345220566,
+          "boundary_fraction": 0.2368164211511612,
+          "temporal_mean": 0.19708029925823212,
+          "temporal_std": 0.03177465870976448,
+          "velocity_abs_mean": 0.009824717417359352,
+          "velocity_rms": 0.017071275040507317
+        },
+        "VA": {
+          "cross_distance": 0.7739943265914917,
+          "self_distance": 0.42907679080963135,
+          "ES": 0.559455931186676,
+          "prediction_std": 0.2834146022796631,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3837023675441742,
+          "temporal_std": 0.06654608994722366,
+          "velocity_abs_mean": 0.0223027803003788,
+          "velocity_rms": 0.05004353076219559
+        },
+        "expression": {
+          "cross_distance": 0.2758936882019043,
+          "self_distance": 0.06760712713003159,
+          "ES": 0.2420901209115982,
+          "prediction_std": 0.04215493053197861,
+          "boundary_fraction": 0.0710601806640625,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.030488308519124985,
+          "velocity_abs_mean": 0.010549564845860004,
+          "velocity_rms": 0.016731129959225655,
+          "expression_entropy": 1.6640498638153076
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.953255653381348,
+        "stochastic_residual_abs_mean": 0.9570646286010742,
+        "tanh_saturation_fraction": 0.8232763409614563
+      }
+    },
+    {
+      "clip_id": "speaker/session9/Camera-2024-10-18-154049-154118",
+      "session_id": "session9",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.3872053325176239,
+          "self_distance": 0.1559610217809677,
+          "ES": 0.30922481417655945,
+          "prediction_std": 0.06221150606870651,
+          "boundary_fraction": 0.18610350787639618,
+          "temporal_mean": 0.20798403024673462,
+          "temporal_std": 0.030775856226682663,
+          "velocity_abs_mean": 0.010675455443561077,
+          "velocity_rms": 0.022213071584701538,
+          "expression_entropy": 1.3630218505859375
+        },
+        "AU": {
+          "cross_distance": 0.3753214478492737,
+          "self_distance": 0.10033943504095078,
+          "ES": 0.3251517415046692,
+          "prediction_std": 0.05162343382835388,
+          "boundary_fraction": 0.20000001788139343,
+          "temporal_mean": 0.2314314991235733,
+          "temporal_std": 0.028588728979229927,
+          "velocity_abs_mean": 0.010334032587707043,
+          "velocity_rms": 0.01891345903277397
+        },
+        "VA": {
+          "cross_distance": 0.7364435195922852,
+          "self_distance": 0.41402724385261536,
+          "ES": 0.5294299125671387,
+          "prediction_std": 0.2760413885116577,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.36406442523002625,
+          "temporal_std": 0.06506848335266113,
+          "velocity_abs_mean": 0.020695572718977928,
+          "velocity_rms": 0.05021652951836586
+        },
+        "expression": {
+          "cross_distance": 0.2538909912109375,
+          "self_distance": 0.04934447258710861,
+          "ES": 0.2292187511920929,
+          "prediction_std": 0.02860669046640396,
+          "boundary_fraction": 0.081573486328125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.026303570717573166,
+          "velocity_abs_mean": 0.008810590021312237,
+          "velocity_rms": 0.015517449006438255,
+          "expression_entropy": 1.3630218505859375
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 7.017736434936523,
+        "stochastic_residual_abs_mean": 0.9555261731147766,
+        "tanh_saturation_fraction": 0.8318896293640137
+      }
+    },
+    {
+      "clip_id": "speaker/session9/Camera-2024-10-21-162915-162924",
+      "session_id": "session9",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.42224299907684326,
+          "self_distance": 0.1612916737794876,
+          "ES": 0.34159716963768005,
+          "prediction_std": 0.053310327231884,
+          "boundary_fraction": 0.2175878882408142,
+          "temporal_mean": 0.15402783453464508,
+          "temporal_std": 0.051360949873924255,
+          "velocity_abs_mean": 0.029284991323947906,
+          "velocity_rms": 0.07677706331014633,
+          "expression_entropy": 1.1290862560272217
+        },
+        "AU": {
+          "cross_distance": 0.33521535992622375,
+          "self_distance": 0.053732916712760925,
+          "ES": 0.3083488941192627,
+          "prediction_std": 0.02704603783786297,
+          "boundary_fraction": 0.11879069358110428,
+          "temporal_mean": 0.1440843641757965,
+          "temporal_std": 0.04375649616122246,
+          "velocity_abs_mean": 0.024588370695710182,
+          "velocity_rms": 0.04685579612851143
+        },
+        "VA": {
+          "cross_distance": 0.938694953918457,
+          "self_distance": 0.4918283224105835,
+          "ES": 0.6927807927131653,
+          "prediction_std": 0.28559088706970215,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3447149991989136,
+          "temporal_std": 0.12649469077587128,
+          "velocity_abs_mean": 0.06734708696603775,
+          "velocity_rms": 0.2068423628807068
+        },
+        "expression": {
+          "cross_distance": 0.3508414626121521,
+          "self_distance": 0.08339502662420273,
+          "ES": 0.30914396047592163,
+          "prediction_std": 0.04448573291301727,
+          "boundary_fraction": 0.3322296142578125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04683586210012436,
+          "velocity_abs_mean": 0.028575634583830833,
+          "velocity_rms": 0.060071252286434174,
+          "expression_entropy": 1.1290862560272217
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.234505653381348,
+        "stochastic_residual_abs_mean": 0.9444369077682495,
+        "tanh_saturation_fraction": 0.7832860946655273
+      }
+    },
+    {
+      "clip_id": "speaker/session9/Camera-2024-07-15-110902-110933",
+      "session_id": "session9",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.4393136501312256,
+          "self_distance": 0.15895076096057892,
+          "ES": 0.3598382771015167,
+          "prediction_std": 0.05617549642920494,
+          "boundary_fraction": 0.20066405832767487,
+          "temporal_mean": 0.17343032360076904,
+          "temporal_std": 0.03446490690112114,
+          "velocity_abs_mean": 0.010487907566130161,
+          "velocity_rms": 0.027442727237939835,
+          "expression_entropy": 1.4476525783538818
+        },
+        "AU": {
+          "cross_distance": 0.432125449180603,
+          "self_distance": 0.0834517776966095,
+          "ES": 0.3903995752334595,
+          "prediction_std": 0.03975673019886017,
+          "boundary_fraction": 0.20745444297790527,
+          "temporal_mean": 0.1739249974489212,
+          "temporal_std": 0.028426509350538254,
+          "velocity_abs_mean": 0.009142657741904259,
+          "velocity_rms": 0.018777502700686455
+        },
+        "VA": {
+          "cross_distance": 0.6053415536880493,
+          "self_distance": 0.45896896719932556,
+          "ES": 0.37585705518722534,
+          "prediction_std": 0.28952890634536743,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.3634415864944458,
+          "temporal_std": 0.08559031784534454,
+          "velocity_abs_mean": 0.023719632998108864,
+          "velocity_rms": 0.0754675567150116
+        },
+        "expression": {
+          "cross_distance": 0.3851422071456909,
+          "self_distance": 0.04703178256750107,
+          "ES": 0.3616263270378113,
+          "prediction_std": 0.028622347861528397,
+          "boundary_fraction": 0.11309814453125,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.03300556167960167,
+          "velocity_abs_mean": 0.009702318347990513,
+          "velocity_rms": 0.016385817900300026,
+          "expression_entropy": 1.4476525783538818
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.84259033203125,
+        "stochastic_residual_abs_mean": 0.9599637985229492,
+        "tanh_saturation_fraction": 0.8241943120956421
+      }
+    },
+    {
+      "clip_id": "speaker/session9/Camera-2024-10-21-153924-153959",
+      "session_id": "session9",
+      "channels": {
+        "overall": {
+          "cross_distance": 0.36718258261680603,
+          "self_distance": 0.13289427757263184,
+          "ES": 0.3007354438304901,
+          "prediction_std": 0.043459270149469376,
+          "boundary_fraction": 0.29191404581069946,
+          "temporal_mean": 0.153819739818573,
+          "temporal_std": 0.049398209899663925,
+          "velocity_abs_mean": 0.023899737745523453,
+          "velocity_rms": 0.062309350818395615,
+          "expression_entropy": 0.8282007575035095
+        },
+        "AU": {
+          "cross_distance": 0.31924277544021606,
+          "self_distance": 0.048524606972932816,
+          "ES": 0.2949804663658142,
+          "prediction_std": 0.024159030988812447,
+          "boundary_fraction": 0.16244304180145264,
+          "temporal_mean": 0.15452612936496735,
+          "temporal_std": 0.04372084513306618,
+          "velocity_abs_mean": 0.021170759573578835,
+          "velocity_rms": 0.04126593843102455
+        },
+        "VA": {
+          "cross_distance": 0.8595194816589355,
+          "self_distance": 0.40263548493385315,
+          "ES": 0.6582017540931702,
+          "prediction_std": 0.22835852205753326,
+          "boundary_fraction": 0.5,
+          "temporal_mean": 0.26380079984664917,
+          "temporal_std": 0.12109699100255966,
+          "velocity_abs_mean": 0.05956759303808212,
+          "velocity_rms": 0.165137380361557
+        },
+        "expression": {
+          "cross_distance": 0.2120627760887146,
+          "self_distance": 0.06884665787220001,
+          "ES": 0.1776394546031952,
+          "prediction_std": 0.033422403037548065,
+          "boundary_fraction": 0.4826507568359375,
+          "temporal_mean": 0.125,
+          "temporal_std": 0.04211858659982681,
+          "velocity_abs_mean": 0.020099611952900887,
+          "velocity_rms": 0.04606721177697182,
+          "expression_entropy": 0.8282007575035095
+        }
+      },
+      "residual": {
+        "stochastic_raw_abs_mean": 6.257994174957275,
+        "stochastic_residual_abs_mean": 0.9443864226341248,
+        "tanh_saturation_fraction": 0.7773876786231995
+      }
+    }
+  ],
+  "arm": "A1",
+  "intervention": "shuffled",
+  "alpha": 1.0,
+  "K": 64
+}

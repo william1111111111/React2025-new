@@ -10,19 +10,31 @@ def prior_mode(model, mode='A1'):
     """A0 retains the exact parameter structure but uses mu=0, log_sigma=0.
 
     Prior parameters receive no gradient in A0; no parameter is removed/added.
+    A_global passes zero context and learns only prior biases.
     A1 is the unchanged conditional prior. Hooks are removed on all exit paths.
     """
-    if mode not in ('A0', 'A1'):
-        raise ValueError('prior mode must be A0 or A1')
+    if mode not in ('A0', 'A_global', 'A1'):
+        raise ValueError('prior mode must be A0, A_global or A1')
     handle = None
+    frozen = []
     if mode == 'A0':
         handle = model.prior.register_forward_hook(
             lambda module, inputs, output: (torch.zeros_like(output[0]), torch.zeros_like(output[1])))
+    elif mode == 'A_global':
+        # Retain identical parameters, but only biases may learn. Disabling
+        # weight gradients also prevents AdamW from decaying unused weights.
+        for layer in (model.prior.mu, model.prior.log_sigma):
+            frozen.append((layer.weight, layer.weight.requires_grad))
+            layer.weight.requires_grad_(False)
+        handle = model.prior.register_forward_pre_hook(
+            lambda module, inputs: (torch.zeros_like(inputs[0]),))
     try:
         yield
     finally:
         if handle is not None:
             handle.remove()
+        for parameter, required in frozen:
+            parameter.requires_grad_(required)
 
 
 def gradient_norm(module):
@@ -58,6 +70,8 @@ def evaluate_diagnostics(model, batch, noise, mode='A1'):
     tanh saturation = fraction with abs(tanh(stochastic_raw)) >= 0.99.
     Coordinates of mu/sigma are mechanism probes, not semantic representations.
     """
+    if noise.ndim != 3 or noise.shape[1] < 2:
+        raise ValueError('evaluate_diagnostics requires noise [B,K,D] with K >= 2')
     modes = [(module, module.training) for module in model.modules()]
     captured = []
     handle = model.output_head.stochastic.register_forward_hook(
