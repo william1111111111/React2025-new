@@ -1,0 +1,110 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.19, pytest-9.1.1, pluggy-1.6.0 -- /home/zhengshiyi/react2025_new/.venv/bin/python
+rootdir: /home/zhengshiyi/react2025_new
+plugins: hydra-core-1.3.2, anyio-4.14.2
+collecting ... collected 85 items
+
+hirp/tests/test_energy_score.py::test_hand_calculation PASSED
+hirp/tests/test_energy_score.py::test_reference_and_mask_gradient PASSED
+hirp/tests/test_energy_score.py::test_k1_rejected PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale0] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale1] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale2] PASSED
+hirp/tests/test_energy_score.py::test_bad_scale[scale3] PASSED
+hirp/tests/test_energy_score.py::test_amp_float32 PASSED
+hirp/tests/test_energy_score.py::test_sample_permutation_and_translation_invariance PASSED
+hirp/tests/test_gradients.py::test_gradients GRADIENT_NORM audio_stem 0.36091116070747375
+GRADIENT_NORM speaker_encoder 0.47149595618247986
+GRADIENT_NORM prior_mu 0.00023481038806494325
+GRADIENT_NORM prior_log_sigma 0.0005680278409272432
+GRADIENT_NORM decoder 0.24759134650230408
+GRADIENT_NORM output_head 0.5442758798599243
+PASSED
+hirp/tests/test_masks.py::test_padding_invariance PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths0] PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths1] PASSED
+hirp/tests/test_masks.py::test_invalid_lengths[lengths2] PASSED
+hirp/tests/test_model_shapes.py::test_shape_domains_aux FORWARD_SHAPE (2, 4, 32, 25)
+PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[1] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[2] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[4] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[10] PASSED
+hirp/tests/test_model_shapes.py::test_arbitrary_k[32] PASSED
+hirp/tests/test_model_shapes.py::test_adapter PASSED
+hirp/tests/test_phase1.py::test_distinct_lengths_normalization PASSED
+hirp/tests/test_phase1.py::test_target_padding_and_source_tail PASSED
+hirp/tests/test_phase1.py::test_es_details_exact PASSED
+hirp/tests/test_phase1.py::test_prior_statistics_finite_singleton PASSED
+hirp/tests/test_phase1.py::test_diagnostics_noise_reproducibility PASSED
+hirp/tests/test_phase1.py::test_standard_normal_ablation PASSED
+hirp/tests/test_phase1.py::test_real_dataloader_contract REAL_BATCH {"speaker_audio": [2, 128, 768], "speaker_emotion": [2, 128, 25], "speaker_3dmm": [2, 128, 58], "source_lengths": [2], "paired_target": [2, 128, 25], "pair_lengths": [2], "clip_id": ["speaker/session0/Camera-2024-06-21-103121-103102", "speaker/session0/Camera-2024-06-26-093649-093642"], "session_id": ["session0", "session0"], "crop_start": [2], "source_total_length": [2], "target_total_length": [2]}
+PASSED
+hirp/tests/test_phase1.py::test_real_unequal_pair_lengths REAL_UNEQUAL_LENGTHS speaker/session0/Camera-2024-06-28-164549-164628.npy source=64 pair=63 crop_start=954
+PASSED
+hirp/tests/test_phase15.py::test_global_prior_only_bias_updates PASSED
+hirp/tests/test_phase15.py::test_global_hook_exception_cleanup PASSED
+hirp/tests/test_phase15.py::test_diagnostics_reject_small_k[0] PASSED
+hirp/tests/test_phase15.py::test_diagnostics_reject_small_k[1] PASSED
+hirp/tests/test_phase15.py::test_session_selection_shuffle PASSED
+hirp/tests/test_phase15.py::test_mean_prior_averages_sigma_not_log PASSED
+hirp/tests/test_phase15.py::test_eval_override_alpha_zero_and_no_mutation PASSED
+hirp/tests/test_phase15.py::test_channel_overall_equals_paired_es PASSED
+hirp/tests/test_phase15.py::test_entropy_velocity_boundaries PASSED
+hirp/tests/test_phase15.py::test_real_reference_is_same_session_only PASSED
+hirp/tests/test_phase15.py::test_random_crop_audit_exact[11-5-4] PASSED
+hirp/tests/test_phase15.py::test_random_crop_audit_exact[10-9-4] PASSED
+hirp/tests/test_phase15.py::test_random_crop_audit_exact[4-0-8] PASSED
+hirp/tests/test_phase15.py::test_random_crop_audit_exact[3-2-8] PASSED
+hirp/tests/test_phase15.py::test_provenance_detects_changed_data PASSED
+hirp/tests/test_phase15.py::test_audit_checkpoint_roundtrip PASSED
+hirp/tests/test_phase15.py::test_session_bootstrap_constant_difference PASSED
+hirp/tests/test_phase2.py::test_pool_split_isolation PASSED
+hirp/tests/test_phase2.py::test_reference_unique_mass PASSED
+hirp/tests/test_phase2.py::test_source_reference_independent_crop PASSED
+hirp/tests/test_phase2.py::test_phi_sample_permutation_determinism PASSED
+hirp/tests/test_phase2.py::test_phi_padding_and_gradients PASSED
+hirp/tests/test_phase2.py::test_phi_single_frame_velocity_validity PASSED
+hirp/tests/test_phase2.py::test_phi_manual_values PASSED
+hirp/tests/test_phase2.py::test_scaler_train_only_and_frozen PASSED
+hirp/tests/test_phase2.py::test_b2_hand_calculation PASSED
+hirp/tests/test_phase2.py::test_b3_reference_set_permutation PASSED
+hirp/tests/test_phase2.py::test_b4_bank_exchange PASSED
+hirp/tests/test_phase2.py::test_b4_not_flatten_iid PASSED
+hirp/tests/test_phase2.py::test_common_noise_mixture_estimator PASSED
+hirp/tests/test_phase2.py::test_schedule_independence_and_hashes PASSED
+hirp/tests/test_phase2.py::test_matched_initialization_and_b2_no_refs PASSED
+hirp/tests/test_phase2.py::test_no_refs_enter_generator PASSED
+hirp/tests/test_phase2.py::test_toy_hierarchy_sanity TOY_HIERARCHY {"initial_probabilities": [0.1, 0.9], "initial_B3_ES": 0.8200088739395142, "initial_B4_ES": 0.5000250339508057, "homogeneous_ES": 0.5000250339508057, "final": {"B3": {"probabilities": [0.4999999403953552, 0.5000001192092896], "conditional_gap": 1.7881393432617188e-07, "marginal_probability": 0.5}, "B4": {"probabilities": [0.10000000149011612, 0.8999999761581421], "conditional_gap": 0.7999999523162842, "marginal_probability": 0.5}}, "interpretation": "Analytic expected ES on {-1,+1}; B3 matches each input to q=.5, B4 matches only their marginal."}
+PASSED
+hirp/tests/test_phase2.py::test_a0_k_prefix_still_holds PASSED
+hirp/tests/test_phase2.py::test_split_escape_reference_rejected PASSED
+hirp/tests/test_phase2.py::test_joint_descriptor_coordinate_mask PASSED
+hirp/tests/test_phase2.py::test_scaler_invalid_velocity_not_observed_zero PASSED
+hirp/tests/test_phase2.py::test_actual_pilot_matched_controls PASSED
+hirp/tests/test_sampling_contract.py::test_reproducibility_prefix K_PREFIX_MAX_ERROR 0.0
+PASSED
+hirp/tests/test_sampling_contract.py::test_sensitivities PASSED
+hirp/tests/test_sampling_contract.py::test_sample_wrapper PASSED
+hirp/tests/test_sampling_contract.py::test_api_and_independence PASSED
+hirp/tests/test_sampling_contract.py::test_explicit_noise_no_rng PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[0] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[-1] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[1.5] PASSED
+hirp/tests/test_sampling_contract.py::test_bad_k[True] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_audio] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_emotion] PASSED
+hirp/tests/test_sampling_contract.py::test_each_modality_conditions_prior_and_output[speaker_3dmm] PASSED
+hirp/tests/test_sampling_contract.py::test_prior_clamp PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise0] PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise1] PASSED
+hirp/tests/test_sampling_contract.py::test_invalid_explicit_noise[noise2] PASSED
+hirp/tests/test_sampling_contract.py::test_sample_restores_mixed_modes_after_exception PASSED
+
+=============================== warnings summary ===============================
+hirp/tests/test_phase15.py::test_audit_checkpoint_roundtrip
+  /home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 85 passed, 1 warning in 7.18s =========================
