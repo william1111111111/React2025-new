@@ -1,0 +1,71 @@
+{
+  "shape_tests": [
+    {
+      "T": 128,
+      "lengths": [
+        128,
+        37
+      ],
+      "shape": [
+        2,
+        10,
+        128,
+        25
+      ],
+      "max_errors": {
+        "sample": 0.0,
+        "adapter": 0.0,
+        "loaded": 0.0,
+        "candidate_chunks": 1.1324882507324219e-06
+      }
+    },
+    {
+      "T": 256,
+      "lengths": [
+        256,
+        37
+      ],
+      "shape": [
+        2,
+        10,
+        256,
+        25
+      ],
+      "max_errors": {
+        "sample": 0.0,
+        "adapter": 0.0,
+        "loaded": 0.0,
+        "candidate_chunks": 2.2202730178833008e-06
+      }
+    },
+    {
+      "T": 750,
+      "lengths": [
+        750,
+        37
+      ],
+      "shape": [
+        2,
+        10,
+        750,
+        25
+      ],
+      "max_errors": {
+        "sample": 0.0,
+        "adapter": 0.0,
+        "loaded": 0.0,
+        "candidate_chunks": 1.9818544387817383e-06
+      }
+    }
+  ],
+  "reassembly_shape": [
+    10,
+    1001,
+    25
+  ],
+  "candidate_chunk_max_error": 2.4437904357910156e-06,
+  "time_chunk_vs_full_context_max_difference": 1.49733304977417,
+  "time_chunk_equivalence_claimed": false,
+  "global_latent": "same [10,32] noise used for every time chunk",
+  "prediction_quality_claimed": false
+}
