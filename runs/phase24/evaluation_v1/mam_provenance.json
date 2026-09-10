@@ -1,0 +1,44 @@
+{
+  "status": "locked archive offline evidence, not inferred from EQR filename",
+  "archive": [
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/README.md",
+      "sha256": "5c9be4898ff7582c92972e1f0eeb9efa4964f87b735d0dedfb15b37da6d1eccd"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/PROVENANCE.md",
+      "sha256": "aa2ec535e15bb1959685d801a6daaaaf2a5e90f6e868f5bc391bffe47e77c4e7"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/infer.sh",
+      "sha256": "2347fc45fa4b6ff24f3fe7c44adbeb15c23d7442039c35441239c40abf2bed5b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/MANIFEST.sha256",
+      "sha256": "0fb1c3a331bdf7300c417eec9f48c3e45961e66a83331ab6a5e4da92ddd2feeb"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/results/offline_evidence/config.json",
+      "sha256": "565d39b2c68600a9378cf9bb8bec2a4589f3b6666b7532146846f1189764f864"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/configs/eqr_session_splits_seed1.json",
+      "sha256": "15dd14262f553fe142ab11f88e0c9fd676d8229abbcc72f7446bfc1ffd908772"
+    }
+  ],
+  "checkpoint": {
+    "path": "/home/zhengshiyi/react2025/mam_reactor/checkpoints/mam_reactor_offline_evidence_epoch0003.pth",
+    "sha256": "ff7c642a3e5aa9ab2effb27fc009498464d040321cbce41a3eef8726837b8553"
+  },
+  "exact_original_git_commit": "not recoverable: documented /tmp/react2025-joint-va-main-ablation-20260817 snapshot directory no longer exists; immutable archive file hashes used",
+  "training": {
+    "anchor_epoch": 50,
+    "epochs": 3,
+    "batch_size": 16,
+    "session_split": "B_fit",
+    "session_split_manifest_sha256": "15dd14262f553fe142ab11f88e0c9fd676d8229abbcc72f7446bfc1ffd908772",
+    "warmstart": "/home/zhengshiyi/react2025/regnn/runs/260802_emotion_query_channelot_frd140_b16_e3_seed1/emotion-query-mamba-epoch0003-seed1.pth"
+  },
+  "comparison_limit": "one seed, pretrained anchor and warmstart/B_fit, different compute from HiRP scratch; native AU rounding and fixed candidate semantics preserved",
+  "evaluation_precision": "common FP32 with TF32 disabled by HiRP configure; archived CLI defaults TF32 enabled; native model/weights/output rules preserved, not bitwise reproduction of historic CLI"
+}

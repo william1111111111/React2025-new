@@ -1,0 +1,69 @@
+{
+  "banks": [
+    {
+      "seed": 24001,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24001.npy",
+      "sha256": "bc3d58d75adab1ea53fdbbfc7dfb27c495655826f19a3913fc8c3b9d430109e2"
+    },
+    {
+      "seed": 24002,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24002.npy",
+      "sha256": "ca0c191b77fff36ac217f2b02e8b33d3fd8d391ebf32d07a2bc02603e0d64d3a"
+    },
+    {
+      "seed": 24003,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24003.npy",
+      "sha256": "e118573cce7cd81dd4424409f2112eb7121a54f18c1055b925a71466109b2c2a"
+    },
+    {
+      "seed": 24004,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24004.npy",
+      "sha256": "24b9fe41d079dbcd4089167096270e53980a16c9c935ffdcbb6d4afe7d3a853f"
+    },
+    {
+      "seed": 24005,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24005.npy",
+      "sha256": "a29dcd590c4784ef90f94f977e6fad83c834da6d7f80b66a0366fa10fc1eba11"
+    },
+    {
+      "seed": 24006,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24006.npy",
+      "sha256": "4ce84aa89896302a7ef7d4b21713a1a124b9a6266cc16991cf0dd233f35fe764"
+    },
+    {
+      "seed": 24007,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24007.npy",
+      "sha256": "6a48f9084c23e67151945194ad7077a93a107a5b1c92ee532e0ffa868ce38a52"
+    },
+    {
+      "seed": 24008,
+      "path": "runs/phase24/evaluation_v1/noise_banks/24008.npy",
+      "sha256": "a41e4840084e049dfb71b7138cd9805e1ab96fd4923f14c8cb57c44aeddb131c"
+    }
+  ],
+  "K": 64,
+  "T": 128,
+  "max_banks": 8,
+  "models": 15,
+  "new_training_steps": 0,
+  "plan_path": "runs/phase22/replicated_v1/evaluation_plan/manifest.json",
+  "plan_sha256": "bfcb3f5bbc9ab531783c25e88500791df6395edf9218e20ebe53312cc3601f05",
+  "aggregation": "per-bank U-statistic then mean 8; shared noise index excluded for all source pairs in group self",
+  "paired_interval": "Student t df7 Monte Carlo CI across independent paired bank differences; no population/seed uncertainty",
+  "halves": [
+    [
+      24001,
+      24002,
+      24003,
+      24004
+    ],
+    [
+      24005,
+      24006,
+      24007,
+      24008
+    ]
+  ],
+  "relative_C0_screen": 0.01,
+  "selection": "fixed before new evaluations"
+}

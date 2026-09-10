@@ -1,0 +1,642 @@
+{
+  "hirp": {
+    "__init__.py": "e6e1450f4f1c09072771255db3b731705daa59399a3a1358ae2cf75a90a53bfc",
+    "config.py": "e97148c4b0672fedef778f25fcffe1df22747912122a3e249cb15023170964de",
+    "curve_phase23.py": "230fc4fc7fedaeee8377644ef9a2b0dbd9d2ef153bd37c6ff0d576016636bfc7",
+    "data_adapter.py": "0b2fbf4e17d42d7b73888c1c416d0805ccb9fb18f23657e2bc985c37e6b5eae8",
+    "evaluate_phase15.py": "5400087d24049c8a97eb9ec9545a766b001a715afd3e835e8ddfcd22b33e6111",
+    "evaluate_phase2.py": "ccd0531bdbdab0a10d5edf006b8a203752c1d0294be0b2064b0776f494a56139",
+    "evaluate_phase21.py": "0c13e8b1484fa6de10c9b9248d18493fca2d74f07145a1a3cbadb40e45c36ecb",
+    "evaluate_phase22.py": "1a00276edc240f36cd3df45ae2d1b81f0433bd05c92a27e38f02c3d1edcdd106",
+    "evaluate_phase23.py": "dec5ecbbd8d5575b2553dc97b68c867c1b9a4ff8dfb665607a916f7fac77f690",
+    "evaluate_phase24.py": "a1392bb439b9e02dd7cdba66b06803659bf3ebf78a823d8690d0875c8b33c1d6",
+    "group_features.py": "4efa4d3d8a918d468b467800ace8df900999323f78278d824b8a174ce1cdc1c8",
+    "group_scores.py": "0aef39526ade589b5ab8a5db9cfa5a65c503b51c6e7f9a4d464ac1469363b32f",
+    "losses/__init__.py": "77e2516c7a8eed74e8e4ff7692dfa5271a3ef0a33a683a2a03476d8fd5c74a57",
+    "losses/energy_score.py": "72e7bac3e5206f3ecb2d5a4e28521bf57d44a0d1f554b5ddbe2d94d5cf7aff04",
+    "model/__init__.py": "f51efce65c1da694070740a78d3867a423d9b6d1dcd75fd823d119605db1c696",
+    "model/conditional_prior.py": "3942abcc40f4c69dfc24e61db2dab6a242817ec292e2250152a8678d09cb3687",
+    "model/hirp_net.py": "57b4d2645ab769d110ba38a5a3d60690b1537b6c899c111bee25dc49430b2c44",
+    "model/modality_stem.py": "5c40a9ad07c031aea6eeea0115ebc9d96a15ba5c74a9fd7d990c8f0f32aa9680",
+    "model/output_head.py": "d7b56ec11ba6575989ca589d1d4a68122489fecc18eea6a132c32366e99ad535",
+    "model/speaker_encoder.py": "bd06c2f78e6f943500296a298f31ad6cde77c4f5c287630286a7ebd79acc544e",
+    "model/temporal_decoder.py": "da47f6b9a85118245d2b54ef2eaed102ef1477fa35356cbe188600da87facd33",
+    "paired_data.py": "4e2054d9cd65097e4936dd1bcca55bdbd81493dfd0b10a31f3512d1decd9a417",
+    "phase15_audit.py": "cf120b85b1668b0524d84595ed7217a1240ed9b6ceafa67d6287886df6b3b745",
+    "phase15_interventions.py": "ba4b21fb07af4a514f1da87b304c08daae677e4d229eaddd88badf97a78b1b77",
+    "phase15_metrics.py": "3e67cb1f3ecdce761c60c6eadd259a569327a20d0454bbebac9b12b8ad717c5c",
+    "phase1_diagnostics.py": "cf5e731ab0c9f367dc32e35beb52f3910c2bb07a0076666b207f28762ff9cfcc",
+    "phase21.py": "f7ffa43af531d75e50f2eaee78e846433176f4ddfc794489d8764b959feeb21b",
+    "phase21_diagnostics.py": "8f87b08b0cc6697836cb8c43ce9499544d3cd3057bca3435d5b394344256438c",
+    "phase22.py": "071def65a82066a5dbf0d127ba5ea179add82c32b31828f0dee4b42d51050d3a",
+    "phase23_aux.py": "2a93cb7f2d7aa5af95d9947f5feed378e22cb833e18cbf7e56f7c291c18b716e",
+    "phase23_cache.py": "a7ea37d342334a4f1a6ac7d1a75913abfe170d2ce9221e2f100d16907666da14",
+    "phase23_long.py": "76d7cc1c7e2b44fb2998d3bd7c1bf24162a0c9407f6feed6bbbc4f1d66a9d3f6",
+    "phase24.py": "e491ad113ebee21412886e6984a3a8789bcf5130a103e58a0c3caabc65a2b8bc",
+    "session_data.py": "45c93bc344e1ff05acb83ec579d99f89388f096d33f3e2e8384dbaba9922c21f",
+    "summarize_phase15.py": "7e8dfcaf976b09767999c0b536f0337d8b08ae7ece3a25510d6ddc22e9ff430f",
+    "summarize_phase2.py": "6771d00abafbb44e03ffa850df360bb53498938d80dc04cce949a337df8a5ae8",
+    "summarize_phase21.py": "72040b20800c030ca55e9c87cd0848cba9c9884f0046692efc129f5ec81e2ad5",
+    "summarize_phase22.py": "0735ab2f5e6f57f59caf7c33c94642ae50676fdee49216566bfcb41f838169e4",
+    "task_phase23.py": "2ace5e0841a7ff39925d9e952d8f55b4c4eff6cbb7b3c8d4315958b90002036a",
+    "task_phase24.py": "201942f40af0d9fed4288dcf9e74278ed61566a057917e90f8fd57c869de012a",
+    "toy_phase21.py": "686c0abb091df243292c4ae8f33e25928b4f253b0b6538a6c07642eff3c4cbab",
+    "train_phase1.py": "80e9b05089a2f9879405e6bea2e4193636b184a6baeea12d70fff60f8ccf50e1",
+    "train_phase15.py": "6ac444cd605e3fbe3cc4620d1edade1e02da7d7e6e8c7179da7b251a0c3b3ff7",
+    "train_phase2.py": "70a616a14fe614ba8431829190ab697ef324d52b8b321b9994a737f2c1ba40d1",
+    "train_phase21.py": "a2a28347c5a45fcea23091ce480ed4ff439c2f7c3d09b10f58e136df78eb2f75",
+    "train_phase22.py": "f4193c456817e896919810f73b1346aad04eed293efc6169051182d3f82f77f6",
+    "train_phase23.py": "c09db3b2601ca59ce03cba125214429b61d3f29c57dd0eb62c9bc6ee90c0c327"
+  },
+  "legacy": [
+    {
+      "path": "/home/zhengshiyi/react2025/configs/model/emotion_autoencoder.yaml",
+      "sha256": "073403af4373622497f9dca4b590a07c2add36cbe92eae98a558c20821721424"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/data_preprocess/audio_feature_extraction.py",
+      "sha256": "457d26d03347d0f89c5d9b800dd879a23dac495ad2716a0ded6e990b38542c17"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/modules/audio_embedder.py",
+      "sha256": "25f9552d19c960c784126ebf0e9ca16e723ddd3fafa02f3eba8d99c270df2a03"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/modules/audio_processor.py",
+      "sha256": "3dd404b065d729b531a51c9255eb34c778f0d881037277c6209da2eb51d3dbcb"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/react_2025.py",
+      "sha256": "042b9c43af0200d1af0a58a7128086a9dc9b575b85ea6e76e823c92137a01f47"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/dataset/tools/util.py",
+      "sha256": "2cfa5218cc77d5b25e12a32346d53c6c78fd1d9091b010c5ad842d96bcd87b82"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/feature_extractor/wav2vec.py",
+      "sha256": "8efefa76e51c3e2a019860b847d39fd0ee182ba2c87667d77beb6d025a471538"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/ACC.py",
+      "sha256": "f1880a6905b05b52349fda75ab657df19dec8426c9ff2694af8624315bfe2d7c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/FRC.py",
+      "sha256": "f104754206490234847eea9ecc2a02218d9c4a41bc9fa88635c295023d1520b9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/FRD.py",
+      "sha256": "0b01ae09383dfd7b36342186e8afc84f3a3b23b9990183bd654f70cfe12741b0"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/FRDvs.py",
+      "sha256": "99c0aad10b4ccfe2e90e7261d2cf930d7c58e4d5c2144b671bb97fe5fe5a685d"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/FRVar.py",
+      "sha256": "e306cfe7a7d31572e86004ddd097804c5aec128624de646042775063dfe924f9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/S_MSE.py",
+      "sha256": "0e4e9280ea676abf5ce34bbd78a303a93e9b3714e72fe88a169b47e0d57f4b40"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/TLCC.py",
+      "sha256": "ce9ed5db7d74774e1fa5c40ec47a5cdeb331b3d9c856981063da4a94d78e61cf"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/TLCCRobust.py",
+      "sha256": "f552fdaa3828ae16888cf86cf7a0bb9b5c7ead87f50673c8511e26a9204ce44a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/__init__.py",
+      "sha256": "b667df300465de4fae8848366cb90f2116d12e3f4777399034ed74d09b59c30c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/metrics/metric.py",
+      "sha256": "ed28d0ac6ad4b8d9518ec6ad15bd1ce81f556ee2adc8ed89ab1c75050cc9c193"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/modules/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/modules/emotion_autoencoder.py",
+      "sha256": "cb75a7106d7e65fc91b3f37ea55ae5df3b391d24cbd3850b139660d87e042df9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/modules/post_processor.py",
+      "sha256": "b33b12035dc5002b10c4acc1ce586d8e9e1efdd01c07ade434f764ac6490ccd6"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/diffusion_decoder/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/diffusion_decoder/transformer_denoiser-o.py",
+      "sha256": "2edb9683e71f498a4d87b6e6a330809bf3effe238b3f02a493225867e24dba75"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/diffusion_decoder/transformer_denoiser.py",
+      "sha256": "51b1625881cb72d8e6ebb3b44da2b7ca1edcac2e9c97631307bf03484dab4f0a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/flow_matching.py",
+      "sha256": "40157a5b560ae5cf1978c89c4ee9c407573b45447c56f5bec19494dd871456aa"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/gaussian_diffusion.py",
+      "sha256": "8473181e8882a9e43a1c1949afb1c7b1f1a8e610edf70eeade4dbfe169c27322"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/matchers-o.py",
+      "sha256": "83989b915f7838aa6ec2e02c1a30be06d81a09a047b49ddbe6ae95ed93f49d15"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/matchers.py",
+      "sha256": "788ab95fd3ff71eadc8d39da6cfc27b2ec093869bf593024cf87ae97fdbf25e4"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/operator/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/operator/cross_attention.py",
+      "sha256": "3144e046f57f68d5fbde68fb16918de0dd4b126eabcaf47ebff3e389ed51ac2b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/operator/embeddings.py",
+      "sha256": "969d2dd2c1aead248e6368d4408a8064dda34f36afaf5d624fe75226c573535c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/operator/position_encoding.py",
+      "sha256": "bffc013b821fd4e12244c3100b47446203ff8f1980875f0074b59760cd5c7b30"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/resample.py",
+      "sha256": "9880c6bc51bce82f7aab42cbef43514a46124205c445b2949181866c407a1eab"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/rnn.py",
+      "sha256": "aca9983e38af222ac6ea47f2db8cd7cfc81359632e1421b205de0d9d24422d26"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/torch.py",
+      "sha256": "b77e0cf1f5985b297f99007a0b5624bcdc1f30d886ba1c76c9861886c353ad0c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/geometry.py",
+      "sha256": "148dfb80406e20fe0a479194af9010b962fdd9d7acac1650c388115ae5b27fbe"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/losses.py",
+      "sha256": "c53b8472ee61da93370e4bd588ab47c5fed8e959638c3083f6eaeb533c22fe88"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/temos_utils.py",
+      "sha256": "2e2576b8bf6d3a64f4f2c67abeba63ff5c76bb0e17985db1abbca4d86a24c8e7"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/util.py",
+      "sha256": "4996a3c0eeba16aaeefaf9a9bbd96b9aefbd173afa3bf922c501ff6d11a81df3"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/losses/losses.py",
+      "sha256": "e84ee7cbed53802f1607e445223f05d3f2c29f2889fe8eae4cf5567c81097094"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_diffusion/qbvm.py",
+      "sha256": "1da434cd11786a7d5ae432802965c9d3b2c6fea21126555e7637184255c1a1aa"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_transvae/BasicBlock.py",
+      "sha256": "14c24b9743336fa328c6771b4852a5c527b0686149d29fb1e4503061e460ecaf"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_transvae/TransformerVAE.py",
+      "sha256": "3915e2ba4be2e8faa00b4357066680899aad43640162253bb99b1319379a27e7"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/motion_transvae/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/utils/compute_metrics.py",
+      "sha256": "0da84738044e95aa8c9658374de3cf71e46919671284131105884059cd7d6c7b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/utils/losses.py",
+      "sha256": "051532ef752a0d2e9ee93d9a1634c47541469414843c92283a5fb1de53ea25c5"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/framework/utils/util.py",
+      "sha256": "15430fc7f0da421ed26d5e7fbe7a30681937c2aae32b202b6835f6cd3f62f97c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/checkpoints/mam_reactor_offline_evidence_epoch0003.pth",
+      "sha256": "ff7c642a3e5aa9ab2effb27fc009498464d040321cbce41a3eef8726837b8553"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/conditional_data.py",
+      "sha256": "89e9d76f61da56028ad1fe675af5195c1fa8e83adf38c0e4a2b6fcc62f90e31c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/conditional_model.py",
+      "sha256": "2cc4746ec951755ba110fa1f03b49c4b95d47c2b6de42e09e66ed5d7f7a93d8a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/emotion_query_mamba.py",
+      "sha256": "70ee168ba01193e8d9888b05d711a8c359cc6959bd2642de1d588c490533c0e0"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/eval_conditional_regnn_official_test.py",
+      "sha256": "ff232506dc0a5c4765b52d6c6a494b18c75eb04a85a7ba392134706368dd5426"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/eval_emotion_query_mamba_official_test.py",
+      "sha256": "53667ac65fd99517c444230567713643c956126975be878f488343e36dbfb14d"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/eval_query_mamba_official_test.py",
+      "sha256": "48929ef6a6ebb7435dc13dd4a08ce5380e18c77177809ab19b45ad28bfb2ef17"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/frd_surrogate.py",
+      "sha256": "d85a8f3343ad2fa9f00e0f3a994f3cd78bdd8c6b30a814946348e40d904a3f21"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/query_mamba.py",
+      "sha256": "e063def81d51b87df771ea6aeb40131e33f77810af897f647b314a14f43637cf"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/session_splits.py",
+      "sha256": "4b14d465b37661be090be049075e154026a8dd4f91841a3d6c1e96cecb0f5e47"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/train_conditional_regnn.py",
+      "sha256": "9de0dfbf744a24a9ee229fa4d13026f6e8c32e26e2c4a3b23c4f966458bb5dbc"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/train_emotion_query_mamba.py",
+      "sha256": "b26e813449971f7edc6964254bcc8d6fbc35a2e702209292d6f4ac2228588b01"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/mam_reactor/regnn/va_calibration.py",
+      "sha256": "a11670beeccb6f6ce16e48d971655d3daff67fea9b066b43503341e69401ebd4"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/pretrained_models/post_processor/checkpoint.pth",
+      "sha256": "95d3d12737ed4157d80756b31613c014085807f846b381f8f3aa82afd1f61c5a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/analyze_frd_group_attribution.py",
+      "sha256": "fc2a9199cffc4706d93bc9f5882741d6b82004fc8230d8b82c482fd3045c66b5"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/analyze_frdiv_channel_allocation.py",
+      "sha256": "b70df0d716cb4d4bac2666f084e606de3c49cf309955a53d02b2c460fbfe235a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/async_conditional_frc_eval.py",
+      "sha256": "4785e267996e6cbb84e7a9cb007253cc96085c2c1bea7b14488372643df203d6"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/async_emotion_query_frc_eval.py",
+      "sha256": "9f417c746e463d02720005f7c619005f1654318b25116302c3d3813a7dbdcd9f"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/async_frc_eval.py",
+      "sha256": "8cdb02a9862623244257d1799c8ee366c90c54f1a027e67362bea05b7f1cd318"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/build_reaction_style_cache.py",
+      "sha256": "5dd241e83837f1992f01e849fc8beacf895dc62acdebf61a94fa87552bcfa391"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/conditional_data.py",
+      "sha256": "5878995b4d02d05b1f864bf8d5b9ede07b8e2d1ee9c1185956399e7105aec46f"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/conditional_model.py",
+      "sha256": "6b3222c81ad8fe41cd1e93e5986d0622d4b7f4dd8bea385530caf35b870fe65a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/datasets/__init__.py",
+      "sha256": "aaced8994c10e7523c8a64a9cdb7573aa380fc20ab17c3c3b441b2664e015414"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/datasets/datasets.py",
+      "sha256": "aa494298b064b39124cc1df85d65d8a3a4e3b5b5596ee537e0f8faee2fd4011d"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/emotion_query_mamba.py",
+      "sha256": "87e0c7e515ff9965d1cd8f1577781a6cfb98c0914a8f6e6259623cb1a3634512"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_conditional_regnn.py",
+      "sha256": "dfb69a1099b8625c34a14011def5d33bf5e69946c08e331cdfdc22c01ed6055c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_conditional_regnn_official_attribute_metrics.py",
+      "sha256": "a9883015334dc3c4fee1dbce69cff4dd62377a5626c590fd92267dbe31da1ac0"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_conditional_regnn_official_test.py",
+      "sha256": "a6d44a2bbad7fb25eff960cb7229c7ac6a7f90c0e2aeb74677413a147d690c6c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_emotion_query_gate_sweep.py",
+      "sha256": "0ae1428f240d15f9505f22d5d00f37885cce02d402c1b8c8c46061c1561af660"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_emotion_query_mamba.py",
+      "sha256": "1a243af4afe7ac4d3b59edb70123fb8e3fa9d7e9101c22e74812e5bf40fb93a2"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_emotion_query_mamba_official_test.py",
+      "sha256": "c10a1961ec7d7c6142ef9bf5af8a5c905d5cbb54a448024187389278d37f4c19"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_frsyn_robust_from_cache.py",
+      "sha256": "510697b9851a71c526c913f391d4451a230cb335cb430e055f38dd18a387136b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_official_frsyn_candidate_from_cache.py",
+      "sha256": "ef6045458932dd51062b1db93eef4731ebc084a1b4f24c86bd98d6e0725741aa"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_query_mamba.py",
+      "sha256": "ad6818222f0f8106fd89d9624608d06aeda4a583016531391b45b5e6431c5ef9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_query_mamba_official_non_frd_metrics.py",
+      "sha256": "99a5a3e6124d86131460deab3d7ac9120388f36b7e3c195ae045d27b1fbf4f38"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_query_mamba_official_test.py",
+      "sha256": "7127f4eba593d937bd13ec3b0cddcc2458316ccfb055b2408db4ac8bc320218c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_residual_rank_flow.py",
+      "sha256": "881fda0c287dbeb95d3be6f9effd610922cce63aa289d5e3fffd35e9b978c0e5"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/eval_residual_rank_flow_scale_sweep.py",
+      "sha256": "89b8f545abdfd03fabd00c28579b172ed05fab5f810dd58689e7694ab0345ab2"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/evaluation.py",
+      "sha256": "47085cffb08d6b44a9abc1f23ef50d10ff2ddc301bd3d0350b429f17aa6f756f"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/export_emotion_query_mamba_official_frd_cache.py",
+      "sha256": "509ba3618d2e7429ea44c14c4428aa7a8968eca6c6e761223181346f92be6520"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/feature_extraction.py",
+      "sha256": "0ee21a27993183df8c93439db495ec1c538e5669d7253e48be0c8a348b07e0c8"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/frd_surrogate.py",
+      "sha256": "a993fd30ad9a4e7a8e7b99ce353aa9b5f1fe905102e9a8b049ceef3b8fb0cf14"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/ACC.py",
+      "sha256": "f1880a6905b05b52349fda75ab657df19dec8426c9ff2694af8624315bfe2d7c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/FRC.py",
+      "sha256": "f104754206490234847eea9ecc2a02218d9c4a41bc9fa88635c295023d1520b9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/FRD.py",
+      "sha256": "0b01ae09383dfd7b36342186e8afc84f3a3b23b9990183bd654f70cfe12741b0"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/FRDvs.py",
+      "sha256": "99c0aad10b4ccfe2e90e7261d2cf930d7c58e4d5c2144b671bb97fe5fe5a685d"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/FRVar.py",
+      "sha256": "e306cfe7a7d31572e86004ddd097804c5aec128624de646042775063dfe924f9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/S_MSE.py",
+      "sha256": "0e4e9280ea676abf5ce34bbd78a303a93e9b3714e72fe88a169b47e0d57f4b40"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/TLCC.py",
+      "sha256": "ce9ed5db7d74774e1fa5c40ec47a5cdeb331b3d9c856981063da4a94d78e61cf"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/TLCCRobust.py",
+      "sha256": "a263b323dc768279ebac4b8be96732a1d354ee76babe03b151a175706b9e5e8e"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/__init__.py",
+      "sha256": "b667df300465de4fae8848366cb90f2116d12e3f4777399034ed74d09b59c30c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/metrics/metric.py",
+      "sha256": "ed28d0ac6ad4b8d9518ec6ad15bd1ce81f556ee2adc8ed89ab1c75050cc9c193"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/LipschitzGraph.py",
+      "sha256": "1e28f6b3cb20e374ea829b87d0f614087fc3f5c9a1cf70fc827aa4b7eb945b30"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/MULTModel.py",
+      "sha256": "99a19409cd98e80b807620574223f3a16a0570d3f4b3d199b76070e9e3e3d9bc"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/__init__.py",
+      "sha256": "25205c8defc4609b4e5dae51ccfed2ca6037598a8f6fcf2aa28fe259a763c28e"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/cognitive.py",
+      "sha256": "0ed0600f0c02ee83c255ffa8539859bc02ea1681ef773a835977499df4e465fb"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/distribution.py",
+      "sha256": "aabd4d013341cf764008b476192f90cf5096944ea59b908e7d78b6f7402f34b1"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/mhp.py",
+      "sha256": "f3e91af2cbdb81544ab0eda27041677f58e72c8d7ffbd7d4eecf25356079a211"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/model_utils.py",
+      "sha256": "003af91ac3082903019cc9af4398185c861dc59fd605673083494bd11ed54084"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/multimodel/multihead_attention.py",
+      "sha256": "17f6d199f49a772fa613849c2cd48319a8e0fd50514a8a7860952153594a6b53"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/multimodel/position_embedding.py",
+      "sha256": "b9e5ad8df2ca4dbf640b5f309f60a0b2d2cccb0b4d0fce8101171030b6e6e644"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/multimodel/transformer.py",
+      "sha256": "8771b7aca0047babb96a31b37c4cbbdc94a44739d14b5aec075ddfa82216c49b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/perceptual.py",
+      "sha256": "7b67701098a38f7549efbe32ffc34c608b866600434a81dda07c56483d3b8e4d"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/sicm.py",
+      "sha256": "69611d371b8e9a67692b20ecd7692070b97923bf6963be6f33f922d6a518d6f9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/swin_transformer.py",
+      "sha256": "0bd8fe1e84dbfc8356a50c182007434e55a72fc64b3a145563e0d0620b01208e"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/torchvggish/mel_features.py",
+      "sha256": "68803c00743cb43139db12836b5e745a977cdb81443257fa716cd520d7e5e948"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/torchvggish/vggish.py",
+      "sha256": "9ed957267374bafb492e9bd5421553e6aa30b6e60a724572c4530ab49567475c"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/torchvggish/vggish_input.py",
+      "sha256": "cd55ca5362c783c2c9749858fc955f065c4f2052536dca5f7f0414b747c30fee"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/models/torchvggish/vggish_params.py",
+      "sha256": "d4345ffde3f09b1d90b6aaf77fabbb5493b3d3a07db2b3793ad038133c257a7a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/query_mamba.py",
+      "sha256": "9cf7a47e31a82f0a4956e38f46fb42bda9d6e3bc019a945f0b1bc2fc81ec6122"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/residual_rank_flow.py",
+      "sha256": "70c89fe4c27c795b5d4d52e66e0c2baac54f96c59fb194dbe9d7581d448d936e"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/__init__.py",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_conditional_regnn.py",
+      "sha256": "67ad4ca7d6bc4c699c24b21ea37fa5b3c21eedf9a1aeac4ddf8bcca4c811b12a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_emotion_query_mamba.py",
+      "sha256": "f473187555bb1ba6564a7f7b03e4903a6ebd6e8a0b3b08a6789b71404c6596b4"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_frd_group_attribution.py",
+      "sha256": "8d3af72cfb8e287df4fce838daa888ea74e504ffc9b06575d9526000b9c6bb34"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_frd_surrogate.py",
+      "sha256": "54ccc4fe11cefe3d6b47a4bb136aed48bed179c8839bef7cbe27da76517ec358"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_frdiv_channel_allocation.py",
+      "sha256": "76222c72914c89bfcbffe11754e897abeaaebb993846ef7da8206177d9ef918b"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_query_mamba.py",
+      "sha256": "4fdf8f109abbad7e72f451d21dc0a9d09de2dbfd3afbb726538fea2a910c12fc"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_residual_rank_flow.py",
+      "sha256": "e8ab493f5535ffe5d6a1944c684768229133b228fd9e230a672c4786239e4ea0"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_residual_rank_flow_scale_sweep.py",
+      "sha256": "99fd6d33c455a710464f02fc7ab208ea0ce34b14b62ff6ad3c069c8a383ec6cb"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_sicm_contract.py",
+      "sha256": "5175eaf9825f8f8d9c82736feef94eb95c00c6e83c372404d99e9dbe9a787688"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_sicm_dataset.py",
+      "sha256": "bd0147998b11e6f5ff07ed076eaae49651508d281ca50dae0b00fcdfa7c38102"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tests/test_tlcc_robust.py",
+      "sha256": "33a00a95a5b6717a4813289f6f5b17cb19c753bb94a2dd63d9ed549ccbf38728"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/tool/matrix_split.py",
+      "sha256": "3b0004a6bccf2988ef35e97678d14351bff7093c975da7834281dd965ac9e478"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/train.py",
+      "sha256": "f6ce3da83a0ba39bf0f58089725fcf83d8ca10b53df80b3d2689bbc41d2757f9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/train_conditional_regnn.py",
+      "sha256": "e4deb2094476c7dc18f0bc364e1e31517ad6eb80f5dbb4eb51eed71b3a4533fe"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/train_emotion_query_mamba.py",
+      "sha256": "15b264251756374c99309f7259035dfd64cb82d74c1c3c7c5990f9ab20cb6d16"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/train_query_mamba.py",
+      "sha256": "7ad737717be9d8a38148b110698e5f9f8e15975640b35d0bc2af90ed9f8e9b06"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/train_residual_rank_flow.py",
+      "sha256": "48ca670782a49db43fc80592b0c46fa779291321c040908f74b32214a7398365"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/trainers.py",
+      "sha256": "a124959c3c9f18483231d955c26afd81b0ccee4e2d5c24b91031ef296c7a2738"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/compute_distance_fun.py",
+      "sha256": "c4e364c6f3e4db3cfcf9ad2a5126a187deea66128da80c35758ec8533d0dfb69"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/evaluate.py",
+      "sha256": "5326db3c1b6bb13dd60a77c77499049031d6a952f247c2048cc490b076f9cb94"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/file.py",
+      "sha256": "be274b6ad541a29076619eee211f2458e2cf893118669efe1a2b58d7ce563763"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/logging.py",
+      "sha256": "0d2274903b67a7c69d88df3c386671066b9ad06a1c0409e989cba5ef3b94ae1a"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/loss.py",
+      "sha256": "9adaca819369673ae32fd2268e9c80324eb8a581bb510da2f68c815d602a30a9"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/lr_scheduler.py",
+      "sha256": "aee9c2c0a8a258f477c48c62dbe71e3263ad2fac30ebac8b389dbdf53d32f4b8"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025/regnn/utils/meters.py",
+      "sha256": "88c170bfa8d425a932b69d58adb7821cf18d966f3b78182ca31aa0903030f13f"
+    }
+  ],
+  "policy": "source files only, no identity/result/log circular dependency; offline reporting/setup/tests excluded"
+}
