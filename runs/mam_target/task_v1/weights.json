@@ -1,0 +1,119 @@
+{
+  "weights": {
+    "a": 1.0,
+    "b": 0.15813484622234084,
+    "beta": 0.25,
+    "gamma": 0.25,
+    "eta": 0.5,
+    "grid": 32
+  },
+  "calibration": [
+    {
+      "step": 1,
+      "ccc": 1.0003376007080078,
+      "sdtw": 0.5222333669662476,
+      "prediction_gradient_norms": [
+        0.004053123295307159,
+        0.023743871599435806
+      ],
+      "targets": [
+        [
+          "listener/session13/Camera-2024-10-22-161742-161747",
+          "listener/session13/Camera-2024-07-16-152105-152147",
+          "listener/session13/Camera-2024-10-21-125749-125756",
+          "listener/session13/Camera-2024-10-15-111253-111325"
+        ],
+        [
+          "listener/session13/Camera-2024-07-16-134902-134937",
+          "listener/session13/Camera-2024-07-04-120006-120008",
+          "listener/session13/Camera-2024-10-23-134159-134313",
+          "listener/session13/Camera-2024-07-17-112836-112807"
+        ],
+        [
+          "listener/session13/Camera-2024-07-11-103159-103100",
+          "listener/session13/Camera-2024-07-30-114103-114135",
+          "listener/session13/Camera-2024-10-23-143154-143223",
+          "listener/session13/Camera-2024-07-30-161637-161715"
+        ],
+        [
+          "listener/session13/Camera-2024-07-11-142837-142758",
+          "listener/session13/Camera-2024-07-10-150927-150804",
+          "listener/session13/Camera-2024-07-16-134902-134937",
+          "listener/session13/Camera-2024-07-11-120318-120232"
+        ]
+      ]
+    },
+    {
+      "step": 2,
+      "ccc": 0.9996839165687561,
+      "sdtw": 0.4773457944393158,
+      "prediction_gradient_norms": [
+        0.0038405167870223522,
+        0.024286340922117233
+      ],
+      "targets": [
+        [
+          "listener/session9/Camera-2024-07-16-134902-134937",
+          "listener/session9/Camera-2024-07-17-121257-121235",
+          "listener/session9/Camera-2024-07-22-111042-111140",
+          "listener/session9/Camera-2024-06-28-112322-112419"
+        ],
+        [
+          "listener/session9/Camera-2024-06-26-093649-093642",
+          "listener/session9/Camera-2024-07-04-103805-103835",
+          "listener/session9/Camera-2024-06-28-164549-164628",
+          "listener/session9/Camera-2024-06-28-120152-120208"
+        ],
+        [
+          "listener/session9/Camera-2024-07-09-142938-142853",
+          "listener/session9/Camera-2024-07-30-150921-151000",
+          "listener/session9/Camera-2024-07-29-160525-160426",
+          "listener/session9/Camera-2024-06-26-151459-151413"
+        ],
+        [
+          "listener/session9/Camera-2024-07-31-102814-102840",
+          "listener/session9/Camera-2024-07-22-093331-093420",
+          "listener/session9/Camera-2024-10-14-135007-134930",
+          "listener/session9/Camera-2024-07-11-134401-134311"
+        ]
+      ]
+    },
+    {
+      "step": 3,
+      "ccc": 1.0002678632736206,
+      "sdtw": 0.6032124161720276,
+      "prediction_gradient_norms": [
+        0.003801504150032997,
+        0.04318881407380104
+      ],
+      "targets": [
+        [
+          "listener/session17/Camera-2024-07-11-134401-134311",
+          "listener/session17/Camera-2024-07-16-143113-143143",
+          "listener/session17/Camera-2024-07-31-102814-102840",
+          "listener/session17/Camera-2024-07-11-111326-111141"
+        ],
+        [
+          "listener/session17/Camera-2024-10-23-143154-143223",
+          "listener/session17/Camera-2024-10-21-125749-125756",
+          "listener/session17/Camera-2024-07-22-093331-093420",
+          "listener/session17/Camera-2024-07-22-111042-111140"
+        ],
+        [
+          "listener/session17/Camera-2024-10-14-151541-151421",
+          "listener/session17/Camera-2024-07-19-151039-150947",
+          "listener/session17/Camera-2024-07-16-143113-143143",
+          "listener/session17/Camera-2024-07-11-161602-161527"
+        ],
+        [
+          "listener/session17/Camera-2024-07-11-134401-134311",
+          "listener/session17/Camera-2024-07-11-111326-111141",
+          "listener/session17/Camera-2024-07-08-151240-151227",
+          "listener/session17/Camera-2024-10-22-103728-103815"
+        ]
+      ]
+    }
+  ],
+  "rule": "a=1; b=median TRAIN prediction-gradient norm ratio over first3 schedule batches; beta=.25 gamma=.25 eta=.5 fixed before dev",
+  "validation_used": false
+}

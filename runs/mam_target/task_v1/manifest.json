@@ -1,0 +1,37 @@
+{
+  "head": "e7788d36d3ffd941862734e1f2819478ac12aa60",
+  "branch": "agent/mam-target-task-training",
+  "seed": 123,
+  "arms": [
+    "R1",
+    "R2"
+  ],
+  "requested_steps_per_arm": 6000,
+  "evaluation_steps": [
+    2000,
+    6000
+  ],
+  "training": {
+    "T": 750,
+    "B": 4,
+    "K": 4,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "precision": "FP32 deterministic"
+  },
+  "schedule_origin": "runs/phase25/timescale_v1/seed_123",
+  "schedule_sha256": "20240f2cbd5b36708e49c5ba43b52b4c2495b9fcd81e68f1d9a1a7eb515ef8f3",
+  "noise_sha256": "6ad150b6b107ffe7d26d94ceb318fed0f3fd93ec8f72cd01c7b331b19e40e861",
+  "manifest_sha256": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+  "weights": {
+    "a": 1.0,
+    "b": 0.15813484622234084,
+    "beta": 0.25,
+    "gamma": 0.25,
+    "eta": 0.5,
+    "grid": 32
+  },
+  "fresh_initialization": true,
+  "old_checkpoint_loaded": false,
+  "multi_seed_paused": true
+}

@@ -1,0 +1,20 @@
+......                                                                   [100%]
+=============================== warnings summary ===============================
+mam_target/tests/test_task.py::test_ccc_official
+  /home/zhengshiyi/react2025/framework/metrics/FRC.py:24: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[:, None]
+
+mam_target/tests/test_task.py::test_ccc_official
+  /home/zhengshiyi/react2025/framework/metrics/FRC.py:25: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[None, :]
+
+mam_target/tests/test_task.py::test_head_range_and_contract
+  /home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+mam_target/tests/test_task.py::test_head_range_and_contract
+  /home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:611: UserWarning: Can't initialize NVML
+    warnings.warn("Can't initialize NVML")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+6 passed, 4 warnings in 3.68s
