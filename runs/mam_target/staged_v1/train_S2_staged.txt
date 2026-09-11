@@ -1,0 +1,16 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/mam_staged/train.py", line 99, in <module>
+    configure();torch.use_deterministic_algorithms(True);train(a.arm,a.stop,a.label,a.resume)
+  File "/home/zhengshiyi/react2025_new/mam_staged/train.py", line 73, in train
+    terms['loss'].backward()
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

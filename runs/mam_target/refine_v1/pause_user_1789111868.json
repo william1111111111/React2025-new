@@ -1,0 +1,38 @@
+{
+  "reason": "User requested pause to review staged three-arm proposal; no new training authorized by this pause",
+  "time": 1789111868.5437665,
+  "processes": [
+    {
+      "pid": 1838933,
+      "command": ".venv/bin/python runs/mam_target/refine_v1/run_queue.py ",
+      "state": "T"
+    },
+    {
+      "pid": 1838934,
+      "command": ".venv/bin/python -m mam_refine.train --arm R2-cont ",
+      "state": "T"
+    },
+    {
+      "pid": 1838935,
+      "command": ".venv/bin/python -m mam_refine.train --arm R3-cover ",
+      "state": "T"
+    }
+  ],
+  "progress": {
+    "R2-cont": {
+      "last_logged_additional_step": 1023,
+      "global_step": 7023,
+      "checkpoints": [
+        "runs/mam_target/refine_v1/R2-cont/attempt_000/checkpoints/step_006500.json"
+      ]
+    },
+    "R3-cover": {
+      "last_logged_additional_step": 1024,
+      "global_step": 7024,
+      "checkpoints": [
+        "runs/mam_target/refine_v1/R3-cover/attempt_000/checkpoints/step_006500.json"
+      ]
+    }
+  },
+  "action": "SIGSTOP; memory and GPU allocations retained; no unrelated jobs touched"
+}

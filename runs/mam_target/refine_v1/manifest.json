@@ -1,0 +1,82 @@
+{
+  "parent_checkpoint": "runs/mam_target/task_v1/R2/attempt_001/checkpoints/step_006000.pt",
+  "parent_sha256": "d9b0e07aad91f3bbb254bfc2ad5780f9fa2b9a138245dbafd0c79fa935bf8936",
+  "parent_global_step": 6000,
+  "arms": {
+    "R2-cont": "softmin",
+    "R3-cover": "one_to_one"
+  },
+  "additional_steps": 2000,
+  "global_end_step": 8000,
+  "eval_additional_steps": [
+    500,
+    2000
+  ],
+  "FRD_additional_steps": [
+    2000
+  ],
+  "seed": 123,
+  "physical_gpu": 1,
+  "T": 750,
+  "B": 4,
+  "K": 4,
+  "lr": 0.0001,
+  "weight_decay": 0.01,
+  "optimizer": "restore exact parent AdamW state in both; no reset",
+  "weights": {
+    "a": 1.0,
+    "b": 0.15813484622234084,
+    "beta": 0.25,
+    "gamma": 0.25,
+    "eta": 0.5,
+    "grid": 32
+  },
+  "data_manifest": "runs/phase25/timescale_v1/seed_123/manifest.json",
+  "data_manifest_sha256": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+  "split_hash": "bacd8362f4a33457b6925938fbf89f27457f35d99213696b85be84494d7e5dba",
+  "scales": {
+    "channel_scale": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "descriptor_scaler_sha256": "50208f2b50af7a2e73e190ffb3ed9df544251f5d4d460d32e461e52ad59bf6ce",
+    "descriptor_dimension": 75,
+    "training_T": 750
+  },
+  "schedule_hashes": {
+    "crop_hash": "6b162528f27bf7a0f63b0f3dc6514bfe5cc21202264c61b4f285057771cc9d45",
+    "source_hash": "944ac73d41ac69fde52ba7e7d6aa42cd64365d51773c2cff2be04ac656ac2524",
+    "session_hash": "e92a77abcd5496798e98220c19f2c88e1565dda489900ba675c816bc17293ebc",
+    "reference_hash": "42812b61dfa1f5241866f1dd9c5cc998802435f8e0da9e09a5df47db9f7c2158",
+    "noise_hash": "901f91f588273b8f5a59ace5608797536e4de37f3debef81feb51c7b64f2a201"
+  },
+  "noise_sha256": "11df0e0dcc25f5fe333d8ba443adb5f77f3b3f49644fe635a8be3fa9f38c3d3a",
+  "schedule_rule": "regenerate seeded schedule through8000; verify first6000 exactly, consume only6001..8000. alternative seed uses global step; same crop/noise/targets across arms",
+  "inherited_valid_frames": 17135366,
+  "inherited_parameter_count": 8729496,
+  "parent_selection": "user fixed R2 step6000 after completed exact FRD20 gate; no per-input selection",
+  "baseline_results_sha256": "5e635a8afe390d5eb603a0c0bd0619e21d3b5d0e1b154779704cc565805f31a9"
+}

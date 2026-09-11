@@ -1,0 +1,20 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/mam_staged/train.py", line 99, in <module>
+    configure();torch.use_deterministic_algorithms(True);train(a.arm,a.stop,a.label,a.resume)
+  File "/home/zhengshiyi/react2025_new/mam_staged/train.py", line 63, in train
+    terms,stats=losses(pred,p0,batch,targets,lengths,ids,manifest['weights'],calibration,u,arm)
+  File "/home/zhengshiyi/react2025_new/mam_staged/losses.py", line 57, in losses
+    c,d=pair_costs(pred,targets,batch['source_lengths'],target_lengths,weights['grid'])
+  File "/home/zhengshiyi/react2025_new/mam_target/losses.py", line 42, in pair_costs
+    terms.append(w*divergence(xx[...,s:e],yy[...,s:e])/grid_size)
+  File "/home/zhengshiyi/react2025_new/mam_target/losses.py", line 27, in divergence
+    return soft_dtw(x,y,gamma)-.5*(soft_dtw(x,x,gamma)+soft_dtw(y,y,gamma))
+  File "/home/zhengshiyi/react2025_new/mam_target/losses.py", line 18, in soft_dtw
+    r[:,i,j]=cost[:,i-1,j-1]-gamma*torch.logsumexp(-prev/gamma,-1)
+KeyboardInterrupt

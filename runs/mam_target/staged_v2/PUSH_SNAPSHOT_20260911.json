@@ -1,0 +1,130 @@
+{
+  "captured_at": "2026-09-11T10:06:21.446391+00:00",
+  "training_complete": false,
+  "new_endpoint_FRD20_complete": false,
+  "note": "Live experiment snapshot. Completed +500/+1000 task results are valid; no +2000 or new FRD20 claim. Parent R2 FRD20 is complete and not rerun. staged_v1 is a stopped numerical trial; earlier refine_v1 A/B remains paused.",
+  "training": {
+    "S0_quality": {
+      "additional_steps": 1622,
+      "total_steps": 7622
+    },
+    "S1_joint": {
+      "additional_steps": 1623,
+      "total_steps": 7623
+    },
+    "S2_staged": {
+      "additional_steps": 1646,
+      "total_steps": 7646
+    }
+  },
+  "completed_task_results": [
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S0_quality_step6500.json",
+      "result_sha256": "1da8737834270b3c9e8cc15293d4c36183d039f011fa0077ee82a9bb36186cf8",
+      "checkpoint_sha256": "33dc4120dcc1aa3cdf8f0f4f54e36137dd7a53daaf0587325e48d726eb8f79e7",
+      "metrics": {
+        "FRC": 1.20609671845443,
+        "FRC_time": 12.058230009977706,
+        "FRVar": 0.03934388980269432,
+        "FRVar_time": 0.13012788305059075,
+        "smse": 0.04291921854019165,
+        "smse_time": 0.17193087498890236,
+        "temporal_smse": 0.026502396911382675,
+        "temporal_smse_time": 0.21644482505507767,
+        "TLCC": 46.724998474121094,
+        "TLCC_time": 5.464099281991366,
+        "FRC20_diagnostic": 1.1563800263443087
+      }
+    },
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S0_quality_step7000.json",
+      "result_sha256": "7dcf1f612be0a801e1bf00ed29b2fba4225205637e57bbf021adda4a14dd7cab",
+      "checkpoint_sha256": "c484489375ec197f0e2739b8da5bc92df05d43caee98d80079c53487cb195eb4",
+      "metrics": {
+        "FRC": 1.2072578393995783,
+        "FRC_time": 11.65804826997919,
+        "FRVar": 0.04026929661631584,
+        "FRVar_time": 0.12603341101203114,
+        "smse": 0.043443627655506134,
+        "smse_time": 0.17409953702008352,
+        "temporal_smse": 0.027510687708854675,
+        "temporal_smse_time": 0.2285994400153868,
+        "TLCC": 47.162498474121094,
+        "TLCC_time": 5.5574456070316955,
+        "FRC20_diagnostic": 1.1548133946294659
+      }
+    },
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S1_joint_step6500.json",
+      "result_sha256": "6068d5870900a73a7ae3ea663d6ecb4d597a91dde6081c53b9d2141b854ec4c7",
+      "checkpoint_sha256": "21fc70fe925f32fe0698a9cf4288ead3300a54d64dc99fff55a19e297c6f99ba",
+      "metrics": {
+        "FRC": 1.1900773121998023,
+        "FRC_time": 12.15909366903361,
+        "FRVar": 0.04020022973418236,
+        "FRVar_time": 0.1218008830328472,
+        "smse": 0.04714290052652359,
+        "smse_time": 0.17183588299667463,
+        "temporal_smse": 0.0289766788482666,
+        "temporal_smse_time": 0.22867774800397456,
+        "TLCC": 47.04999923706055,
+        "TLCC_time": 5.563333826023154,
+        "FRC20_diagnostic": 1.140435098470658
+      }
+    },
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S1_joint_step7000.json",
+      "result_sha256": "2a71cbc9abb4a798614bcf5cb4b78d903bfadf0c3eeff194577f6a2625fb0602",
+      "checkpoint_sha256": "6927bd7a76ffd1e5e23c45d9b739a69bd7638a11768a5ee9abd38219c3587e92",
+      "metrics": {
+        "FRC": 1.1950265556881619,
+        "FRC_time": 11.68664600799093,
+        "FRVar": 0.04200267419219017,
+        "FRVar_time": 0.11974318296415731,
+        "smse": 0.048823799937963486,
+        "smse_time": 0.1731516050058417,
+        "temporal_smse": 0.0313112810254097,
+        "temporal_smse_time": 0.21744018601020798,
+        "TLCC": 47.07500076293945,
+        "TLCC_time": 5.491347580042202,
+        "FRC20_diagnostic": 1.137634575620998
+      }
+    },
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S2_staged_step6500.json",
+      "result_sha256": "337d92fc87a761b6a4640ca22b1f0d524ef0e2c19bf6a1af5954bd981877fe12",
+      "checkpoint_sha256": "f1516f164fb7d807974b8160eff6a7326c2310b2237fa8da49949c87ad04afe4",
+      "metrics": {
+        "FRC": 1.1884294865516254,
+        "FRC_time": 11.790623245004099,
+        "FRVar": 0.03923913836479187,
+        "FRVar_time": 0.12580997101031244,
+        "smse": 0.04315836727619171,
+        "smse_time": 0.17428075900534168,
+        "temporal_smse": 0.027716215699911118,
+        "temporal_smse_time": 0.21689141396200284,
+        "TLCC": 46.662498474121094,
+        "TLCC_time": 5.567402889952064,
+        "FRC20_diagnostic": 1.1412988788763436
+      }
+    },
+    {
+      "path": "runs/mam_target/staged_v2/task_multitarget/seed123_S2_staged_step7000.json",
+      "result_sha256": "7cdd3a6482ded24ed96f34a5a8f1bf7ceb87ed0bfd26cdc5786b8862e2fd367e",
+      "checkpoint_sha256": "3e29c236f5819b98a07e8804c6381d3e51cab04aa4f3436d7d965093c76f03f6",
+      "metrics": {
+        "FRC": 1.1935760481253304,
+        "FRC_time": 11.820342631952371,
+        "FRVar": 0.041586704552173615,
+        "FRVar_time": 0.11900332605000585,
+        "smse": 0.047238994389772415,
+        "smse_time": 0.17247648298507556,
+        "temporal_smse": 0.030258845537900925,
+        "temporal_smse_time": 0.21558440901571885,
+        "TLCC": 47.099998474121094,
+        "TLCC_time": 5.462345473992173,
+        "FRC20_diagnostic": 1.1482681043351006
+      }
+    }
+  ]
+}

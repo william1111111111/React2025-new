@@ -1,0 +1,96 @@
+{
+  "parent_checkpoint": "runs/mam_target/task_v1/R2/attempt_001/checkpoints/step_006000.pt",
+  "parent_sha256": "d9b0e07aad91f3bbb254bfc2ad5780f9fa2b9a138245dbafd0c79fa935bf8936",
+  "parent_global_step": 6000,
+  "seed": 123,
+  "T": 750,
+  "B": 4,
+  "K": 4,
+  "weights": {
+    "a": 1.0,
+    "b": 0.15813484622234084,
+    "beta": 0.25,
+    "gamma": 0.25,
+    "eta": 0.5,
+    "grid": 32
+  },
+  "data_manifest": "runs/phase25/timescale_v1/seed_123/manifest.json",
+  "data_manifest_sha256": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+  "split_hash": "bacd8362f4a33457b6925938fbf89f27457f35d99213696b85be84494d7e5dba",
+  "scales": {
+    "channel_scale": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "descriptor_scaler_sha256": "50208f2b50af7a2e73e190ffb3ed9df544251f5d4d460d32e461e52ad59bf6ce",
+    "descriptor_dimension": 75,
+    "training_T": 750
+  },
+  "noise_sha256": "11df0e0dcc25f5fe333d8ba443adb5f77f3b3f49644fe635a8be3fa9f38c3d3a",
+  "inherited_valid_frames": 17135366,
+  "arms": [
+    "S0_quality",
+    "S1_joint",
+    "S2_staged"
+  ],
+  "additional_steps": 2000,
+  "eval_additional_steps": [
+    500,
+    1000,
+    2000
+  ],
+  "FRD_additional_steps": [
+    2000
+  ],
+  "schedule_path": "runs/mam_target/refine_v1/schedule.json",
+  "schedule_sha256": "6ee805372a4895dc80d8b17082bc6daabb5743a990e4f26e6db90d88f4fa928b",
+  "optimizer": "NEW AdamW for ALL arms, no parent momentum, staged_v1 warmstart",
+  "dropout": "all student/parent eval, student autograd on",
+  "learning_rates": {
+    "source_base": 1e-05,
+    "decoder_body": 2e-05,
+    "stochastic": 5e-05
+  },
+  "weight_decay": 0.01,
+  "physical_gpu": 1,
+  "pooled_tail": "mean of actual tail frames; one equally weighted valid pooled timestep in distances",
+  "epsilon_order": [
+    "AU_state",
+    "AU_dynamic",
+    "VA_state",
+    "VA_dynamic",
+    "expression_state",
+    "expression_dynamic"
+  ],
+  "schedule_origin": "same frozen TRAIN continuation6001..8000 used by paused A/B; separate experiment from parent; no data/DEV-driven reselection",
+  "head": "83f79700cb3569fc7b2fc7288e39b02c6f92594c",
+  "baseline_FRC": 1.1814686849299616,
+  "baseline_FRD20": 133.40907425912587,
+  "quality_band_FRC_min": 1.1223952506834636,
+  "quality_band_FRD_max": 140.07952797208216,
+  "initial_guard_numerics": "At u=0 only, weights equal parent exactly; use student detached quality scores as identical parent scores, after <=2e-6 output equality check. From u>=1 use independently evaluated parent. Same for all three arms.",
+  "supersedes_technical_trial": "staged_v1"
+}
