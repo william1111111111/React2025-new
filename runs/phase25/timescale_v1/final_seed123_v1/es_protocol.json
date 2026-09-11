@@ -1,0 +1,32 @@
+{
+  "role": "post-training fixed single-seed development evaluation; not independent confirmation",
+  "seed": 123,
+  "arms": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "steps": [
+    128,
+    500,
+    1000,
+    2000,
+    4000,
+    6000
+  ],
+  "K": 32,
+  "banks": "existing Phase22 bank0 for all learning curve points; bank0+bank1 for fixed2000/6000 endpoints; no new bank creation",
+  "Ts": {
+    "main": 750,
+    "auxiliary_historical": 128
+  },
+  "source": "same frozen Development80 in same order",
+  "T750_crop": "source-only uniform per sourceID and ordinal occurrence withseed25001; independent reference crop withseed25001 step0",
+  "scales": "T750 new train-only frozen scaler; T128 historical scaler; raw25unit channel scales",
+  "aggregation": "macro20sessions,4fixedsources/session,uniformuniqueVALreferences; source/reference finite populations differ",
+  "self": "exclude same noise index for every source pair, unchanged session_mixture_score",
+  "sampling": "public FP32 eval sampler; source batch1, K32 no reranking",
+  "shuffles": "all3existing same-session derangements at2000/6000, common mask",
+  "cost": "48fixed evaluations, no additional training",
+  "uncertainty": "paired session bootstrap conditional on single trained seed and fixed banks; no participant independence claim"
+}

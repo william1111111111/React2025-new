@@ -1,0 +1,16 @@
+{"kind": "block", "T": 128, "data_gradient_l1": [0.0, 915.1197509765625, 0.0]}
+.{"kind": "block", "T": 750, "data_gradient_l1": [1959.72021484375, 2180.28125, 1961.463623046875]}
+.{"kind": "hirp", "T": 128, "data_gradient_l1": [0.0, 17.258298873901367, 0.0]}
+.{"kind": "hirp", "T": 750, "data_gradient_l1": [46.36799621582031, 55.347633361816406, 41.411556243896484]}
+...
+=============================== warnings summary ===============================
+hirp/tests/test_phase25.py::test_long_mask_sample_loader_prefix
+  /home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+hirp/tests/test_phase25.py::test_long_mask_sample_loader_prefix
+  /home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:611: UserWarning: Can't initialize NVML
+    warnings.warn("Can't initialize NVML")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+6 passed, 2 warnings in 3.12s

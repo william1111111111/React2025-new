@@ -1,0 +1,36 @@
+{
+  "time": "2026-09-10T20:27:52.156933",
+  "authorization": "user: \u7528\u53610",
+  "device": "cuda:0",
+  "shared": true,
+  "session": "hirp25_gpu0",
+  "launcher_pid": 1838161,
+  "command": ".venv/bin/python -m hirp.run_phase25 --device cuda:0 --seed 123 --through 2000 --evaluate",
+  "state": "running",
+  "arm": "C0",
+  "actual_step": 122,
+  "first_segment_steps_per_arm": 2000,
+  "total_planned_steps_per_arm": 6000,
+  "seed": 123,
+  "gpu_smoke": {
+    "C0": {
+      "actual_optimizer_steps": 3,
+      "peak_allocated_bytes": 2447288320,
+      "optimizer_compute_seconds": 1.9851036530162673,
+      "prior_unchanged": true
+    },
+    "C1": {
+      "actual_optimizer_steps": 3,
+      "peak_allocated_bytes": 2486106624,
+      "optimizer_compute_seconds": 2.256333703029668,
+      "prior_unchanged": true
+    },
+    "C2": {
+      "actual_optimizer_steps": 3,
+      "peak_allocated_bytes": 2486106112,
+      "optimizer_compute_seconds": 2.155193978949683,
+      "prior_unchanged": true
+    }
+  },
+  "launch_note": "initial nohup process did not persist and wrote no training artifacts; tmux launch verified"
+}

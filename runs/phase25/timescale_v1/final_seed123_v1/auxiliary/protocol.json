@@ -1,0 +1,18 @@
+{
+  "source": "existing full K10 exports, no new generation",
+  "targets": "frozen Processor 10 target slots with original multiplicity",
+  "metrics": "per-input mean channel covariance RMSE and lag1/10/30 autocorrelation MAE between generated and target slot averages; undefined constant channels excluded and counted",
+  "units": "raw channel units; no new fitted scale or tuned threshold",
+  "cases": [
+    0,
+    20,
+    40,
+    60
+  ],
+  "visual_channels": [
+    0,
+    15,
+    17
+  ],
+  "limitations": "auxiliary temporal diagnostics, not official metrics or semantic mode/probability recovery; processed target temporal statistics inherit Processor behavior"
+}

@@ -1,0 +1,994 @@
+diff --git a/.gitignore b/.gitignore
+index 75b472e..38f1163 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -25,3 +25,10 @@ __pycache__/
+ /runs/phase24/**/*.npz
+ /runs/phase24/**/*.pt
+ /runs/phase24/**/*.pth
++
++/runs/phase25/**/checkpoints/
++/runs/phase25/**/exports/
++/runs/phase25/**/*.npy
++/runs/phase25/**/*.npz
++/runs/phase25/**/*.pt
++/runs/phase25/**/*.pth
+diff --git a/hirp/data_phase25.py b/hirp/data_phase25.py
+new file mode 100644
+index 0000000..fea610d
+--- /dev/null
++++ b/hirp/data_phase25.py
+@@ -0,0 +1,74 @@
++"""Occurrence-specific source crops and independent reference crops, raw cache only."""
++import hashlib
++import json
++import random
++from functools import lru_cache
++import torch
++from torch.utils.data import default_collate
++from .paired_data import PairedReactionDataset
++from .session_data import SessionPopulation
++from .group_features import DescriptorScaler,reaction_descriptor
++from .train_phase1 import to_device
++from .phase15_audit import canonical_hash,sha256_file
++
++class RawCachedDataset(PairedReactionDataset):
++    @staticmethod
++    @lru_cache(maxsize=48)
++    def _load(path):
++        return PairedReactionDataset._load(path)
++
++def reference_crop(pool,ref,seed,step):
++    x=pool.dataset._load(pool.reference_paths[ref])
++    payload=f'reference|{seed}|{step}|{ref}'.encode()
++    rng=random.Random(int.from_bytes(hashlib.sha256(payload).digest()[:8],'big'))
++    start=rng.randint(0,max(0,len(x)-pool.clip_length))
++    n=min(pool.clip_length,len(x)-start)
++    if n<1:raise ValueError('empty reference')
++    y=x.new_zeros(pool.clip_length,25);y[:n]=x[start:start+n]
++    return y,torch.tensor(n),start
++
++class RealData:
++    def __init__(self,manifest,cfg,arm,device):
++        self.pool=SessionPopulation('data','train',cfg.T)
++        self.pool.dataset=RawCachedDataset('data','train',cfg.T,crop_mode='random',seed=cfg.sampler_seed)
++        self.scaler=DescriptorScaler.load(manifest['scaler_path']).to(device)
++        self.arm=arm;self.device=device
++        self.invalid_pairs=0
++    def batch(self,record):
++        items=[]
++        for index,occurrence in zip(record['source_indices'],record['crop_occurrences']):
++            self.pool.dataset.set_epoch(occurrence)
++            try:items.append(self.pool.dataset[index])
++            except ValueError as exc:
++                if 'no paired overlap' in str(exc):self.invalid_pairs+=1
++                raise
++        batch=to_device(default_collate(items),self.device)
++        if self.arm=='C0':return batch,None
++        refs=[]
++        with torch.no_grad():
++            for ref in record['reference_ids']:
++                y,n,_=reference_crop(self.pool,ref,record['crop_seed'],record['reference_crop_step'])
++                refs.append(self.scaler(*reaction_descriptor(y.to(self.device),n.to(self.device))))
++        return batch,tuple(torch.stack([r[j] for r in refs]) for j in (0,1))
++
++def fit_scaler(pool,path):
++    """Four fixed train-only uniform crops per unique reference, session-weighted."""
++    if pool.split!='train':raise ValueError('train only')
++    features=[];masks=[];weights=[];crops=[];files=[]
++    N=sum(len(s) for s in pool.sources.values())
++    for session in sorted(pool.sources):
++        refs=pool.references[session]
++        for ref in refs:
++            files.append(dict(path=str(pool.reference_paths[ref]),sha256=sha256_file(pool.reference_paths[ref])))
++            for draw in range(4):
++                y,n,start=reference_crop(pool,ref,25000,draw)
++                f,m=reaction_descriptor(y,n);features.append(f.double());masks.append(m)
++                weight=len(pool.sources[session])/N/len(refs)/4;weights.append(weight)
++                crops.append(dict(reference_id=ref,draw=draw,seed=25000,crop_start=start,length=int(n),weight=weight))
++    x=torch.stack(features);mask=torch.stack(masks);w=torch.tensor(weights,dtype=torch.float64)[:,None]*mask
++    mean=(x*w).sum(0)/w.sum(0);var=((x-mean).square()*w).sum(0)/w.sum(0)
++    state=dict(split='train',clip_length=pool.clip_length,crop_mode='independent_uniform',seed=25000,
++        mean_train=mean.tolist(),std_train=var.sqrt().tolist(),valid_counts=mask.sum(0).tolist(),std_floor=1e-4,
++        weighting='p(session)=n_source/N; uniform unique references; four uniform crop draws each',
++        source_files=files,source_data_hash=canonical_hash(files),reference_crops=crops)
++    with path.open('x') as f:json.dump(state,f,indent=2,allow_nan=False)
+diff --git a/hirp/diagnose_phase25.py b/hirp/diagnose_phase25.py
+new file mode 100644
+index 0000000..caf511c
+--- /dev/null
++++ b/hirp/diagnose_phase25.py
+@@ -0,0 +1,40 @@
++"""Read-only matching diagnostics from frozen Phase24 CCC matrices."""
++import csv
++import json
++from pathlib import Path
++import numpy as np
++from scipy.optimize import linear_sum_assignment
++from .phase15_audit import sha256_file
++from .train_phase22 import write
++
++def main():
++    root=Path('runs/phase25/timescale_v1/coverage')
++    root.mkdir(parents=True,exist_ok=False)
++    summaries=[];raw=[];files=[]
++    for path in sorted(Path('runs/phase24/evaluation_v1/task_multitarget').glob('*.json')):
++        payload=json.loads(path.read_text())
++        result=payload.get('result',payload)
++        if 'per_input' not in result:continue
++        files.append(dict(path=str(path),sha256=sha256_file(path)))
++        rows=[]
++        for item in result['per_input']:
++            m=np.asarray(item['CCC_candidate_target'])
++            assert m.shape==(10,10) and np.isfinite(m).all()
++            r,c=linear_sum_assignment(-m)
++            row=dict(model=path.stem,seed=result['seed'],arm=result['arm'],lambda_group=result['lambda_group'],
++                     input_index=item['input_index'],official_FRC=m.max(1).sum(),
++                     generated_side_mean=m.max(1).mean(),target_side_mean=m.max(0).mean(),
++                     one_to_one_mean=m[r,c].mean())
++            assert abs(row['official_FRC']-item['FRC'])<1e-7
++            rows.append(row);raw.append(row)
++        summaries.append({**{k:rows[0][k] for k in ('model','seed','arm','lambda_group')},
++                          **{k:float(np.mean([r[k] for r in rows])) for k in ('official_FRC','generated_side_mean','target_side_mean','one_to_one_mean')}})
++    assert len(summaries)==16
++    for name,rows in [('per_input',raw),('per_model',summaries)]:
++        with (root/(name+'.csv')).open('x') as f:
++            w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
++    write(root/'provenance.json',dict(files=files,source='frozen Phase24 matrices; no new generation',
++          targets='all 10 slots retained, including duplicates; uniform frozen slot weights',
++          limitations='auxiliary matching is not semantic mode counting or conditional probability recovery'))
++
++if __name__=='__main__':main()
+diff --git a/hirp/frd_phase25.py b/hirp/frd_phase25.py
+new file mode 100644
+index 0000000..0caa367
+--- /dev/null
++++ b/hirp/frd_phase25.py
+@@ -0,0 +1,50 @@
++"""Bounded exact FRD, atomic candidate-target pairs, never partial means."""
++import argparse,json,time,inspect
++from pathlib import Path
++import numpy as np
++from tslearn.metrics import dtw
++from .phase15_audit import sha256_file,canonical_hash
++from .phase24 import verify_files,normalization
++from .phase23_cache import cached,save_cached
++from .train_phase22 import write
++
++ROOT=Path('runs/phase25/timescale_v1')
++OLD=Path('runs/phase24/evaluation_v1')
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--model',default='MAM_archive_offline');p.add_argument('--task',type=Path);p.add_argument('--seconds',type=float,default=7200);p.add_argument('--max-pairs',type=int,default=2000);a=p.parse_args()
++    manifest=json.loads((OLD/'multitarget_development_manifest.json').read_text());normalization(manifest)
++    selected={}
++    for i,s in sorted(enumerate(manifest['sources']),key=lambda v:v[1]['clip_id']):selected.setdefault(s['clip_id'].split('/')[1],i)
++    assert len(selected)==20
++    out=ROOT/'frd20';out.mkdir(exist_ok=True)
++    protocol=dict(version=1,source_indices=list(selected.values()),selection='lexicographically first source per session, no scores',source_manifest_sha256=sha256_file(OLD/'multitarget_development_manifest.json'),models=['seed123_C0_step2000','seed123_C1_step2000','seed123_C2_step2000','MAM_archive_offline'],pairs_per_model=2000,dtws_per_pair=3,full_frames=True,seconds_per_invocation=7200,metric_source=dict(path='/home/zhengshiyi/react2025/framework/metrics/FRD.py',sha256=sha256_file('/home/zhengshiyi/react2025/framework/metrics/FRD.py')),dtw_source=dict(path=inspect.getfile(dtw),sha256=sha256_file(inspect.getfile(dtw))))
++    protocol_path=out/'protocol.json'
++    if protocol_path.exists():assert json.loads(protocol_path.read_text())==protocol
++    else:write(protocol_path,protocol)
++    task=a.task or OLD/'task_multitarget'/f'{a.model}.json';payload=json.loads(task.read_text())
++    assert canonical_hash(payload['result'])==payload['result_sha256']
++    exports=payload['result']['exports'];targets=json.loads((OLD/'processed_targets/completed.json').read_text())
++    assert canonical_hash(targets['result'])==targets['result_sha256']
++    identity=dict(protocol_sha256=sha256_file(protocol_path),task_sha256=sha256_file(task),processor_index_sha256=sha256_file(OLD/'processed_targets/completed.json'),implementation_sha256=sha256_file(__file__))
++    dest=out/a.model;dest.mkdir(exist_ok=True);start=time.perf_counter();done=0;new=0;values=[]
++    for i in selected.values():
++        verify_files([exports[i],targets['result']['files'][i]])
++        pred=np.load(exports[i]['path']);target=np.load(targets['result']['files'][i]['path']);assert pred.shape==target.shape==(10,manifest['sources'][i]['length'],25)
++        matrix=np.full((10,10),np.nan)
++        for k in range(10):
++            for j in range(10):
++                path=dest/f'{i:03d}_{k:02d}_{j:02d}.json';ident=dict(**identity,source=i,candidate=k,target=j)
++                result=cached(path,ident)
++                if result is None:
++                    if new>=a.max_pairs or time.perf_counter()-start>=a.seconds:continue
++                    t=time.perf_counter();parts=[float(dtw(pred[k,:,s:e].astype(np.float32),target[j,:,s:e].astype(np.float32))) for s,e in ((0,15),(15,17),(17,25))]
++                    result=dict(parts=parts,distance=parts[0]/15+parts[1]+parts[2]/8,seconds=time.perf_counter()-t)
++                    save_cached(path,ident,result);new+=1
++                    print(a.model,i,k,j,result['seconds'],flush=True)
++                matrix[k,j]=result['distance'];done+=1
++        if np.isfinite(matrix).all():values.append(float(matrix.min(1).sum()))
++    summary=dict(model=a.model,completed_pairs=done,requested_pairs=2000,completed=done==2000,complete_source_count=len(values),FRD=float(np.mean(values)) if done==2000 else None,new_pairs=new,wall_seconds=time.perf_counter()-start)
++    write(dest/f'status_{len(list(dest.glob("status_*.json"))):03d}.json',summary);print(summary,flush=True)
++
++if __name__=='__main__':main()
+diff --git a/hirp/run_phase25.py b/hirp/run_phase25.py
+new file mode 100644
+index 0000000..cfda145
+--- /dev/null
++++ b/hirp/run_phase25.py
+@@ -0,0 +1,33 @@
++"""Finite sequential stages. No automatic budget extension or model selection."""
++import argparse,json,subprocess,sys
++from pathlib import Path
++from .phase15_audit import sha256_file
++from .train_phase22 import write
++
++ROOT=Path('runs/phase25/timescale_v1')
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--device',required=True);p.add_argument('--seed',type=int,choices=[123,42,2026],default=123);p.add_argument('--through',type=int,choices=[2000,6000],default=2000);p.add_argument('--evaluate',action='store_true');a=p.parse_args()
++    run=ROOT/f'seed_{a.seed}'
++    logdir=ROOT/'commands';logdir.mkdir(exist_ok=True)
++    launch=logdir/f'launch_{len(list(logdir.glob("launch_*"))):03d}';launch.mkdir()
++    write(launch/'source_snapshot.json',{str(p):sha256_file(p) for p in sorted(Path('hirp').rglob('*.py'))})
++    for arm in ('C0','C1','C2'):
++        paths=sorted((run/arm).glob('attempt_*/checkpoints/step_*.pt'))
++        checkpoint=max(paths,key=lambda p:int(p.stem.split('_')[1])) if paths else None
++        step=int(checkpoint.stem.split('_')[1]) if checkpoint else 0
++        if step<a.through:
++            cmd=[sys.executable,'-m','hirp.train_phase25','--run',str(run),'--device',a.device,'--arm',arm,'--init-seed',str(a.seed),'--sampler-seed',str(a.seed),'--noise-seed',str(a.seed),'--stop-after',str(a.through)]
++            if checkpoint:cmd+=['--resume',str(checkpoint)]
++            write(launch/f'{arm}_command.json',cmd)
++            with (launch/f'{arm}.txt').open('x') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True)
++        if a.evaluate:
++            for target in (128,500,1000,2000,4000,6000):
++                if target>a.through:continue
++                paths=sorted((run/arm).glob(f'attempt_*/checkpoints/step_{target:06d}.pt'))
++                if not paths:raise ValueError(f'missing fixed checkpoint {arm}/{target}')
++                cmd=[sys.executable,'-m','hirp.task_phase25','--checkpoint',str(paths[0]),'--device',a.device]
++                write(launch/f'{arm}_eval_{target}_command.json',cmd)
++                with (launch/f'{arm}_eval_{target}.txt').open('x') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True)
++
++if __name__=='__main__':main()
+diff --git a/hirp/task_phase25.py b/hirp/task_phase25.py
+new file mode 100644
+index 0000000..413d773
+--- /dev/null
++++ b/hirp/task_phase25.py
+@@ -0,0 +1,61 @@
++"""New checkpoints on the existing frozen full Development80 task protocol."""
++import argparse,importlib,json,sys,time
++from pathlib import Path
++import numpy as np
++import torch
++from .phase22 import load_checkpoint
++from .phase23_long import export_full
++from .phase24 import normalization,verify_files,dependencies,legacy_snapshot,LEGACY
++from .phase23_cache import cached,save_cached
++from .phase15_audit import canonical_hash,sha256_file
++from .task_phase24 import raw_metrics,check_prediction
++from .train_phase21 import configure
++
++ROOT=Path('runs/phase25/timescale_v1')
++OLD=Path('runs/phase24/evaluation_v1')
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--device',default='cuda:0');a=p.parse_args();configure()
++    manifest=json.loads((OLD/'multitarget_development_manifest.json').read_text());normalization(manifest)
++    processed=json.loads((OLD/'processed_targets/completed.json').read_text())
++    assert processed['result_sha256']==canonical_hash(processed['result'])
++    assert processed['eval_identity']['manifest_sha256']==sha256_file(OLD/'multitarget_development_manifest.json')
++    frozen=json.loads((OLD/'dependency_snapshot.json').read_text());verify_files(frozen['legacy']);verify_files(processed['result']['files']);verify_files([manifest['noise']])
++    model,meta=load_checkpoint(a.checkpoint,a.device)
++    assert meta['train_config']['T']==750 and meta['train_config']['lambda_group']==.1 and meta['prior_mode']=='standard_normal'
++    assert meta['arm'] in ('C0','C1','C2') and meta['train_config']['init_seed'] in (123,42,2026)
++    assert meta['global_step'] in (128,500,1000,2000,4000,6000)
++    assert meta['actual_optimizer_steps']==meta['global_step']==len(meta['training_rows'])
++    assert meta['train_config']['B']==4 and meta['train_config']['K']==4
++    label=f"seed{meta['train_config']['init_seed']}_{meta['arm']}_step{meta['global_step']}"
++    out=ROOT/'task_multitarget';out.mkdir(exist_ok=True)
++    identity=dict(version='phase25-task-v1',checkpoint_sha256=sha256_file(a.checkpoint),arm=meta['arm'],seed=meta['train_config']['init_seed'],step=meta['global_step'],scales=meta['scales'],dependencies=dependencies(),legacy=frozen['legacy'],target_manifest_sha256=sha256_file(OLD/'multitarget_development_manifest.json'),processed_index_sha256=sha256_file(OLD/'processed_targets/completed.json'))
++    path=out/f'{label}.json'
++    if cached(path,identity) is not None:return
++    sys.path.insert(0,str(LEGACY));from framework.utils.compute_metrics import compute_metrics
++    mean=torch.from_numpy(np.load('external/FaceVerse/mean_face.npy')).float();std=torch.from_numpy(np.load('external/FaceVerse/std_face.npy')).float().clamp_min(1e-8)
++    noise=torch.from_numpy(np.load(manifest['noise']['path']))[0,:10].to(a.device)
++    preds=[];targets=[];speakers=[];exports=[];started=time.perf_counter();torch.cuda.reset_peak_memory_stats(a.device)
++    export_dir=ROOT/'exports'/label;export_dir.mkdir(parents=True,exist_ok=True)
++    for i,s in enumerate(manifest['sources']):
++        normalization(manifest);verify_files(list(s['files'].values())+s['targets'])
++        streams={k:torch.from_numpy(np.load(v['path'])).float() for k,v in s['files'].items()}
++        face=streams['speaker_3dmm'];streams['speaker_3dmm']=((face[:,0] if face.ndim==3 else face)-mean)/std
++        ident=dict(identity_sha256=canonical_hash(identity),source=i);sidecar=export_dir/f'{i:03d}.json';item=cached(sidecar,ident)
++        if item is None:
++            kwargs={k:v.to(a.device) for k,v in streams.items()}
++            pred=export_full(model,**kwargs,source_length=s['length'],noise=noise)
++            repeat=export_full(model,**kwargs,source_length=s['length'],noise=noise,candidate_chunk=3)
++            error=float((pred-repeat).abs().max());assert error<1e-5
++            checks=check_prediction(pred,s['length']);checks['candidate_consistency_max_error']=error
++            dest=export_dir/f'{i:03d}.npy'
++            with dest.open('xb') as f:np.save(f,pred.numpy())
++            item=dict(path=str(dest),sha256=sha256_file(dest),checks=checks);save_cached(sidecar,ident,item)
++        else:verify_files([item]);pred=torch.from_numpy(np.load(item['path']))
++        preds.append(pred);targets.append(torch.from_numpy(np.load(processed['result']['files'][i]['path'])));speakers.append(streams['speaker_emotion']);exports.append(item)
++        print(label,i+1,flush=True)
++    metrics=compute_metrics(speakers,preds,targets,threads=4,metric_names=manifest['metrics']);raw=raw_metrics(preds,targets,speakers)
++    assert abs(metrics['FRC']-np.mean([r['FRC'] for r in raw]))<1e-6
++    save_cached(path,identity,dict(arm=meta['arm'],seed=meta['train_config']['init_seed'],steps=meta['global_step'],lambda_group=0 if meta['arm']=='C0' else .1,multi_target=metrics,single_paired_FRC=float(np.mean([r['single_paired_FRC'] for r in raw])),per_input=raw,exports=exports,seconds=time.perf_counter()-started,peak_memory_bytes=torch.cuda.max_memory_allocated(a.device)))
++
++if __name__=='__main__':main()
+diff --git a/hirp/train_phase25.py b/hirp/train_phase25.py
+new file mode 100644
+index 0000000..e925c8c
+--- /dev/null
++++ b/hirp/train_phase25.py
+@@ -0,0 +1,288 @@
++"""Phase25 T750 occurrence crops; frozen objectives and exact resume state."""
++import argparse
++from dataclasses import asdict, dataclass
++import hashlib
++import json
++from pathlib import Path
++import random
++import sys
++import time
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from . import HiRPConfig
++from .phase22 import make_model, model_metadata, load_checkpoint, losses_for_batch
++from .phase21 import CHANNEL_SCALE
++from .phase21_diagnostics import component_gradients, output_path_diagnostic
++from .train_phase21 import configure, sync, source_hashes
++from .train_phase1 import to_device, state_hash
++from .phase15_audit import canonical_hash, sha256_file
++from .session_data import SessionPopulation
++from .group_features import DescriptorScaler, reaction_descriptor
++
++ROOT=Path(__file__).resolve().parents[1]
++
++
++def write(path,value):
++    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
++    with path.open('x') as f:json.dump(value,f,indent=2,allow_nan=False)
++
++
++@dataclass(frozen=True)
++class TrainConfig:
++    init_seed:int=123
++    sampler_seed:int=123
++    noise_seed:int=123
++    max_steps:int=6000
++    lr:float=1e-4
++    lambda_group:float=.1
++    weight_decay:float=.01
++    T:int=750
++    K:int=4
++    B:int=4
++    eval_interval:int=500
++    checkpoint_interval:int=500
++    diagnostic_interval:int=100
++    fixed_checkpoints:tuple=(128,500,1000,2000,4000,6000)
++
++    def validate(self):
++        if self.B!=4:raise ValueError('unchanged C2 estimator requires B=4')
++        if min(self.max_steps,self.T,self.eval_interval,self.checkpoint_interval,self.diagnostic_interval)<1 or self.K<2:
++            raise ValueError('invalid budget/interval/T/K')
++        if self.lr<=0 or self.lambda_group<0:raise ValueError('invalid lr/lambda')
++
++
++def schedule(pool,cfg,latent_dim):
++    cfg.validate()
++    # Independent source/reference substreams; no reference draws perturb sources.
++    session_rng=torch.Generator().manual_seed(cfg.sampler_seed)
++    source_rng=torch.Generator().manual_seed(cfg.sampler_seed+1000003)
++    ref_rng=torch.Generator().manual_seed(cfg.sampler_seed+2000003)
++    noise_rng=torch.Generator().manual_seed(cfg.noise_seed)
++    sessions=sorted(pool.sources)
++    weights=torch.tensor([len(pool.sources[s]) for s in sessions],dtype=torch.float64)
++    records=[];noises=[]
++    for i in range(cfg.max_steps):
++        s=sessions[int(torch.multinomial(weights,1,generator=session_rng))]
++        ids=pool.sources[s];refs=pool.references[s]
++        records.append(dict(step=i+1,session_id=s,
++            source_indices=[ids[j] for j in torch.randint(len(ids),(cfg.B,),generator=source_rng).tolist()],
++            reference_ids=[refs[j] for j in torch.randperm(len(refs),generator=ref_rng)[:8].tolist()],crop_occurrences=[i*cfg.B+j for j in range(cfg.B)],crop_seed=cfg.sampler_seed,reference_crop_step=i,banks=[[0,1],[2,3]]))
++        noises.append(torch.randn(cfg.B,cfg.K,latent_dim,generator=noise_rng))
++    noise=torch.stack(noises)
++    return records,noise,stream_hashes(records,noise)
++
++
++def stream_hashes(records,noise):
++    return dict(crop_hash=canonical_hash([{k:r[k] for k in ('crop_occurrences','crop_seed','reference_crop_step')} for r in records]),source_hash=canonical_hash([r['source_indices'] for r in records]),
++                session_hash=canonical_hash([r['session_id'] for r in records]),
++                reference_hash=canonical_hash([r['reference_ids'] for r in records]),
++                noise_hash=hashlib.sha256(noise.cpu().numpy().tobytes()).hexdigest())
++
++
++def rng_state():
++    n=np.random.get_state()
++    return dict(python=random.getstate(),numpy=[n[0],n[1].tolist(),n[2],n[3],n[4]],
++                torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [])
++
++
++def restore_rng(s):
++    random.setstate(s['python']);n=s['numpy'];np.random.set_state((n[0],np.array(n[1],dtype=np.uint32),n[2],n[3],n[4]))
++    torch.set_rng_state(s['torch'].cpu())
++    if s['cuda']:
++        if len(s['cuda'])!=torch.cuda.device_count():raise ValueError('CUDA RNG topology differs on resume')
++        torch.cuda.set_rng_state_all([x.cpu() for x in s['cuda']])
++
++
++from .data_phase25 import RealData, fit_scaler
++
++
++def prepare(run,cfg):
++    cfg.validate();run.mkdir(parents=True,exist_ok=False)
++    pool=SessionPopulation(ROOT/'data','train',cfg.T)
++    scaler_path=run.parent/f'descriptor_stats_T{cfg.T}.json'
++    if not scaler_path.exists():fit_scaler(pool,scaler_path)
++    if json.loads(scaler_path.read_text())['clip_length']!=cfg.T:raise ValueError('scaler T mismatch')
++    records,noise,hashes=schedule(pool,cfg,HiRPConfig().latent_dim)
++    write(run/'schedule.json',dict(records=records,hashes=hashes))
++    np.save(run/'noise.npy',noise.numpy())
++    write(run/'config.json',asdict(cfg))
++    # Full TRAIN file provenance; new schedules may access any source/ref.
++    paths=set()
++    for path in pool.dataset.records:
++        rel=path.relative_to(pool.dataset.directory/'facial-attributes')
++        paths.update((path,pool.dataset.directory/'audio-features'/rel,pool.dataset.directory/'coefficients'/rel))
++    paths.update(pool.reference_paths.values())
++    file_rows=[dict(path=str(p),sha256=sha256_file(p)) for p in sorted(paths)]
++    normalization=[dict(path=str(ROOT/'external/FaceVerse'/n),sha256=sha256_file(ROOT/'external/FaceVerse'/n)) for n in ('mean_face.npy','std_face.npy')]
++    manifest=dict(config=asdict(cfg),model_config=asdict(HiRPConfig()),scaler_path=str(scaler_path),
++        scales=dict(channel_scale=list(CHANNEL_SCALE),descriptor_scaler_sha256=sha256_file(scaler_path),descriptor_dimension=75,training_T=cfg.T),
++        split_hash=canonical_hash(file_rows),data_files=file_rows,normalization=normalization,
++        population=pool.audit(),schedule=hashes,noise_file_sha256=sha256_file(run/'noise.npy'),source_sha256={str(p):sha256_file(p) for p in sorted((ROOT/'hirp').rglob('*.py'))},
++        output_config=dict(head_pre_norm=True,projection_init='default',small_init_std=.01),prior_mode='standard_normal',
++        crop_contract='source-only uniform start per seed/occurrence/ID; reference independent uniform start per step/ID; no paired-overlap resampling; raw-array LRU cache',budget=f'fixed {cfg.max_steps}-step budget; no validation-driven budget extension',
++        evaluation='replay saved fixed checkpoints after training, development set only; no optimizer/RNG effect',
++        eval_steps=sorted({s for s in cfg.fixed_checkpoints if s<=cfg.max_steps}|set(range(cfg.eval_interval,cfg.max_steps+1,cfg.eval_interval))|{cfg.max_steps}))
++    write(run/'manifest.json',manifest)
++    return manifest
++
++
++def train(arm_dir,cfg,arm,records,noises,data,manifest,device,resume=None,stop_after=None,model_config=None):
++    cfg.validate()
++    if len(records)!=cfg.max_steps or len(noises)!=cfg.max_steps:raise ValueError('schedule length must equal requested steps')
++    if arm not in ('C0','C1','C2'):raise ValueError('unknown arm')
++    arm_dir.mkdir(parents=True,exist_ok=True)
++    attempt=arm_dir/f'attempt_{len(list(arm_dir.glob("attempt_*"))):03d}'
++    attempt.mkdir(exist_ok=False);(attempt/'checkpoints').mkdir()
++    random.seed(cfg.init_seed);np.random.seed(cfg.init_seed)
++    model=make_model(cfg.init_seed,model_config or HiRPConfig(**manifest['model_config']),device)
++    initial_hash=state_hash(model);prior={k:v.detach().clone() for k,v in model.prior.state_dict().items()}
++    optimizer=torch.optim.AdamW(model.parameters(),lr=cfg.lr,weight_decay=cfg.weight_decay)
++    rows=[];global_step=0;previous_seconds=0.;checkpoint_paths=[]
++    if resume:
++        model,saved=load_checkpoint(resume,device)
++        old=saved['train_config'];new=asdict(cfg)
++        if any(old[k]!=v for k,v in new.items() if k!='max_steps') or cfg.max_steps<old['max_steps']:
++            raise ValueError('resume config differs beyond nondecreasing max_steps')
++        if saved['arm']!=arm or saved['split_hash']!=manifest['split_hash'] or saved['scales']!=manifest['scales']:
++            raise ValueError('resume arm/split/scales mismatch')
++        optimizer=torch.optim.AdamW(model.parameters(),lr=cfg.lr,weight_decay=cfg.weight_decay)
++        optimizer.load_state_dict(saved['optimizer'])
++        global_step=saved['global_step'];rows=saved['training_rows'];previous_seconds=saved['training_seconds']
++        if global_step!=len(rows) or global_step!=saved['schedule_position']:raise ValueError('resume step count mismatch')
++        if stream_hashes(records[:global_step],noises[:global_step])!=saved['consumed_hashes']:raise ValueError('resume schedule prefix mismatch')
++        initial_hash=saved['initialization_hash'];restore_rng(saved['rng'])
++    # PyTorch 2.1's first AdamW construction lazily imports modules that consume
++    # Python random state. Normalize that non-tensor stream after construction.
++    # Torch RNG is untouched, preserving model initialization/dropout semantics.
++    if not resume:random.seed(cfg.init_seed)
++    model.train()
++    weight=0. if arm=='C0' else cfg.lambda_group
++    start_step=global_step;started=time.perf_counter();compute_seconds=0.
++    if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats(device)
++    all_sources=[i for r in records[:global_step] for i in r['source_indices']]
++    def checkpoint(completed):
++        sync(device)
++        path=attempt/'checkpoints'/f'step_{global_step:06d}.pt'
++        saved=dict(**model_metadata(model,manifest['scales']),model=model.state_dict(),optimizer=optimizer.state_dict(),
++                   global_step=global_step,requested_steps=cfg.max_steps,actual_optimizer_steps=global_step,
++                   schedule_position=global_step,train_config=asdict(cfg),rng=rng_state(),arm=arm,
++                   split_hash=manifest['split_hash'],consumed_hashes=stream_hashes(records[:global_step],noises[:global_step]),
++                   training_rows=rows,completed=completed,initialization_hash=initial_hash,
++                   training_seconds=previous_seconds+time.perf_counter()-started)
++        if path.exists():raise FileExistsError(path)
++        torch.save(saved,path);checkpoint_paths.append(dict(step=global_step,path=str(path),sha256=sha256_file(path)))
++    failure=None
++    try:
++        with (attempt/'training.jsonl').open('x') as log:
++            for row in rows:log.write(json.dumps(row)+'\n')
++            while global_step<cfg.max_steps:
++                record=records[global_step];noise=noises[global_step].to(device)
++                if record['step']!=global_step+1:raise ValueError('schedule step discontinuity')
++                batch,refs=data.batch(record);optimizer.zero_grad(set_to_none=True)
++                sync(device);step_start=time.perf_counter()
++                values=losses_for_batch(model,batch,noise,data.scaler,arm,refs,weight)
++                audit=component_gradients(model,values['conditional']['loss'],values['group']['loss'] if values['group'] else None,weight) if (global_step+1)%cfg.diagnostic_interval==0 or global_step==0 else None
++                values['total'].backward()
++                if not all(torch.isfinite(p.grad).all().item() for p in model.parameters() if p.grad is not None):raise RuntimeError('nonfinite gradient')
++                optimizer.step();sync(device);compute_seconds+=time.perf_counter()-step_start;global_step+=1
++                row=dict(crop_start=batch['crop_start'].tolist(),source_lengths=batch['source_lengths'].tolist(),pair_lengths=batch['pair_lengths'].tolist(),step=global_step,loss=float(values['total']),conditional={k:float(v) for k,v in values['conditional'].items()},
++                         group={k:float(v) for k,v in values['group'].items()} if values['group'] else None,
++                         gradients=audit,source_indices=record['source_indices'],session_id=record['session_id'],
++                         reference_ids=record['reference_ids'] if arm!='C0' else [])
++                rows.append(row);all_sources.extend(record['source_indices'])
++                log.write(json.dumps(row,allow_nan=False)+'\n');log.flush()
++                if global_step%cfg.diagnostic_interval==0:
++                    before=state_hash(model);rstate=rng_state()
++                    # Frozen-prior public forward has the same semantics under this legacy diagnostic.
++                    diag=output_path_diagnostic(model,batch,noise)
++                    assert before==state_hash(model)
++                    assert torch.equal(rstate['torch'],torch.get_rng_state())
++                    assert all(torch.equal(a,b) for a,b in zip(rstate['cuda'],torch.cuda.get_rng_state_all()))
++                    write(attempt/f'diagnostic_{global_step:06d}.json',diag)
++                    print(arm,global_step,'conditional',row['conditional']['loss'],flush=True)
++                should_stop=stop_after is not None and global_step>=stop_after
++                if global_step in cfg.fixed_checkpoints or global_step%cfg.checkpoint_interval==0 or global_step%cfg.eval_interval==0 or global_step==cfg.max_steps or should_stop:
++                    checkpoint(global_step==cfg.max_steps)
++                if should_stop:break
++    except BaseException as exc:
++        failure=repr(exc)
++        write(attempt/'failure.json',dict(completed=False,actual_optimizer_steps=global_step,requested_steps=cfg.max_steps,
++                                         training_rows=len(rows),error=failure,last_durable_checkpoints=checkpoint_paths))
++        raise
++    finally:
++        sync(device)
++        elapsed=time.perf_counter()-started
++        completed=global_step==cfg.max_steps and failure is None
++        if completed:assert global_step==cfg.max_steps==len(rows)
++        assert all(torch.equal(prior[k],v) for k,v in model.prior.state_dict().items())
++        summary=dict(completed=completed,requested_steps=cfg.max_steps,actual_optimizer_steps=global_step,training_rows=len(rows),
++            initialization_hash=initial_hash,consumed_hashes=stream_hashes(records[:global_step],noises[:global_step]),
++            source_occurrences=len(all_sources),valid_source_frame_exposures=sum(sum(r['source_lengths']) for r in rows),valid_pair_frame_exposures=sum(sum(r['pair_lengths']) for r in rows),tensor_frame_exposures=global_step*cfg.B*cfg.T,unique_sources=len(set(all_sources)),
++            source_population=manifest['population']['source_population'],
++            exposure_multiple=len(all_sources)/manifest['population']['source_population'],
++            reference_exposures=sum(len(r['reference_ids']) for r in rows),
++            unique_references=len({x for r in rows for x in r['reference_ids']}),parameter_count=sum(p.numel() for p in model.parameters()),
++            prior_unchanged=True,attempt_steps=global_step-start_step,attempt_wall_seconds=elapsed,
++            cumulative_wall_seconds=previous_seconds+elapsed,optimizer_compute_seconds=compute_seconds,
++            attempt_sources_per_compute_second=(global_step-start_step)*cfg.B/compute_seconds if compute_seconds else None,
++            peak_allocated_bytes=torch.cuda.max_memory_allocated(device) if device.startswith('cuda') else None,
++            invalid_pair_count=getattr(data,'invalid_pairs',0),device=device,checkpoints=checkpoint_paths,resumed_from=str(resume) if resume else None)
++        write(attempt/'summary.json',summary)
++    return summary,model,optimizer
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--device',default='cuda:0')
++    p.add_argument('--arm',choices=['C0','C1','C2','all'],default='all');p.add_argument('--resume',type=Path)
++    p.add_argument('--stop-after',type=int)
++    for k,v in asdict(TrainConfig()).items():
++        if k=='fixed_checkpoints':p.add_argument('--fixed-checkpoints',type=int,nargs='+',default=list(v))
++        else:p.add_argument('--'+k.replace('_','-'),type=type(v),default=v)
++    a=p.parse_args();configure();cfg=TrainConfig(**{k:tuple(getattr(a,k)) if k=='fixed_checkpoints' else getattr(a,k) for k in asdict(TrainConfig())})
++    # A one-time external handoff may already own an arm. Do not start a second
++    # optimizer from an older checkpoint when the original sequential driver
++    # reaches that arm. The owner entered before this marker was installed.
++    handoff=a.run/f'{a.arm}_concurrent_owner.json'
++    if handoff.exists():
++        import os
++        if json.loads((a.run/'manifest.json').read_text())['config']!=json.loads(json.dumps(asdict(cfg))):
++            raise ValueError('external handoff run config mismatch')
++        owner=json.loads(handoff.read_text())
++        finished=Path(owner['finished_path'])
++        print('Waiting for external arm owner',owner['pid'],flush=True)
++        while not finished.exists():
++            try:os.kill(owner['pid'],0)
++            except ProcessLookupError:raise RuntimeError('external owner exited without completion record')
++            time.sleep(2)
++        result=json.loads(finished.read_text())
++        if not result.get('completed'):raise RuntimeError('external training failed; inspect its records before explicit recovery')
++        summary=json.loads(Path(owner['summary_path']).read_text())
++        requested_stop=a.stop_after or cfg.max_steps
++        if summary['actual_optimizer_steps']>=requested_stop:
++            assert summary['actual_optimizer_steps']==summary['training_rows']
++            print('Arm already completed by external owner',summary['actual_optimizer_steps'],flush=True)
++            return
++        if not a.resume:
++            raise RuntimeError('continuation beyond external segment requires explicit resume')
++    if (a.run/'manifest.json').exists():
++        manifest=json.loads((a.run/'manifest.json').read_text())
++        expected=json.loads(json.dumps(asdict(cfg)))
++        if manifest['config']!=expected:raise ValueError('existing run config mismatch; budget extension requires a new run manifest')
++    else:manifest=prepare(a.run,cfg)
++    for row in manifest['data_files']+manifest['normalization']:
++        if sha256_file(row['path'])!=row['sha256']:raise ValueError('data provenance mismatch')
++    if sha256_file(manifest['scaler_path'])!=manifest['scales']['descriptor_scaler_sha256']:raise ValueError('scaler mismatch')
++    records=json.loads((a.run/'schedule.json').read_text())['records'];noises=torch.from_numpy(np.load(a.run/'noise.npy'))
++    if stream_hashes(records,noises)!=manifest['schedule']:raise ValueError('schedule/noise hash mismatch')
++    if a.resume and a.arm=='all':raise ValueError('resume requires one explicit arm')
++    for arm in ('C0','C1','C2') if a.arm=='all' else (a.arm,):
++        if (a.run/arm).exists() and not a.resume:raise FileExistsError('arm already exists; explicit resume required')
++        data=RealData(manifest,cfg,arm,a.device)
++        result,model,opt=train(a.run/arm,cfg,arm,records,noises,data,manifest,a.device,a.resume,a.stop_after)
++        del data,model,opt
++        if a.device.startswith('cuda'):torch.cuda.empty_cache()
++        print('RESULT',arm,json.dumps(result),flush=True)
++
++
++if __name__=='__main__':main()
+diff --git a/hirp/write_report_phase25.py b/hirp/write_report_phase25.py
+new file mode 100644
+index 0000000..998784f
+--- /dev/null
++++ b/hirp/write_report_phase25.py
+@@ -0,0 +1,79 @@
++"""Report only actually completed preparation/diagnostics; no phantom long training."""
++import csv,json
++from pathlib import Path
++from .phase15_audit import sha256_file
++
++ROOT=Path('runs/phase25/timescale_v1')
++
++def main():
++    coverage=list(csv.DictReader(open(ROOT/'coverage/C2_minus_C1.csv')))
++    rows='\n'.join('| '+ ' | '.join([r['seed'],r['lambda_group']]+[f'{float(r[k]):+.6f}' for k in ('official_FRC','target_side_mean','one_to_one_mean')])+' |' for r in coverage)
++    statuses=sorted((ROOT/'frd20/MAM_archive_offline').glob('status_*.json'))
++    status=json.loads(statuses[-1].read_text())
++    smoke=[]
++    for arm in ('C0','C1','C2'):
++        p=ROOT/'cpu_smoke'/arm/'attempt_000/summary.json';s=json.loads(p.read_text())
++        train=json.loads((p.parent/'training.jsonl').read_text().splitlines()[0])
++        smoke.append(f"| {arm} | 1 | {train['conditional']['loss']:.6f} | {train['loss']:.6f} | {s['optimizer_compute_seconds']:.3f} |")
++    text=f'''# Phase25：时间尺度对齐（本段实际状态）
++
++既有模型的 C2−C1 官方 FRC 六组均为正，但新增目标侧/一对一匹配诊断各只有四组为正；生成侧匹配优势不能自动解释为完整目标池覆盖。下一项决策是安排可用 GPU，执行已经冻结的 T750 seed123 三 arm 首段，而非继续调 lambda。正式长训练尚未执行。
++
++## 改变的训练覆盖条件
++
++保留完整 HiRP22/standard_normal/pre-norm/default projections 和 C0/C1/C2 目标。新协议把 T128 改为 T750，并使用 occurrence-specific source-only 均匀裁剪、独立 reference 裁剪和新的 train-only T750 scaler。因裁剪、长度和总预算均变，未来对比旧结果必须同时报告帧曝光与成本，不能只归因于 dilation。
++
++实际默认宽度 TemporalBlock 与完整 HiRP22 回归确认：T128 时 d128 左右位置数据梯度为零；T750 完整模型对应 L1 范数46.368/41.412，center55.348。测量发生在 optimizer 前，不把 AdamW decay 算成数据梯度。mask前后、K-prefix、public forward/sample/loader 测试通过。这只说明该连接的支持范围。
++
++## 冻结矩阵诊断：C2 minus C1
++
++仍为 Phase24 Development80、K10、原10目标槽位，包括重复目标；未新增生成。官方 FRC 原候选求和，辅助两列为均值，不是成功率或模式数。
++
++| seed | lambda | official FRC差 | target-side mean差 | one-to-one mean差 |
++| --- | --- | --- | --- | --- |
++{rows}
++
++全部15个HiRP模型与原生归档MAM逐模型/逐输入数据见 `coverage/per_model.csv`、`per_input.csv`；图见 `matching_differences.png`。lambda变体不算额外训练seed。MAM不是等预算参考。
++
++## 已实际运行的训练检验
++
++| arm | CPU smoke实际步数 | paired ES | total | optimizer compute秒 |
++| --- | --- | --- | --- | --- |
++{chr(10).join(smoke)}
++
++这三次使用真实训练数据、完整网络、T750/B4/K4/FP32，相同初始化与调度；仅为首步smoke，不能作为学习曲线。真实C2另做连续2步 vs 1+1恢复，模型/优化器最大误差0、训练行完全一致。三arm缩小模型的4步恢复也精确一致。
++
++正式seed123 C0/C1/C2均为0/2000首段步数；预定总预算每arm/seed6000，尚无新checkpoint任务分数、GPU吞吐或显存实测，不以CPU数值填这些列。CPU smoke保存在独立目录，不用于正式热启动。
++
++## 数据与调度契约
++
++三seed完整6000步调度已生成，实际训练source总体1660。各seed24000次occurrence，审计有效source/pair帧分别17135366、17102543、17152632，全无效pair0。source裁剪不读取target长度决定起点；reference独立随机裁剪，C0不读取reference值。只缓存原始数组，避免冻结随机crop。重复读取相同occurrence逐tensor一致。
++
++T750 scaler按p(session)=n_source/N、session内唯一reference均匀、每reference4次固定均匀crop(seed25000)拟合。source-paired有限总体和全reference有限总体仍不同，不虚称完全同一边际。新scaler不可与历史T128 descriptor分数直接算百分比。三seed共享其内容hash，各自初始化/source/reference/noise/crop流独立。每个seed manifest包含完整文件指纹和6000步配置；运行launcher另保存实际源码快照与命令。
++
++## Exact FRD 子集
++
++预固定每session按clip_id排序第一条，共20条；不是全Development80。MAM已完成 {status['completed_pairs']}/2000 candidate-target pairs，完整source {status['complete_source_count']}/20，FRD={status['FRD']}。原版距离：每candidate取10targets最小值后求和；每pair是 AU/15 + VA + expression/8 的三个 unrestricted DTW。不是视频真实性。
++
++首pair1.088秒，后续单线程CPU按pair保存，可复用完整一致记录；小型非等长回归与原版函数误差0。缺损/身份不符缓存报错，不将部分均值当完整成绩。新T750 seed123三模型尚未训练，对应6000pairs未执行。完整80source及其他seed未启动。
++
++## 验证与边界
++
++全仓CPU测试134passed、3skipped、1xfailed（既有CUDA/AMP相关跳过或预期失败）；最后新增“张量T750但有效长度128仍无左右数据梯度”测试；最终10项定向回归通过。2833个Phase24历史产物hash无变化。没有改架构、历史训练函数、checkpoint、旧报告或旧预测；无push。
++
++新 `task_phase25.py` 已接通被冻结的Development80清单、Processor cache、K10/global noise/750 block与原metric实现；因无正式checkpoint，尚未执行新模型任务评价。新增模块做过语法检查，不能称GPU集成已通过。候选分块一致性将在每次真实导出验证。
++
++GPU两次检查均8卡忙；GPU0约18GB/80GB且约59%利用率，共享选择尚待回复。不能把CPU smoke的开销外推为GPU吞吐。没有停止其他用户进程。
++
++人物/interaction/recording权威映射仍未补齐，沿用Phase24人口未决项；未生成confirmation source，反复使用的Development80不叫独立确认。
++
++## 版本与复核
++
++基线/当前HEAD `7e6adf562d628aff78a9e22d74a111def7fa3353`；本地开发分支 `agent/hirp-phase25-timescale-alignment`。本段新增文件尚未提交。
++协议 `PROTOCOL.md`，命令及执行状态 `EXECUTED_COMMANDS.md`，数据/梯度/恢复JSON与全部原始日志位于本目录。后续GPU正式首段由 `python -m hirp.run_phase25 --device <approved GPU> --seed 123 --through 2000 --evaluate` 执行，先做显存smoke；6000步总预算不按验证分数改变。
++'''
++    with (ROOT/'PHASE25_REPORT.md').open('x') as f:f.write(text)
++    files=[dict(path=str(p),bytes=p.stat().st_size,sha256=sha256_file(p)) for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name!='artifact_fingerprints.json']
++    with (ROOT/'artifact_fingerprints.json').open('x') as f:json.dump(dict(files=files),f,indent=2)
++
++if __name__=='__main__':main()
+diff --git a/hirp/task_phase25_final.py b/hirp/task_phase25_final.py
+new file mode 100644
+index 0000000..20551bc
+--- /dev/null
++++ b/hirp/task_phase25_final.py
+@@ -0,0 +1,80 @@
++"""Versioned numerical validation; unchanged FP32 K10 production predictions."""
++import argparse,importlib,json,sys,time
++from pathlib import Path
++import numpy as np
++import torch
++from .phase22 import load_checkpoint
++from .phase23_long import export_full
++from .phase24 import normalization,verify_files,dependencies,legacy_snapshot,LEGACY
++from .phase23_cache import cached,save_cached
++from .phase15_audit import canonical_hash,sha256_file
++from .task_phase24 import raw_metrics,check_prediction
++from .train_phase21 import configure
++
++ROOT=Path('runs/phase25/timescale_v1/final_seed123_v1')
++OLD=Path('runs/phase24/evaluation_v1')
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--device',default='cuda:0');a=p.parse_args();configure()
++    manifest=json.loads((OLD/'multitarget_development_manifest.json').read_text());normalization(manifest)
++    processed=json.loads((OLD/'processed_targets/completed.json').read_text())
++    assert processed['result_sha256']==canonical_hash(processed['result'])
++    assert processed['eval_identity']['manifest_sha256']==sha256_file(OLD/'multitarget_development_manifest.json')
++    frozen=json.loads((OLD/'dependency_snapshot.json').read_text());verify_files(frozen['legacy']);verify_files(processed['result']['files']);verify_files([manifest['noise']])
++    model,meta=load_checkpoint(a.checkpoint,a.device)
++    assert meta['train_config']['T']==750 and meta['train_config']['lambda_group']==.1 and meta['prior_mode']=='standard_normal'
++    assert meta['arm'] in ('C0','C1','C2') and meta['train_config']['init_seed'] in (123,42,2026)
++    assert meta['global_step'] in (128,500,1000,2000,4000,6000)
++    assert meta['actual_optimizer_steps']==meta['global_step']==len(meta['training_rows'])
++    assert meta['train_config']['B']==4 and meta['train_config']['K']==4
++    label=f"seed{meta['train_config']['init_seed']}_{meta['arm']}_step{meta['global_step']}"
++    out=ROOT/'task_multitarget';out.mkdir(exist_ok=True)
++    identity=dict(version='phase25-task-v2-fp64-validated',numerical_protocol_sha256=sha256_file(ROOT/'numerical_protocol.json'),checkpoint_sha256=sha256_file(a.checkpoint),arm=meta['arm'],seed=meta['train_config']['init_seed'],step=meta['global_step'],scales=meta['scales'],dependencies=dependencies(),legacy=frozen['legacy'],target_manifest_sha256=sha256_file(OLD/'multitarget_development_manifest.json'),processed_index_sha256=sha256_file(OLD/'processed_targets/completed.json'))
++    path=out/f'{label}.json'
++    if cached(path,identity) is not None:return
++    sys.path.insert(0,str(LEGACY));from framework.utils.compute_metrics import compute_metrics
++    mean=torch.from_numpy(np.load('external/FaceVerse/mean_face.npy')).float();std=torch.from_numpy(np.load('external/FaceVerse/std_face.npy')).float().clamp_min(1e-8)
++    noise=torch.from_numpy(np.load(manifest['noise']['path']))[0,:10].to(a.device)
++    preds=[];targets=[];speakers=[];exports=[];started=time.perf_counter();torch.cuda.reset_peak_memory_stats(a.device)
++    export_dir=ROOT/'exports'/label;export_dir.mkdir(parents=True,exist_ok=True)
++    for i,s in enumerate(manifest['sources']):
++        normalization(manifest);verify_files(list(s['files'].values())+s['targets'])
++        streams={k:torch.from_numpy(np.load(v['path'])).float() for k,v in s['files'].items()}
++        face=streams['speaker_3dmm'];streams['speaker_3dmm']=((face[:,0] if face.ndim==3 else face)-mean)/std
++        ident=dict(identity_sha256=canonical_hash(identity),source=i);sidecar=export_dir/f'{i:03d}.json';item=cached(sidecar,ident)
++        if item is None:
++            kwargs={k:v.to(a.device) for k,v in streams.items()}
++            pred=export_full(model,**kwargs,source_length=s['length'],noise=noise)
++            repeat=export_full(model,**kwargs,source_length=s['length'],noise=noise,candidate_chunk=3)
++            error=float((pred-repeat).abs().max())
++            checks=check_prediction(pred,s['length']);checks['candidate_consistency_max_error']=error
++            checks['original_strict_check_passed']=error<1e-5
++            if error>=1e-5:
++                # Precision diagnostic only: restore exact original FP32 weights
++                # afterwards; pred remains the unmodified FP32 K10 output.
++                model.double();double_kwargs={k:v.double() for k,v in kwargs.items()}
++                ref=export_full(model,**double_kwargs,source_length=s['length'],noise=noise.double())
++                ref_chunk=export_full(model,**double_kwargs,source_length=s['length'],noise=noise.double(),candidate_chunk=3)
++                model.float()
++                double_error=float((ref-ref_chunk).abs().max())
++                reference_error=max(float((pred.double()-ref).abs().max()),float((repeat.double()-ref).abs().max()))
++                if double_error>1e-10 or reference_error>1e-4:raise RuntimeError('unexplained numerical discrepancy')
++                ccc=importlib.import_module('framework.metrics.FRC').concordance_correlation_coefficient
++                y=torch.from_numpy(np.load(processed['result']['files'][i]['path']))
++                matrices=[np.array([[float(ccc(t.numpy(),q.numpy())[0]) for t in y] for q in pp]) for pp in (pred,repeat)]
++                multi_error=abs(float(matrices[0].max(1).sum()-matrices[1].max(1).sum()))
++                single_error=abs(float(matrices[0][:,0].sum()-matrices[1][:,0].sum()))
++                if max(multi_error,single_error)>1e-6:raise RuntimeError('numerical difference affects task score beyond protocol')
++                checks.update(fp64_chunk_max=double_error,fp32_to_fp64_max=reference_error,multi_FRC_chunk_abs_error=multi_error,single_FRC_chunk_abs_error=single_error)
++
++            dest=export_dir/f'{i:03d}.npy'
++            with dest.open('xb') as f:np.save(f,pred.numpy())
++            item=dict(path=str(dest),sha256=sha256_file(dest),checks=checks);save_cached(sidecar,ident,item)
++        else:verify_files([item]);pred=torch.from_numpy(np.load(item['path']))
++        preds.append(pred);targets.append(torch.from_numpy(np.load(processed['result']['files'][i]['path'])));speakers.append(streams['speaker_emotion']);exports.append(item)
++        print(label,i+1,flush=True)
++    metrics=compute_metrics(speakers,preds,targets,threads=4,metric_names=manifest['metrics']);raw=raw_metrics(preds,targets,speakers)
++    assert abs(metrics['FRC']-np.mean([r['FRC'] for r in raw]))<1e-6
++    save_cached(path,identity,dict(arm=meta['arm'],seed=meta['train_config']['init_seed'],steps=meta['global_step'],lambda_group=0 if meta['arm']=='C0' else .1,multi_target=metrics,single_paired_FRC=float(np.mean([r['single_paired_FRC'] for r in raw])),per_input=raw,exports=exports,seconds=time.perf_counter()-started,peak_memory_bytes=torch.cuda.max_memory_allocated(a.device)))
++
++if __name__=='__main__':main()
+diff --git a/hirp/evaluate_phase25_final.py b/hirp/evaluate_phase25_final.py
+new file mode 100644
+index 0000000..d171b8d
+--- /dev/null
++++ b/hirp/evaluate_phase25_final.py
+@@ -0,0 +1,81 @@
++"""Single-seed fixed-bank ES curves; T750 and historical T128 stay separate."""
++import argparse,json,time
++from pathlib import Path
++import numpy as np
++import torch
++from torch.utils.data import default_collate
++from .phase22 import load_checkpoint
++from .evaluate_phase22 import evaluate_model,extra_shuffles
++from .group_features import DescriptorScaler,reaction_descriptor
++from .session_data import SessionPopulation
++from .data_phase25 import RawCachedDataset,reference_crop
++from .phase24 import verify_files,normalization,dependencies
++from .phase23_cache import cached,save_cached
++from .phase15_audit import sha256_file,canonical_hash
++from .train_phase22 import write
++from .train_phase21 import configure
++
++ROOT=Path('runs/phase25/timescale_v1');OUT=ROOT/'final_seed123_v1'
++PLAN=Path('runs/phase22/replicated_v1/evaluation_plan/manifest.json')
++
++class SourceSerialSampler:
++    """Engineering source batch1, K unchanged and every sample identity retained."""
++    def __init__(self,model):self.model=model
++    def sample(self, speaker_audio,speaker_emotion,speaker_3dmm,lengths,sample_count,noise):
++        return torch.cat([self.model.sample(speaker_audio[i:i+1],speaker_emotion[i:i+1],speaker_3dmm[i:i+1],lengths[i:i+1],sample_count=sample_count,noise=noise[i:i+1]) for i in range(len(lengths))])
++
++def population(T,plan):
++    pool=SessionPopulation('data','val',T)
++    if T==750:pool.dataset=RawCachedDataset('data','val',750,crop_mode='random',seed=25001)
++    items=[]
++    for occurrence,i in enumerate(plan['indices']):
++        pool.dataset.set_epoch(occurrence);items.append(pool.dataset[i])
++    batch=default_collate(items);assert batch['clip_id']==plan['clip_ids']
++    sp=ROOT/'descriptor_stats_T750.json' if T==750 else Path('runs/phase2/descriptor_stats.json')
++    scaler=DescriptorScaler.load(sp);refs={};rc=[]
++    for session in sorted(set(batch['session_id'])):
++        values=[];valids=[]
++        for ref in pool.references[session]:
++            if T==750:y,n,start=reference_crop(pool,ref,25001,0)
++            else:
++                item=pool.load_reference(ref);y,n,start=item['reaction'],item['length'],item['crop_start']
++            f,v=scaler(*reaction_descriptor(y,n));values.append(f);valids.append(v)
++            rc.append(dict(reference_id=ref,path=str(pool.reference_paths[ref]),sha256=sha256_file(pool.reference_paths[ref]),start=start,length=int(n)))
++        refs[session]=(torch.stack(values),torch.stack(valids))
++    crops=[dict(clip_id=batch['clip_id'][i],start=int(batch['crop_start'][i]),source_length=int(batch['source_lengths'][i]),pair_length=int(batch['pair_lengths'][i])) for i in range(80)]
++    return batch,refs,scaler,sp,dict(T=T,source_crops=crops,reference_crops=rc,scaler_path=str(sp),scaler_sha256=sha256_file(sp),crop_rule='uniform source-only and independent reference seed25001' if T==750 else 'historical center crop')
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--device',default='cuda:0');a=p.parse_args();configure()
++    protocol=json.loads((OUT/'es_protocol.json').read_text());plan=json.loads(PLAN.read_text());normalization(plan);verify_files(plan['data_files']+plan['normalization']+plan['banks'])
++    snapshots=dependencies();out=OUT/'distribution';out.mkdir(exist_ok=True)
++    for T in (750,128):
++        batch,refs,scaler,sp,pop=population(T,plan)
++        if T==750:
++            train=json.loads((ROOT/'seed_123/manifest.json').read_text());assert sha256_file(sp)==train['scales']['descriptor_scaler_sha256']
++        else:assert sha256_file(sp)==plan['scaler_sha256']
++        popfile=out/f'population_T{T}.json'
++        if popfile.exists():assert json.loads(popfile.read_text())==pop
++        else:write(popfile,pop)
++        for arm in ('C0','C1','C2'):
++            for step in (128,500,1000,2000,4000,6000):
++                cp=sorted((ROOT/'seed_123'/arm).glob(f'attempt_*/checkpoints/step_{step:06d}.pt'))[0]
++                model,meta=load_checkpoint(cp,a.device);assert meta['arm']==arm and meta['global_step']==step and meta['train_config']['init_seed']==123
++                for bi in ([0,1] if step in (2000,6000) else [0]):
++                    bank_info=plan['banks'][bi];bank=torch.from_numpy(np.load(bank_info['path']))[:,:32]
++                    identity=dict(version='phase25-single-seed-es-v1',T=T,K=32,bank=bank_info,checkpoint_sha256=sha256_file(cp),arm=arm,step=step,seed=123,population_sha256=sha256_file(popfile),plan_sha256=sha256_file(PLAN),protocol_sha256=sha256_file(OUT/'es_protocol.json'),dependencies=snapshots,data_fingerprints=plan['data_files'],normalization=plan['normalization'],model_scales=meta['scales'],source_batch=1)
++                    path=out/f'{arm}_step{step}_T{T}_bank{bi}_K32.json'
++                    if cached(path,identity) is not None:continue
++                    values=evaluate_model(SourceSerialSampler(model),batch,refs,scaler,scaler.to(a.device),bank,torch.tensor(plan['permutations'][0]['donors']),a.device,32)
++                    predictions=values.pop('all_predictions')
++                    if step in (2000,6000):values['extra_shuffles']=extra_shuffles(predictions,batch,plan['permutations'])
++                    if T==750 and step==6000 and bi==0:
++                        path_np=out/f'{arm}_step6000_T750_bank0_predictions.npy'
++                        with path_np.open('xb') as f:np.save(f,predictions.numpy())
++                        values['predictions']=dict(path=str(path_np),sha256=sha256_file(path_np))
++                    values.update(arm=arm,step=step,T=T,bank=bi,K=32,seed=123)
++                    save_cached(path,identity,values);print(path.name,values['aggregate']['conditional']['loss'],values['aggregate']['marginal']['loss'],flush=True)
++                del model;torch.cuda.empty_cache()
++    write(out/'completed.json',dict(completed=True,cases=48,T=[750,128],K=32,seed=123,new_noise_banks=0))
++
++if __name__=='__main__':main()
+diff --git a/hirp/tests/test_phase25.py b/hirp/tests/test_phase25.py
+new file mode 100644
+index 0000000..b92c04c
+--- /dev/null
++++ b/hirp/tests/test_phase25.py
+@@ -0,0 +1,90 @@
++"""Temporal support is measured before AdamW; no weight-decay inference."""
++from dataclasses import asdict
++import json
++import torch
++import pytest
++from hirp import HiRPConfig
++from hirp.model.temporal_decoder import TemporalBlock
++from hirp.phase22 import make_model,load_checkpoint,model_metadata,eval_adapter
++
++@pytest.mark.parametrize('length',[128,750])
++@pytest.mark.parametrize('kind',['block','hirp'])
++def test_dilation_data_gradient(length,kind,tmp_path):
++    config=HiRPConfig()
++    if kind=='block':
++        model=TemporalBlock(config,128)
++        x=torch.randn(1,length,256);z=torch.randn(1,32);mask=torch.ones(1,length,dtype=torch.bool)
++        y=model(x,z,mask);weight=model.depthwise.weight
++    else:
++        model=make_model(123).eval()
++        inputs=dict(speaker_audio=torch.randn(1,length,768),speaker_emotion=torch.randn(1,length,25),speaker_3dmm=torch.randn(1,length,58),lengths=torch.tensor([length]))
++        noise=torch.randn(1,2,32)
++        y=model(**inputs,sample_count=2,noise=noise);weight=model.decoder.blocks[-1].depthwise.weight
++    # Nonuniform linear data objective avoids cancellation, without optimizer/decay.
++    (y*torch.randn_like(y)).sum().backward()
++    norms=weight.grad.abs().sum((0,1))
++    assert torch.isfinite(norms).all() and norms[1]>0
++    if length==128:assert norms[0]==0 and norms[2]==0
++    else:assert norms[0]>0 and norms[2]>0
++    print(json.dumps(dict(kind=kind,T=length,data_gradient_l1=norms.tolist())))
++
++def test_long_mask_sample_loader_prefix(tmp_path):
++    model=make_model(123).eval();t=750
++    inputs=dict(speaker_audio=torch.randn(1,t,768),speaker_emotion=torch.randn(1,t,25),speaker_3dmm=torch.randn(1,t,58),lengths=torch.tensor([431]))
++    noise=torch.randn(1,4,32)
++    with torch.no_grad():p=model(**inputs,sample_count=4,noise=noise)
++    torch.testing.assert_close(p,model.sample(**inputs,sample_count=4,noise=noise),rtol=0,atol=0)
++    torch.testing.assert_close(p[:,:1],model.sample(**inputs,sample_count=1,noise=noise[:,:1]),rtol=2e-5,atol=2e-6)
++    changed={k:v.clone() for k,v in inputs.items()}
++    for k in ('speaker_audio','speaker_emotion','speaker_3dmm'):changed[k][:,431:]=12345
++    torch.testing.assert_close(p,model.sample(**changed,sample_count=4,noise=noise),rtol=0,atol=0)
++    assert (p[:,:,431:]==0).all()
++    scales=dict(channel_scale=[1.]*25,descriptor_scaler_sha256='test',descriptor_dimension=75,training_T=750)
++    path=tmp_path/'model.pt';torch.save(dict(**model_metadata(model,scales),model=model.state_dict()),path)
++    restored,_=load_checkpoint(path)
++    torch.testing.assert_close(p,eval_adapter(restored,**inputs,noise=noise),rtol=0,atol=0)
++
++def test_temporal_block_mask_before_after():
++    block=TemporalBlock(HiRPConfig(),128)
++    x=torch.randn(1,750,256);z=torch.randn(1,32);mask=torch.arange(750)[None]<450
++    y=block(x,z,mask);x[:,450:]=12345
++    torch.testing.assert_close(y,block(x,z,mask),rtol=0,atol=0)
++    assert (y[:,450:]==0).all()
++
++def test_padded_long_tensor_does_not_fake_valid_support():
++    block=TemporalBlock(HiRPConfig(),128)
++    x=torch.randn(1,750,256);z=torch.randn(1,32);mask=torch.arange(750)[None]<128
++    y=block(x,z,mask);(y*torch.randn_like(y)).sum().backward()
++    norms=block.depthwise.weight.grad.abs().sum((0,1))
++    assert norms[0]==0 and norms[2]==0 and norms[1]>0
++
++@pytest.mark.parametrize('arm',['C0','C1','C2'])
++def test_occurrence_resume(tmp_path,arm):
++    from types import SimpleNamespace
++    from hirp.train_phase25 import TrainConfig,schedule,train
++    from hirp.group_features import DescriptorScaler
++    from hirp.train_phase1 import state_hash
++    config=HiRPConfig(d_model=32,nhead=4,num_layers=1,dim_feedforward=64,dropout=.1,dilations=(1,128))
++    cfg=TrainConfig(max_steps=4,T=260,diagnostic_interval=4,checkpoint_interval=2,eval_interval=2,fixed_checkpoints=(2,4))
++    pool=SimpleNamespace(sources={'s':[0,1,2,3]},references={'s':['a','b','c']})
++    records,noise,_=schedule(pool,cfg,32)
++    scaler=DescriptorScaler(torch.zeros(75),torch.ones(75),torch.ones(75))
++    def batch(record):
++        g=torch.Generator().manual_seed(record['crop_occurrences'][0])
++        b=dict(speaker_audio=torch.randn(4,260,768,generator=g),speaker_emotion=torch.randn(4,260,25,generator=g),speaker_3dmm=torch.randn(4,260,58,generator=g),source_lengths=torch.tensor([260,250,200,190]),pair_lengths=torch.tensor([250,240,190,180]),paired_target=torch.rand(4,260,25,generator=g),crop_start=torch.tensor(record['crop_occurrences']))
++        refs=None if arm=='C0' else (torch.rand(3,75,generator=g),torch.ones(3,75,dtype=torch.bool))
++        return b,refs
++    data=SimpleNamespace(scaler=scaler,batch=batch)
++    manifest=dict(model_config=asdict(config),scales=dict(channel_scale=[1.]*25,descriptor_scaler_sha256='test',descriptor_dimension=75,training_T=260),split_hash='test',population=dict(source_population=4))
++    a,ma,oa=train(tmp_path/'full',cfg,arm,records,noise,data,manifest,'cpu',model_config=config)
++    first,_,_=train(tmp_path/'resume',cfg,arm,records,noise,data,manifest,'cpu',stop_after=2,model_config=config)
++    b,mb,ob=train(tmp_path/'resume',cfg,arm,records,noise,data,manifest,'cpu',resume=first['checkpoints'][-1]['path'],model_config=config)
++    assert state_hash(ma)==state_hash(mb)
++    assert a['actual_optimizer_steps']==b['actual_optimizer_steps']==4
++    aa=torch.load(a['checkpoints'][-1]['path'],weights_only=True);bb=torch.load(b['checkpoints'][-1]['path'],weights_only=True)
++    assert aa['training_rows']==bb['training_rows']
++    for key,value in oa.state_dict()['state'].items():
++        for k,v in value.items():torch.testing.assert_close(v,ob.state_dict()['state'][key][k],rtol=0,atol=0)
++    changed=[dict(r) for r in records];changed[0]['crop_seed']+=1
++    with pytest.raises(ValueError,match='prefix mismatch'):
++        train(tmp_path/'bad',cfg,arm,changed,noise,data,manifest,'cpu',resume=first['checkpoints'][-1]['path'],model_config=config)
+diff --git a/hirp/tests/test_phase25_handoff.py b/hirp/tests/test_phase25_handoff.py
+new file mode 100644
+index 0000000..5fb3635
+--- /dev/null
++++ b/hirp/tests/test_phase25_handoff.py
+@@ -0,0 +1,19 @@
++import json
++from dataclasses import asdict
++import pytest
++from hirp import train_phase25 as runner
++
++
++def test_completed_external_arm_never_creates_optimizer(tmp_path,monkeypatch):
++    config=json.loads(json.dumps(asdict(runner.TrainConfig())))
++    (tmp_path/'manifest.json').write_text(json.dumps(dict(config=config)))
++    summary=tmp_path/'summary.json';summary.write_text(json.dumps(dict(actual_optimizer_steps=2000,training_rows=2000)))
++    finished=tmp_path/'finished.json';finished.write_text(json.dumps(dict(completed=True)))
++    (tmp_path/'C2_concurrent_owner.json').write_text(json.dumps(dict(pid=1,summary_path=str(summary),finished_path=str(finished))))
++    monkeypatch.setattr(runner,'configure',lambda:None)
++    def unexpected(*a,**k):raise AssertionError('must not start optimizer or access data')
++    monkeypatch.setattr(runner,'RealData',unexpected)
++    monkeypatch.setattr('sys.argv',['runner','--run',str(tmp_path),'--arm','C2','--stop-after','2000'])
++    runner.main()
++    finished.write_text(json.dumps(dict(completed=False)))
++    with pytest.raises(RuntimeError,match='external training failed'):runner.main()
+diff --git a/hirp/tests/test_phase25_final.py b/hirp/tests/test_phase25_final.py
+new file mode 100644
+index 0000000..a405ea0
+--- /dev/null
++++ b/hirp/tests/test_phase25_final.py
+@@ -0,0 +1,12 @@
++import torch
++from hirp import HiRPConfig
++from hirp.phase22 import make_model
++from hirp.evaluate_phase25_final import SourceSerialSampler
++
++
++def test_source_serial_preserves_noise_and_source_only_sampling():
++    model=make_model(123,HiRPConfig(d_model=32,nhead=4,num_layers=1,dim_feedforward=64,dilations=(1,2))).eval()
++    inputs=dict(speaker_audio=torch.randn(4,16,768),speaker_emotion=torch.randn(4,16,25),speaker_3dmm=torch.randn(4,16,58),lengths=torch.tensor([16,13,11,9]),sample_count=4,noise=torch.randn(4,4,32))
++    full=model.sample(**inputs);serial=SourceSerialSampler(model).sample(**inputs)
++    torch.testing.assert_close(full,serial,atol=2e-6,rtol=2e-5)
++    assert torch.equal(serial[3,:,9:],torch.zeros_like(serial[3,:,9:]))

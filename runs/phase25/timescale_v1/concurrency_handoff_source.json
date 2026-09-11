@@ -1,0 +1,6 @@
+{
+  "path": "hirp/train_phase25.py",
+  "sha256": "561138436b5387b6cd41d1b5e463b446d3d5bd37f24e9ab0e1cf09c565be9ea4",
+  "change": "CLI-only external-owner guard; already-running C1/C2 use original unchanged train function",
+  "reason": "do not rely on persistent SIGSTOP; waiting future invocation skips optimizer after verified completed segment"
+}
