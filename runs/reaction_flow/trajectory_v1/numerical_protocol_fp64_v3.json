@@ -1,0 +1,8 @@
+{
+  "production": "Uniform FP64 Euler16 for all Flow sources/checkpoints; final cast FP32 for unchanged legacy metrics",
+  "training": "unchanged FP32",
+  "chunk_atol": 1e-10,
+  "reason": "Trained-model FP32 chunk sensitivity; uniform precision revision, not target-score selection",
+  "supersedes": "numerical_protocol.json",
+  "preserved": "Historical failed FP32 logs and sidecars; obsolete arrays removed with cleanup manifest"
+}

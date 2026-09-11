@@ -1,0 +1,80 @@
+{
+  "config": {
+    "d_model": 256,
+    "blocks": 8,
+    "heads": 8,
+    "ff_width": 1024,
+    "dropout": 0.0,
+    "coordinates": 24,
+    "eps": 0.0001,
+    "std_floor": 0.001,
+    "projection_std": 0.01,
+    "integration_steps": 16,
+    "seed": 123,
+    "sampler_seed": 123,
+    "target_seed": 3000126,
+    "noise_seed": 4000126,
+    "tau_seed": 5000126,
+    "rollout_seed": 6000126,
+    "evaluation_seed": 7100123,
+    "T": 750,
+    "B": 4,
+    "steps": 12000,
+    "adaptation_steps": 2000,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "statistics_batches": 1024,
+    "checkpoints": [
+      2000,
+      6000,
+      12000
+    ]
+  },
+  "parent_checkpoint": "runs/mam_target/task_v1/R2/attempt_001/checkpoints/step_006000.pt",
+  "parent_sha256": "d9b0e07aad91f3bbb254bfc2ad5780f9fa2b9a138245dbafd0c79fa935bf8936",
+  "parent_reused_modules": [
+    "stems",
+    "encoder"
+  ],
+  "parent_training_steps": 6000,
+  "parent_valid_frames": 17135366,
+  "parent_origin": "project R2 supervised training; no MAM weights/labels",
+  "data_manifest": "runs/phase25/timescale_v1/seed_123/manifest.json",
+  "data_manifest_sha256": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+  "split_hash": "bacd8362f4a33457b6925938fbf89f27457f35d99213696b85be84494d7e5dba",
+  "normalization": [
+    {
+      "path": "/home/zhengshiyi/react2025_new/external/FaceVerse/mean_face.npy",
+      "sha256": "20760603c2c5dd72004b5b7f8dd7a092c0d1ed08ca59e4423ff6baa84fb705e6"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025_new/external/FaceVerse/std_face.npy",
+      "sha256": "31c8df604237ac7134218baaf51766da696d332d1f4b162c7155306440a5b639"
+    }
+  ],
+  "artifact_hashes": {
+    "schedule.json": "a04a4f12f466c5fec990ae0869e023202fe54adcda2f4de4717ca8b1b75019c7",
+    "coordinate_stats.json": "397ce38731c3ed2282ce6f32fdca0b60af4124cae83e1ca4b949f22d5a468f97"
+  },
+  "target_law": "TRAIN paired+3 session alternatives; iid uniform slots; duplicate slots retain weights; weak not causal probability labels",
+  "noise_law": "independent keyed normal full temporal state, separate streams for target-choice/noise/tau/rollout",
+  "statistics_batches": 1024,
+  "physical_gpu": 1,
+  "completed_training": false,
+  "prior_experiment_complete": {
+    "time": 1789123487.238927,
+    "completed": true,
+    "failures": []
+  },
+  "source_snapshot": {
+    "reaction_flow/condition_encoder.py": "628514e91dea2ec40df8dab663391d27fc21adb07fadfce331d13ba8abb3b2b6",
+    "reaction_flow/velocity_model.py": "aab5b3828138edda950d272d8ae2355a81fb743e2c45da1f211ea95fe7523995",
+    "reaction_flow/prepare.py": "8e2d88690ea7687478b53f3dd1b1435d371a21d1e48a963a9203a3dbedd249c2",
+    "reaction_flow/sampler.py": "e95d161e70c2618712ac371cd9625359b1816471d49db2a337247f1fb02cd6c7",
+    "reaction_flow/__init__.py": "13959589089ff3f754c1437cf9a9cb8a128ba36cead5dd298052d5fa4ec2056d",
+    "reaction_flow/config.py": "d26b43ea200c23955f5e1c2d3c22eabad9812c5e443f6142ec6a9c7fae4ccf3a",
+    "reaction_flow/flow_path.py": "0ae381f73b37aa0a840fe5f720987977d7e8946d2fa9539895f03b9380458cf8",
+    "reaction_flow/reaction_transform.py": "99f11b0e83f3575c43dea7cfc9a4df445dc141f49d7955cab4cacf126b889a45",
+    "reaction_flow/data.py": "c68b758de7690f138b19c2dabe9697db974d3c5b68fe2786703d4cf323f7f09c"
+  }
+}

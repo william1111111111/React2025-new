@@ -1,28 +1,24 @@
 {
-  "time": 1789121177.362727,
+  "time": 1789123487.2386372,
   "physical_gpu": 1,
   "training": {
     "S0_quality": {
-      "additional_steps": 1622,
-      "global_step": 7622,
-      "loss": 1.6498908996582031
+      "additional_steps": 2000,
+      "global_step": 8000,
+      "loss": 1.6974701881408691
     },
     "S1_joint": {
-      "additional_steps": 1622,
-      "global_step": 7622,
-      "loss": 1.6576621532440186
+      "additional_steps": 2000,
+      "global_step": 8000,
+      "loss": 1.698751449584961
     },
     "S2_staged": {
-      "additional_steps": 1645,
-      "global_step": 7645,
-      "loss": 1.6554509401321411
+      "additional_steps": 2000,
+      "global_step": 8000,
+      "loss": 1.707737684249878
     }
   },
-  "training_active": [
-    "S0_quality",
-    "S1_joint",
-    "S2_staged"
-  ],
+  "training_active": [],
   "eval_active": null,
   "eval_completed": [
     [
@@ -34,6 +30,10 @@
       7000
     ],
     [
+      "S0_quality",
+      8000
+    ],
+    [
       "S1_joint",
       6500
     ],
@@ -42,16 +42,37 @@
       7000
     ],
     [
+      "S1_joint",
+      8000
+    ],
+    [
       "S2_staged",
       6500
     ],
     [
       "S2_staged",
       7000
+    ],
+    [
+      "S2_staged",
+      8000
     ]
   ],
   "frd_active": [],
-  "frd_completed": [],
+  "frd_completed": [
+    [
+      "S0_quality",
+      8000
+    ],
+    [
+      "S1_joint",
+      8000
+    ],
+    [
+      "S2_staged",
+      8000
+    ]
+  ],
   "failures": [],
-  "completed": false
+  "completed": true
 }

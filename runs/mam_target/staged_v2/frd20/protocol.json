@@ -1,0 +1,44 @@
+{
+  "version": "mam-staged-exact-frd20-v1",
+  "source_indices": [
+    0,
+    6,
+    9,
+    12,
+    18,
+    22,
+    24,
+    30,
+    33,
+    36,
+    40,
+    47,
+    51,
+    52,
+    56,
+    62,
+    64,
+    69,
+    74,
+    78
+  ],
+  "selection": "lexicographically first source per session, no scores",
+  "source_manifest_sha256": "09fcfa015f0913351abad67d1b084423e29facc69142b756b28dacda7ad8bce0",
+  "models": [
+    "seed123_S0_quality_step8000",
+    "seed123_S1_joint_step8000",
+    "seed123_S2_staged_step8000"
+  ],
+  "pairs_per_model": 2000,
+  "dtws_per_pair": 3,
+  "full_frames": true,
+  "seconds_per_invocation": 7200,
+  "metric_source": {
+    "path": "/home/zhengshiyi/react2025/framework/metrics/FRD.py",
+    "sha256": "0b01ae09383dfd7b36342186e8afc84f3a3b23b9990183bd654f70cfe12741b0"
+  },
+  "dtw_source": {
+    "path": "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/tslearn/metrics/dtw_variants.py",
+    "sha256": "c7242d00f164e1ffc6bf1203984ec7f2a9b8d08113b0af7754cf38c5496204de"
+  }
+}

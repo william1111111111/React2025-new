@@ -1,0 +1,16 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/evaluate_fp64.py", line 109, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/reaction_flow/evaluate_fp64.py", line 61, in main
+    checks=check_prediction(pred,s['length']);checks['candidate_consistency_max_error']=error
+  File "/home/zhengshiyi/react2025_new/hirp/task_phase24.py", line 13, in check_prediction
+    torch.testing.assert_close(p[:,:,17:].sum(-1),torch.ones(10,n),atol=3e-6,rtol=0)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/testing/_comparison.py", line 1520, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: The values for attribute 'dtype' do not match: torch.float64 != torch.float32.

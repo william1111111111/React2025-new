@@ -1,0 +1,74 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+/home/zhengshiyi/react2025/framework/metrics/FRC.py:24: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/home/zhengshiyi/react2025/framework/metrics/FRC.py:25: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+seed123_A_step6000 1
+seed123_A_step6000 2
+seed123_A_step6000 3
+seed123_A_step6000 4
+seed123_A_step6000 5
+seed123_A_step6000 6
+seed123_A_step6000 7
+seed123_A_step6000 8
+seed123_A_step6000 9
+seed123_A_step6000 10
+seed123_A_step6000 11
+seed123_A_step6000 12
+seed123_A_step6000 13
+seed123_A_step6000 14
+seed123_A_step6000 15
+seed123_A_step6000 16
+seed123_A_step6000 17
+seed123_A_step6000 18
+seed123_A_step6000 19
+seed123_A_step6000 20
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/evaluate.py", line 124, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/reaction_flow/evaluate.py", line 58, in main
+    repeat=export_full(model,**kwargs,source_length=s['length'],noise=noise,candidate_chunk=3)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/export.py", line 24, in export_full
+    y=model.sample(*inputs,lengths=torch.tensor([n],device=noise.device),sample_count=10,noise=z,integration_steps=16,candidate_chunk=candidate_chunk,position_offset=torch.tensor([start],device=noise.device))
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/sampler.py", line 39, in sample
+    y=torch.cat([self.rollout(h,valid,noise[:,i:i+chunk],integration_steps,position_offset) for i in range(0,sample_count,chunk)],1)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/sampler.py", line 39, in <listcomp>
+    y=torch.cat([self.rollout(h,valid,noise[:,i:i+chunk],integration_steps,position_offset) for i in range(0,sample_count,chunk)],1)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/sampler.py", line 26, in rollout
+    u=u+self.velocity(u,tau,hh,mask,mask,offset,gradient_checkpointing)/integration_steps
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/velocity_model.py", line 39, in forward
+    else:x=block(x,h,time,valid,source_valid)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/velocity_model.py", line 21, in forward
+    a=self.n2(x);x=x+self.cross_attention(a,h,h,key_padding_mask=~source_valid,need_weights=False)[0]
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/activation.py", line 1241, in forward
+    attn_output, attn_output_weights = F.multi_head_attention_forward(
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 5300, in multi_head_attention_forward
+    q, k, v = _in_projection_packed(query, key, value, in_proj_weight, in_proj_bias)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 4834, in _in_projection_packed
+    b_q, b_kv = b.split([E, E * 2])
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_tensor.py", line 864, in split
+    return torch._VF.split_with_sizes(self, split_size, dim)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_VF.py", line 26, in __getattr__
+    def __getattr__(self, attr):
+KeyboardInterrupt
