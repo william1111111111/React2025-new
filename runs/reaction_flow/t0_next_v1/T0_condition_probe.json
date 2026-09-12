@@ -1,0 +1,57 @@
+{
+  "checkpoint": "runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt",
+  "checkpoint_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "production": "FP64 Euler16 K10 native continuous AU, unchanged 750 blocks",
+  "correct_exports": "reused with checkpoint, noise content, target manifest, precision and solver checked",
+  "rule": "same four cyclic within-session donors as A; identical recipient absolute-frame noise; common valid lengths",
+  "rows": [
+    {
+      "recipient": 0,
+      "recipient_id": "speaker/session0/Camera-2024-10-17-143648-143743",
+      "donor": 1,
+      "donor_id": "speaker/session0/Camera-2024-10-21-144916-144926",
+      "common_length": 1167,
+      "output_mean_delta": 0.06938283145427704,
+      "paired_CCC_correct": 0.004548904486000538,
+      "paired_CCC_shuffled": 0.0340077206492424,
+      "FRC_correct": 0.38241076469421387,
+      "FRC_shuffled": 0.6318307518959045
+    },
+    {
+      "recipient": 20,
+      "recipient_id": "speaker/session13/Camera-2024-10-21-144916-144926",
+      "donor": 21,
+      "donor_id": "speaker/session13/Camera-2024-10-18-144417-144442",
+      "common_length": 1020,
+      "output_mean_delta": 0.0714157298207283,
+      "paired_CCC_correct": -0.015939971432089806,
+      "paired_CCC_shuffled": -0.039950836449861526,
+      "FRC_correct": 1.2772520780563354,
+      "FRC_shuffled": 1.1611332893371582
+    },
+    {
+      "recipient": 40,
+      "recipient_id": "speaker/session18/Camera-2024-06-28-112322-112419",
+      "donor": 41,
+      "donor_id": "speaker/session18/Camera-2024-07-22-155059-155140",
+      "common_length": 271,
+      "output_mean_delta": 0.0640614852309227,
+      "paired_CCC_correct": 0.02488046884536743,
+      "paired_CCC_shuffled": 0.03334146365523338,
+      "FRC_correct": 0.6604325175285339,
+      "FRC_shuffled": 0.6324325799942017
+    },
+    {
+      "recipient": 60,
+      "recipient_id": "speaker/session4/Camera-2024-07-15-123346-123414",
+      "donor": 61,
+      "donor_id": "speaker/session4/Camera-2024-10-17-143648-143743",
+      "common_length": 1892,
+      "output_mean_delta": 0.0503351092338562,
+      "paired_CCC_correct": 0.01166488230228424,
+      "paired_CCC_shuffled": 0.01279419381171465,
+      "FRC_correct": 0.7118238210678101,
+      "FRC_shuffled": 0.6203742623329163
+    }
+  ]
+}

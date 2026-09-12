@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/t0_next_analysis.py", line 58, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/reaction_flow/t0_next_analysis.py", line 40, in main
+    policy.append(dict(model=name,policy='AU>=0.5; VA/expression unchanged',FRC=float(compute_FRC(rounded,targets,p=4)),S_MSE=float(compute_s_mse(rounded)),FRVar=float(compute_FRVar(rounded)),exact_FRD20='not evaluated for this diagnostic policy'))
+  File "/home/zhengshiyi/react2025/framework/metrics/FRC.py", line 125, in compute_FRC
+    FRC_list += pool.starmap(_func, zip(targets, preds))
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 774, in get
+    raise self._value
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 540, in _handle_tasks
+    put(task)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/connection.py", line 206, in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 429, in reduce_storage
+    df = multiprocessing.reduction.DupFd(fd)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/reduction.py", line 198, in DupFd
+    return resource_sharer.DupFd(fd)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/resource_sharer.py", line 53, in __init__
+    self._id = _resource_sharer.register(send, close)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/resource_sharer.py", line 76, in register
+    self._start()
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/resource_sharer.py", line 126, in _start
+    self._listener = Listener(authkey=process.current_process().authkey)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/connection.py", line 448, in __init__
+    self._listener = SocketListener(address, family, backlog)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/multiprocessing/connection.py", line 588, in __init__
+    self._socket.setsockopt(socket.SOL_SOCKET,
+PermissionError: [Errno 1] Operation not permitted

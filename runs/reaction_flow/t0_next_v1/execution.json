@@ -1,0 +1,14 @@
+{
+  "baseline_commit": "eafdc225b62acafd673b46e3262342cb032367df",
+  "T1_checkpoint_sha256": "69984e99746f2fc6b77a5de246c92f3236c5a98d6b1d7ff7fab5e67d5806a6f3",
+  "commands": [
+    "CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8 .venv/bin/python -m reaction_flow.t0_condition_probe",
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m reaction_flow.t0_next_analysis"
+  ],
+  "execution_note": "Initial array analysis blocked by sandbox multiprocessing socket permission; same script rerun on host. No training or repeated native full evaluation.",
+  "new_generation": "four T0 donor inputs only; cached correct-input outputs reused",
+  "code_hashes": {
+    "reaction_flow/t0_next_analysis.py": "6047297884dabeda41688b2a78144a2dc32c7b3ef14b6a88ced519067ea31e8d",
+    "reaction_flow/t0_condition_probe.py": "611b9290d8d040acbd7ebdac9d712d7c5e33731ecb76e7e1609d88cd48ee2628"
+  }
+}
