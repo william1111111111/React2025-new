@@ -1,0 +1,23 @@
+{
+  "parent": "runs/reaction_flow/trajectory_v1/A/attempt_000/checkpoints/step_012000.pt",
+  "arms": [
+    "T0-task",
+    "T1-task-dynamics"
+  ],
+  "seed": 123,
+  "new_steps": 2000,
+  "source_schedule": "existing frozen records12001..14000, unused by prior A",
+  "optimizer": "inherit A AdamW; both lr2e-5 weight_decay.01",
+  "solver": "Euler16 both differentiable rollout and production; fixed four-source16/32/64 diagnostic does not select production",
+  "precision": "FP32 train; FP64 production -> FP32 official metrics; TRAIN path comparison required before launch",
+  "lambda_task": "TRAIN16 median FM/task gradient norms; ramp .1 to1 times reference over200 updates",
+  "lambda_dyn": "TRAIN16 median .1 FM/dynamic norm; ramp200, T1 only",
+  "dynamics": "tau[.5,.95], AU/VA/expression equal groups, lags1/4/16, target difference reconstruction",
+  "checkpoint_steps": [
+    500,
+    1000,
+    2000
+  ],
+  "raw_output": "continuous AU; no P8 applied to main outputs",
+  "approval": "user task; GPU1, seed123 only"
+}
