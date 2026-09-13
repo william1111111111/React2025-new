@@ -1,0 +1,44 @@
+```json
+{
+  "candidates": [
+    {
+      "event_type": "question",
+      "transcript_evidence": "Who was the first president of the United States?",
+      "description": "询问美国第一任总统是谁",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "Thomas Jefferson, John Adams, George Washington, James Madison?",
+      "description": "列举四个可能的答案选项",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Yes, George Washington was the first.",
+      "description": "确认乔治·华盛顿是正确答案",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "Yeah, that's great.",
+      "description": "表示认可或满意",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "转录文本无时间戳，所有start_s和end_s均为null",
+    "未核验说话者归属，所有speaker_attribution标记为unknown",
+    "无法区分不同句子的实际说话者",
+    "仅基于文本内容进行语义分类，未考虑声学特征"
+  ]
+}
+```

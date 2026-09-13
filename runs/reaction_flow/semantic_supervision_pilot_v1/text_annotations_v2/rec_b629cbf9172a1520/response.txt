@@ -1,0 +1,68 @@
+```json
+{
+  "candidates": [
+    {
+      "event_type": "question",
+      "transcript_evidence": "I'm not sure how familiar you are with different cultures, but do you know what OK means in Japan?",
+      "description": "询问对方是否知道OK手势在日本的含义",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "Yeah.",
+      "description": "简短回应",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "No?",
+      "description": "确认性疑问",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "OK, so it basically means, so the OK sign is associated with money",
+      "description": "开始解释OK手势在日本与金钱的关联",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "so it symbolizes financial interactions or wealth",
+      "description": "说明该手势象征金融交易或财富",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "which is interesting because you wouldn't expect to like, how, right?",
+      "description": "评价这个文化差异出乎意料",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "But yeah, that's very interesting.",
+      "description": "总结认为这个文化知识很有趣",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "转录文本无时间戳信息，所有start_s和end_s为null",
+    "无法确定每句话的说话者身份，所有speaker_attribution标记为unknown",
+    "转录中'Yeah'和'No?'可能来自不同说话者或同一说话者的自问自答，但无法从文本判断",
+    "这些候选项需要与音频对齐后才能用作训练标签"
+  ]
+}
+```

@@ -1,0 +1,23 @@
+{
+  "status": "draft_not_launched",
+  "stage": "information_before_planning",
+  "parent": "runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt",
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "seed": 123,
+  "initial_prior": "T0 independent local noise; no G1 shared prior",
+  "primary_comparison": ["E0_null_semantic", "E_event"],
+  "required_followup_control": "E_text",
+  "deferred": ["E_plan", "event_retiming"],
+  "model_implementation_status": "not_implemented_pending_reviewed_annotations",
+  "E0_null_semantic": {"semantic_branch_capacity": "same as E_event", "semantic_input": "NULL"},
+  "E_event": {"semantic_input": "reviewed speaker-only transcript/events with measured times", "semantic_encoder": "independent trainable path outside frozen ConditionEncoder.no_grad", "fusion": "additional cross-attention memory", "missing_input": "explicit NULL/mask", "semantic_dropout": "preregister before training"},
+  "E_text": {"semantic_input": "same timed transcript without event structure"},
+  "shared_training_schedule": "TRAIN only; freeze after labels and budget are defined",
+  "additional_steps_per_arm": null,
+  "training_launch_ready": false,
+  "prerequisites": ["speaker media permissions/role verified", "PTS and audio sync verified", "reviewed annotation subset and TRAIN acceptance policy", "equal budget preregistered", "semantic branch gradient test", "source-only cache/sample independence test"],
+  "evaluation": {"population": "existing Development80 and fixed FRD20 subset", "K": 10, "solver": "FP64 Euler16", "output_policy": "native continuous AU", "official_targets_and_processor": "unchanged", "oracle_plan": "not permitted in official results", "selection": "no GT-based candidate/noise/plan choice"},
+  "GPU_policy": {"preferred": 1, "maximum": 2, "current_semantic_GPU_jobs": 0},
+  "external_API_calls": false,
+  "auto_push": false
+}

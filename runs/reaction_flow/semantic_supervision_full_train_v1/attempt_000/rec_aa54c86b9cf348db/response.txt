@@ -1,0 +1,67 @@
+```json
+{
+  "candidates": [
+    {
+      "event_type": "question",
+      "transcript_evidence": "Which country hosted the 2016 Summer Olympics?",
+      "description": "询问2016年夏季奥运会的主办国",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "Is it A, Russia, B, United Kingdom, C, Brazil, or D, China?",
+      "description": "提供四个选项询问答案",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "No, it's not China.",
+      "description": "否定一个选项为正确答案",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "request",
+      "transcript_evidence": "Try again.",
+      "description": "要求再次尝试回答",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "No, it's C, Brazil.",
+      "description": "提出正确答案为巴西",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "unknown",
+      "transcript_evidence": "Yeah.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "unknown",
+      "transcript_evidence": "Okay.",
+      "description": "结束或确认用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "对话仅包含7个语义事件，无法达到最多16个候选",
+    "部分事件（如'Yeah'、'Okay'）为极短回应，语义内容有限",
+    "无时间戳信息，所有start_s和end_s均为null"
+  ]
+}
+```

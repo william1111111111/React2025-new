@@ -16,7 +16,8 @@ ROOT=Path('runs/reaction_flow/shared_noise_v1')
 AROOT=Path('runs/reaction_flow/trajectory_v1')
 OLD=Path('runs/phase24/evaluation_v1')
 
-def main():
+def main(root=ROOT, allowed_arms=('G0-local','G1-shared'), allowed_steps=(14500,15000,16000), final_step=16000, final_shuffle=True):
+    ROOT=Path(root)
     p=argparse.ArgumentParser();p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--device',default='cuda:0');a=p.parse_args();configure()
     manifest=json.loads((OLD/'multitarget_development_manifest.json').read_text());normalization(manifest)
     processed=json.loads((OLD/'processed_targets/completed.json').read_text())
@@ -31,8 +32,8 @@ def main():
         if available>=4096:break
         print('WAIT_GPU_FREE_MIB',physical_gpu,available,'required',4096,flush=True);time.sleep(30)
     model,meta=load_checkpoint(a.checkpoint,a.device);model.double()
-    assert meta['phase'] in ('G0-local','G1-shared')
-    assert meta['global_step'] in (14500,15000,16000)
+    assert meta['phase'] in allowed_arms
+    assert meta['global_step'] in allowed_steps
     assert len(meta['rows'])==meta['phase_step']
     run_manifest=json.loads((AROOT/'manifest.json').read_text())
     assert meta['manifest_sha256']==sha256_file(AROOT/'manifest.json')
@@ -80,7 +81,7 @@ def main():
         preds.append(pred);targets.append(target);speakers.append(streams['speaker_emotion']);exports.append(item)
         print(label,i+1,flush=True)
     shuffle=[]
-    if meta['global_step'] in (16000,):
+    if final_shuffle and meta['global_step']==final_step:
         # One prespecified cyclic derangement per established session, never selected by scores.
         from hirp.losses.energy_score import paired_energy_score
         groups={}

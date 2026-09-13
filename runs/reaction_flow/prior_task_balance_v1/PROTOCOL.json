@@ -1,0 +1,42 @@
+{
+  "version": "prior-task-balance-v1",
+  "parent": "runs/reaction_flow/shared_noise_v1/G1-shared/attempt_000/checkpoints/step_016000.pt",
+  "parent_sha256": "5a8dc94daf43530b0f304be38e74d27e384c4eac23b1d346e48ff3179c31e792",
+  "arms": [
+    "B0-fixed",
+    "B1-ratio"
+  ],
+  "rho": 0.05,
+  "seed": 123,
+  "lambda_old": 1.1338064670562744,
+  "r_target": 1.0,
+  "ema_decay": 0.9,
+  "measurement_interval": 20,
+  "warmup": 200,
+  "lambda_bounds": [
+    0.2834516167640686,
+    4.535225868225098
+  ],
+  "lambda_timing": "step t uses previous goal with ramp min(t/200,1); measurement at t%20==0 updates goal for t+1",
+  "calibration": "medians of component norms on frozen parent, first16 TRAIN records; extra compute, reused as formal schedule beginning",
+  "checkpoints": [
+    500,
+    1000,
+    2000
+  ],
+  "global_steps": [
+    16001,
+    18000
+  ],
+  "budget": 2000,
+  "inputs": {
+    "runs/reaction_flow/prior_task_balance_v1/schedule.json": "e1fcf990c92282514cff1a755ab6570064996e28deac0c95f29c8a6a3e87cc06",
+    "runs/phase25/timescale_v1/seed_123/manifest.json": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+    "runs/reaction_flow/trajectory_v1/coordinate_stats.json": "397ce38731c3ed2282ce6f32fdca0b60af4124cae83e1ca4b949f22d5a468f97",
+    "runs/reaction_flow/trajectory_v1/manifest.json": "3b7d4da073dd8b643482ca7a3a130d27ba1537f3b1e088d08815b89a2903ce43"
+  },
+  "physical_gpu": 1,
+  "max_gpus": 1,
+  "precision": "FP32 training; FP64 Euler16 production, native continuous AU",
+  "free_disk_bytes": 1992718249984
+}

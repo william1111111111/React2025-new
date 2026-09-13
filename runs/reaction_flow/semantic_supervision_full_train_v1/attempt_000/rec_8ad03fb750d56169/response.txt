@@ -1,0 +1,42 @@
+{
+  "candidates": [
+    {
+      "event_type": "question",
+      "transcript_evidence": "Who was the first president of the United States?",
+      "description": "询问美国第一任总统是谁",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "A. Thomas Jefferson, B. John Adams, or C. George Washington, or D. James Madison?",
+      "description": "列出选项询问答案",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "And... No, not D.",
+      "description": "否定选项D",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "C. George Washington.",
+      "description": "给出选项C作为答案",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "转录中无明确标注说话者区分，所有speaker_attribution设为unknown",
+    "无时间戳信息，start_s和end_s均设为null",
+    "转录内容短且包含多个选项，仅提取四个语义候选，未达到16个上限",
+    "description采用无主语描述，避免推测身份或轮次"
+  ]
+}

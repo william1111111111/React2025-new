@@ -1,0 +1,74 @@
+{
+  "candidates": [
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "Next question is about the sports.",
+      "description": "切换话题到体育",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "So which country hosted the 2016 Summer Olympics?",
+      "description": "询问2016年夏季奥运会主办国",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "The first one is Russia and the United Kingdom and then Brazil and last one, China.",
+      "description": "列举四个候选国家：俄罗斯、英国、巴西、中国",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Oh, yes, great answer.",
+      "description": "对回答表示肯定，称赞回答很好",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "Have you watched the Olympic Games in 2016 Summer Olympics?",
+      "description": "询问是否观看了2016年夏季奥运会",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "Oh, yeah, watched the...",
+      "description": "确认观看了奥运会，但话语中断",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "unknown",
+      "transcript_evidence": "Oh, yeah, okay, cool.",
+      "description": "肯定用语和表示接受",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "unknown",
+      "transcript_evidence": "Yeah, that's great.",
+      "description": "肯定用语，表示认可",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "对话短小且包含重叠或中断话语，部分内容如 'watched the...' 可能不完整，影响了完整语义提取。",
+    "一些片段（如 'Oh, yeah, okay, cool.'）属于模糊反馈，难以归类为具体事件类型，故标注为 unknown。",
+    "转录中未提供说话者信息，所有 speaker_attribution 均为 unknown，且无法推断轮次顺序。",
+    "时间戳不可用，因此 start_s 和 end_s 均设为 null。"
+  ]
+}

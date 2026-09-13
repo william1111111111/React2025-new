@@ -1,0 +1,15 @@
+bwrap: Unknown option --clearenv
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/extract/run_pilot.py", line 38, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/extract/run_pilot.py", line 34, in main
+    sandbox('speaker','semantic_supervision.extract.source',[(DATA/'audio/speaker','/inputs/audio'),(DATA/'video-face-crop/speaker','/inputs/video'),(DATA/'text/speaker','/inputs/text')])
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/extract/run_pilot.py", line 20, in sandbox
+    subprocess.run(cmd+['--','/venv/bin/python','-c',probe],check=True)
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['bwrap', '--unshare-all', '--die-with-parent', '--new-session', '--clearenv', '--setenv', 'PATH', '/venv/bin:/usr/bin:/bin', '--setenv', 'HOME', '/tmp', '--setenv', 'PYTHONPATH', '/code', '--setenv', 'PYTHONNOUSERSITE', '1', '--setenv', 'OPENBLAS_NUM_THREADS', '1', '--setenv', 'OMP_NUM_THREADS', '1', '--setenv', 'MKL_NUM_THREADS', '1', '--setenv', 'PYTHONDONTWRITEBYTECODE', '1', '--ro-bind', '/usr', '/usr', '--ro-bind', '/lib', '/lib', '--ro-bind', '/lib64', '/lib64', '--ro-bind', '/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu', '/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu', '--ro-bind', '/home/zhengshiyi/react2025/.venv', '/venv', '--ro-bind', '/home/zhengshiyi/react2025_new/semantic_supervision', '/code/semantic_supervision', '--ro-bind', '/home/zhengshiyi/react2025_new/runs/reaction_flow/semantic_supervision_pilot_v1/jobs/speaker', '/job', '--bind', '/home/zhengshiyi/react2025_new/runs/reaction_flow/semantic_supervision_pilot_v1/speaker', '/outputs', '--tmpfs', '/tmp', '--proc', '/proc', '--dev', '/dev', '--chdir', '/code', '--ro-bind', '/home/zhengshiyi/react/data/train/audio/speaker', '/inputs/audio', '--ro-bind', '/home/zhengshiyi/react/data/train/video-face-crop/speaker', '/inputs/video', '--ro-bind', '/home/zhengshiyi/react/data/train/text/speaker', '/inputs/text', '--', '/venv/bin/python', '-c', "import pathlib,json; assert not pathlib.Path('/home/zhengshiyi/react/data').exists(); assert not list(pathlib.Path('/dev').glob('nvidia*')); assert not pathlib.Path('/inputs/forbidden').exists(); print('ROLE_SANDBOX_OK')"]' returned non-zero exit status 1.

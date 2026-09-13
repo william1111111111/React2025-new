@@ -11,7 +11,8 @@ from hirp.train_phase22 import write
 ROOT=Path('runs/reaction_flow/shared_noise_v1')
 OLD=Path('runs/phase24/evaluation_v1')
 
-def main():
+def main(root=ROOT, models=('seed123_G0-local_step16000','seed123_G1-shared_step16000')):
+    ROOT=Path(root)
     p=argparse.ArgumentParser();p.add_argument('--model',default='MAM_archive_offline');p.add_argument('--task',type=Path);p.add_argument('--seconds',type=float,default=7200);p.add_argument('--max-pairs',type=int,default=2000);a=p.parse_args()
     manifest=json.loads((OLD/'multitarget_development_manifest.json').read_text());normalization(manifest)
     selected={}
@@ -19,7 +20,7 @@ def main():
     assert len(selected)==20
     assert list(selected.values())==json.loads(Path('runs/mam_target/task_v1/frd20/protocol.json').read_text())['source_indices']
     out=ROOT/'frd20';out.mkdir(exist_ok=True)
-    protocol=dict(version='reaction-flow-exact-frd20-v1',source_indices=list(selected.values()),selection='lexicographically first source per session, no scores',source_manifest_sha256=sha256_file(OLD/'multitarget_development_manifest.json'),models=['seed123_G0-local_step16000','seed123_G1-shared_step16000'],pairs_per_model=2000,dtws_per_pair=3,full_frames=True,seconds_per_invocation=7200,metric_source=dict(path='/home/zhengshiyi/react2025/framework/metrics/FRD.py',sha256=sha256_file('/home/zhengshiyi/react2025/framework/metrics/FRD.py')),dtw_source=dict(path=inspect.getfile(dtw),sha256=sha256_file(inspect.getfile(dtw))))
+    protocol=dict(version='reaction-flow-exact-frd20-v1',source_indices=list(selected.values()),selection='lexicographically first source per session, no scores',source_manifest_sha256=sha256_file(OLD/'multitarget_development_manifest.json'),models=list(models),pairs_per_model=2000,dtws_per_pair=3,full_frames=True,seconds_per_invocation=7200,metric_source=dict(path='/home/zhengshiyi/react2025/framework/metrics/FRD.py',sha256=sha256_file('/home/zhengshiyi/react2025/framework/metrics/FRD.py')),dtw_source=dict(path=inspect.getfile(dtw),sha256=sha256_file(inspect.getfile(dtw))))
     protocol_path=out/'protocol.json'
     if protocol_path.exists():assert json.loads(protocol_path.read_text())==protocol
     else:write(protocol_path,protocol)

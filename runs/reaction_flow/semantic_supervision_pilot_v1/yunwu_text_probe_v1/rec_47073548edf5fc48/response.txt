@@ -1,0 +1,77 @@
+```json
+{
+  "candidates": [
+    {
+      "event_type": "question",
+      "transcript_evidence": "Hi, how are you doing?",
+      "description": "说话者向对方问候并询问近况",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "I'm fine, thank you.",
+      "description": "说话者回应问候表示自己状态良好",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "Okay, so I'll briefly introduce myself and what we'll be doing today.",
+      "description": "说话者转入正题准备进行自我介绍和活动说明",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "So my name is Gina",
+      "description": "说话者透露自己名字是Gina",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "basically we'll be having a 30-minute conversation about various topics",
+      "description": "说话者说明将进行30分钟的多话题对话",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "and then we'll also have an interesting quiz as well.",
+      "description": "说话者补充说明还会有一个有趣的问答环节",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "How does that sound?",
+      "description": "说话者征询对方对安排的意见",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Okay, great.",
+      "description": "说话者表示认可或满意",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "转录文本缺少说话者标识，所有speaker_attribution标记为unknown",
+    "转录文本无时间戳信息，所有start_s和end_s为null",
+    "未核验逐句说话者归属，候选项需后续人工校验",
+    "无法确定listener的具体反应和回应内容",
+    "这些候选项仅为待核验的文本提取结果，不能直接用作训练标签"
+  ]
+}
+```

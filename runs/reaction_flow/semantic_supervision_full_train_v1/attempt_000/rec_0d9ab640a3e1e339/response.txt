@@ -1,0 +1,116 @@
+```json
+{
+  "candidates": [
+    {
+      "event_type": "apology",
+      "transcript_evidence": "Oh, sorry.",
+      "description": "表示歉意",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "Right. So first of all, have you ever seen the sign OK?",
+      "description": "引入新的谈论对象，询问是否见过OK手势",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "Do you know this sign?",
+      "description": "询问是否了解该手势",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Yeah.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "Do you use it at all?",
+      "description": "询问是否使用该手势",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Oh, right.",
+      "description": "表示理解或认同",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "OK.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "So you type it or send it in.",
+      "description": "说明对方通过打字发送该手势",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "Not type it, but you know what I mean.",
+      "description": "修正表述，指出不是打字而是发送",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "How do people usually respond to it?",
+      "description": "询问人们通常如何回应这个手势",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "OK.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Yeah.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "So in USA, like UK, Mexico, China in general, this sign would mean OK, like you said, and like you use it.",
+      "description": "说明在美国、英国、墨西哥、中国等地该手势表示好的含义",
+      "speaker_attribution": "unknown",
+      "start_s": null,
+      "end_s": null
+    }
+  ],
+  "limitations": [
+    "真实话语边界与说话者轮次未知，所有候选时间戳均设为null",
+    "部分片段（如寓含否定的'Not type it'）转为描述性说明",
+    "转录中多个简短肯定回应（如Yeah/OK）仅保留为肯定用语，不推断具体语义",
+    "无法区分不同说话者的单字回应，统一归属为unknown"
+  ]
+}
+```

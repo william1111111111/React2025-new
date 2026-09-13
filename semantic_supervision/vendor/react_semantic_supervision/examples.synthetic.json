@@ -1,0 +1,48 @@
+[
+  {
+    "schema_version": "react-label-v0.1",
+    "record_type": "speaker_events",
+    "split": "train",
+    "clip_id": "SYNTHETIC_EXAMPLE_NOT_REAL_DATA",
+    "duration_s": 8.0,
+    "is_synthetic_example": true,
+    "allowed_for_model_input": true,
+    "visible_roles": [
+      "speaker"
+    ],
+    "annotator_version": "example-only",
+    "events": [
+      {
+        "event_id": "s1",
+        "start_s": 2.0,
+        "end_s": 4.0,
+        "description": "说话者陈述自己通过了考试（合成示例）。",
+        "evidence_status": "supported",
+        "evidence_ref": "synthetic_transcript_segment_1"
+      }
+    ]
+  },
+  {
+    "schema_version": "react-label-v0.1",
+    "record_type": "listener_observations",
+    "split": "train",
+    "clip_id": "SYNTHETIC_EXAMPLE_NOT_REAL_DATA",
+    "duration_s": 8.0,
+    "is_synthetic_example": true,
+    "allowed_for_model_input": false,
+    "visible_roles": [
+      "listener"
+    ],
+    "annotator_version": "example-only",
+    "events": [
+      {
+        "event_id": "l1",
+        "start_s": 4.0,
+        "end_s": 5.5,
+        "description": "嘴角短暂上扬（合成观察，不是真实标注）。",
+        "evidence_status": "supported",
+        "evidence_ref": "synthetic_frames_1"
+      }
+    ]
+  }
+]

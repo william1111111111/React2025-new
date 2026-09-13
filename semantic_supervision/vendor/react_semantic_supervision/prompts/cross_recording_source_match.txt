@@ -1,0 +1,8 @@
+你要在两个不同TRAIN speaker记录的事件列表中找同一语义事件。
+只看两边speaker转录/语义/顺序，不看listener或模型分数。
+返回可解释的事件对应及证据；重复问句用上下文消歧，冲突时unknown。
+保持事件顺序；不凭同session判定所有事件相同，也不把相同绝对秒数当相同语义。
+输出record_A_event_id、record_B_event_id、match_status、evidence_refs。
+该对应只能辅助弱监督，不能宣称两个listener的逐帧反应相同。
+
+本匹配器输出是独立的训练侧关系提议文件，不使用单片段observation schema。必须额外保存两边clip哈希和事件ID有效性检查；关系未经复核不作为精确同步真值。
