@@ -1,0 +1,48 @@
+{
+  "parent": "runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt",
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "arms": {
+    "G0-local": {
+      "version": "shared-plus-local-standardized24-v1",
+      "rho": 0.0,
+      "coordinates": "TRAIN-standardized 24d reaction coordinates",
+      "global_seed": 8100123,
+      "global_key": "sourceID/sample index, no block or length; independent occurrence/step FM_global and task_global in training",
+      "public_noise": "base local tensor; optional separate base global tensor; sample combines once; internal rollout accepts composed initial state"
+    },
+    "G1-shared": {
+      "version": "shared-plus-local-standardized24-v1",
+      "rho": 0.05,
+      "coordinates": "TRAIN-standardized 24d reaction coordinates",
+      "global_seed": 8100123,
+      "global_key": "sourceID/sample index, no block or length; independent occurrence/step FM_global and task_global in training",
+      "public_noise": "base local tensor; optional separate base global tensor; sample combines once; internal rollout accepts composed initial state"
+    }
+  },
+  "seed": 123,
+  "budget": 2000,
+  "global_steps": [
+    14001,
+    16000
+  ],
+  "checkpoints": [
+    500,
+    1000,
+    2000
+  ],
+  "lambda_task": 1.1338064670562744,
+  "warmup": false,
+  "optimizer": "inherit T0 AdamW, LR2e-5 wd.01",
+  "condition": "frozen",
+  "T": 750,
+  "B": 4,
+  "K_train": 4,
+  "K_eval": 10,
+  "solver": "Euler16",
+  "precision": "FP32 training, FP64 production then FP32 unchanged legacy metrics",
+  "schedule_sha256": "bb073708a5c5a5e078ae7a80b93470b6fb10bef128b7e7e714b1b0099c2f4e2c",
+  "coordinate_stats_sha256": "397ce38731c3ed2282ce6f32fdca0b60af4124cae83e1ca4b949f22d5a468f97",
+  "data_manifest_sha256": "b7fa76ee36bf25ceca316c92033d17b948d36f81741c880a65527d8b8bfc1bd0",
+  "target_law": "unchanged TRAIN paired+3 full-source resized alternatives; uniform FM slot",
+  "stage": "no dynamics, no speaker projection, no AU threshold change"
+}
