@@ -1,0 +1,135 @@
+{
+  "clip_id": "rec_2b7506744af9d537",
+  "split": "train",
+  "events": [
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "The next question is about geography.",
+      "description": "切换话题至地理问题",
+      "speaker_attribution": "unknown",
+      "start_s": 1.06,
+      "end_s": 2.585,
+      "event_id": "rec_2b7506744af9d537_e000",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.9943852366672621,
+      "greedy_asr_char_agreement": 1.0,
+      "greedy_asr_text": "THE NEXT QUESTION IS ABOUT GEOGRAPHY",
+      "active_speech_fraction": 0.07692307692307693,
+      "shift_control_logit_margin": -0.04634151142886561,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "What is the largest ocean on Earth? A. Atlantic Ocean B. Indian Ocean C. Southern Ocean D. Pacific Ocean",
+      "description": "询问地球最大海洋及其选项",
+      "speaker_attribution": "unknown",
+      "start_s": 3.16,
+      "end_s": 11.385000000000002,
+      "event_id": "rec_2b7506744af9d537_e001",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.8997343124042179,
+      "greedy_asr_char_agreement": 0.9897959183673469,
+      "greedy_asr_text": "WHAT IS THE LARGEST OCEAN ON ETH A ATLANTIC OCEAN B INDIAN OCEAN C SOUTHERN OCEAN D PACIFIC OCEAN",
+      "active_speech_fraction": 0.009708737864077669,
+      "shift_control_logit_margin": 0.001234784348593503,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "That's wrong.",
+      "description": "评价先前回答错误",
+      "speaker_attribution": "unknown",
+      "start_s": 24.36,
+      "end_s": 24.785,
+      "event_id": "rec_2b7506744af9d537_e002",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.9656216780344645,
+      "greedy_asr_char_agreement": 1.0,
+      "greedy_asr_text": "THAT'S WRONG",
+      "active_speech_fraction": 0.0,
+      "shift_control_logit_margin": 0.9205286791830353,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "disclosure",
+      "transcript_evidence": "It's the Pacific Ocean.",
+      "description": "给出正确答案为太平洋",
+      "speaker_attribution": "unknown",
+      "start_s": 25.1,
+      "end_s": 27.065,
+      "event_id": "rec_2b7506744af9d537_e003",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.8776010714471341,
+      "greedy_asr_char_agreement": 0.9361702127659575,
+      "greedy_asr_text": "IT'S AT THE PACIFIC OCEAN",
+      "active_speech_fraction": 0.3,
+      "shift_control_logit_margin": 2.373746881087621,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    }
+  ],
+  "audio_duration_s": 28.0265,
+  "original_sample_rate": 16000,
+  "original_channels": 1,
+  "video_timeline": {
+    "first_pts": 0.0,
+    "last_pts": 28.0,
+    "duration_s": 28.033333,
+    "source_frame_count": 841,
+    "resampled_hz": 25,
+    "max_resampling_error_s": 0.01999999999999602
+  },
+  "actual_visible_inputs": [
+    {
+      "role": "speaker",
+      "path": "/inputs/audio/session15/Camera-2024-06-26-093649-093642.wav",
+      "sha256": "f75cf7dad00c243bfb98d42ae8d132ac9fbfbfcd38dd58afef6be5c4f0bc20c5"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/video/session15/Camera-2024-06-26-093649-093642.mp4",
+      "sha256": "a8f20a79cbeef71a88b03077b9cf55d3627783048eca13ddbd8e483ca7d632b2"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/text/session15/Camera-2024-06-26-093649-093642.txt",
+      "sha256": "e3216000e3585e727a5fac0a9648c1b26eb7887519acce4a64caa32094e91d6b"
+    }
+  ],
+  "teacher_provenance": {
+    "ctc_model": "torchaudio.WAV2VEC2_ASR_BASE_960H",
+    "ctc_weight_sha256": "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "asd_model": "TalkNet-ASD pretrained TalkSet",
+    "asd_weight_sha256": "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "asd_code_commit": "6d6821479af485e251c4991487e40573b42181b4",
+    "asd_weight_url": "https://huggingface.co/AlekseyKorshuk/talknet-asd/resolve/main/pretrain_TalkSet.model"
+  },
+  "human_reviewed": false,
+  "human_review_policy": "omitted_by_user",
+  "training_eligible": false,
+  "limitations": [
+    "CTC forced alignment can force incorrect transcript; thresholds are uncalibrated.",
+    "Active-speaker model domain and crop transfer are unvalidated.",
+    "Container audio/video origins assumed; true synchronization not independently verified.",
+    "Roles are model proposals, not confirmed identity; no listener data accessed."
+  ]
+}

@@ -1,0 +1,65 @@
+SOURCE_ONLY_SANDBOX_OK
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/code/semantic_supervision/align/automatic.py", line 133, in <module>
+    if __name__=='__main__':main()
+  File "/code/semantic_supervision/align/automatic.py", line 99, in main
+    model=bundle.get_model().cuda().eval();labels=bundle.get_labels();asd=ActiveSpeaker()
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 918, in cuda
+    return self._apply(lambda t: t.cuda(device))
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 833, in _apply
+    param_applied = fn(param)
+  File "/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 918, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+  File "/venv/lib/python3.10/site-packages/torch/cuda/__init__.py", line 298, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available
+SOURCE_ONLY_SANDBOX_OK
+/venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+rec_47073548edf5fc48 8 6 3
+rec_2dadff060f7dbec6 7 6 2
+rec_d47cdf28b86a8732 7 4 2
+rec_fc24b4307b4c18f4 8 4 0
+rec_f730a3a153b52adc 9 3 2
+/code/semantic_supervision/align/automatic.py:90: RuntimeWarning: Mean of empty slice
+  return np.nanmean(all_scores,axis=0)
+rec_c9786577fdd752db 4 4 1
+rec_c14b83099f9a6e15 5 5 2
+rec_734c7d3d0241ad9c 6 3 1
+rec_072093aefba48907 1 1 1
+rec_db144dc971621f0a 5 5 1
+rec_1dcbdfe33fdc2756 3 2 0
+rec_8d2b26332c3325fc 12 8 3
+rec_2b7506744af9d537 4 4 0
+rec_794632d8e1e8256b 7 3 1
+rec_854f5f43476c1486 4 4 0
+rec_3b7feda5f993fb04 5 5 3
+rec_a0c982590e7adf5d 4 3 0
+rec_4aca068a3f7d6d60 16 7 5
+rec_028ab332606e8d2b 10 6 0
+rec_5f5f953c6ff3282f 16 4 4
+rec_b07456a31c051b33 7 3 0
+rec_8f92d8aaeb84fedf 8 7 3
+rec_b629cbf9172a1520 6 5 0
+rec_16405b8d6b202ae6 15 8 3
+rec_e0639f82ff051713 7 4 1
+rec_5d2a1340f7e0f228 16 13 1
+rec_ff70ed3dc0df59e6 13 11 0
+rec_ec60d6f6a9240506 6 0 0
+rec_3efcb8ec7db708db 5 0 0
+rec_c5d993a157966d23 8 6 2
+rec_2786e3497aeff856 6 6 1
+rec_1efb0f33ab9f5a27 7 5 0
+rec_b755feadb100aa4c 5 3 0
+FINISHED

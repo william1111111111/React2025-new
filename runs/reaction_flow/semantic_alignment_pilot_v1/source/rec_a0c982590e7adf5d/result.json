@@ -1,0 +1,135 @@
+{
+  "clip_id": "rec_a0c982590e7adf5d",
+  "split": "train",
+  "events": [
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "So the next question is about history.",
+      "description": "切换到历史问题话题",
+      "speaker_attribution": "unknown",
+      "start_s": 1.08,
+      "end_s": 2.545,
+      "event_id": "rec_a0c982590e7adf5d_e000",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.8592585176254819,
+      "greedy_asr_char_agreement": 0.8378378378378378,
+      "greedy_asr_text": "SO THE NEXT CUSSION IS OF OUR HISTORY",
+      "active_speech_fraction": 0.05405405405405406,
+      "shift_control_logit_margin": 1.450010253636687,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "question",
+      "transcript_evidence": "Who was the first president of the United States?",
+      "description": "询问谁是美国第一任总统",
+      "speaker_attribution": "unknown",
+      "start_s": 3.0,
+      "end_s": 6.045,
+      "event_id": "rec_a0c982590e7adf5d_e001",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.9589233667762191,
+      "greedy_asr_char_agreement": 1.0,
+      "greedy_asr_text": "WHO WAS THE FIRST PRESIDENT OF THE UNITED STATES",
+      "active_speech_fraction": 0.0,
+      "shift_control_logit_margin": 0.24264787163311277,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "utterance",
+      "transcript_evidence": "A. Thomas Jefferson, B. John Adams, C. George Washington, D. James Madison.",
+      "description": "列出选项内容",
+      "speaker_attribution": "unknown",
+      "start_s": 6.4,
+      "end_s": 12.265,
+      "event_id": "rec_a0c982590e7adf5d_e002",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.9611235888546736,
+      "greedy_asr_char_agreement": 0.9428571428571428,
+      "greedy_asr_text": "A THOUGH MOSS JEFFERSON B JOHN ADAMS C GEORGE WASHINGTON D JAMES MARDISON",
+      "active_speech_fraction": 0.047619047619047616,
+      "shift_control_logit_margin": 0.27214921503211636,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    },
+    {
+      "event_type": "evaluation",
+      "transcript_evidence": "Yeah, that's correct.",
+      "description": "肯定用语",
+      "speaker_attribution": "unknown",
+      "start_s": 21.04,
+      "end_s": 21.705,
+      "event_id": "rec_a0c982590e7adf5d_e003",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_uncertain",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.38548030871618444,
+      "greedy_asr_char_agreement": 0.4375,
+      "greedy_asr_text": "YE LOVCARECHT",
+      "active_speech_fraction": 0.9411764705882353,
+      "shift_control_logit_margin": 4.666159737197792,
+      "automatic_weak_candidate": false,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    }
+  ],
+  "audio_duration_s": 26.09925,
+  "original_sample_rate": 16000,
+  "original_channels": 1,
+  "video_timeline": {
+    "first_pts": 0.0,
+    "last_pts": 26.066667,
+    "duration_s": 26.1,
+    "source_frame_count": 783,
+    "resampled_hz": 25,
+    "max_resampling_error_s": 0.013333000000006479
+  },
+  "actual_visible_inputs": [
+    {
+      "role": "speaker",
+      "path": "/inputs/audio/session17/Camera-2024-06-26-093649-093642.wav",
+      "sha256": "744d6bcf5cdb1c4f45b53f0099e71e50bacc2ab72f84a8c4e175253ffb365c22"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/video/session17/Camera-2024-06-26-093649-093642.mp4",
+      "sha256": "c93528fe4cde0833a3a39cc3d1bcb96b3aeee9d77ef00feae1443113240274fa"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/text/session17/Camera-2024-06-26-093649-093642.txt",
+      "sha256": "b099496cf8597afe4b777f56026c70f7f4754d43a91d646c7e41b21abd444f5c"
+    }
+  ],
+  "teacher_provenance": {
+    "ctc_model": "torchaudio.WAV2VEC2_ASR_BASE_960H",
+    "ctc_weight_sha256": "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "asd_model": "TalkNet-ASD pretrained TalkSet",
+    "asd_weight_sha256": "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "asd_code_commit": "6d6821479af485e251c4991487e40573b42181b4",
+    "asd_weight_url": "https://huggingface.co/AlekseyKorshuk/talknet-asd/resolve/main/pretrain_TalkSet.model"
+  },
+  "human_reviewed": false,
+  "human_review_policy": "omitted_by_user",
+  "training_eligible": false,
+  "limitations": [
+    "CTC forced alignment can force incorrect transcript; thresholds are uncalibrated.",
+    "Active-speaker model domain and crop transfer are unvalidated.",
+    "Container audio/video origins assumed; true synchronization not independently verified.",
+    "Roles are model proposals, not confirmed identity; no listener data accessed."
+  ]
+}

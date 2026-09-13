@@ -1,0 +1,72 @@
+{
+  "clip_id": "rec_072093aefba48907",
+  "split": "train",
+  "events": [
+    {
+      "event_type": "topic_change",
+      "transcript_evidence": "So moving to games",
+      "description": "话题转向游戏",
+      "speaker_attribution": "source_speaker_candidate",
+      "start_s": 0.32,
+      "end_s": 1.7049999999999998,
+      "event_id": "rec_072093aefba48907_e000",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_supported",
+      "role_status": "automatic_audiovisual_support",
+      "ctc_mean_score": 0.9634647657473883,
+      "greedy_asr_char_agreement": 1.0,
+      "greedy_asr_text": "SO MOVING TO GAMES",
+      "active_speech_fraction": 1.0,
+      "shift_control_logit_margin": 4.0413086823054725,
+      "automatic_weak_candidate": true,
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    }
+  ],
+  "audio_duration_s": 1.9505,
+  "original_sample_rate": 16000,
+  "original_channels": 1,
+  "video_timeline": {
+    "first_pts": 0.0,
+    "last_pts": 1.9,
+    "duration_s": 1.933333,
+    "source_frame_count": 58,
+    "resampled_hz": 25,
+    "max_resampling_error_s": 0.013333000000000261
+  },
+  "actual_visible_inputs": [
+    {
+      "role": "speaker",
+      "path": "/inputs/audio/session13/Camera-2024-06-21-103121-103102.wav",
+      "sha256": "a620da2e8e54815c5d9a3ab1c168053a0a7161a6d2565885de81b1ffed528544"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/video/session13/Camera-2024-06-21-103121-103102.mp4",
+      "sha256": "1fdf6f3b948ff9e8a1157258ae697e9fb477a094618dd429f9bfe2128bf5e59d"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/text/session13/Camera-2024-06-21-103121-103102.txt",
+      "sha256": "0902d90f0d72d0505999a3aa43b8c2156f92b6a8e17b9752643ac07048c085e7"
+    }
+  ],
+  "teacher_provenance": {
+    "ctc_model": "torchaudio.WAV2VEC2_ASR_BASE_960H",
+    "ctc_weight_sha256": "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "asd_model": "TalkNet-ASD pretrained TalkSet",
+    "asd_weight_sha256": "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "asd_code_commit": "6d6821479af485e251c4991487e40573b42181b4",
+    "asd_weight_url": "https://huggingface.co/AlekseyKorshuk/talknet-asd/resolve/main/pretrain_TalkSet.model"
+  },
+  "human_reviewed": false,
+  "human_review_policy": "omitted_by_user",
+  "training_eligible": false,
+  "limitations": [
+    "CTC forced alignment can force incorrect transcript; thresholds are uncalibrated.",
+    "Active-speaker model domain and crop transfer are unvalidated.",
+    "Container audio/video origins assumed; true synchronization not independently verified.",
+    "Roles are model proposals, not confirmed identity; no listener data accessed."
+  ]
+}
