@@ -11,7 +11,13 @@ class SharedFlow(ReactionFlow):
         if global_noise is None and self.rho!=0:global_noise=torch.randn(b,sample_count,24,device=noise.device,dtype=noise.dtype)
         mask=torch.arange(t,device=noise.device)[None]<lengths.to(noise.device)[:,None]
         initial=make_initial_noise(noise,global_noise,self.rho,mask)
-        return super().sample(speaker_audio,speaker_emotion,speaker_3dmm,lengths,sample_count,initial,integration_steps,return_aux,candidate_chunk,position_offset)
+        result=super().sample(speaker_audio,speaker_emotion,speaker_3dmm,lengths,sample_count,initial,integration_steps,return_aux,candidate_chunk,position_offset)
+        if return_aux:
+            # Public noise is always BASE local, including the legacy alias.
+            # initial_state is for inspection/internal rollout, not sample(noise=...).
+            result.update(noise=noise,local_noise=noise,global_noise=global_noise,
+                          initial_state=initial,prior_metadata=prior_metadata(self.rho))
+        return result
 
 def upgrade(model,rho):
     # No reinitialization or capacity/state_dict change; subclass only defines prior composition.
