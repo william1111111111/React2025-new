@@ -1,0 +1,36 @@
+{
+  "selection": "two lexicographically first unused accepted TRAIN transcripts per session; no listener or DEV scores",
+  "records": 34,
+  "events": 300,
+  "code_sha256": {
+    "semantic_supervision/align/automatic.py": "9bec6b25c0025e008ade68342783c7390bdd04783d23444d0ed0fdd510a78684",
+    "semantic_supervision/align/support.py": "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "semantic_supervision/align/lag_probe.py": "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "semantic_supervision/models/auto_weak.py": "3d7ccd979f0276b987d25f709ce067ee569beb58ae51902c1653fd9890c988f0",
+    "semantic_supervision/models/semantic_flow.py": "e6adb72552cc08a1b7d9f1987f29e1a780857e8fbbe0bcef91a70907a5155333"
+  },
+  "support_policy": {
+    "coverage_min": 0.9,
+    "overlap_min": 0.9,
+    "min_valid_frames": 5,
+    "min_duration_s": 0.2,
+    "max_negative_run_s": 0.24,
+    "active_fraction_min": 0.8,
+    "control_margin_min": 0.5,
+    "control_seam_guard_s": 0.12
+  },
+  "lag_policy": {
+    "grid_s": [
+      -0.4,
+      -0.2,
+      0,
+      0.2,
+      0.4
+    ],
+    "min_margin": 0.1,
+    "min_valid_frames": 25,
+    "exclude_edges": true,
+    "sync_verified": false
+  },
+  "new_paid_api_calls": 0
+}

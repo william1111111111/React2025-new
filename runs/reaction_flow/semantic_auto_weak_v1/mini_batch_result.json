@@ -1,0 +1,76 @@
+{
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "batch_size": 2,
+  "crop_frames": 64,
+  "loaded_events_total": 32,
+  "mini_batch_events": [
+    [
+      {
+        "event_id": "rec_16405b8d6b202ae6_e004",
+        "text": "So, personally, have you had, like, an experience where, you know, a gesture that you thought for you, like, it was fine?",
+        "interval": [
+          0.2333330000000018,
+          2.1333330000000004
+        ],
+        "frame_interval": [
+          7,
+          64
+        ]
+      }
+    ],
+    [
+      {
+        "event_id": "rec_47073548edf5fc48_e001",
+        "text": "I'm fine, thank you.",
+        "interval": [
+          0.2599999999999998,
+          1.085
+        ],
+        "frame_interval": [
+          7,
+          33
+        ]
+      }
+    ]
+  ],
+  "source_crops": [
+    {
+      "clip_id": "rec_16405b8d6b202ae6",
+      "start_frame": 1202,
+      "pts_sha256": "d92b968b070988c19f7d454e16db520fa5d353d02d0a7832406cfcc5c5d02e39"
+    },
+    {
+      "clip_id": "rec_47073548edf5fc48",
+      "start_frame": 132,
+      "pts_sha256": "daa9e172a0457a12e0270aed54e312a78c58ad4b761c0c8bde82b0abee61aaae"
+    }
+  ],
+  "gradient_norms": {
+    "null": 0.0027066415641456842,
+    "byte_embedding.weight": 0.00038604726432822645,
+    "type_embedding.weight": 0.0013034637086093426,
+    "time_projection.weight": 0.002897217869758606,
+    "time_projection.bias": 0.0014691053656861186,
+    "projection.weight": 0.049113258719444275,
+    "projection.bias": 0.0025965827517211437,
+    "attention.in_proj_weight": 0.04237483814358711,
+    "attention.in_proj_bias": 0.007103845477104187,
+    "attention.out_proj.weight": 0.04416356980800629,
+    "attention.out_proj.bias": 0.012119866907596588
+  },
+  "frozen_condition_gradients": false,
+  "content_type_perturbation_max": 0.24742919206619263,
+  "time_perturbation_max": 0.011072397232055664,
+  "same_input_noise_max": 0.0,
+  "k_prefix_max_error": 1.7583370208740234e-06,
+  "branch_optimizer_steps": 3,
+  "losses_diagnostic_only": [
+    0.3945448398590088,
+    0.3919770419597626,
+    0.3901004195213318
+  ],
+  "semantic_parameters_changed": true,
+  "official_metrics_run": false,
+  "long_training_started": false,
+  "human_reviewed": false
+}

@@ -1,6 +1,7 @@
 """Source-only local CTC alignment and audiovisual active-speaker proposals."""
 import json,hashlib,re,sys,subprocess,difflib,math
 from pathlib import Path
+from .support import support
 import numpy as np
 import torch,torchaudio,soundfile as sf,cv2
 
@@ -47,7 +48,7 @@ def decode(emission,labels):
 def video_features(path):
     probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v:0','-show_entries','frame=best_effort_timestamp_time','-of','json',str(path)]))
     pts=np.array([float(r['best_effort_timestamp_time']) for r in probe['frames']]);assert len(pts)>1 and np.all(np.diff(pts)>0)
-    duration=pts[-1]+np.median(np.diff(pts));times=np.arange(.02,duration,.04)
+    duration=pts[-1]+np.median(np.diff(pts));times=np.arange(pts[0]+.02,duration,.04)
     idx=np.searchsorted(pts,times);idx=np.minimum(idx,len(pts)-1)
     previous=np.maximum(idx-1,0);idx=np.where(abs(pts[previous]-times)<abs(pts[idx]-times),previous,idx)
     wanted={int(i) for i in idx};frames={};cap=cv2.VideoCapture(str(path));i=0
@@ -105,7 +106,9 @@ def main():
         raw,sr=sf.read(audio,always_2d=True);wave=torch.from_numpy(raw.mean(1)).float();wave=torchaudio.functional.resample(wave,sr,16000)
         emission=emissions(model,wave);words=align(emission,text,labels)
         write(dest/'words.json',words)
-        vf,vt=video_features(video);scores=asd.score(wave,vf)
+        vf,vt=video_features(video)
+        if abs(vt['first_pts'])>1e-6:raise ValueError('nonzero video origin requires explicit audio remapping; unresolved')
+        scores=asd.score(wave,vf)
         # Deliberately shifted audio control, never changes actual paired timelines.
         shifted=torch.roll(wave,3*16000);control=asd.score(shifted,vf)
         write(dest/'active_speaker_scores.json',{'times_s':(np.arange(len(scores))*.04+.02).tolist(),'raw_speaking_logit':[float(x) if np.isfinite(x) else None for x in scores],'shifted_audio_3s_logit':[float(x) if np.isfinite(x) else None for x in control],'scores_are_probabilities':False,'control_is_diagnostic_only':True})
@@ -124,8 +127,9 @@ def main():
             margin=float(np.mean(actual[finite]-negative[finite])) if finite.any() else None
             timing_ok=ctc>=.5 and agreement>=.6 and all(w['end_s']-w['start_s']<=2. for w in chosen) and not bool(re.search(r'\d',c['transcript_evidence']))
             # Conservative, preregistered heuristic. NOT human verification or calibrated accuracy.
-            role_ok=timing_ok and fraction is not None and fraction>=.8 and margin>=.5
-            events.append({**c,'event_id':row['id']+f'_e{j:03d}','start_s':start,'end_s':end,'time_reference':'speaker_audio_sample_clock','time_status':'automatic_supported' if timing_ok else 'automatic_uncertain','speaker_attribution':'source_speaker_candidate' if role_ok else 'unknown','role_status':'automatic_audiovisual_support' if role_ok else 'unknown','ctc_mean_score':ctc,'greedy_asr_char_agreement':agreement,'greedy_asr_text':estimate,'active_speech_fraction':fraction,'shift_control_logit_margin':margin,'automatic_weak_candidate':role_ok,'human_reviewed':False,'training_eligible':False,'sync_status':'container_origin_assumed_not_verified'})
+            support_stats=support(start,end,np.arange(len(scores))*.04+.02,scores,control,video_start=vt['first_pts'],video_end=vt['duration_s'],audio_start=0,audio_end=len(wave)/16000)
+            role_ok=timing_ok and support_stats['passed']
+            events.append({**c,'event_id':row['id']+f'_e{j:03d}','start_s':start,'end_s':end,'time_reference':'speaker_audio_sample_clock','time_status':'automatic_supported' if timing_ok else 'automatic_uncertain','speaker_attribution':'source_speaker_candidate' if role_ok else 'unknown','role_status':'automatic_audiovisual_support' if role_ok else 'unknown','ctc_mean_score':ctc,'greedy_asr_char_agreement':agreement,'greedy_asr_text':estimate,'active_speech_fraction':fraction,'shift_control_logit_margin':margin,'automatic_weak_candidate':role_ok,'support_statistics':support_stats,'audio_origin_s':0.,'video_origin_s':vt['first_pts'],'offset_s':None,'offset_source':'unresolved','human_reviewed':False,'training_eligible':False,'sync_status':'container_origin_assumed_not_verified'})
         result={'clip_id':row['id'],'split':'train','events':events,'audio_duration_s':len(wave)/16000,'original_sample_rate':sr,'original_channels':raw.shape[1],'video_timeline':vt,'actual_visible_inputs':[{'role':'speaker','path':str(p),'sha256':sha(p)} for p in (audio,video,txt)],'teacher_provenance':job['teachers'],'human_reviewed':False,'human_review_policy':'omitted_by_user','training_eligible':False,'limitations':['CTC forced alignment can force incorrect transcript; thresholds are uncalibrated.','Active-speaker model domain and crop transfer are unvalidated.','Container audio/video origins assumed; true synchronization not independently verified.','Roles are model proposals, not confirmed identity; no listener data accessed.']}
         write(dest/'result.json',result)
         print(row['id'],len(events),sum(e['time_status']=='automatic_supported' for e in events),sum(e['automatic_weak_candidate'] for e in events),flush=True)

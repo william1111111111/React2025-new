@@ -1,0 +1,25 @@
+{
+  "status": "preregistered_interface_only_not_launched",
+  "annotation_regime": "auto_weak",
+  "parent": "runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt",
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "arms": {
+    "E0": "same semantic capacity; NULL tokens only",
+    "E_text": "same role-filtered English evidence and timing, no event category",
+    "E_event": "identical evidence/timing plus event category"
+  },
+  "cohort_rule": "identical accepted source cohort and crop/noise schedule for all arms",
+  "semantic_dropout": 0.1,
+  "weights": "hard gates, no probability weighting",
+  "prior": "independent local noise unchanged",
+  "semantic_encoder": "minimal learned UTF-8 byte-mean embedding + category + separate time projection + attention; not a pretrained language encoder",
+  "sync": "estimated offsets only inside recorded valid range; unresolved becomes content-only, never fabricated framewise timing",
+  "formal_training_budget": null,
+  "formal_training_started": false,
+  "diagnostic_only": "B=2, 64-frame actual TRAIN crops, 3 semantic-branch-only AdamW updates; base T0 frozen for this diagnostic",
+  "evaluation": ["same checkpoint and sampling strategy FRC80", "exact FRD20", "S-MSE", "FRVar"],
+  "dev_policy": "frozen source-only automatic chain with same thresholds; no gold/listener substitution; no DEV tuning",
+  "transcript_setting": "existing transcript-assisted; not an audio-only result",
+  "deployment_without_transcript": "requires separately specified ASR or distillation; not implemented",
+  "excluded": ["planner", "rho search", "loss grid", "human prerequisite", "paid API", "automatic push"]
+}

@@ -1,0 +1,44 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/models/smoke_weak.py", line 57, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/models/smoke_weak.py", line 37, in main
+    pred=model.velocity(u,tau,*arrays,lengths,events,position_offset=offsets);loss=flow_loss(pred,v,valid);loss.backward()
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/models/semantic_flow.py", line 34, in velocity
+    h,valid=self.condition(audio,emotion,coefficients,lengths,events,mode)
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/models/semantic_flow.py", line 31, in condition
+    h,valid=self.base.condition(audio,emotion,coefficients,lengths)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/reaction_flow/condition_encoder.py", line 23, in forward
+    h,_=self.encoder(self.stems(*inputs),valid)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/hirp/model/modality_stem.py", line 20, in forward
+    self.face(face)), dim=-1))
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/normalization.py", line 196, in forward
+    return F.layer_norm(
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 2543, in layer_norm
+    return torch.layer_norm(input, normalized_shape, weight, bias, eps, torch.backends.cudnn.enabled)
+RuntimeError: expected scalar type Double but found Float
