@@ -1,0 +1,211 @@
+{
+  "id": "rec_9cb354c3d9057973",
+  "relative": "session14/Camera-2024-07-09-134253-134210",
+  "split": "train",
+  "audio_sha256": "600bdd039c868ac830217ccac7c20005812eaa817ff2521917aa37aee2fdcc31",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 21.0605,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        9.653562216271894e-08,
+        0.3447403609752655,
+        0.46688613295555115,
+        0.7045615911483765
+      ],
+      "gaps": [
+        0.34474027156829834,
+        0.12214577198028564
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -4.2623014451237395e-08,
+        0.6206073760986328,
+        0.7892993688583374,
+        1.113489031791687
+      ],
+      "gaps": [
+        0.6206074357032776,
+        0.1686919927597046
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -4.2623014451237395e-08,
+        0.6206073760986328,
+        0.7892993688583374,
+        1.113489031791687
+      ],
+      "gaps": [
+        0.6206074357032776,
+        0.1686919927597046
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 1.056,
+      "end_s": 2.4000000000000004,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.4000000000000004,
+      "end_s": 3.744,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.032,
+      "end_s": 5.648,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.648,
+      "end_s": 7.264,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.264,
+      "end_s": 8.88,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 8.88,
+      "end_s": 10.496,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 10.912,
+      "end_s": 12.064,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 15.104,
+      "end_s": 15.968,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 0.064,
+      "end_s": 0.512,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.064,
+      "end_s": 0.512
+    },
+    {
+      "start_s": 1.056,
+      "end_s": 3.744
+    },
+    {
+      "start_s": 4.032,
+      "end_s": 10.496
+    },
+    {
+      "start_s": 10.912,
+      "end_s": 12.064
+    },
+    {
+      "start_s": 15.104,
+      "end_s": 15.968
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.7218113005161285,
+    "centroid_cosine_distance": 0.5955201983451843,
+    "silhouette": 0.231864795088768,
+    "cluster_windows": [
+      7,
+      1
+    ],
+    "cluster_seconds": [
+      10.304,
+      0.8640000000000008
+    ],
+    "cluster_radius_p90": [
+      0.28815670013427735,
+      0.0
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.8923459053039551
+}

@@ -1,0 +1,45 @@
+{
+  "model": "gemini-2.5-flash",
+  "provider": "yunwu",
+  "source_id": null,
+  "source_sha256": null,
+  "payload_audio_sha256": "190415015d40eef0cd797e1b59ffe00846b01873050b12d44b3a216de3faa2a9",
+  "synthetic_silence": true,
+  "duration_s": 8.0,
+  "gain": null,
+  "prompt": "Listen to the attached audio itself. Estimate the number of distinct human speaking voices: 1, 2, or unknown. There are at most two speakers, but do not invent a second voice from pitch or volume changes. Background noise is not a speaker. Do not infer identity, gender, or source/listener role. Brief interjections can be a second speaker; if unclear return unknown. Return JSON only with: audio_accessible (boolean), speaker_count (1,2,null), short_transcript (the first clearly audible 5-15 words, or empty if unintelligible), evidence (brief audible observations), suspected_voice_changes (list of approximate start_s/end_s and brief evidence), limitations. Timestamps are rough observations, not verified alignment. Do not claim certainty when audio is weak.",
+  "elapsed_s": 4.763015270233154,
+  "http_status": 200,
+  "response": {
+    "id": "chatcmpl-20260914114809971621114Jc7RaWk4",
+    "model": "gemini-2.5-flash",
+    "object": "chat.completion",
+    "created": 1789357692,
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```json\n{\n  \"audio_accessible\": false,\n  \"speaker_count\": null,\n  \"short_transcript\": \"\",\n  \"evidence\": \"No audio stream or file was attached to the prompt for me to listen to.\",\n  \"suspected_voice_changes\": [],\n  \"limitations\": \"Audio file is missing or inaccessible.\"\n}\n```"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 623,
+      "completion_tokens": 81,
+      "total_tokens": 704,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 0,
+        "audio_tokens": 0,
+        "image_tokens": 0
+      },
+      "completion_tokens_details": {
+        "text_tokens": 0,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0
+      }
+    }
+  }
+}

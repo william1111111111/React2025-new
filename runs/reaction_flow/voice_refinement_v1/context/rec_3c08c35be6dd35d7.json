@@ -1,0 +1,94 @@
+{
+  "id": "rec_3c08c35be6dd35d7",
+  "relative": "session3/Camera-2024-08-08-153226-153307",
+  "core_contexts": [
+    {
+      "core_window_index": 21,
+      "segments": [
+        {
+          "kind": "before",
+          "start_s": 55.952,
+          "end_s": 57.952,
+          "vad_fraction": 0.8560000000000016,
+          "voice_embedding": {
+            "cosine_to_majority": 0.6704570651054382,
+            "cosine_to_minority": 0.041420210152864456,
+            "note": "core minority similarity includes itself; not independent evidence"
+          },
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 60,
+              "mean": 0.049819350242614746,
+              "positive_fraction": 1.0
+            },
+            "global_expression_motion": {
+              "frames": 60,
+              "mean": 0.017760220915079117,
+              "positive_fraction": 1.0
+            }
+          }
+        },
+        {
+          "kind": "core",
+          "start_s": 57.952,
+          "end_s": 58.784,
+          "vad_fraction": 1.0,
+          "voice_embedding": {
+            "cosine_to_majority": 0.009117040783166885,
+            "cosine_to_minority": 1.0,
+            "note": "core minority similarity includes itself; not independent evidence"
+          },
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 25,
+              "mean": 0.0025289272889494896,
+              "positive_fraction": 0.72
+            },
+            "global_expression_motion": {
+              "frames": 25,
+              "mean": 0.012291285209357738,
+              "positive_fraction": 1.0
+            }
+          }
+        },
+        {
+          "kind": "after",
+          "start_s": 58.784,
+          "end_s": 60.0700625,
+          "vad_fraction": 0.2286533508285915,
+          "voice_embedding": null,
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 39,
+              "mean": 0.030648013576865196,
+              "positive_fraction": 1.0
+            },
+            "global_expression_motion": {
+              "frames": 39,
+              "mean": 0.012525810860097408,
+              "positive_fraction": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "original_count": 2,
+  "minority_seconds": 0.8320000000000007,
+  "minority_windows": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "audio_sha256": "06f29175ca471b4ddb5c7e8926dcec4a68a89d635e9c56a18b8980eb446ef989",
+  "policy_sha256": "c519e4aee717cd88d51d9df31df56b2fe64389fc88ed8c02006eea7c9ddd27d7",
+  "input_hashes": {
+    "au": "7ddc2ddf75924e02184f52a2bf76dd7452f4a10daefc1ffdb9b7677db6bd3d97",
+    "expression": "084f7f482e1fea07c70a3c17537d4fa3011e84d319546fdbda6dc1612d383ea9",
+    "video": "e932d6161e06375cb4dbcb35d71f8ebe4ca634fb4738d6a43e10792a4a731548",
+    "embedding": "a04a36c5f93ff60f055cf6cbf9df069603f4daa6c882ea84443e43baf779659f",
+    "source_record": "93367ce1b1db82582cf7781c7aa37f93d5da8bc8d7a1499679ab60f0413787d0"
+  },
+  "ASD_sha256": null,
+  "mapping": "zero-offset WAV seconds to feature-associated raw PTS, descriptive and unverified",
+  "decision": "unknown; context evidence does not promote source identity or speaker-count eligibility"
+}

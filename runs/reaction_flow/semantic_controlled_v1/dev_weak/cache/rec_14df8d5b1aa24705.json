@@ -1,0 +1,977 @@
+{
+  "schema_version": "auto-weak-v1",
+  "annotation_regime": "auto_weak",
+  "clip_id": "rec_14df8d5b1aa24705",
+  "split": "val",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "visible_roles": [
+    "speaker"
+  ],
+  "input_hashes": [
+    "fc0fac87ba2f43bf0afd0e14cbb3d863d6b3e29fa3b1bdd7f2aafa2c0720940f",
+    "4614d929a3c2966ad56aa87d1e9384e71ab8c3966e990a4e8b916a62e2302082",
+    "4ae22a23caafe68fa74cb98f683b0c29487c4f220724dd063873a6ba782edd5e"
+  ],
+  "teacher_hashes": [
+    "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "6d6821479af485e251c4991487e40573b42181b4",
+    "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  ],
+  "policy_sha256": "ad1979cfb3c90c435104ffcf4edf7e3aeaad436a83bc5aac3446cfd9ec9cf3a4",
+  "code_hashes": [
+    "69c87fceeb283bf2711a04a4049f5c5a0f57e33974e08ad8099c4961587aa7a1",
+    "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "445cb47e68b6ab259e123b503a4a5f762f40c34f8629a068069090b6542f4ace"
+  ],
+  "events": [
+    {
+      "event_id": "rec_14df8d5b1aa24705_e000",
+      "text": "Still on policy changes, when evaluating the impact of electric vehicles and the incentives they are in, what other policies or incentives perhaps do you think would complement the current ones to",
+      "event_type": "question",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 276,
+        "overlap_grid_points": 276,
+        "actual_finite_frames": 276,
+        "control_finite_frames": 276,
+        "common_finite_frames": 276,
+        "usable_frames": 270,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 0.9782608695652174,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 11.025000000000002,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 11.040000000000001,
+        "active_fraction": 0.0,
+        "control_margin": -0.3038006656423763,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 6,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 0.96,
+        "end_s": 11.985000000000001,
+        "ctc_mean_score": 0.9253834574157735,
+        "greedy_agreement": 0.9560723514211886,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e001",
+      "text": "further promote electrical vehicles adoption in this country?",
+      "event_type": "question",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 87,
+        "overlap_grid_points": 87,
+        "actual_finite_frames": 87,
+        "control_finite_frames": 87,
+        "common_finite_frames": 87,
+        "usable_frames": 87,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 3.4650000000000016,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.56,
+        "active_fraction": 0.26436781609195403,
+        "control_margin": 1.9102947788448625,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 12.02,
+        "end_s": 15.485000000000001,
+        "ctc_mean_score": 0.9488050255392279,
+        "greedy_agreement": 0.9747899159663865,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e002",
+      "text": "Yeah.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 156,
+        "overlap_grid_points": 156,
+        "actual_finite_frames": 156,
+        "control_finite_frames": 156,
+        "common_finite_frames": 156,
+        "usable_frames": 156,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 6.224999999999998,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 6.24,
+        "active_fraction": 0.0,
+        "control_margin": -0.00636693020152232,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 24.580000000000002,
+        "end_s": 30.805,
+        "ctc_mean_score": 0.008537257293937728,
+        "greedy_agreement": 0.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": false,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "timing:word_duration",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e003",
+      "text": "Okay.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 37,
+        "overlap_grid_points": 37,
+        "actual_finite_frames": 37,
+        "control_finite_frames": 37,
+        "common_finite_frames": 37,
+        "usable_frames": 37,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.4649999999999999,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.48,
+        "active_fraction": 0.0,
+        "control_margin": 0.1431165128140836,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 31.12,
+        "end_s": 32.585,
+        "ctc_mean_score": 0.005897032795473933,
+        "greedy_agreement": 0.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e004",
+      "text": "Okay.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 33,
+        "overlap_grid_points": 33,
+        "actual_finite_frames": 33,
+        "control_finite_frames": 33,
+        "common_finite_frames": 33,
+        "usable_frames": 33,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.2850000000000037,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.32,
+        "active_fraction": 0.0,
+        "control_margin": -0.055968135294288034,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 34.74,
+        "end_s": 36.025000000000006,
+        "ctc_mean_score": 0.005459938431158662,
+        "greedy_agreement": 0.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e005",
+      "text": "Okay.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 292,
+        "overlap_grid_points": 292,
+        "actual_finite_frames": 292,
+        "control_finite_frames": 292,
+        "common_finite_frames": 292,
+        "usable_frames": 292,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 11.685000000000002,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 11.56,
+        "active_fraction": 0.010273972602739725,
+        "control_margin": 0.07005961525113616,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 38.480000000000004,
+        "end_s": 50.165000000000006,
+        "ctc_mean_score": 0.006130423280410469,
+        "greedy_agreement": 0.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": false,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "timing:word_duration",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e006",
+      "text": "Very true.",
+      "event_type": "evaluation",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 10,
+        "overlap_grid_points": 10,
+        "actual_finite_frames": 10,
+        "control_finite_frames": 10,
+        "common_finite_frames": 10,
+        "usable_frames": 10,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.4049999999999869,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 3.8762684186299645,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 74.04,
+        "end_s": 74.445,
+        "ctc_mean_score": 0.9794582277536392,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e007",
+      "text": "Very well said.",
+      "event_type": "evaluation",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 14,
+        "overlap_grid_points": 14,
+        "actual_finite_frames": 14,
+        "control_finite_frames": 14,
+        "common_finite_frames": 14,
+        "usable_frames": 14,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.5450000000000017,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 4.13662463018582,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 74.72,
+        "end_s": 75.265,
+        "ctc_mean_score": 0.992985596259435,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e008",
+      "text": "Thank you.",
+      "event_type": "utterance",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 8,
+        "overlap_grid_points": 8,
+        "actual_finite_frames": 8,
+        "control_finite_frames": 8,
+        "common_finite_frames": 8,
+        "usable_frames": 8,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.2849999999999966,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 4.379959796865782,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 75.42,
+        "end_s": 75.705,
+        "ctc_mean_score": 0.9781386037667592,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    },
+    {
+      "event_id": "rec_14df8d5b1aa24705_e009",
+      "text": "Thank you very much for your answers.",
+      "event_type": "evaluation",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 40,
+        "overlap_grid_points": 40,
+        "actual_finite_frames": 40,
+        "control_finite_frames": 40,
+        "common_finite_frames": 40,
+        "usable_frames": 40,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.605000000000004,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 2.539260465155045,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 76.0,
+        "end_s": 77.605,
+        "ctc_mean_score": 0.9843739592096432,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          77.23331250000001
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "8fc17d83006dec775cb70dff5fd72b1c8a5a31958759b3a80d4da75bdd968b62",
+        "ea9e1da6f85ab7a4df0a3571ff41f3d7867e5feaedb4c093a2372377111fa22c",
+        "499757c435831b1c4afbc4cd6643781ca7e49977c1dfae7b10cf8348d6b5970d",
+        "f69bcedfeb71177cab0a968a96c07e035d813b1e8ce18951d17743ba9b9f4c79"
+      ]
+    }
+  ]
+}

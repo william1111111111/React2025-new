@@ -1,0 +1,210 @@
+{
+  "id": "rec_454158c22c0cecac",
+  "relative": "session15/Camera-2024-07-22-132508-132549",
+  "split": "train",
+  "audio_sha256": "d7bdb28782ea4aead87842f26948e2a21828b9adfd3d3e956d0c6dbca5f054ed",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 12.7941875,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.5305913336760568e-07,
+        0.3701346814632416,
+        0.438445508480072,
+        0.8520858883857727
+      ],
+      "gaps": [
+        0.37013453245162964,
+        0.06831082701683044
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.5305913336760568e-07,
+        0.3701346814632416,
+        0.438445508480072,
+        0.8520858883857727
+      ],
+      "gaps": [
+        0.37013453245162964,
+        0.06831082701683044
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.430511474609375e-06,
+        0.5661892890930176,
+        0.8113225698471069,
+        1.329480767250061
+      ],
+      "gaps": [
+        0.566187858581543,
+        0.24513328075408936
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 1.728,
+      "end_s": 2.752,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.752,
+      "end_s": 3.776,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.704,
+      "end_s": 5.824,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.824,
+      "end_s": 6.944,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.264,
+      "end_s": 8.32,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 8.32,
+      "end_s": 9.376,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 11.008,
+      "end_s": 11.872,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 0.64,
+      "end_s": 1.28,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 12.448,
+      "end_s": 12.7941875,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.64,
+      "end_s": 1.28
+    },
+    {
+      "start_s": 1.728,
+      "end_s": 3.776
+    },
+    {
+      "start_s": 4.704,
+      "end_s": 6.944
+    },
+    {
+      "start_s": 7.264,
+      "end_s": 9.376
+    },
+    {
+      "start_s": 11.008,
+      "end_s": 11.872
+    },
+    {
+      "start_s": 12.448,
+      "end_s": 12.7941875
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.6824979782104492,
+    "centroid_cosine_distance": 0.5295679569244385,
+    "silhouette": 0.12502314150333405,
+    "cluster_windows": [
+      6,
+      1
+    ],
+    "cluster_seconds": [
+      6.3999999999999995,
+      0.8640000000000008
+    ],
+    "cluster_radius_p90": [
+      0.31233853101730347,
+      0.0
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.6205160617828369
+}

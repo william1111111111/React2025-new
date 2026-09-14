@@ -1,0 +1,567 @@
+{
+  "schema_version": "auto-weak-v1",
+  "annotation_regime": "auto_weak",
+  "clip_id": "rec_d9e1a2653098c2a2",
+  "split": "val",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "visible_roles": [
+    "speaker"
+  ],
+  "input_hashes": [
+    "555a2ca8e88c920cdd078ae9cb1b2bed2caf107b6e0925c9360f596ecbc1da70",
+    "74beaa94654ee1f0f4b91d92bd7b57291169fa78a76079217bfb45f0a7ec6bb8",
+    "36915cb4901d3c31e5096d344b8d1046d9ff8188afb75cbc13a20e0d50ac4a0d"
+  ],
+  "teacher_hashes": [
+    "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "6d6821479af485e251c4991487e40573b42181b4",
+    "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  ],
+  "policy_sha256": "ad1979cfb3c90c435104ffcf4edf7e3aeaad436a83bc5aac3446cfd9ec9cf3a4",
+  "code_hashes": [
+    "69c87fceeb283bf2711a04a4049f5c5a0f57e33974e08ad8099c4961587aa7a1",
+    "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "445cb47e68b6ab259e123b503a4a5f762f40c34f8629a068069090b6542f4ace"
+  ],
+  "events": [
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e000",
+      "text": "Yeah, I think there's quite a big push towards it.",
+      "event_type": "evaluation",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 56,
+        "overlap_grid_points": 56,
+        "actual_finite_frames": 56,
+        "control_finite_frames": 56,
+        "common_finite_frames": 56,
+        "usable_frames": 56,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 2.225,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 2.5805702907964587,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 0.48,
+        "end_s": 2.705,
+        "ctc_mean_score": 0.6154074156871091,
+        "greedy_agreement": 0.7659574468085106,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    },
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e001",
+      "text": "So the government is also planning to increase the number of charging stations, because obviously that's the big limiting factor for a lot of people.",
+      "event_type": "disclosure",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 184,
+        "overlap_grid_points": 184,
+        "actual_finite_frames": 184,
+        "control_finite_frames": 184,
+        "common_finite_frames": 184,
+        "usable_frames": 184,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 7.345000000000001,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 3.9011100527385008,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 4.18,
+        "end_s": 11.525,
+        "ctc_mean_score": 0.7622014270447566,
+        "greedy_agreement": 0.8327645051194539,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    },
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e002",
+      "text": "So they're increasing it in city centres, residential areas, and also in the countryside, because for someone to go cross-country.",
+      "event_type": "disclosure",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 158,
+        "overlap_grid_points": 158,
+        "actual_finite_frames": 158,
+        "control_finite_frames": 158,
+        "common_finite_frames": 158,
+        "usable_frames": 158,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 6.304999999999998,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 3.624976368966799,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 11.92,
+        "end_s": 18.224999999999998,
+        "ctc_mean_score": 0.6867388771345976,
+        "greedy_agreement": 0.8102189781021898,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    },
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e003",
+      "text": "Do you think this movement towards more charging stations will address any concerns about accessibility to charging?",
+      "event_type": "question",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 195,
+        "overlap_grid_points": 195,
+        "actual_finite_frames": 195,
+        "control_finite_frames": 195,
+        "common_finite_frames": 195,
+        "usable_frames": 195,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 7.805,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 4.477790235174008,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 18.88,
+        "end_s": 26.685,
+        "ctc_mean_score": 0.8573845427639055,
+        "greedy_agreement": 0.8907563025210085,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    },
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e004",
+      "text": "Yeah, that makes sense.",
+      "event_type": "evaluation",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 19,
+        "overlap_grid_points": 19,
+        "actual_finite_frames": 19,
+        "control_finite_frames": 19,
+        "common_finite_frames": 19,
+        "usable_frames": 19,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.7450000000000045,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 4.006799411290047,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 47.08,
+        "end_s": 47.825,
+        "ctc_mean_score": 0.5869268447393552,
+        "greedy_agreement": 0.8108108108108109,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    },
+    {
+      "event_id": "rec_d9e1a2653098c2a2_e005",
+      "text": "You know, it's whatever's most convenient, isn't it?",
+      "event_type": "evaluation",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 45,
+        "overlap_grid_points": 45,
+        "actual_finite_frames": 44,
+        "control_finite_frames": 44,
+        "common_finite_frames": 44,
+        "usable_frames": 44,
+        "common_finite_coverage": 0.9777777777777777,
+        "usable_coverage": 0.9777777777777777,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.7650000000000006,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.04,
+        "active_fraction": 0.9772727272727273,
+        "control_margin": 3.3001714152368633,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 50.14,
+        "end_s": 51.905,
+        "ctc_mean_score": 0.36244691505700455,
+        "greedy_agreement": 0.6588235294117647,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          51.3198125
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean"
+      ],
+      "source_version_hashes": [
+        "2b22519a8020bc1da8ac624fd24f19b83e75ce0b16ece37ce8dc4317e4a050e6",
+        "7b2d6c3a9a6662dc6ef5ca800c15b131f99cf397e35506a29d3d12aced10c1d0",
+        "ec8c5ef8e8700fdfd1529a1f349c10852b5c95c751d1d0d67430894f762a24d7",
+        "77999f3ceb1074541bc1ff7ab38c73b9064db63dde0959c30e75182b51340d31"
+      ]
+    }
+  ]
+}

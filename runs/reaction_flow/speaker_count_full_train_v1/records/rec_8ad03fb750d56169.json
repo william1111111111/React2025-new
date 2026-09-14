@@ -1,0 +1,226 @@
+{
+  "id": "rec_8ad03fb750d56169",
+  "relative": "session17/Camera-2024-07-22-155059-155140",
+  "split": "train",
+  "audio_sha256": "96e9b470ae8de0a7620269d06b7fda551338dbfd63b1c9567205c03fc908ed81",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 29.860875,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        9.957034308172297e-08,
+        0.4161166250705719,
+        0.5891681909561157,
+        0.5970796942710876
+      ],
+      "gaps": [
+        0.41611653566360474,
+        0.17305156588554382
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.1920928955078125e-06,
+        0.7927122116088867,
+        0.8659305572509766,
+        1.0264394283294678
+      ],
+      "gaps": [
+        0.7927110195159912,
+        0.07321834564208984
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        9.5367431640625e-07,
+        1.0625367164611816,
+        1.2950222492218018,
+        1.3013551235198975
+      ],
+      "gaps": [
+        1.0625357627868652,
+        0.23248553276062012
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.544,
+      "end_s": 1.872,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 1.872,
+      "end_s": 3.2,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.616,
+      "end_s": 5.16,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.16,
+      "end_s": 6.704000000000001,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 6.704000000000001,
+      "end_s": 8.248,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 8.248,
+      "end_s": 9.792,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 22.112,
+      "end_s": 23.530666666666665,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 23.530666666666665,
+      "end_s": 24.949333333333332,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 24.949333333333332,
+      "end_s": 26.368,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 15.168,
+      "end_s": 15.808,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 29.536,
+      "end_s": 29.860875,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.544,
+      "end_s": 3.2
+    },
+    {
+      "start_s": 3.616,
+      "end_s": 9.792
+    },
+    {
+      "start_s": 15.168,
+      "end_s": 15.808
+    },
+    {
+      "start_s": 22.112,
+      "end_s": 26.368
+    },
+    {
+      "start_s": 29.536,
+      "end_s": 29.860875
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "pairwise_cosine_distance_p90": 0.58029505610466,
+    "centroid_cosine_distance": 0.38123130798339844,
+    "silhouette": 0.08635881543159485,
+    "cluster_windows": [
+      8,
+      1
+    ],
+    "cluster_seconds": [
+      11.669333333333334,
+      1.4186666666666667
+    ],
+    "cluster_radius_p90": [
+      0.28317261934280397,
+      0.0
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 1.0922064781188965
+}

@@ -1,0 +1,212 @@
+{
+  "id": "rec_f676a0e03b4aad67",
+  "relative": "session15/Camera-2024-07-22-143349-143428",
+  "split": "train",
+  "audio_sha256": "3f8a245416e45eb1411aadfdc116985e0dfdcf5494e78d485ef05236fd92eacf",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 23.011,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": false,
+  "screening_bucket": "uncertain",
+  "uncertainty_reasons": [
+    "neighbor_sensitivity",
+    "partition_sensitivity"
+  ],
+  "spectral_runs": [
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        2.0515449250524398e-07,
+        0.12590409815311432,
+        0.29095491766929626,
+        0.5295551419258118
+      ],
+      "gaps": [
+        0.1259038895368576,
+        0.16505081951618195
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        5.96836642330345e-08,
+        0.412686288356781,
+        0.5740294456481934,
+        0.8891463279724121
+      ],
+      "gaps": [
+        0.41268622875213623,
+        0.16134315729141235
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.8278980462582695e-07,
+        0.7328333258628845,
+        0.8366349339485168,
+        1.2717185020446777
+      ],
+      "gaps": [
+        0.7328331470489502,
+        0.10380160808563232
+      ]
+    }
+  ],
+  "partition_ARI": [
+    0.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.128,
+      "end_s": 1.2799999999999998,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 1.2799999999999998,
+      "end_s": 2.432,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.912,
+      "end_s": 4.330666666666667,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.330666666666667,
+      "end_s": 5.749333333333333,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.749333333333333,
+      "end_s": 7.168,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.488,
+      "end_s": 8.448,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 17.312,
+      "end_s": 18.688000000000002,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 18.688000000000002,
+      "end_s": 20.064,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 20.064,
+      "end_s": 21.44,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [],
+  "vad_intervals": [
+    {
+      "start_s": 0.128,
+      "end_s": 2.432
+    },
+    {
+      "start_s": 2.912,
+      "end_s": 7.168
+    },
+    {
+      "start_s": 7.488,
+      "end_s": 8.448
+    },
+    {
+      "start_s": 17.312,
+      "end_s": 21.44
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "pairwise_cosine_distance_p90": 0.7343764305114746,
+    "centroid_cosine_distance": 0.557683527469635,
+    "silhouette": 0.12370346486568451,
+    "cluster_windows": [
+      8,
+      1
+    ],
+    "cluster_seconds": [
+      10.688,
+      0.96
+    ],
+    "cluster_radius_p90": [
+      0.3636535108089447,
+      -1.1920928955078125e-07
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.9542989730834961
+}

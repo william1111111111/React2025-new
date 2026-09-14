@@ -1,0 +1,90 @@
+{
+  "id": "rec_8d27756c20d03c37",
+  "relative": "session0/Camera-2024-07-17-121257-121235",
+  "core_contexts": [
+    {
+      "core_window_index": 1,
+      "segments": [
+        {
+          "kind": "before",
+          "start_s": 22.448,
+          "end_s": 24.448,
+          "vad_fraction": 0.26399999999999935,
+          "voice_embedding": null,
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 60,
+              "mean": 0.028502175584435463,
+              "positive_fraction": 1.0
+            },
+            "global_expression_motion": {
+              "frames": 60,
+              "mean": 0.0133890425786376,
+              "positive_fraction": 1.0
+            }
+          }
+        },
+        {
+          "kind": "core",
+          "start_s": 24.448,
+          "end_s": 25.248,
+          "vad_fraction": 1.0,
+          "voice_embedding": {
+            "cosine_to_majority": 0.25434404611587524,
+            "cosine_to_minority": 1.0,
+            "note": "core minority similarity includes itself; not independent evidence"
+          },
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 24,
+              "mean": 0.06587884575128555,
+              "positive_fraction": 1.0
+            },
+            "global_expression_motion": {
+              "frames": 24,
+              "mean": 0.015328380279242992,
+              "positive_fraction": 1.0
+            }
+          }
+        },
+        {
+          "kind": "after",
+          "start_s": 25.248,
+          "end_s": 27.248,
+          "vad_fraction": 0.20000000000000107,
+          "voice_embedding": null,
+          "feature_activity": {
+            "anonymous_AU_switching": {
+              "frames": 60,
+              "mean": 0.04093515872955322,
+              "positive_fraction": 0.8833333333333333
+            },
+            "global_expression_motion": {
+              "frames": 60,
+              "mean": 0.014139910228550434,
+              "positive_fraction": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "original_count": 2,
+  "minority_seconds": 0.8000000000000007,
+  "minority_windows": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "audio_sha256": "9016d4ce9ecb74bb3f0b84adb065be248a159fb35f585605a940232d5ba0d75a",
+  "policy_sha256": "c519e4aee717cd88d51d9df31df56b2fe64389fc88ed8c02006eea7c9ddd27d7",
+  "input_hashes": {
+    "au": "acbe735bc895fecab8a78c926cc98f5d5175ad569fdd162e6cb29e4caa8097c1",
+    "expression": "72a314f2cd860356f9ce1ecad1c6acd97d96fb8fef1b0dca171cc577b08d9f7a",
+    "video": "511bb5720c59b0239d1e0eeca2b48f0236e7d078cc194648b1738cf6c110af39",
+    "embedding": "0b3497dff77a038423ab272996011a846033d3a10caf506c34f9f52be2170364",
+    "source_record": "a837edb63121348fb23ee3e9f470787ad1f18dfc4729b59331e82e58e625407f"
+  },
+  "ASD_sha256": null,
+  "mapping": "zero-offset WAV seconds to feature-associated raw PTS, descriptive and unverified",
+  "decision": "unknown; context evidence does not promote source identity or speaker-count eligibility"
+}

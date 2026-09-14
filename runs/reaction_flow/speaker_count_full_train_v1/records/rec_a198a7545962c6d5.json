@@ -1,0 +1,202 @@
+{
+  "id": "rec_a198a7545962c6d5",
+  "relative": "session14/Camera-2024-06-26-105024-105025",
+  "split": "train",
+  "audio_sha256": "ac20dbe5649a687d6cc6353942c86bc53b50327af5141d1d56e683a7c5c8954f",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 18.9939375,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        8.534706807949988e-08,
+        0.2995378375053406,
+        0.46661829948425293,
+        1.1491937637329102
+      ],
+      "gaps": [
+        0.2995377480983734,
+        0.16708046197891235
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        8.534706807949988e-08,
+        0.2995378375053406,
+        0.46661829948425293,
+        1.1491937637329102
+      ],
+      "gaps": [
+        0.2995377480983734,
+        0.16708046197891235
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.1920928955078125e-06,
+        0.6832606792449951,
+        1.0426748991012573,
+        1.632427453994751
+      ],
+      "gaps": [
+        0.6832594871520996,
+        0.3594142198562622
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.864,
+      "end_s": 2.5546666666666664,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.5546666666666664,
+      "end_s": 4.245333333333333,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.245333333333333,
+      "end_s": 5.935999999999999,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.935999999999999,
+      "end_s": 7.626666666666665,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.626666666666665,
+      "end_s": 9.317333333333332,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 9.317333333333332,
+      "end_s": 11.008,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 17.056,
+      "end_s": 18.4,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 0.0,
+      "end_s": 0.288,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 13.152,
+      "end_s": 13.472,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.0,
+      "end_s": 0.288
+    },
+    {
+      "start_s": 0.864,
+      "end_s": 11.008
+    },
+    {
+      "start_s": 13.152,
+      "end_s": 13.472
+    },
+    {
+      "start_s": 17.056,
+      "end_s": 18.4
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    "pairwise_cosine_distance_p90": 0.6264210939407349,
+    "centroid_cosine_distance": 0.3776336908340454,
+    "silhouette": 0.13829953968524933,
+    "cluster_windows": [
+      5,
+      2
+    ],
+    "cluster_seconds": [
+      8.106666666666662,
+      3.381333333333334
+    ],
+    "cluster_radius_p90": [
+      0.26817567348480226,
+      0.12903201580047607
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.8662421703338623
+}

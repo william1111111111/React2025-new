@@ -1,0 +1,308 @@
+{
+  "schema_version": "auto-weak-v1",
+  "annotation_regime": "auto_weak",
+  "clip_id": "rec_98d313b212c76570",
+  "split": "val",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "visible_roles": [
+    "speaker"
+  ],
+  "input_hashes": [
+    "7ad136263f0bf4258bf13c1b04090d67ff3eb70dda8d9e62fd48748e7d7eedad",
+    "c1e57bf7deb61bfec2bd8a192afc3e3c45ec36d29f4d79f063dacaa59352f50d",
+    "258fbab980daf7be5c4bb20ac0c48d4fa0efd4c7bac93c0e690a61f9105388f3"
+  ],
+  "teacher_hashes": [
+    "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "6d6821479af485e251c4991487e40573b42181b4",
+    "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  ],
+  "policy_sha256": "ad1979cfb3c90c435104ffcf4edf7e3aeaad436a83bc5aac3446cfd9ec9cf3a4",
+  "code_hashes": [
+    "69c87fceeb283bf2711a04a4049f5c5a0f57e33974e08ad8099c4961587aa7a1",
+    "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "445cb47e68b6ab259e123b503a4a5f762f40c34f8629a068069090b6542f4ace"
+  ],
+  "events": [
+    {
+      "event_id": "rec_98d313b212c76570_e000",
+      "text": "who painted the famous artwork Starry Night?",
+      "event_type": "question",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 77,
+        "overlap_grid_points": 77,
+        "actual_finite_frames": 77,
+        "control_finite_frames": 77,
+        "common_finite_frames": 77,
+        "usable_frames": 71,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 0.922077922077922,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 3.0650000000000004,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 3.798729275943527,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 6,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 2.0,
+        "end_s": 5.065,
+        "ctc_mean_score": 0.8651361879645562,
+        "greedy_agreement": 0.9285714285714286,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          12.35675
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "8c18ea03d5aa1247fefc080281efe84ad9be67948325e71da289066fde66e5c6",
+        "8977e579dcdb18e80e1c0e7bdc729dc3784e218228003cd65d06beff8a00347a",
+        "5a53cdfcc444eb12de739ae651338f42c1d0e5a2a9938ff205e4d5ab2dbaa037",
+        "4b68d03e00bc254a1c607905e5012a02f5dcc199a319af682b4a5d80ff6fd1d8"
+      ]
+    },
+    {
+      "event_id": "rec_98d313b212c76570_e001",
+      "text": "Pablo Picasso, Vincent Van Gogh, Leonardo da Vinci, Claude Monet.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 114,
+        "overlap_grid_points": 114,
+        "actual_finite_frames": 114,
+        "control_finite_frames": 114,
+        "common_finite_frames": 114,
+        "usable_frames": 114,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.545000000000002,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 0.28,
+        "active_fraction": 0.9035087719298246,
+        "control_margin": 3.858545133985623,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 5.68,
+        "end_s": 10.225000000000001,
+        "ctc_mean_score": 0.6808658414452831,
+        "greedy_agreement": 0.7368421052631579,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          12.35675
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn"
+      ],
+      "source_version_hashes": [
+        "8c18ea03d5aa1247fefc080281efe84ad9be67948325e71da289066fde66e5c6",
+        "8977e579dcdb18e80e1c0e7bdc729dc3784e218228003cd65d06beff8a00347a",
+        "5a53cdfcc444eb12de739ae651338f42c1d0e5a2a9938ff205e4d5ab2dbaa037",
+        "4b68d03e00bc254a1c607905e5012a02f5dcc199a319af682b4a5d80ff6fd1d8"
+      ]
+    },
+    {
+      "event_id": "rec_98d313b212c76570_e002",
+      "text": "Great.",
+      "event_type": "evaluation",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 8,
+        "overlap_grid_points": 8,
+        "actual_finite_frames": 7,
+        "control_finite_frames": 7,
+        "common_finite_frames": 7,
+        "usable_frames": 7,
+        "common_finite_coverage": 0.875,
+        "usable_coverage": 0.875,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.28500000000000014,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 0.6035672543304307,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": false,
+          "usable_coverage": false,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "common_finite_coverage",
+          "usable_coverage"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 12.46,
+        "end_s": 12.745000000000001,
+        "ctc_mean_score": 0.8412522792816162,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          12.35675
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": false,
+        "usable_coverage": false,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:common_finite_coverage",
+        "role:usable_coverage"
+      ],
+      "source_version_hashes": [
+        "8c18ea03d5aa1247fefc080281efe84ad9be67948325e71da289066fde66e5c6",
+        "8977e579dcdb18e80e1c0e7bdc729dc3784e218228003cd65d06beff8a00347a",
+        "5a53cdfcc444eb12de739ae651338f42c1d0e5a2a9938ff205e4d5ab2dbaa037",
+        "4b68d03e00bc254a1c607905e5012a02f5dcc199a319af682b4a5d80ff6fd1d8"
+      ]
+    }
+  ]
+}

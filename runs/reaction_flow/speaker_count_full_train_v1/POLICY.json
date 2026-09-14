@@ -1,0 +1,63 @@
+{
+  "voice": {
+    "max_speakers": 2,
+    "vad_threshold": 0.5,
+    "min_speech_ms": 250,
+    "min_silence_ms": 200,
+    "window_max_s": 2.0,
+    "window_min_s": 0.8,
+    "minimum_total_evidence_s": 6,
+    "minimum_cluster_windows": 2,
+    "minimum_cluster_seconds": 2.4,
+    "one_cluster_pairwise_p90_max": [
+      0.2,
+      0.25,
+      0.3
+    ],
+    "two_cluster_centroid_distance_min": [
+      0.3,
+      0.35,
+      0.4
+    ],
+    "silhouette_min": 0.35,
+    "within_cluster_cosine_radius_p90_max": 0.3,
+    "decision": "all three preset policies must agree; otherwise uncertain; engineering gates, no calibration",
+    "audio_origin": "first WAV sample",
+    "window_overlap": false,
+    "overlapping_speech_detector": false,
+    "scope": "33 TRAIN speaker WAV files only; no listener access, paid API or GPU",
+    "interpretation": "estimated number of sustained distinguishable voices, not proof of exact speaker count; brief second voice may be missed"
+  },
+  "spectral": {
+    "method": "cosine affinity, row top-neighbor pruning, symmetric unnormalized Laplacian, largest eigengap among k=1 and k=2 INCLUDING first eigenvalue",
+    "neighbor_fractions": [
+      0.2,
+      0.3,
+      0.4
+    ],
+    "primary_fraction": 0.3,
+    "seed": 123,
+    "max_speakers": 2,
+    "stable_rule": "all three counts equal; if two, partition ARI >= .8; minimum two windows and 2.4s per cluster",
+    "status": "exploratory after distance-gate v1 failed on 33/33; not calibrated or accepted weak labels",
+    "role": "unknown; anonymous AU and 52-D motion are auxiliary, not identity or speaker-count truth"
+  },
+  "workers": 24,
+  "torch_threads_per_worker": 1,
+  "device": "cpu",
+  "code_hashes": {
+    "feature_aux.py": "b44ee5c594fd048ea8aa505c7cb3c50bbf3e051075c7eb9c119175314d1171a2",
+    "full_train.py": "ac02977ed3cc2831cf2c46889e8cb100e276e47ef3de6f7ee479dd4d110dac81",
+    "run.py": "8d25b389b7e2c97f3ccbd839040e1c45bae275bc7874143fe7b96d7406871858",
+    "test_contract.py": "6479ec24057f9be847a5dd0830d88a13e7b224b715510f94d9fa87f71b5b24bd",
+    "test_spectral.py": "fcd5a71717af936957e53a3e86a8bc461f7bc9fb18ac76d987187c1c20d9e6db",
+    "spectral.py": "aaf96f67ae93fcca0d83163fa65d7e9d2a3ac5093ea2c7c57c5ac2307101484b"
+  },
+  "model_hashes": {
+    "ecapa/embedding_model.ckpt": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+    "ecapa/hyperparams.yaml": "6f78854fa04ba59e761437b76a2575d3aba5e5016de3e9b69f0c9a5077fb1a41",
+    "silero/silero_vad.jit": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+    "silero/utils_vad.py": "f11e050b3e499ae52e77989b2559336461033ed63e30ddd5fdfca7dc94f50044"
+  },
+  "notes": "Frozen pilot methods; counts not calibrated; no media upload or paid API; no ASR rerun, no automatic source identity or semantic-cache changes."
+}

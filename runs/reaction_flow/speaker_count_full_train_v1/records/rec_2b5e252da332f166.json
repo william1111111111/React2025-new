@@ -1,0 +1,207 @@
+{
+  "id": "rec_2b5e252da332f166",
+  "relative": "session17/Camera-2024-06-26-105024-105025",
+  "split": "train",
+  "audio_sha256": "31db5342573d14534038b17611714655946f31fab5c6564ae6f1da3fd4c29887",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 25.9366875,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        8.493832126532652e-08,
+        0.38283300399780273,
+        0.4034256041049957,
+        0.5637891292572021
+      ],
+      "gaps": [
+        0.38283291459083557,
+        0.020592600107192993
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        7.152557373046875e-07,
+        0.6176259517669678,
+        1.0048308372497559,
+        1.12992525100708
+      ],
+      "gaps": [
+        0.6176252365112305,
+        0.3872048854827881
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        7.152557373046875e-07,
+        0.6176259517669678,
+        1.0048308372497559,
+        1.12992525100708
+      ],
+      "gaps": [
+        0.6176252365112305,
+        0.3872048854827881
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.576,
+      "end_s": 2.474666666666667,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.474666666666667,
+      "end_s": 4.373333333333334,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.373333333333334,
+      "end_s": 6.272,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 6.592,
+      "end_s": 8.28,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 8.28,
+      "end_s": 9.968,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 9.968,
+      "end_s": 11.655999999999999,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 11.655999999999999,
+      "end_s": 13.344,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 24.544,
+      "end_s": 25.9366875,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 22.88,
+      "end_s": 23.424,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.576,
+      "end_s": 6.272
+    },
+    {
+      "start_s": 6.592,
+      "end_s": 13.344
+    },
+    {
+      "start_s": 22.88,
+      "end_s": 23.424
+    },
+    {
+      "start_s": 24.544,
+      "end_s": 25.9366875
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.6563575506210327,
+    "centroid_cosine_distance": 0.4303702116012573,
+    "silhouette": 0.1572713851928711,
+    "cluster_windows": [
+      6,
+      2
+    ],
+    "cluster_seconds": [
+      10.549333333333333,
+      3.291354166666668
+    ],
+    "cluster_radius_p90": [
+      0.2773239314556122,
+      0.16044211387634277
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 1.013995885848999
+}

@@ -1,0 +1,33 @@
+{
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "steps_per_arm": 500,
+  "checkpoint_steps": [
+    100,
+    500
+  ],
+  "arms": {
+    "E0": "null",
+    "E_text": "text",
+    "E_event": "event"
+  },
+  "batch_size": 4,
+  "crop_frames": 750,
+  "seed": 123,
+  "noise": "unchanged independent local recording/training noise",
+  "loss": "unchanged T0 FM + inherited lambda_ref * task_parts; no dynamic loss",
+  "optimizer": "inherit T0 AdamW velocity state, fresh semantic parameter group; both lr2e-5",
+  "dropout": 0.1,
+  "schedule_sha256": "469976b4cf15ee0ab3abd1980a404a6a821cf60d0c6693cf69719e9c740971f2",
+  "cohort_sha256": "25105958df68797390bacdbb2d148da4422e91a2dd7ffcc14d2556ccd5919f2f",
+  "event_typer_sha256": "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47",
+  "cohort_sources": 48,
+  "semantic_regime": "auto_weak; hard gates unchanged; local typer applied to TRAIN and DEV",
+  "no_dev_tuning": true,
+  "metrics": [
+    "FRC80",
+    "exact FRD20",
+    "S-MSE",
+    "FRVar"
+  ],
+  "precision": "FP32 training; FP64 Euler16 evaluation -> FP32 metrics"
+}

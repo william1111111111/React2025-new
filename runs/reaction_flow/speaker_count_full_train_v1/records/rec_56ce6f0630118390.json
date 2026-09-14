@@ -1,0 +1,191 @@
+{
+  "id": "rec_56ce6f0630118390",
+  "relative": "session13/Camera-2024-07-22-103025-103101",
+  "split": "train",
+  "audio_sha256": "4ba95302c1e319f4f1bab4197b72f1bbc34e8b15c2d0e88021d597c1f3c70bf2",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 14.976875,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 2,
+  "graph_stable": true,
+  "screening_bucket": "2_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        8.028823827999076e-08,
+        0.49110645055770874,
+        1.1361873149871826,
+        1.5298378467559814
+      ],
+      "gaps": [
+        0.4911063611507416,
+        0.6450808644294739
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        8.028823827999076e-08,
+        0.49110645055770874,
+        1.1361873149871826,
+        1.5298378467559814
+      ],
+      "gaps": [
+        0.4911063611507416,
+        0.6450808644294739
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        8.028823827999076e-08,
+        0.49110645055770874,
+        1.1361873149871826,
+        1.5298378467559814
+      ],
+      "gaps": [
+        0.4911063611507416,
+        0.6450808644294739
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 1.184,
+      "end_s": 2.5919999999999996,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.5919999999999996,
+      "end_s": 4.0,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 4.928,
+      "end_s": 6.485333333333333,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 6.485333333333333,
+      "end_s": 8.042666666666666,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 8.042666666666666,
+      "end_s": 9.6,
+      "candidate_voice": "voice_1"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 0.0,
+      "end_s": 0.736,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 12.448,
+      "end_s": 13.088,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 13.44,
+      "end_s": 14.176,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.0,
+      "end_s": 0.736
+    },
+    {
+      "start_s": 1.184,
+      "end_s": 4.0
+    },
+    {
+      "start_s": 4.928,
+      "end_s": 9.6
+    },
+    {
+      "start_s": 12.448,
+      "end_s": 13.088
+    },
+    {
+      "start_s": 13.44,
+      "end_s": 14.176
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.5763064384460449,
+    "centroid_cosine_distance": 0.36092013120651245,
+    "silhouette": 0.12819893658161163,
+    "cluster_windows": [
+      3,
+      2
+    ],
+    "cluster_seconds": [
+      4.373333333333333,
+      3.1146666666666665
+    ],
+    "cluster_radius_p90": [
+      0.18960392475128174,
+      0.11768910884857178
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.6361136436462402
+}

@@ -1,0 +1,22 @@
+{
+  "split": "train",
+  "gain_target_rms": 0.05,
+  "max_gain_db": 60,
+  "peak_ceiling": 0.95,
+  "low_rms_threshold": 0.001,
+  "gain_sensitivity": "repeat VAD at half main gain; descriptive interval IoU, no threshold retuning",
+  "context_flank_s": 2,
+  "context_min_embedding_s": 0.8,
+  "minimum_flank_vad_fraction": 0.5,
+  "roles": "unknown; no new role or training eligibility",
+  "feature_time": "actual video PTS associated by equal row count; zero audio offset for descriptive evidence only",
+  "allowed_features": "first15 anonymous binary AU switching and first52 global expression motion, no guessed mouth indices",
+  "scope": "95 low-RMS insufficient-evidence recordings and all 79 small-cluster cases; no API, GPU, listener or DEV",
+  "code_hashes": {
+    "experiments/voice_refinement/refine.py": "1272dcb6b82abbceeb241007a284b8035d8d81cab25b37e422c0bfb1530d32a2",
+    "experiments/speaker_count_pilot/full_train.py": "ac02977ed3cc2831cf2c46889e8cb100e276e47ef3de6f7ee479dd4d110dac81",
+    "experiments/speaker_count_pilot/run.py": "8d25b389b7e2c97f3ccbd839040e1c45bae275bc7874143fe7b96d7406871858",
+    "experiments/speaker_count_pilot/spectral.py": "aaf96f67ae93fcca0d83163fa65d7e9d2a3ac5093ea2c7c57c5ac2307101484b"
+  },
+  "parent_policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735"
+}

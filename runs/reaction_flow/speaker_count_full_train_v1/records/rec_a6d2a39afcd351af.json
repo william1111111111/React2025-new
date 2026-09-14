@@ -1,0 +1,212 @@
+{
+  "id": "rec_a6d2a39afcd351af",
+  "relative": "session13/Camera-2024-07-22-132508-132549",
+  "split": "train",
+  "audio_sha256": "b76540a5a53cb9c7f32a551f96e954bf335877aa77286fb0510f6dc7c997e702",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 19.1100625,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 2,
+  "graph_stable": false,
+  "screening_bucket": "uncertain",
+  "uncertainty_reasons": [
+    "neighbor_sensitivity",
+    "partition_sensitivity"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.19026026368374e-07,
+        0.20437581837177277,
+        0.33818644285202026,
+        0.7458677887916565
+      ],
+      "gaps": [
+        0.20437569916248322,
+        0.1338106244802475
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        7.152557373046875e-07,
+        0.33118271827697754,
+        1.116478443145752,
+        1.5182830095291138
+      ],
+      "gaps": [
+        0.33118200302124023,
+        0.7852957248687744
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "eigenvalues": [
+        7.152557373046875e-07,
+        0.6602890491485596,
+        2.0073018074035645,
+        2.1972804069519043
+      ],
+      "gaps": [
+        0.6602883338928223,
+        1.3470127582550049
+      ]
+    }
+  ],
+  "partition_ARI": [
+    0.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.256,
+      "end_s": 1.696,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 1.696,
+      "end_s": 3.136,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.456,
+      "end_s": 5.104,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 5.104,
+      "end_s": 6.752,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.136,
+      "end_s": 9.040000000000001,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 9.040000000000001,
+      "end_s": 10.944,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 10.944,
+      "end_s": 12.848,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 12.848,
+      "end_s": 14.752,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 16.48,
+      "end_s": 17.888,
+      "candidate_voice": "voice_1"
+    }
+  ],
+  "short_unassigned_segments": [],
+  "vad_intervals": [
+    {
+      "start_s": 0.256,
+      "end_s": 3.136
+    },
+    {
+      "start_s": 3.456,
+      "end_s": 6.752
+    },
+    {
+      "start_s": 7.136,
+      "end_s": 14.752
+    },
+    {
+      "start_s": 16.48,
+      "end_s": 17.888
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.5841392874717712,
+    "centroid_cosine_distance": 0.3097999691963196,
+    "silhouette": 0.1738559454679489,
+    "cluster_windows": [
+      3,
+      6
+    ],
+    "cluster_seconds": [
+      4.528,
+      10.672000000000002
+    ],
+    "cluster_radius_p90": [
+      0.16664271354675292,
+      0.22417497634887695
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 1.125990867614746
+}

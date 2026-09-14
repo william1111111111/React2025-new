@@ -1,0 +1,218 @@
+{
+  "id": "rec_426fd8affd29ce2e",
+  "relative": "session12/Camera-2024-10-14-135007-134930",
+  "split": "train",
+  "audio_sha256": "49e090744a576bd3e37d5976578532f6230dbfc6d4fa8ccc9646b72e2389b624",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 50.991,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": false,
+  "screening_bucket": "uncertain",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved",
+    "neighbor_sensitivity",
+    "partition_sensitivity"
+  ],
+  "spectral_runs": [
+    {
+      "count": 2,
+      "labels": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "eigenvalues": [
+        7.152557373046875e-07,
+        0.06350564956665039,
+        0.4566166400909424,
+        0.9029675722122192
+      ],
+      "gaps": [
+        0.06350493431091309,
+        0.393110990524292
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        4.76837158203125e-07,
+        0.5066046714782715,
+        0.9206709861755371,
+        1.6201536655426025
+      ],
+      "gaps": [
+        0.5066041946411133,
+        0.4140663146972656
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        4.76837158203125e-07,
+        0.5066046714782715,
+        0.9206709861755371,
+        1.6201536655426025
+      ],
+      "gaps": [
+        0.5066041946411133,
+        0.4140663146972656
+      ]
+    }
+  ],
+  "partition_ARI": [
+    0.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 2.016,
+      "end_s": 3.912,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.912,
+      "end_s": 5.808,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.808,
+      "end_s": 7.704,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.704,
+      "end_s": 9.6,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 42.912,
+      "end_s": 44.864,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 45.248,
+      "end_s": 47.16233333333333,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 47.16233333333333,
+      "end_s": 49.07666666666667,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 49.07666666666667,
+      "end_s": 50.991,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 0.512,
+      "end_s": 1.216,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 27.744,
+      "end_s": 28.032,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.512,
+      "end_s": 1.216
+    },
+    {
+      "start_s": 2.016,
+      "end_s": 9.6
+    },
+    {
+      "start_s": 27.744,
+      "end_s": 28.032
+    },
+    {
+      "start_s": 42.912,
+      "end_s": 44.864
+    },
+    {
+      "start_s": 45.248,
+      "end_s": 50.991
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pairwise_cosine_distance_p90": 0.6500319242477417,
+    "centroid_cosine_distance": 0.33949482440948486,
+    "silhouette": 0.15043652057647705,
+    "cluster_windows": [
+      5,
+      3
+    ],
+    "cluster_seconds": [
+      9.591000000000001,
+      5.688
+    ],
+    "cluster_radius_p90": [
+      0.2752182126045227,
+      0.1857605457305908
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 1.4900269508361816
+}

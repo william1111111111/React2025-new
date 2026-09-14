@@ -1,0 +1,201 @@
+{
+  "id": "rec_bfc835b6049af34f",
+  "relative": "session3/Camera-2024-07-22-132508-132549",
+  "split": "train",
+  "audio_sha256": "3f8bb210e0bae2961a0b42ad5db4b4d0b56168dcd52e3135f22cbfcea28286d8",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 16.02175,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": true,
+  "screening_bucket": "1_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -1.09982011053944e-07,
+        0.5276401042938232,
+        0.5802698135375977,
+        1.0819830894470215
+      ],
+      "gaps": [
+        0.5276402235031128,
+        0.052629709243774414
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -1.09982011053944e-07,
+        0.5276401042938232,
+        0.5802698135375977,
+        1.0819830894470215
+      ],
+      "gaps": [
+        0.5276402235031128,
+        0.052629709243774414
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        -1.09982011053944e-07,
+        0.5276401042938232,
+        0.5802698135375977,
+        1.0819830894470215
+      ],
+      "gaps": [
+        0.5276402235031128,
+        0.052629709243774414
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.448,
+      "end_s": 1.8559999999999997,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 1.8559999999999997,
+      "end_s": 3.2639999999999993,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.2639999999999993,
+      "end_s": 4.672,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.2,
+      "end_s": 9.013333333333334,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 9.013333333333334,
+      "end_s": 10.826666666666668,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 10.826666666666668,
+      "end_s": 12.64,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 5.088,
+      "end_s": 5.792,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 14.496,
+      "end_s": 14.848,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 15.648,
+      "end_s": 16.02175,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.448,
+      "end_s": 4.672
+    },
+    {
+      "start_s": 5.088,
+      "end_s": 5.792
+    },
+    {
+      "start_s": 7.2,
+      "end_s": 12.64
+    },
+    {
+      "start_s": 14.496,
+      "end_s": 14.848
+    },
+    {
+      "start_s": 15.648,
+      "end_s": 16.02175
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.5618891477584839,
+    "centroid_cosine_distance": 0.4081118106842041,
+    "silhouette": 0.08979354053735733,
+    "cluster_windows": [
+      5,
+      1
+    ],
+    "cluster_seconds": [
+      7.850666666666668,
+      1.8133333333333326
+    ],
+    "cluster_radius_p90": [
+      0.24736316204071046,
+      -1.1920928955078125e-07
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.7429876327514648
+}

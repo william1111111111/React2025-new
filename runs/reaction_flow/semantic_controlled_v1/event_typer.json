@@ -1,0 +1,12 @@
+{
+  "fit_split": "train",
+  "fit_candidates": 13580,
+  "input_sha256": "36f60bd9def413222328c338c6751bddcd9f12ffe6044624c3c9d8d7288d5fe2",
+  "model_sha256": "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47",
+  "model": "char TFIDF(3,5), 20k features, balanced logistic C=1 seed123",
+  "dev_labels_read": false,
+  "scores_are_calibrated": false,
+  "dev_proposal_policy": "source transcript punctuation/32-word spans, up to16 evenly spaced spans; actual CTC timing only",
+  "train_retyping": "same frozen classifier will retype existing accepted TRAIN evidence, preserving role/time gates",
+  "proposal_difference": "TRAIN proposal windows originate from previous teacher candidates; DEV uses fixed text spans; report this distribution difference"
+}

@@ -1,0 +1,113 @@
+{
+  "clip_id": "rec_bce36329dce057c4",
+  "split": "val",
+  "events": [
+    {
+      "transcript_evidence": "um which british band performed a song hey jude yes correct",
+      "event_type": "evaluation",
+      "description": "local source-only event proposal",
+      "speaker_attribution": "unknown",
+      "start_s": 0.0,
+      "end_s": 8.445,
+      "event_id": "rec_bce36329dce057c4_e000",
+      "time_reference": "speaker_audio_sample_clock",
+      "time_status": "automatic_uncertain",
+      "role_status": "unknown",
+      "ctc_mean_score": 0.8838579650804903,
+      "greedy_asr_char_agreement": 0.9491525423728814,
+      "greedy_asr_text": "T M WHICH BRITISH BAND PERFORMED A SONG HAY JUD YES CORRECT",
+      "active_speech_fraction": 0.5801886792452831,
+      "shift_control_logit_margin": 2.5880646639029092,
+      "automatic_weak_candidate": false,
+      "support_statistics": {
+        "expected_grid_points": 211,
+        "overlap_grid_points": 211,
+        "actual_finite_frames": 211,
+        "control_finite_frames": 211,
+        "common_finite_frames": 211,
+        "usable_frames": 205,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 0.9715639810426541,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 8.445,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.96,
+        "active_fraction": 0.5658536585365853,
+        "control_margin": 2.5310430527642005,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 6,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "audio_origin_s": 0.0,
+      "video_origin_s": 0.0,
+      "offset_s": null,
+      "offset_source": "unresolved",
+      "human_reviewed": false,
+      "training_eligible": false,
+      "sync_status": "container_origin_assumed_not_verified"
+    }
+  ],
+  "audio_duration_s": 9.0325625,
+  "original_sample_rate": 16000,
+  "original_channels": 1,
+  "video_timeline": {
+    "first_pts": 0.0,
+    "last_pts": 9.0,
+    "duration_s": 9.033333,
+    "source_frame_count": 271,
+    "resampled_hz": 25,
+    "max_resampling_error_s": 0.019999999999997797
+  },
+  "actual_visible_inputs": [
+    {
+      "role": "speaker",
+      "path": "/inputs/audio/session18/Camera-2024-06-28-112322-112419.wav",
+      "sha256": "7e63f858cf203677721a5e083e1877d9b3bd2a98055bcc5f9f30847e4eed7526"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/video/session18/Camera-2024-06-28-112322-112419.mp4",
+      "sha256": "0547518252fda62f294fdbf4ea1eb9c17f145f4aa142ffa4e98136963f703d8b"
+    },
+    {
+      "role": "speaker",
+      "path": "/inputs/text/session18/Camera-2024-06-28-112322-112419.txt",
+      "sha256": "8ce707c150593dfdf8c9679590e408c0b742236079474310551fb14404b61c07"
+    }
+  ],
+  "teacher_provenance": {
+    "ctc_model": "torchaudio.WAV2VEC2_ASR_BASE_960H",
+    "ctc_weight_sha256": "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "asd_model": "TalkNet-ASD pretrained TalkSet",
+    "asd_weight_sha256": "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "asd_code_commit": "6d6821479af485e251c4991487e40573b42181b4",
+    "asd_weight_url": "https://huggingface.co/AlekseyKorshuk/talknet-asd/resolve/main/pretrain_TalkSet.model",
+    "event_typer_sha256": "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  },
+  "human_reviewed": false,
+  "human_review_policy": "omitted_by_user",
+  "training_eligible": false,
+  "limitations": [
+    "CTC forced alignment can force incorrect transcript; thresholds are uncalibrated.",
+    "Active-speaker model domain and crop transfer are unvalidated.",
+    "Container audio/video origins assumed; true synchronization not independently verified.",
+    "Roles are model proposals, not confirmed identity; no listener data accessed."
+  ]
+}

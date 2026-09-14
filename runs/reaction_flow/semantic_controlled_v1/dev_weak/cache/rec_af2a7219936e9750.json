@@ -1,0 +1,1570 @@
+{
+  "schema_version": "auto-weak-v1",
+  "annotation_regime": "auto_weak",
+  "clip_id": "rec_af2a7219936e9750",
+  "split": "val",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "visible_roles": [
+    "speaker"
+  ],
+  "input_hashes": [
+    "7c2d9fa2f58832c3c2ec3d089cca6ab78735f5e3e09752c5e3753cbdd6a2fac1",
+    "79612e0fa88674592f7ec10f320f18d981526ef820f34fdc05c45783941bf19a",
+    "00a4edee345bfce56f2cb8536a924b32b440efd8b57231e5c1fe0747eceb0f00"
+  ],
+  "teacher_hashes": [
+    "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "6d6821479af485e251c4991487e40573b42181b4",
+    "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  ],
+  "policy_sha256": "ad1979cfb3c90c435104ffcf4edf7e3aeaad436a83bc5aac3446cfd9ec9cf3a4",
+  "code_hashes": [
+    "69c87fceeb283bf2711a04a4049f5c5a0f57e33974e08ad8099c4961587aa7a1",
+    "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "445cb47e68b6ab259e123b503a4a5f762f40c34f8629a068069090b6542f4ace"
+  ],
+  "events": [
+    {
+      "event_id": "rec_af2a7219936e9750_e000",
+      "text": "So let's go to mathematics now.",
+      "event_type": "topic_change",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 41,
+        "overlap_grid_points": 41,
+        "actual_finite_frames": 41,
+        "control_finite_frames": 41,
+        "common_finite_frames": 41,
+        "usable_frames": 41,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.625,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.6400000000000001,
+        "active_fraction": 0.0,
+        "control_margin": -0.16730030959214626,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 0.28,
+        "end_s": 1.905,
+        "ctc_mean_score": 0.8974039382409454,
+        "greedy_agreement": 0.9655172413793104,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e001",
+      "text": "So I have five boxes of strawberries which collectively weigh 45 kgs.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 110,
+        "overlap_grid_points": 110,
+        "actual_finite_frames": 110,
+        "control_finite_frames": 110,
+        "common_finite_frames": 110,
+        "usable_frames": 105,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 0.9545454545454546,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.365,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 4.4,
+        "active_fraction": 0.0,
+        "control_margin": -0.3166767233893985,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 5,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 2.94,
+        "end_s": 7.305,
+        "ctc_mean_score": 0.9573161140608135,
+        "greedy_agreement": 0.8951048951048951,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e002",
+      "text": "A box of cherries has a weight that is 2 kg more than a box of strawberries.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 117,
+        "overlap_grid_points": 117,
+        "actual_finite_frames": 117,
+        "control_finite_frames": 117,
+        "common_finite_frames": 117,
+        "usable_frames": 117,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.645000000000001,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 4.68,
+        "active_fraction": 0.0,
+        "control_margin": 0.34687307205295287,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 8.26,
+        "end_s": 12.905000000000001,
+        "ctc_mean_score": 0.9317637511800664,
+        "greedy_agreement": 0.935064935064935,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e003",
+      "text": "What is the total weight in kgs of three boxes of cherries?",
+      "event_type": "question",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 81,
+        "overlap_grid_points": 81,
+        "actual_finite_frames": 81,
+        "control_finite_frames": 81,
+        "common_finite_frames": 81,
+        "usable_frames": 81,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 3.245000000000001,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 2.52,
+        "active_fraction": 0.024691358024691357,
+        "control_margin": 1.3876004530262556,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 13.52,
+        "end_s": 16.765,
+        "ctc_mean_score": 0.8767338520216678,
+        "greedy_agreement": 0.9310344827586207,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e004",
+      "text": "Five boxes of strawberries collectively weigh 45 kgs.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 97,
+        "overlap_grid_points": 97,
+        "actual_finite_frames": 97,
+        "control_finite_frames": 97,
+        "common_finite_frames": 97,
+        "usable_frames": 97,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 3.8649999999999984,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 3.12,
+        "active_fraction": 0.15463917525773196,
+        "control_margin": 1.175565930531453,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 20.98,
+        "end_s": 24.845,
+        "ctc_mean_score": 0.8583221034721131,
+        "greedy_agreement": 0.768,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e005",
+      "text": "A box of cherries has a weight that is 2 kg more than a box of strawberries.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 103,
+        "overlap_grid_points": 103,
+        "actual_finite_frames": 102,
+        "control_finite_frames": 102,
+        "common_finite_frames": 102,
+        "usable_frames": 102,
+        "common_finite_coverage": 0.9902912621359223,
+        "usable_coverage": 0.9902912621359223,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.104999999999997,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.84,
+        "active_fraction": 0.4803921568627451,
+        "control_margin": 2.1940913160690676,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 25.740000000000002,
+        "end_s": 29.845,
+        "ctc_mean_score": 0.9592415854857705,
+        "greedy_agreement": 0.9411764705882353,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e006",
+      "text": "What is the total weight in kgs of three boxes of cherries?",
+      "event_type": "question",
+      "role": "source_speaker_candidate",
+      "role_evidence": {
+        "expected_grid_points": 78,
+        "overlap_grid_points": 78,
+        "actual_finite_frames": 78,
+        "control_finite_frames": 78,
+        "common_finite_frames": 78,
+        "usable_frames": 78,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 3.1050000000000004,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.12,
+        "active_fraction": 0.9102564102564102,
+        "control_margin": 2.914854876378662,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [],
+        "passed": true
+      },
+      "timing_evidence": {
+        "start_s": 30.62,
+        "end_s": 33.725,
+        "ctc_mean_score": 0.8942518006581345,
+        "greedy_agreement": 0.9401709401709402,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": true,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e007",
+      "text": "No, no, no, no.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 11,
+        "overlap_grid_points": 11,
+        "actual_finite_frames": 11,
+        "control_finite_frames": 11,
+        "common_finite_frames": 11,
+        "usable_frames": 11,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.42500000000000426,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 0.32,
+        "active_fraction": 0.18181818181818182,
+        "control_margin": 3.2272566276969332,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 37.62,
+        "end_s": 38.045,
+        "ctc_mean_score": 0.4790069554001093,
+        "greedy_agreement": 0.5882352941176471,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e008",
+      "text": "A box of cherries has a weight that is 2 kg more than the box of strawberries.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 129,
+        "overlap_grid_points": 129,
+        "actual_finite_frames": 129,
+        "control_finite_frames": 129,
+        "common_finite_frames": 129,
+        "usable_frames": 129,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 5.145000000000003,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 5.16,
+        "active_fraction": 0.0,
+        "control_margin": 0.315678593724273,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 42.2,
+        "end_s": 47.345000000000006,
+        "ctc_mean_score": 0.9353335976290207,
+        "greedy_agreement": 0.9411764705882353,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e009",
+      "text": "What is the total weight in kgs of the three boxes of cherries?",
+      "event_type": "question",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 104,
+        "overlap_grid_points": 104,
+        "actual_finite_frames": 104,
+        "control_finite_frames": 104,
+        "common_finite_frames": 104,
+        "usable_frames": 104,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.145000000000003,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 3.88,
+        "active_fraction": 0.009615384615384616,
+        "control_margin": 0.29163709808236515,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 48.18,
+        "end_s": 52.325,
+        "ctc_mean_score": 0.8923646871084109,
+        "greedy_agreement": 0.928,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e010",
+      "text": "No.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 4,
+        "overlap_grid_points": 4,
+        "actual_finite_frames": 4,
+        "control_finite_frames": 4,
+        "common_finite_frames": 4,
+        "usable_frames": 4,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.16499999999999915,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.16,
+        "active_fraction": 0.0,
+        "control_margin": 2.409861410657565,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": false,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": false,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "minimum_duration",
+          "minimum_valid_frames",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 57.88,
+        "end_s": 58.045,
+        "ctc_mean_score": 0.9687216579914093,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": false,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": false,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:minimum_duration",
+        "role:minimum_valid_frames",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e011",
+      "text": "So five boxes.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 21,
+        "overlap_grid_points": 21,
+        "actual_finite_frames": 21,
+        "control_finite_frames": 21,
+        "common_finite_frames": 21,
+        "usable_frames": 21,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.8250000000000028,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 0.84,
+        "active_fraction": 0.0,
+        "control_margin": 2.4127753886675083,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 59.1,
+        "end_s": 59.925000000000004,
+        "ctc_mean_score": 0.9977607518434525,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e012",
+      "text": "So each box of strawberries is 9 kgs.",
+      "event_type": "utterance",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 60,
+        "overlap_grid_points": 60,
+        "actual_finite_frames": 60,
+        "control_finite_frames": 60,
+        "common_finite_frames": 60,
+        "usable_frames": 60,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 2.384999999999998,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 2.4,
+        "active_fraction": 0.0,
+        "control_margin": 0.5074338021377722,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 62.54,
+        "end_s": 64.925,
+        "ctc_mean_score": 0.8554018771212126,
+        "greedy_agreement": 0.821917808219178,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e013",
+      "text": "And since the cherries is 2 kgs more, it's 9 plus 5 which is 11.",
+      "event_type": "disclosure",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 140,
+        "overlap_grid_points": 140,
+        "actual_finite_frames": 140,
+        "control_finite_frames": 140,
+        "common_finite_frames": 140,
+        "usable_frames": 140,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 5.605000000000004,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 5.6000000000000005,
+        "active_fraction": 0.0,
+        "control_margin": 0.17531208582222466,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 65.36,
+        "end_s": 70.965,
+        "ctc_mean_score": 0.7508441346127117,
+        "greedy_agreement": 0.6808510638297872,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e014",
+      "text": "And then times the three boxes.",
+      "event_type": "disclosure",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 34,
+        "overlap_grid_points": 34,
+        "actual_finite_frames": 34,
+        "control_finite_frames": 34,
+        "common_finite_frames": 34,
+        "usable_frames": 34,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 1.3449999999999989,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 1.36,
+        "active_fraction": 0.0,
+        "control_margin": 0.7863179855779105,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 71.42,
+        "end_s": 72.765,
+        "ctc_mean_score": 0.9412838165958722,
+        "greedy_agreement": 1.0,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    },
+    {
+      "event_id": "rec_af2a7219936e9750_e015",
+      "text": "Yeah, that is right.",
+      "event_type": "evaluation",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 14,
+        "overlap_grid_points": 14,
+        "actual_finite_frames": 14,
+        "control_finite_frames": 14,
+        "common_finite_frames": 14,
+        "usable_frames": 14,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.5649999999999977,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 0.56,
+        "active_fraction": 0.0,
+        "control_margin": 0.6482980308078583,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 74.28,
+        "end_s": 74.845,
+        "ctc_mean_score": 0.17138987142388942,
+        "greedy_agreement": 0.3448275862068966,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "estimated",
+        "offset_s": 0.0,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "bounded source-only ASD lag probe",
+        "effective_audio_range_s": [
+          0.6,
+          74.4236875
+        ],
+        "offset_interval_s": [
+          -0.2,
+          0.2
+        ],
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "2630195dfca4f65619fee2723e815c2355f011b40abf273dd5bbae945816ddf2",
+        "038028f6d6d13649762731810468685237954b7ca6484f75d8d229217ae4b27f",
+        "d8ba4892c6b177f195f52d9d6fcbb42831afc4b032649493702ddb4ea90de59a",
+        "b5019be5fb1c9a66f97f8722ea9ad50bd22aae27b298f9f257c7e7c14edaa535"
+      ]
+    }
+  ]
+}

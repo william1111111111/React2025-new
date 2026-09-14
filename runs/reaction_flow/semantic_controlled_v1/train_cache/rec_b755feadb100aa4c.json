@@ -1,0 +1,500 @@
+{
+  "schema_version": "auto-weak-v1",
+  "annotation_regime": "auto_weak",
+  "clip_id": "rec_b755feadb100aa4c",
+  "split": "train",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "visible_roles": [
+    "speaker"
+  ],
+  "input_hashes": [
+    "fe76c91caca324cf1073b9374cd6592d0b3f20504dce32d46984f4b90f1fd227",
+    "ccec3d214206fe98f8365c87baed7684168964fc934c439ad3ae8c0a072dedb0",
+    "351c093f984d235807b0ca58356fd33d47dd65c24bcb572f58c4ccdab9aba996"
+  ],
+  "teacher_hashes": [
+    "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d",
+    "d985ddd07dca08864a28337726f5b7d91b6426bebc7327f0e9b21cf9ff1cc937",
+    "6d6821479af485e251c4991487e40573b42181b4",
+    "f33bbb60055c5eaca30a9678a1080df17377cd26884e5bb54b8e19e459211f47"
+  ],
+  "policy_sha256": "ad1979cfb3c90c435104ffcf4edf7e3aeaad436a83bc5aac3446cfd9ec9cf3a4",
+  "code_hashes": [
+    "224a3f62790e97545547143cb7abfc7f024584b22743fd4aadfa0f07ac03210a",
+    "d23a84626b6080955b45de888f9db8dda9452400bb61727067ba5bd504320777",
+    "a7311a2d7cff0f7b149ebf5c1cd39fc276e2fc9fa7ac8be75c04251b5e1f9add",
+    "445cb47e68b6ab259e123b503a4a5f762f40c34f8629a068069090b6542f4ace"
+  ],
+  "events": [
+    {
+      "event_id": "rec_b755feadb100aa4c_e000",
+      "text": "Okay, so we are going to focus more on electric vehicle incentives.",
+      "event_type": "topic_change",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 109,
+        "overlap_grid_points": 109,
+        "actual_finite_frames": 109,
+        "control_finite_frames": 109,
+        "common_finite_frames": 109,
+        "usable_frames": 103,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 0.944954128440367,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 4.365,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 4.36,
+        "active_fraction": 0.0,
+        "control_margin": -0.43399056948986636,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 6,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 0.84,
+        "end_s": 5.205,
+        "ctc_mean_score": 0.8452427786417921,
+        "greedy_agreement": 0.8805970149253731,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "unresolved",
+        "offset_s": null,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "unresolved",
+        "effective_audio_range_s": [
+          0,
+          0
+        ],
+        "offset_interval_s": null,
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "247e3d0ce54e70f7cb9264aa73c7ffa0c41dba2eb5ad16c5f07b0dcefe29974a",
+        "89ce3a2c459db3324902cffad2b71fc5101e699a31ee2055d8a087f4f08efb6f",
+        "1910341c22a169f778c3898d0b60bfc3e95ec910a5342ffef59a8c87384c6f69",
+        "ac36064c947368cab486148935ce0df3d9c304c986b0503964bd28d619c02b75"
+      ]
+    },
+    {
+      "event_id": "rec_b755feadb100aa4c_e001",
+      "text": "Now, so the new policy includes subsites for up to 5,000 for electric vehicles with a range of over 300 miles.",
+      "event_type": "disclosure",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 205,
+        "overlap_grid_points": 205,
+        "actual_finite_frames": 205,
+        "control_finite_frames": 205,
+        "common_finite_frames": 205,
+        "usable_frames": 205,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 8.185000000000002,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 8.2,
+        "active_fraction": 0.0,
+        "control_margin": 0.2199074371558864,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 5.96,
+        "end_s": 14.145000000000001,
+        "ctc_mean_score": 0.9472672739603327,
+        "greedy_agreement": 0.8392857142857143,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "unresolved",
+        "offset_s": null,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "unresolved",
+        "effective_audio_range_s": [
+          0,
+          0
+        ],
+        "offset_interval_s": null,
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": false,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "timing:no_digits",
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "247e3d0ce54e70f7cb9264aa73c7ffa0c41dba2eb5ad16c5f07b0dcefe29974a",
+        "89ce3a2c459db3324902cffad2b71fc5101e699a31ee2055d8a087f4f08efb6f",
+        "1910341c22a169f778c3898d0b60bfc3e95ec910a5342ffef59a8c87384c6f69",
+        "ac36064c947368cab486148935ce0df3d9c304c986b0503964bd28d619c02b75"
+      ]
+    },
+    {
+      "event_id": "rec_b755feadb100aa4c_e002",
+      "text": "Now, how do you think this will impact consumer behavior and the EV market in the UK?",
+      "event_type": "question",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 135,
+        "overlap_grid_points": 135,
+        "actual_finite_frames": 135,
+        "control_finite_frames": 135,
+        "common_finite_frames": 135,
+        "usable_frames": 135,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 5.404999999999999,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 4.92,
+        "active_fraction": 0.08888888888888889,
+        "control_margin": 0.4576254138975968,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": false
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction",
+          "control_margin"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 15.08,
+        "end_s": 20.485,
+        "ctc_mean_score": 0.9255173715233218,
+        "greedy_agreement": 0.8950276243093923,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "unresolved",
+        "offset_s": null,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "unresolved",
+        "effective_audio_range_s": [
+          0,
+          0
+        ],
+        "offset_interval_s": null,
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": false
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction",
+        "role:control_margin"
+      ],
+      "source_version_hashes": [
+        "247e3d0ce54e70f7cb9264aa73c7ffa0c41dba2eb5ad16c5f07b0dcefe29974a",
+        "89ce3a2c459db3324902cffad2b71fc5101e699a31ee2055d8a087f4f08efb6f",
+        "1910341c22a169f778c3898d0b60bfc3e95ec910a5342ffef59a8c87384c6f69",
+        "ac36064c947368cab486148935ce0df3d9c304c986b0503964bd28d619c02b75"
+      ]
+    },
+    {
+      "event_id": "rec_b755feadb100aa4c_e003",
+      "text": "Yeah.",
+      "event_type": "unknown",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 4,
+        "overlap_grid_points": 4,
+        "actual_finite_frames": 4,
+        "control_finite_frames": 4,
+        "common_finite_frames": 4,
+        "usable_frames": 4,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.14499999999999602,
+        "crosses_obvious_turn": false,
+        "negative_run_s": 0.0,
+        "active_fraction": 1.0,
+        "control_margin": 3.6938822393616038,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": false,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": false,
+          "control_nontrivial": true,
+          "no_obvious_turn": true,
+          "active_fraction": true,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "minimum_duration",
+          "minimum_valid_frames"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 30.080000000000002,
+        "end_s": 30.224999999999998,
+        "ctc_mean_score": 0.24380507008754648,
+        "greedy_agreement": 0.4,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "unresolved",
+        "offset_s": null,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "unresolved",
+        "effective_audio_range_s": [
+          0,
+          0
+        ],
+        "offset_interval_s": null,
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": false,
+        "greedy_agreement": false,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": false,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": false,
+        "control_nontrivial": true,
+        "no_obvious_turn": true,
+        "active_fraction": true,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "timing:ctc_mean",
+        "timing:greedy_agreement",
+        "role:minimum_duration",
+        "role:minimum_valid_frames"
+      ],
+      "source_version_hashes": [
+        "247e3d0ce54e70f7cb9264aa73c7ffa0c41dba2eb5ad16c5f07b0dcefe29974a",
+        "89ce3a2c459db3324902cffad2b71fc5101e699a31ee2055d8a087f4f08efb6f",
+        "1910341c22a169f778c3898d0b60bfc3e95ec910a5342ffef59a8c87384c6f69",
+        "ac36064c947368cab486148935ce0df3d9c304c986b0503964bd28d619c02b75"
+      ]
+    },
+    {
+      "event_id": "rec_b755feadb100aa4c_e004",
+      "text": "Yes, perfect.",
+      "event_type": "evaluation",
+      "role": "unknown",
+      "role_evidence": {
+        "expected_grid_points": 17,
+        "overlap_grid_points": 17,
+        "actual_finite_frames": 17,
+        "control_finite_frames": 17,
+        "common_finite_frames": 17,
+        "usable_frames": 17,
+        "common_finite_coverage": 1.0,
+        "usable_coverage": 1.0,
+        "time_domain_overlap": 1.0,
+        "event_duration_s": 0.6850000000000023,
+        "crosses_obvious_turn": true,
+        "negative_run_s": 0.24,
+        "active_fraction": 0.5882352941176471,
+        "control_margin": 2.1043490814227686,
+        "effective_circular_shift_s": 3.0,
+        "control_seam_excluded_frames": 0,
+        "rules": {
+          "valid_interval": true,
+          "within_audio": true,
+          "minimum_duration": true,
+          "time_domain_overlap": true,
+          "common_finite_coverage": true,
+          "usable_coverage": true,
+          "minimum_valid_frames": true,
+          "control_nontrivial": true,
+          "no_obvious_turn": false,
+          "active_fraction": false,
+          "control_margin": true
+        },
+        "rejection_reasons": [
+          "no_obvious_turn",
+          "active_fraction"
+        ],
+        "passed": false
+      },
+      "timing_evidence": {
+        "start_s": 33.36,
+        "end_s": 34.045,
+        "ctc_mean_score": 0.6631301768259056,
+        "greedy_agreement": 0.8421052631578947,
+        "independent_verification": false
+      },
+      "sync_status": {
+        "status": "unresolved",
+        "offset_s": null,
+        "audio_origin_s": 0.0,
+        "video_origin_s": 0.0,
+        "origin_source": "WAV decoded samples and ffprobe video PTS",
+        "offset_source": "unresolved",
+        "effective_audio_range_s": [
+          0,
+          0
+        ],
+        "offset_interval_s": null,
+        "sync_verified": false
+      },
+      "time_domain": "speaker_audio_sample_clock",
+      "weak_input_eligible": false,
+      "rules": {
+        "ctc_mean": true,
+        "greedy_agreement": true,
+        "word_duration": true,
+        "no_digits": true,
+        "valid_interval": true,
+        "within_audio": true,
+        "minimum_duration": true,
+        "time_domain_overlap": true,
+        "common_finite_coverage": true,
+        "usable_coverage": true,
+        "minimum_valid_frames": true,
+        "control_nontrivial": true,
+        "no_obvious_turn": false,
+        "active_fraction": false,
+        "control_margin": true
+      },
+      "rejection_reasons": [
+        "role:no_obvious_turn",
+        "role:active_fraction"
+      ],
+      "source_version_hashes": [
+        "247e3d0ce54e70f7cb9264aa73c7ffa0c41dba2eb5ad16c5f07b0dcefe29974a",
+        "89ce3a2c459db3324902cffad2b71fc5101e699a31ee2055d8a087f4f08efb6f",
+        "1910341c22a169f778c3898d0b60bfc3e95ec910a5342ffef59a8c87384c6f69",
+        "ac36064c947368cab486148935ce0df3d9c304c986b0503964bd28d619c02b75"
+      ]
+    }
+  ]
+}

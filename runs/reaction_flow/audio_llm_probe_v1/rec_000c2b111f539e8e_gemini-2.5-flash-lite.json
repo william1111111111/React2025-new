@@ -1,0 +1,45 @@
+{
+  "model": "gemini-2.5-flash-lite",
+  "provider": "yunwu",
+  "source_id": "rec_000c2b111f539e8e",
+  "source_sha256": "bae675f610f0cc058436fc3f51699597a49b129966fcbe302b2a899ab498f51e",
+  "payload_audio_sha256": "0f7eb333799f6db6c306fa489857e80736b6cbaf7e17e38a8d8b3012a456bf7a",
+  "synthetic_silence": false,
+  "duration_s": 27.05125,
+  "gain": 1.0566051504932132,
+  "prompt": "Listen to the attached audio itself. Estimate the number of distinct human speaking voices: 1, 2, or unknown. There are at most two speakers, but do not invent a second voice from pitch or volume changes. Background noise is not a speaker. Do not infer identity, gender, or source/listener role. Brief interjections can be a second speaker; if unclear return unknown. Return JSON only with: audio_accessible (boolean), speaker_count (1,2,null), short_transcript (the first clearly audible 5-15 words, or empty if unintelligible), evidence (brief audible observations), suspected_voice_changes (list of approximate start_s/end_s and brief evidence), limitations. Timestamps are rough observations, not verified alignment. Do not claim certainty when audio is weak.",
+  "elapsed_s": 5.021178722381592,
+  "http_status": 200,
+  "response": {
+    "id": "chatcmpl-2026091411470738056137XcrpaX4Q",
+    "model": "gemini-2.5-flash-lite",
+    "object": "chat.completion",
+    "created": 1789357629,
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```json\n{\n  \"audio_accessible\": true,\n  \"speaker_count\": 1,\n  \"short_transcript\": \"Okay question four who painted the famous artwork Starry Night\",\n  \"evidence\": \"A single voice is audible throughout the recording.\",\n  \"suspected_voice_changes\": [],\n  \"limitations\": \"The audio quality is good, but the presence of a second speaker cannot be definitively ruled out if they were to make very brief or quiet interjections. However, based on the audible content, only one speaker is clearly present.\"\n}\n```"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 869,
+      "completion_tokens": 125,
+      "total_tokens": 994,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 169,
+        "audio_tokens": 700,
+        "image_tokens": 0
+      },
+      "completion_tokens_details": {
+        "text_tokens": 125,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0
+      }
+    }
+  }
+}

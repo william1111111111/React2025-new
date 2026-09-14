@@ -1,0 +1,210 @@
+{
+  "id": "rec_08bd1050d85bbc61",
+  "relative": "session16/Camera-2024-07-22-132508-132549",
+  "split": "train",
+  "audio_sha256": "8c96982c8aed91cf70dcb8964f384b083643eb0607f7124515d7bec003ca50b7",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 17.9490625,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 2,
+  "graph_stable": true,
+  "screening_bucket": "2_sustained_voice_candidate",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved"
+  ],
+  "spectral_runs": [
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        9.5367431640625e-07,
+        0.13836193084716797,
+        0.7180100679397583,
+        1.316467523574829
+      ],
+      "gaps": [
+        0.13836097717285156,
+        0.5796481370925903
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        9.5367431640625e-07,
+        0.13836193084716797,
+        0.7180100679397583,
+        1.316467523574829
+      ],
+      "gaps": [
+        0.13836097717285156,
+        0.5796481370925903
+      ]
+    },
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        1.430511474609375e-06,
+        0.5824666023254395,
+        1.3740736246109009,
+        1.686955451965332
+      ],
+      "gaps": [
+        0.5824651718139648,
+        0.7916070222854614
+      ]
+    }
+  ],
+  "partition_ARI": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 1.12,
+      "end_s": 3.072,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.072,
+      "end_s": 5.024,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 6.816,
+      "end_s": 8.0,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 8.0,
+      "end_s": 9.184,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 9.696,
+      "end_s": 11.088000000000001,
+      "candidate_voice": "voice_1"
+    },
+    {
+      "start_s": 11.088000000000001,
+      "end_s": 12.48,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 15.712,
+      "end_s": 16.896,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 5.728,
+      "end_s": 6.144,
+      "reason": "too_short_for_embedding"
+    },
+    {
+      "start_s": 17.664,
+      "end_s": 17.9490625,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 1.12,
+      "end_s": 5.024
+    },
+    {
+      "start_s": 5.728,
+      "end_s": 6.144
+    },
+    {
+      "start_s": 6.816,
+      "end_s": 9.184
+    },
+    {
+      "start_s": 9.696,
+      "end_s": 12.48
+    },
+    {
+      "start_s": 15.712,
+      "end_s": 16.896
+    },
+    {
+      "start_s": 17.664,
+      "end_s": 17.9490625
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "pairwise_cosine_distance_p90": 0.6550024151802063,
+    "centroid_cosine_distance": 0.48306119441986084,
+    "silhouette": 0.14860618114471436,
+    "cluster_windows": [
+      6,
+      1
+    ],
+    "cluster_seconds": [
+      9.056000000000001,
+      1.184000000000001
+    ],
+    "cluster_radius_p90": [
+      0.2452203929424286,
+      0.0
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 0.8336799144744873
+}

@@ -1,0 +1,38 @@
+{
+  "max_speakers": 2,
+  "vad_threshold": 0.5,
+  "min_speech_ms": 250,
+  "min_silence_ms": 200,
+  "window_max_s": 2.0,
+  "window_min_s": 0.8,
+  "minimum_total_evidence_s": 6,
+  "minimum_cluster_windows": 2,
+  "minimum_cluster_seconds": 2.4,
+  "one_cluster_pairwise_p90_max": [
+    0.2,
+    0.25,
+    0.3
+  ],
+  "two_cluster_centroid_distance_min": [
+    0.3,
+    0.35,
+    0.4
+  ],
+  "silhouette_min": 0.35,
+  "within_cluster_cosine_radius_p90_max": 0.3,
+  "decision": "all three preset policies must agree; otherwise uncertain; engineering gates, no calibration",
+  "audio_origin": "first WAV sample",
+  "window_overlap": false,
+  "overlapping_speech_detector": false,
+  "scope": "33 TRAIN speaker WAV files only; no listener access, paid API or GPU",
+  "interpretation": "estimated number of sustained distinguishable voices, not proof of exact speaker count; brief second voice may be missed",
+  "job_sha256": "b475749d8c502d8b7d3dccc63e31c34fbd128343d32050c066029daaa5f29fbc",
+  "script_sha256": "8d25b389b7e2c97f3ccbd839040e1c45bae275bc7874143fe7b96d7406871858",
+  "model_hashes": {
+    "ecapa/embedding_model.ckpt": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+    "ecapa/hyperparams.yaml": "6f78854fa04ba59e761437b76a2575d3aba5e5016de3e9b69f0c9a5077fb1a41",
+    "silero/silero_vad.jit": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+    "silero/utils_vad.py": "f11e050b3e499ae52e77989b2559336461033ed63e30ddd5fdfca7dc94f50044"
+  },
+  "embedding_recipe": "official Fbank80 + sentence mean normalization + ECAPA; raw encoder embedding L2 normalization, no global embedding normalization"
+}

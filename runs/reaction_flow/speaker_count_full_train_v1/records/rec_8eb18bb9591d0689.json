@@ -1,0 +1,213 @@
+{
+  "id": "rec_8eb18bb9591d0689",
+  "relative": "session17/Camera-2024-10-23-151539-151613",
+  "split": "train",
+  "audio_sha256": "da4685936c2bf8a3a56c579cff43289ff43ef274d41d09fb6e1973b353dc6064",
+  "policy_sha256": "9813b6b5c0037b314e6e4acbafe77e4b3c94cd57d05faef4fe843fa313d6c735",
+  "audio_duration_s": 17.1595625,
+  "audio_channels": 1,
+  "source_identity": "unknown",
+  "human_reviewed": false,
+  "training_eligible": false,
+  "annotation_regime": "audio_count_diagnostic",
+  "candidate_speaker_count": 1,
+  "graph_stable": false,
+  "screening_bucket": "uncertain",
+  "uncertainty_reasons": [
+    "brief_voice_not_resolved",
+    "neighbor_sensitivity",
+    "partition_sensitivity"
+  ],
+  "spectral_runs": [
+    {
+      "count": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "eigenvalues": [
+        7.937563850646256e-08,
+        0.17535822093486786,
+        0.4036658704280853,
+        0.6945415139198303
+      ],
+      "gaps": [
+        0.1753581464290619,
+        0.22830764949321747
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        4.76837158203125e-07,
+        0.7106678485870361,
+        0.7749313116073608,
+        1.2562404870986938
+      ],
+      "gaps": [
+        0.7106673717498779,
+        0.06426346302032471
+      ]
+    },
+    {
+      "count": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "eigenvalues": [
+        4.76837158203125e-07,
+        0.7106678485870361,
+        0.7749313116073608,
+        1.2562404870986938
+      ],
+      "gaps": [
+        0.7106673717498779,
+        0.06426346302032471
+      ]
+    }
+  ],
+  "partition_ARI": [
+    0.0,
+    1.0,
+    1.0
+  ],
+  "windows": [
+    {
+      "start_s": 0.032,
+      "end_s": 1.056,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 1.056,
+      "end_s": 2.08,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 2.56,
+      "end_s": 3.872,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 3.872,
+      "end_s": 5.184,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 5.664,
+      "end_s": 7.328,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 7.712,
+      "end_s": 9.568,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 9.568,
+      "end_s": 11.424,
+      "candidate_voice": "voice_0"
+    },
+    {
+      "start_s": 11.424,
+      "end_s": 13.28,
+      "candidate_voice": "voice_0"
+    }
+  ],
+  "short_unassigned_segments": [
+    {
+      "start_s": 16.736,
+      "end_s": 17.1595625,
+      "reason": "too_short_for_embedding"
+    }
+  ],
+  "vad_intervals": [
+    {
+      "start_s": 0.032,
+      "end_s": 2.08
+    },
+    {
+      "start_s": 2.56,
+      "end_s": 5.184
+    },
+    {
+      "start_s": 5.664,
+      "end_s": 7.328
+    },
+    {
+      "start_s": 7.712,
+      "end_s": 13.28
+    },
+    {
+      "start_s": 16.736,
+      "end_s": 17.1595625
+    }
+  ],
+  "conservative_diagnostic": {
+    "count": null,
+    "reason": "threshold_sensitive_or_ambiguous",
+    "labels": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "diagnostic_two_cluster_labels": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0
+    ],
+    "pairwise_cosine_distance_p90": 0.6767608880996704,
+    "centroid_cosine_distance": 0.34485340118408203,
+    "silhouette": 0.10559278726577759,
+    "cluster_windows": [
+      4,
+      4
+    ],
+    "cluster_seconds": [
+      5.76,
+      6.144
+    ],
+    "cluster_radius_p90": [
+      0.2511658012866974,
+      0.25012877583503723
+    ],
+    "policy_counts": [
+      null,
+      null,
+      null
+    ]
+  },
+  "runtime_s": 1.138035535812378
+}
