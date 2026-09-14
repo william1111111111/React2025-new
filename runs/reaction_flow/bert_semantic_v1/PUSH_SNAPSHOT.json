@@ -1,0 +1,65 @@
+{
+  "captured_utc": "2026-09-14T12:15:33.143246+00:00",
+  "gpus": [
+    7
+  ],
+  "execution": "four concurrent pipelines",
+  "records": [
+    {
+      "arm": "P0-null",
+      "training_step": 980,
+      "stage": "training",
+      "evaluation": {
+        "500": {
+          "FRC": 0.8870233869119819,
+          "FRVar": 0.057581834495067596,
+          "smse": 0.08131420612335205,
+          "temporal_smse": 0.07277058809995651,
+          "TLCC": 46.36249923706055
+        }
+      }
+    },
+    {
+      "arm": "P1-byte",
+      "training_step": 864,
+      "stage": "training",
+      "evaluation": {
+        "500": {
+          "FRC": 0.892512685140914,
+          "FRVar": 0.05921762064099312,
+          "smse": 0.08435876667499542,
+          "temporal_smse": 0.07517193257808685,
+          "TLCC": 46.349998474121094
+        }
+      }
+    },
+    {
+      "arm": "P2-bert",
+      "training_step": 862,
+      "stage": "training",
+      "evaluation": {
+        "500": {
+          "FRC": 0.8754657806360922,
+          "FRVar": 0.058071069419384,
+          "smse": 0.08557789027690887,
+          "temporal_smse": 0.07619182765483856,
+          "TLCC": 46.412498474121094
+        }
+      }
+    },
+    {
+      "arm": "P3-bert-time",
+      "training_step": 862,
+      "stage": "training",
+      "evaluation": {
+        "500": {
+          "FRC": 0.8708461949341457,
+          "FRVar": 0.05865143612027168,
+          "smse": 0.08691741526126862,
+          "temporal_smse": 0.07768300920724869,
+          "TLCC": 46.42499923706055
+        }
+      }
+    }
+  ]
+}

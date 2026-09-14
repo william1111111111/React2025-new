@@ -1,0 +1,104 @@
+status: proposal_not_executed
+version: bert-semantic-controls-v1
+reviewed_commit: 38615960d2235f177c5cec1dc36b14d5de6929e6
+repository: william1111111111/React2025-new
+parent:
+  path: runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt
+  sha256: e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6
+text_encoder:
+  model_id: google-bert/bert-base-uncased
+  revision: null  # Resolve and record a real immutable revision before execution.
+  frozen: true
+  eval_mode: true
+  trust_remote_code: false
+  pooling: last_hidden_state_mean_excluding_padding_and_specials
+  width: 768
+  max_tokens_per_window: 128
+  overflow: deterministic_nonoverlapping_126_content_wordpiece_windows
+  aggregate_windows: content_token_count_weighted_mean
+  cache_dtype: float32
+  input: approved_auto_weak_original_english_evidence
+arms:
+  P0-null: {content: null, relative_time_bias: false, event_type: false}
+  P1-byte: {content: learned_byte_mean_768, relative_time_bias: false, event_type: false}
+  P2-bert: {content: frozen_bert_mean_768, relative_time_bias: false, event_type: false}
+  P3-bert-time: {content: frozen_bert_mean_768, relative_time_bias: true, event_type: false}
+fusion:
+  width: 256
+  heads: 8
+  injection: source_condition_features_after_frozen_encoder
+  content_projection: layernorm768_linear768to256
+  time_token_features: normalized_start_end_has_time
+  zero_init: final_output_projection_weight_and_bias_only
+  empty_or_dropped_residual: exactly_zero
+  semantic_dropout: 0.1
+  dropout_rng: explicit_common_per_step_occurrence_mask
+  attention_dropout: 0.0
+time_bias:
+  sigma_seconds: 1.0
+  post_event_slack_seconds: 2.0
+  minimum_bias: -8.0
+  unknown_time_bias: 0.0
+  null_bias: 0.0
+  timestamps: measured_video_PTS_in_crop_relative_seconds
+  selection: same_existing_crop_event_lists_for_all_arms
+training:
+  seed: 123
+  steps_per_arm: 1000
+  checkpoints: [0, 100, 500, 1000]
+  batch_size: 4
+  frames: 750
+  sample_count: 4
+  cohort: runs/reaction_flow/semantic_controlled_v1/cohort.json
+  expected_source_count: 48
+  losses: unchanged_T0_FM_plus_lambda_ref_task_parts
+  source_encoder_frozen: true
+  velocity_trainable: true
+  optimizer: AdamW
+  inherit_parent_velocity_optimizer_state: true
+  velocity_lr: 0.00002
+  semantic_lr: 0.0001
+  semantic_warmup_steps: 100
+  weight_decay: 0.01
+  global_grad_clip_norm: 1.0
+  schedule_length_must_equal_requested: true
+  shared_source_crop_target_noise_tau_schedule: true
+  resume_test_required: true
+evaluation:
+  primary_population: existing_DEV80
+  sample_count: 10
+  solver: Euler16
+  generation_dtype: float64
+  official_metrics_dtype: float32
+  output_policy: native_continuous_AU
+  unchanged_processor_and_targets: true
+  curve_metrics_steps: [500, 1000]
+  exact_frd20_steps: [1000]
+  incomplete_frd_value: null
+  strata: [all_sources, nonnull_sources, null_sources, timed_evidence_coverage]
+  paired_uncertainty: session_cluster_bootstrap_fixed_checkpoint
+  mechanism_probes: [same_session_cross_recording_text_mismatch, text_fixed_interval_permutation]
+  probe_uses_GT_for_selection: false
+  clinical_or_semantic_accuracy_claims: false
+pilot_selection_tolerances:
+  basis: same_step_P0
+  frc_ratio_min: 1.0
+  frd20_ratio_max: 1.02
+  smse_ratio_min: 0.95
+  interpretation: engineering_screen_not_statistical_equivalence
+final_mam_references:
+  frc80: 0.810962319
+  exact_frd20: 172.576423473
+  smse80: 0.157203704
+  scope: matched_development_reference_not_hidden_test
+not_in_first_batch:
+  - event_type
+  - planner
+  - shared_noise
+  - diversity_reward
+  - dynamic_loss
+  - gradient_ratio_control
+  - BERT_finetuning
+  - new_annotation_requests
+  - additional_training_seeds
+  - automatic_push

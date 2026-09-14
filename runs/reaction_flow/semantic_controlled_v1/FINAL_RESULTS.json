@@ -1,0 +1,76 @@
+{
+  "completed": true,
+  "train_updates_per_arm": 500,
+  "seed": 123,
+  "DEV_sources": 80,
+  "FRD_sources": 20,
+  "FRD_pairs_per_arm": 2000,
+  "results": [
+    {
+      "arm": "E0",
+      "metrics": {
+        "FRC": 0.8840925218567885,
+        "FRVar": 0.058884698897600174,
+        "smse": 0.0847737267613411,
+        "temporal_smse": 0.07548294961452484,
+        "TLCC": 46.625
+      },
+      "exact_FRD20": 132.58672021468854,
+      "checkpoint_sha256": "4da8c4c3cffc144425306d74bbab036c3b7aff026f63401dd10feef7bdd3bc73",
+      "eval_sha256": "d0a36c632bab9ff5909745ea49e20a6358271c3e4558a430d1cd525a4b55b47c",
+      "frd_status_sha256": "d459770deab6c63719d3fd6a18134c42e86c93f62a92721d7ea03319426bceb7",
+      "delta_vs_E0": {
+        "FRC": 0.0,
+        "FRVar": 0.0,
+        "smse": 0.0,
+        "temporal_smse": 0.0,
+        "TLCC": 0.0,
+        "exact_FRD20": 0.0
+      }
+    },
+    {
+      "arm": "E_text",
+      "metrics": {
+        "FRC": 0.8826763913745349,
+        "FRVar": 0.05531970039010048,
+        "smse": 0.07872335612773895,
+        "temporal_smse": 0.06998370587825775,
+        "TLCC": 46.474998474121094
+      },
+      "exact_FRD20": 131.72204735133167,
+      "checkpoint_sha256": "5fbfb4291dcfeedc24d27e93bc316bd122263a7a32816cd0f2ab963bba15dd89",
+      "eval_sha256": "17ba9fb62720ee9a570744c5cbd470c568514e7a1cd881871e8106994de70e65",
+      "frd_status_sha256": "ca3f10439a2575df39e42f27ac28daa681f7436133c8280b4860c611be87ce2c",
+      "delta_vs_E0": {
+        "FRC": -0.0014161304822536414,
+        "FRVar": -0.003564998507499695,
+        "smse": -0.006050370633602142,
+        "temporal_smse": -0.00549924373626709,
+        "TLCC": -0.15000152587890625,
+        "exact_FRD20": -0.8646728633568728
+      }
+    },
+    {
+      "arm": "E_event",
+      "metrics": {
+        "FRC": 0.8632447929730909,
+        "FRVar": 0.053461622446775436,
+        "smse": 0.07864857465028763,
+        "temporal_smse": 0.06981600821018219,
+        "TLCC": 46.48749923706055
+      },
+      "exact_FRD20": 131.2882599911348,
+      "checkpoint_sha256": "b83b56b98b6529f42b7de7328cb42b4da9f844537e973664c09ce75631d9de1d",
+      "eval_sha256": "f58c52a33523a01a4b874ddf758f88f5cfdc8e78dce1a8b64bc9314ff3aefdb7",
+      "frd_status_sha256": "1cba02a354c56e10172650eca94e52ebcc63984ecbb4b13a85c6ffc62e398164",
+      "delta_vs_E0": {
+        "FRC": -0.02084772888369768,
+        "FRVar": -0.0054230764508247375,
+        "smse": -0.006125152111053467,
+        "temporal_smse": -0.005666941404342651,
+        "TLCC": -0.13750076293945312,
+        "exact_FRD20": -1.2984602235537466
+      }
+    }
+  ]
+}

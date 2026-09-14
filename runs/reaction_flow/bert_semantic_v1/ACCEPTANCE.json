@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "real_batch": {
+    "B": 1,
+    "T": 750,
+    "K": 2,
+    "non_null_events": 4
+  },
+  "real_training": {
+    "continuous_updates": 3,
+    "resumed_updates": 3,
+    "model_exact_match": true,
+    "optimizer_exact_match": true,
+    "RNG_exact_match": true,
+    "first_output_grad": 0.0227008406072855,
+    "third_upstream_grad": 4.035993697470985e-06
+  },
+  "arms": [
+    {
+      "arm": "P0-null",
+      "step0_parent_max_abs": 0.0,
+      "K_prefix_max_abs": 2.942091015256665e-15,
+      "repeat_max_abs": 0.0,
+      "fusion_hash": "e700ad314a586e2a0523f688cec3aef7ecf49bfd29d008adf9c69a2aba930944"
+    },
+    {
+      "arm": "P1-byte",
+      "step0_parent_max_abs": 0.0,
+      "K_prefix_max_abs": 2.942091015256665e-15,
+      "repeat_max_abs": 0.0,
+      "fusion_hash": "e700ad314a586e2a0523f688cec3aef7ecf49bfd29d008adf9c69a2aba930944"
+    },
+    {
+      "arm": "P2-bert",
+      "step0_parent_max_abs": 0.0,
+      "K_prefix_max_abs": 2.942091015256665e-15,
+      "repeat_max_abs": 0.0,
+      "fusion_hash": "e700ad314a586e2a0523f688cec3aef7ecf49bfd29d008adf9c69a2aba930944"
+    },
+    {
+      "arm": "P3-bert-time",
+      "step0_parent_max_abs": 0.0,
+      "K_prefix_max_abs": 2.942091015256665e-15,
+      "repeat_max_abs": 0.0,
+      "fusion_hash": "e700ad314a586e2a0523f688cec3aef7ecf49bfd29d008adf9c69a2aba930944",
+      "after3_content_prediction_max_change": 0.0022125073488151736
+    }
+  ]
+}

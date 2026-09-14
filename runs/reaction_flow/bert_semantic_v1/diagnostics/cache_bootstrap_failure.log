@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/bert_experiments/cache.py", line 36, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/bert_experiments/cache.py", line 29, in main
+    source=read(OUT/'legal_texts.json');texts=sorted(set(source['train']+source['val']));tick=time.time();vec,counts,nwindows=encode(texts,tokenizer,model,device);assert np.isfinite(vec).all()
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/zhengshiyi/react2025_new/semantic_supervision/bert_experiments/cache.py", line 15, in encode
+    chunk=ids[start:start+126];inp=tokenizer.build_inputs_with_special_tokens(chunk);mask=tokenizer.get_special_tokens_mask(chunk,already_has_special_tokens=False);windows.append((i,inp,mask,len(chunk)))
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3790, in get_special_tokens_mask
+    assert already_has_special_tokens and token_ids_1 is None, (
+AssertionError: You cannot use ``already_has_special_tokens=False`` with this tokenizer. Please use a slow (full python) tokenizer to activate this argument. Or set `return_special_tokens_mask=True` when calling the encoding method to get the special tokens mask in any tokenizer.
