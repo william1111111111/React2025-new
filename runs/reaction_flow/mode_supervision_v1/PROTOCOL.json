@@ -1,0 +1,39 @@
+{
+  "parent": "runs/reaction_flow/task_dynamics_v1/T0-task/attempt_000/checkpoints/step_014000.pt",
+  "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+  "arms": [
+    "M0-control",
+    "M1-mode"
+  ],
+  "decoder_steps": 6000,
+  "prior_warmup_steps": 2000,
+  "checkpoints": [
+    1000,
+    3000,
+    6000
+  ],
+  "seed": 123,
+  "gpu": 7,
+  "B": 4,
+  "T": 750,
+  "K_train": 4,
+  "K_eval": 10,
+  "euler_steps": 16,
+  "source_population": 1660,
+  "schedule_sha256": "f89cf2b9e603db5cd6445ff86e38d3f12146a2102d155e1ed34c8db1f7f36c2a",
+  "cohort_sha256": "70829aa941857c76a0ed44e8bcaec1a7489d9f33ffec6b1c4e9d117571840522",
+  "lambda_mode_calibration": "once on held-out TRAIN schedule batch; 0.1 times inherited weighted-task gradient norm; 200 step ramp",
+  "quality_tolerance": {
+    "FRC_min_ratio": 1.0,
+    "FRD_max_ratio": 1.0,
+    "SMSE_min_ratio": 1.5
+  },
+  "prior_task_gradient": false,
+  "semantics": false,
+  "paid_API_calls": 0,
+  "target_policy": "uniform slot 0 paired + 3 deterministic same-session alternatives; paired original timeline; alternatives original full-length linear interpolate align_corners=True",
+  "sampling_policy": "source-proportional session; uniform source within session; uniform generation block",
+  "normalization": "TRAIN-only plan statistics; masked coefficient standard deviations floor 0.001; equal transformed AU/VA/expression groups",
+  "no_automatic_push": true,
+  "no_budget_extension": true
+}

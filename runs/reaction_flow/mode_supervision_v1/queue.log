@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/mode_supervision/queue.py", line 37, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/mode_supervision/queue.py", line 35, in main
+    for f in futures:f.result()
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/zhengshiyi/react2025_new/mode_supervision/queue.py", line 13, in arm_run
+    execute(['mode_supervision.train','--arm',arm,'--stop',str(step)],OUT/(arm+'_train.log'))
+  File "/home/zhengshiyi/react2025_new/mode_supervision/queue.py", line 6, in execute
+    with open(log,'a') as f:subprocess.run([sys.executable,'-m',*command],stdout=f,stderr=subprocess.STDOUT,check=True,env={**os.environ,'CUDA_VISIBLE_DEVICES':'7','CUBLAS_WORKSPACE_CONFIG':':4096:8','OMP_NUM_THREADS':'4'})
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/zhengshiyi/react2025_new/.venv/bin/python', '-m', 'mode_supervision.train', '--arm', 'M0-control', '--stop', '1000']' returned non-zero exit status 1.

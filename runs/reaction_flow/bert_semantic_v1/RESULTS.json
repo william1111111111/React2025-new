@@ -1,0 +1,4505 @@
+{
+  "complete": true,
+  "main": [
+    {
+      "arm": "P0-null",
+      "metrics": {
+        "FRC": 0.9371518647855959,
+        "FRC_time": 11.636826838948764,
+        "FRVar": 0.05632476136088371,
+        "FRVar_time": 0.0862204390577972,
+        "smse": 0.06908363103866577,
+        "smse_time": 0.09964659693650901,
+        "temporal_smse": 0.06064837425947189,
+        "temporal_smse_time": 0.15922585409134626,
+        "TLCC": 47.0,
+        "TLCC_time": 5.4769286550581455
+      },
+      "FRD20": 130.9861032882161,
+      "FRD_completed": true,
+      "FRD_pairs": 2000,
+      "subgroups": {
+        "all": {
+          "sources": 80,
+          "source_mean": {
+            "FRC": 0.9371518647855961,
+            "paired_CCC_mean": 0.031335083929360755,
+            "smse": 0.06908361960331806,
+            "FRVar": 0.05632476201683258,
+            "target_best_CCC_mean": 0.05985365824519395,
+            "DC": 0.008434785819073554,
+            "slow": 0.05402457953697282,
+            "fast": 0.006625310478896029
+          },
+          "session_equal_mean": {
+            "FRC": 0.9371518647855961,
+            "paired_CCC_mean": 0.031335083929360755,
+            "smse": 0.06908361960331805,
+            "FRVar": 0.056324762016832564,
+            "target_best_CCC_mean": 0.05985365824519394,
+            "DC": 0.008434785819073554,
+            "slow": 0.05402457953697282,
+            "fast": 0.006625310478896029
+          }
+        },
+        "non_null": {
+          "sources": 48,
+          "source_mean": {
+            "FRC": 0.9822855604743306,
+            "paired_CCC_mean": 0.041267763686996625,
+            "smse": 0.07098641635341295,
+            "FRVar": 0.060211070549170465,
+            "target_best_CCC_mean": 0.061223279260133955,
+            "DC": 0.00823401731465672,
+            "slow": 0.056175274949658204,
+            "fast": 0.0065781419780851546
+          },
+          "session_equal_mean": {
+            "FRC": 1.0209538229924424,
+            "paired_CCC_mean": 0.044966898685747,
+            "smse": 0.07019158832830528,
+            "FRVar": 0.059386383146589575,
+            "target_best_CCC_mean": 0.0630520292178563,
+            "DC": 0.008533164860414095,
+            "slow": 0.055216525389548604,
+            "fast": 0.006442893202996537
+          }
+        },
+        "null": {
+          "sources": 32,
+          "source_mean": {
+            "FRC": 0.8694513212524944,
+            "paired_CCC_mean": 0.01643606429290694,
+            "smse": 0.06622942447817573,
+            "FRVar": 0.05049529921832574,
+            "target_best_CCC_mean": 0.05779922672278398,
+            "DC": 0.0087359385756988,
+            "slow": 0.05079853641794474,
+            "fast": 0.006696063230112341
+          },
+          "session_equal_mean": {
+            "FRC": 0.9127994400155583,
+            "paired_CCC_mean": 0.020151053277702866,
+            "smse": 0.06899323837789458,
+            "FRVar": 0.05294496332231798,
+            "target_best_CCC_mean": 0.06110345652407017,
+            "DC": 0.008586862478189898,
+            "slow": 0.05320376737466534,
+            "fast": 0.007203797405000432
+          }
+        },
+        "timed": {
+          "sources": 38,
+          "source_mean": {
+            "FRC": 1.02763577310324,
+            "paired_CCC_mean": 0.04494332834219744,
+            "smse": 0.07048167976066035,
+            "FRVar": 0.06039591383198008,
+            "target_best_CCC_mean": 0.06504973336810252,
+            "DC": 0.008236372495197972,
+            "slow": 0.05568570206635243,
+            "fast": 0.00656064615187066
+          },
+          "session_equal_mean": {
+            "FRC": 1.0120632266842184,
+            "paired_CCC_mean": 0.044172388723431336,
+            "smse": 0.06839590418064362,
+            "FRVar": 0.05915154084872323,
+            "target_best_CCC_mean": 0.06244087856531831,
+            "DC": 0.007945195047823329,
+            "slow": 0.053899220507470376,
+            "fast": 0.0065525457334337
+          }
+        }
+      },
+      "checkpoint_sha256": "71a85ee8461ba5e33d21399a7ee7aa2e3ed7f9e20f7e16fe53ff2f9d681decc5",
+      "parameters": {
+        "arm": "P0-null",
+        "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+        "base_hash": "27c251bdf2606959b89ceaa9b0f94cdf93073a21d3a8a50c6097ca0479f4abd4",
+        "fusion_hash": "25c9c1690f9b99c7b60041aea0a66042bad33f745acd4a8164ec96ac2264a78a",
+        "optimized_parameters": 9561368,
+        "frozen_in_model": 3681574,
+        "total_in_model": 13242942,
+        "external_frozen_BERT_parameters": 0,
+        "initial_optimizer_base_sha256": "fe6d8699bd6bee4b128dfaa0cfd06db71b4377000682b6b0d4004f09be6efca1"
+      },
+      "inference_seconds": 629.1699950695038,
+      "peak_gpu_bytes": 1712187392,
+      "paired_source_deltas": [
+        {
+          "index": 0,
+          "session": "session0",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 1,
+          "session": "session0",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 2,
+          "session": "session0",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 3,
+          "session": "session0",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 4,
+          "session": "session1",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 5,
+          "session": "session1",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 6,
+          "session": "session1",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 7,
+          "session": "session1",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 8,
+          "session": "session10",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 9,
+          "session": "session10",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 10,
+          "session": "session10",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 11,
+          "session": "session10",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 12,
+          "session": "session11",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 13,
+          "session": "session11",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 14,
+          "session": "session11",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 15,
+          "session": "session11",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 16,
+          "session": "session12",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 17,
+          "session": "session12",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 18,
+          "session": "session12",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 19,
+          "session": "session12",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 20,
+          "session": "session13",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 21,
+          "session": "session13",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 22,
+          "session": "session13",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 23,
+          "session": "session13",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 24,
+          "session": "session14",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 25,
+          "session": "session14",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 26,
+          "session": "session14",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 27,
+          "session": "session14",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 28,
+          "session": "session15",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 29,
+          "session": "session15",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 30,
+          "session": "session15",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 31,
+          "session": "session15",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 32,
+          "session": "session16",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 33,
+          "session": "session16",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 34,
+          "session": "session16",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 35,
+          "session": "session16",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 36,
+          "session": "session17",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 37,
+          "session": "session17",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 38,
+          "session": "session17",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 39,
+          "session": "session17",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 40,
+          "session": "session18",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 41,
+          "session": "session18",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 42,
+          "session": "session18",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 43,
+          "session": "session18",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 44,
+          "session": "session19",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 45,
+          "session": "session19",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 46,
+          "session": "session19",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 47,
+          "session": "session19",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 48,
+          "session": "session2",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 49,
+          "session": "session2",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 50,
+          "session": "session2",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 51,
+          "session": "session2",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 52,
+          "session": "session21",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 53,
+          "session": "session21",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 54,
+          "session": "session21",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 55,
+          "session": "session21",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 56,
+          "session": "session3",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 57,
+          "session": "session3",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 58,
+          "session": "session3",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 59,
+          "session": "session3",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 60,
+          "session": "session4",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 61,
+          "session": "session4",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 62,
+          "session": "session4",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 63,
+          "session": "session4",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 64,
+          "session": "session5",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 65,
+          "session": "session5",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 66,
+          "session": "session5",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 67,
+          "session": "session5",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 68,
+          "session": "session6",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 69,
+          "session": "session6",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 70,
+          "session": "session6",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 71,
+          "session": "session6",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 72,
+          "session": "session7",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 73,
+          "session": "session7",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 74,
+          "session": "session7",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 75,
+          "session": "session7",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 76,
+          "session": "session9",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 77,
+          "session": "session9",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 78,
+          "session": "session9",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        },
+        {
+          "index": 79,
+          "session": "session9",
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0,
+          "smse": 0.0,
+          "FRVar": 0.0,
+          "target_best_CCC_mean": 0.0
+        }
+      ],
+      "session_bootstrap": {
+        "FRC": {
+          "session_equal_mean": 0.0,
+          "session_cluster_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "smse": {
+          "session_equal_mean": 0.0,
+          "session_cluster_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "FRVar": {
+          "session_equal_mean": 0.0,
+          "session_cluster_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "target_best_CCC_mean": {
+          "session_equal_mean": 0.0,
+          "session_cluster_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        }
+      },
+      "prespecified_screen_pass": true
+    },
+    {
+      "arm": "P1-byte",
+      "metrics": {
+        "FRC": 0.9121505694025256,
+        "FRC_time": 12.033300967072137,
+        "FRVar": 0.05389302223920822,
+        "FRVar_time": 0.09020436299033463,
+        "smse": 0.0684780701994896,
+        "smse_time": 0.10075619607232511,
+        "temporal_smse": 0.059793420135974884,
+        "temporal_smse_time": 0.15237376606091857,
+        "TLCC": 46.287498474121094,
+        "TLCC_time": 5.584120843093842
+      },
+      "FRD20": 129.5713342443523,
+      "FRD_completed": true,
+      "FRD_pairs": 2000,
+      "subgroups": {
+        "all": {
+          "sources": 80,
+          "source_mean": {
+            "FRC": 0.9121505694025258,
+            "paired_CCC_mean": 0.03069835618985845,
+            "smse": 0.06847805943262453,
+            "FRVar": 0.0538930232310698,
+            "target_best_CCC_mean": 0.05864563711482379,
+            "DC": 0.008684133730786043,
+            "slow": 0.05277024858721373,
+            "fast": 0.0070247104673210855
+          },
+          "session_equal_mean": {
+            "FRC": 0.9121505694025259,
+            "paired_CCC_mean": 0.030698356189858455,
+            "smse": 0.06847805943262453,
+            "FRVar": 0.053893023231069793,
+            "target_best_CCC_mean": 0.05864563711482379,
+            "DC": 0.008684133730786043,
+            "slow": 0.05277024858721373,
+            "fast": 0.007024710467321086
+          }
+        },
+        "non_null": {
+          "sources": 48,
+          "source_mean": {
+            "FRC": 0.9641180570320703,
+            "paired_CCC_mean": 0.04152763142228838,
+            "smse": 0.07105493008512659,
+            "FRVar": 0.057003179073987886,
+            "target_best_CCC_mean": 0.060506473409946936,
+            "DC": 0.008776729881441065,
+            "slow": 0.055363536393363603,
+            "fast": 0.006915656201999008
+          },
+          "session_equal_mean": {
+            "FRC": 0.9976092669596368,
+            "paired_CCC_mean": 0.04497195804005633,
+            "smse": 0.0705071425199741,
+            "FRVar": 0.056576983227291426,
+            "target_best_CCC_mean": 0.062407552537583254,
+            "DC": 0.009126630005530302,
+            "slow": 0.05457671492322982,
+            "fast": 0.006804774814760112
+          }
+        },
+        "null": {
+          "sources": 32,
+          "source_mean": {
+            "FRC": 0.8341993379582089,
+            "paired_CCC_mean": 0.014454443341213572,
+            "smse": 0.06461275345387144,
+            "FRVar": 0.04922778946669268,
+            "target_best_CCC_mean": 0.05585438267213906,
+            "DC": 0.008545239504803504,
+            "slow": 0.048880316877988925,
+            "fast": 0.007188291865304202
+          },
+          "session_equal_mean": {
+            "FRC": 0.8690125707771631,
+            "paired_CCC_mean": 0.01750139866230029,
+            "smse": 0.06760738026657345,
+            "FRVar": 0.05167532369393653,
+            "target_best_CCC_mean": 0.05897120575233777,
+            "DC": 0.0084513624499221,
+            "slow": 0.051328642608918236,
+            "fast": 0.007828545124816608
+          }
+        },
+        "timed": {
+          "sources": 38,
+          "source_mean": {
+            "FRC": 1.000316916244903,
+            "paired_CCC_mean": 0.04509672013155996,
+            "smse": 0.07104422329919553,
+            "FRVar": 0.057315410051193845,
+            "target_best_CCC_mean": 0.06403709080377658,
+            "DC": 0.008838628234055596,
+            "slow": 0.05532660116547197,
+            "fast": 0.006880016825056033
+          },
+          "session_equal_mean": {
+            "FRC": 0.9847331674025843,
+            "paired_CCC_mean": 0.043598913862568166,
+            "smse": 0.06913328014176201,
+            "FRVar": 0.056585402560597804,
+            "target_best_CCC_mean": 0.06176070536073689,
+            "DC": 0.008488948140717899,
+            "slow": 0.05366908594391915,
+            "fast": 0.006976285071824019
+          }
+        }
+      },
+      "checkpoint_sha256": "1517bc27c231c607888440a528af703c2b202657f8813d0559eb82d01ad6288b",
+      "parameters": {
+        "arm": "P1-byte",
+        "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+        "base_hash": "27c251bdf2606959b89ceaa9b0f94cdf93073a21d3a8a50c6097ca0479f4abd4",
+        "fusion_hash": "25c9c1690f9b99c7b60041aea0a66042bad33f745acd4a8164ec96ac2264a78a",
+        "optimized_parameters": 9758744,
+        "frozen_in_model": 3681574,
+        "total_in_model": 13440318,
+        "external_frozen_BERT_parameters": 0,
+        "initial_optimizer_base_sha256": "fe6d8699bd6bee4b128dfaa0cfd06db71b4377000682b6b0d4004f09be6efca1"
+      },
+      "inference_seconds": 849.248220205307,
+      "peak_gpu_bytes": 1714978816,
+      "paired_source_deltas": [
+        {
+          "index": 0,
+          "session": "session0",
+          "FRC": -0.03407842092482849,
+          "paired_CCC_mean": -0.002483733513754645,
+          "smse": -0.00504696874154939,
+          "FRVar": -0.0018531639739473305,
+          "target_best_CCC_mean": -0.006151175877159316
+        },
+        {
+          "index": 1,
+          "session": "session0",
+          "FRC": -0.10941665418281765,
+          "paired_CCC_mean": -0.022003770404181874,
+          "smse": -0.006688125762674552,
+          "FRVar": -0.00021957026067954966,
+          "target_best_CCC_mean": -0.02193893244111237
+        },
+        {
+          "index": 2,
+          "session": "session0",
+          "FRC": -0.10049553541891254,
+          "paired_CCC_mean": -0.0200827304870298,
+          "smse": 0.0033289709852801427,
+          "FRVar": -0.0022706903872589806,
+          "target_best_CCC_mean": -0.004629560176926589
+        },
+        {
+          "index": 3,
+          "session": "session0",
+          "FRC": -0.02863877317669894,
+          "paired_CCC_mean": -0.008390261994174742,
+          "smse": 0.0036814091934098125,
+          "FRVar": -0.0029869101270735207,
+          "target_best_CCC_mean": -0.004375688144323292
+        },
+        {
+          "index": 4,
+          "session": "session1",
+          "FRC": -0.1020257310046706,
+          "paired_CCC_mean": -0.004545757469774966,
+          "smse": -0.008945479740699133,
+          "FRVar": -0.007176518765723956,
+          "target_best_CCC_mean": -0.011941018959521543
+        },
+        {
+          "index": 5,
+          "session": "session1",
+          "FRC": -0.6212144947613008,
+          "paired_CCC_mean": 0.055544856712399684,
+          "smse": 0.02778157306214174,
+          "FRVar": -0.012618338406666645,
+          "target_best_CCC_mean": -0.011666013109417506
+        },
+        {
+          "index": 6,
+          "session": "session1",
+          "FRC": -0.13431792433141942,
+          "paired_CCC_mean": -0.013740909527121967,
+          "smse": -0.0018254859579934085,
+          "FRVar": -0.0018929362809832206,
+          "target_best_CCC_mean": 0.0004860769815312055
+        },
+        {
+          "index": 7,
+          "session": "session1",
+          "FRC": 0.013191280742829825,
+          "paired_CCC_mean": -0.003932432343436015,
+          "smse": -0.0008273055156071962,
+          "FRVar": -0.0046659850808192654,
+          "target_best_CCC_mean": -0.0013150747196405688
+        },
+        {
+          "index": 8,
+          "session": "session10",
+          "FRC": 0.11607811083054442,
+          "paired_CCC_mean": 0.014816890685453235,
+          "smse": -0.0006636205646726873,
+          "FRVar": -0.0014181623205814994,
+          "target_best_CCC_mean": 0.009449731540863579
+        },
+        {
+          "index": 9,
+          "session": "session10",
+          "FRC": 0.2642747212999832,
+          "paired_CCC_mean": 0.018756001006616663,
+          "smse": -0.002720114671521723,
+          "FRVar": -0.015494118713223357,
+          "target_best_CCC_mean": 0.010866703242228375
+        },
+        {
+          "index": 10,
+          "session": "session10",
+          "FRC": 0.06345918461311528,
+          "paired_CCC_mean": 0.00520372353608467,
+          "smse": -0.002413455562459088,
+          "FRVar": -0.005706607342095958,
+          "target_best_CCC_mean": 0.00211238008158271
+        },
+        {
+          "index": 11,
+          "session": "session10",
+          "FRC": 0.19121253865401677,
+          "paired_CCC_mean": 0.011697465839908269,
+          "smse": -0.011951649023426901,
+          "FRVar": 0.0002861417117823242,
+          "target_best_CCC_mean": 0.006206820926906165
+        },
+        {
+          "index": 12,
+          "session": "session11",
+          "FRC": 0.04413118609550837,
+          "paired_CCC_mean": 0.0035384759140189292,
+          "smse": -0.0005131144490506945,
+          "FRVar": -0.0051561170032016004,
+          "target_best_CCC_mean": 0.002851123223230355
+        },
+        {
+          "index": 13,
+          "session": "session11",
+          "FRC": -0.009142741009040778,
+          "paired_CCC_mean": 9.788383419443575e-05,
+          "smse": 0.002282785210344529,
+          "FRVar": 0.00013000644898424757,
+          "target_best_CCC_mean": -0.0002854045423323001
+        },
+        {
+          "index": 14,
+          "session": "session11",
+          "FRC": 0.043560920849492535,
+          "paired_CCC_mean": 0.0013782482067183563,
+          "smse": -0.0012441282471020998,
+          "FRVar": -0.001918494877622176,
+          "target_best_CCC_mean": 0.0010885053740914072
+        },
+        {
+          "index": 15,
+          "session": "session11",
+          "FRC": 0.002645147877251841,
+          "paired_CCC_mean": -0.005511371116905219,
+          "smse": -0.0050219540794690515,
+          "FRVar": -0.0033697740141455726,
+          "target_best_CCC_mean": -0.0005136120724149734
+        },
+        {
+          "index": 16,
+          "session": "session12",
+          "FRC": -0.016533842957779266,
+          "paired_CCC_mean": -0.006599923194411966,
+          "smse": -0.004992807242605424,
+          "FRVar": 0.0012001078834650153,
+          "target_best_CCC_mean": -0.00630719121717177
+        },
+        {
+          "index": 17,
+          "session": "session12",
+          "FRC": 0.06036648437448433,
+          "paired_CCC_mean": 0.0061706734122095735,
+          "smse": 0.00012542348768976308,
+          "FRVar": -0.0005084760849613443,
+          "target_best_CCC_mean": 0.0018956933180272334
+        },
+        {
+          "index": 18,
+          "session": "session12",
+          "FRC": 0.0826804899755097,
+          "paired_CCC_mean": 0.0005963269929057588,
+          "smse": 0.004784212427006829,
+          "FRVar": 0.0028411621621824354,
+          "target_best_CCC_mean": 0.008536172376369902
+        },
+        {
+          "index": 19,
+          "session": "session12",
+          "FRC": 0.05135826796800358,
+          "paired_CCC_mean": 0.0068350776007947145,
+          "smse": 0.0023488567935095878,
+          "FRVar": 0.003496143861921701,
+          "target_best_CCC_mean": 0.004391570801391548
+        },
+        {
+          "index": 20,
+          "session": "session13",
+          "FRC": 0.15214228496793103,
+          "paired_CCC_mean": 0.007912132332533706,
+          "smse": -0.00036047995090485174,
+          "FRVar": -0.0011855968244794818,
+          "target_best_CCC_mean": 0.0030327267813309994
+        },
+        {
+          "index": 21,
+          "session": "session13",
+          "FRC": -0.2298012217957326,
+          "paired_CCC_mean": -0.023292461269847214,
+          "smse": 0.0025562139848868126,
+          "FRVar": -0.01476725419579307,
+          "target_best_CCC_mean": -0.024183932140553782
+        },
+        {
+          "index": 22,
+          "session": "session13",
+          "FRC": 0.25914757694205504,
+          "paired_CCC_mean": 0.035771991113168936,
+          "smse": -0.0017988705800639215,
+          "FRVar": 0.0020398805621662727,
+          "target_best_CCC_mean": -0.005279315194560777
+        },
+        {
+          "index": 23,
+          "session": "session13",
+          "FRC": -0.034928080864544686,
+          "paired_CCC_mean": 0.01388289638960293,
+          "smse": -0.009559090683857602,
+          "FRVar": -0.002831230662237838,
+          "target_best_CCC_mean": 0.00013026192964102346
+        },
+        {
+          "index": 24,
+          "session": "session14",
+          "FRC": -0.12473178375028526,
+          "paired_CCC_mean": -0.015513121798204854,
+          "smse": 0.0045884757406181725,
+          "FRVar": -0.004488545312197639,
+          "target_best_CCC_mean": -0.008100173720257065
+        },
+        {
+          "index": 25,
+          "session": "session14",
+          "FRC": -0.02378682651200248,
+          "paired_CCC_mean": -0.0023023098565942007,
+          "smse": 0.0011860275434123213,
+          "FRVar": -0.002798294251251443,
+          "target_best_CCC_mean": -0.0013097835238297661
+        },
+        {
+          "index": 26,
+          "session": "session14",
+          "FRC": -0.05223557987143246,
+          "paired_CCC_mean": -0.008792134018415193,
+          "smse": -0.004027096347676382,
+          "FRVar": -0.0016736260698781286,
+          "target_best_CCC_mean": -0.0015573706030385798
+        },
+        {
+          "index": 27,
+          "session": "session14",
+          "FRC": 0.002842298362808915,
+          "paired_CCC_mean": -0.0008039458549101292,
+          "smse": 0.005792253795597294,
+          "FRVar": -0.005524550823687385,
+          "target_best_CCC_mean": -0.004149451629264805
+        },
+        {
+          "index": 28,
+          "session": "session15",
+          "FRC": -0.12028762773774004,
+          "paired_CCC_mean": -0.016036843378532922,
+          "smse": -0.0005967232088247981,
+          "FRVar": -0.004478223312931878,
+          "target_best_CCC_mean": -0.011682307086339772
+        },
+        {
+          "index": 29,
+          "session": "session15",
+          "FRC": 0.05344839586487149,
+          "paired_CCC_mean": 0.004772442369419261,
+          "smse": 0.0027412446422709347,
+          "FRVar": 0.0019309004916114106,
+          "target_best_CCC_mean": 0.0019294309674546817
+        },
+        {
+          "index": 30,
+          "session": "session15",
+          "FRC": -0.03383395298161462,
+          "paired_CCC_mean": 0.0016429661415033187,
+          "smse": -0.0010956402868032428,
+          "FRVar": 0.00032466623125039507,
+          "target_best_CCC_mean": -0.0010845973622543512
+        },
+        {
+          "index": 31,
+          "session": "session15",
+          "FRC": -0.06403179682218085,
+          "paired_CCC_mean": -0.004056603993174736,
+          "smse": -0.0008571477399931943,
+          "FRVar": -0.0051824879154677705,
+          "target_best_CCC_mean": -0.0008597487393426917
+        },
+        {
+          "index": 32,
+          "session": "session16",
+          "FRC": -0.32375971694313876,
+          "paired_CCC_mean": -0.02206831667917204,
+          "smse": 0.0038718166450659453,
+          "FRVar": -0.005184885747250095,
+          "target_best_CCC_mean": 0.001688131132691062
+        },
+        {
+          "index": 33,
+          "session": "session16",
+          "FRC": 0.15055050549046645,
+          "paired_CCC_mean": 0.005951352704108768,
+          "smse": -0.0028147328644990977,
+          "FRVar": 0.004183975748461709,
+          "target_best_CCC_mean": 0.00529773926435094
+        },
+        {
+          "index": 34,
+          "session": "session16",
+          "FRC": 0.0462167187235476,
+          "paired_CCC_mean": -0.005284709643053151,
+          "smse": 0.00214170465866724,
+          "FRVar": -0.001966143325316347,
+          "target_best_CCC_mean": -0.0025289180887056173
+        },
+        {
+          "index": 35,
+          "session": "session16",
+          "FRC": -0.000728205656366443,
+          "paired_CCC_mean": -0.0029779461836151183,
+          "smse": -0.0012185515628920646,
+          "FRVar": -0.0045013694749288305,
+          "target_best_CCC_mean": -0.0010819875467091011
+        },
+        {
+          "index": 36,
+          "session": "session17",
+          "FRC": -0.06128948934267653,
+          "paired_CCC_mean": -0.0003511235636130816,
+          "smse": 0.0019852411829762995,
+          "FRVar": -0.0019405150855416262,
+          "target_best_CCC_mean": -0.004914405961477242
+        },
+        {
+          "index": 37,
+          "session": "session17",
+          "FRC": -0.1411999170744067,
+          "paired_CCC_mean": -0.0003441768338377383,
+          "smse": 0.0059730756613943226,
+          "FRVar": -0.005707025965600146,
+          "target_best_CCC_mean": 0.004087133963046101
+        },
+        {
+          "index": 38,
+          "session": "session17",
+          "FRC": -0.1365258655493391,
+          "paired_CCC_mean": -0.008376137179243272,
+          "smse": 0.0034117751651340095,
+          "FRVar": -0.003705658496843775,
+          "target_best_CCC_mean": 0.003681486193378644
+        },
+        {
+          "index": 39,
+          "session": "session17",
+          "FRC": -0.18027820283855034,
+          "paired_CCC_mean": -0.015979534573939747,
+          "smse": 0.006407600392897936,
+          "FRVar": -0.004461615008345979,
+          "target_best_CCC_mean": 0.007327460382424211
+        },
+        {
+          "index": 40,
+          "session": "session18",
+          "FRC": 0.005863273739405206,
+          "paired_CCC_mean": 0.009560741751851714,
+          "smse": -0.0029602283818854214,
+          "FRVar": -0.006357858904083309,
+          "target_best_CCC_mean": 0.007495344212109505
+        },
+        {
+          "index": 41,
+          "session": "session18",
+          "FRC": -0.12126529588176416,
+          "paired_CCC_mean": -0.013533647062991705,
+          "smse": 0.002884728461503977,
+          "FRVar": -0.004529922071151896,
+          "target_best_CCC_mean": 0.003826665862399853
+        },
+        {
+          "index": 42,
+          "session": "session18",
+          "FRC": -0.11843449815625495,
+          "paired_CCC_mean": -0.006716782966206095,
+          "smse": -0.00011909397111999065,
+          "FRVar": -0.0005973340745762598,
+          "target_best_CCC_mean": -0.0041121797278408576
+        },
+        {
+          "index": 43,
+          "session": "session18",
+          "FRC": -0.2803790675310476,
+          "paired_CCC_mean": -0.030387438372512954,
+          "smse": 0.0034537501633167267,
+          "FRVar": -0.006545339950192575,
+          "target_best_CCC_mean": -0.0032719683773989316
+        },
+        {
+          "index": 44,
+          "session": "session19",
+          "FRC": -0.025932609407394724,
+          "paired_CCC_mean": -0.018072673950208146,
+          "smse": -0.003697960492637417,
+          "FRVar": -0.0063555302984617534,
+          "target_best_CCC_mean": 0.0060089364082399
+        },
+        {
+          "index": 45,
+          "session": "session19",
+          "FRC": -0.13767178694858218,
+          "paired_CCC_mean": -0.013175931024476936,
+          "smse": -0.0024834374586741176,
+          "FRVar": -0.00063522145798698,
+          "target_best_CCC_mean": -0.008206396389682999
+        },
+        {
+          "index": 46,
+          "session": "session19",
+          "FRC": 0.1682393566417162,
+          "paired_CCC_mean": 0.03658212818337142,
+          "smse": -0.01268427049120266,
+          "FRVar": -0.008677853151278891,
+          "target_best_CCC_mean": -0.000998322981665363
+        },
+        {
+          "index": 47,
+          "session": "session19",
+          "FRC": 0.034281681931415564,
+          "paired_CCC_mean": 0.008103382392460112,
+          "smse": 0.0015283729467127083,
+          "FRVar": -0.0036422926096495722,
+          "target_best_CCC_mean": -0.0018106919034980712
+        },
+        {
+          "index": 48,
+          "session": "session2",
+          "FRC": 0.21670489269527793,
+          "paired_CCC_mean": -0.0014865519211849781,
+          "smse": -0.008775720248619709,
+          "FRVar": 0.002091041179599358,
+          "target_best_CCC_mean": 0.0066811129697243316
+        },
+        {
+          "index": 49,
+          "session": "session2",
+          "FRC": -0.026349324381584882,
+          "paired_CCC_mean": -0.008231963119706665,
+          "smse": -0.0017738996280564148,
+          "FRVar": -0.0017582447469035242,
+          "target_best_CCC_mean": -0.002904588129000303
+        },
+        {
+          "index": 50,
+          "session": "session2",
+          "FRC": -0.07387121776870054,
+          "paired_CCC_mean": 0.0033569541691677723,
+          "smse": -0.005016960700352985,
+          "FRVar": -0.004192029536807189,
+          "target_best_CCC_mean": -0.0008391991770189053
+        },
+        {
+          "index": 51,
+          "session": "session2",
+          "FRC": -0.01778639572537566,
+          "paired_CCC_mean": 0.00535235873237006,
+          "smse": -0.010253556238280406,
+          "FRVar": 0.001274672024252077,
+          "target_best_CCC_mean": 0.0014183532134215554
+        },
+        {
+          "index": 52,
+          "session": "session21",
+          "FRC": -0.19283649475368636,
+          "paired_CCC_mean": -0.022031927660718098,
+          "smse": 0.0013220565186606512,
+          "FRVar": -0.0022722023458302126,
+          "target_best_CCC_mean": -0.0032090352829899638
+        },
+        {
+          "index": 53,
+          "session": "session21",
+          "FRC": -0.2666000655446702,
+          "paired_CCC_mean": -0.001402291154418183,
+          "smse": -0.0010233358376555979,
+          "FRVar": -0.003668796209622148,
+          "target_best_CCC_mean": -0.010519640066922298
+        },
+        {
+          "index": 54,
+          "session": "session21",
+          "FRC": 0.003555952541929641,
+          "paired_CCC_mean": 0.00789451451603969,
+          "smse": -0.0019946335090531286,
+          "FRVar": -0.003841022235002614,
+          "target_best_CCC_mean": 0.0021994697448868977
+        },
+        {
+          "index": 55,
+          "session": "session21",
+          "FRC": 0.27606429984132874,
+          "paired_CCC_mean": 0.010250608164720718,
+          "smse": -0.0007117482523123497,
+          "FRVar": -0.008967889019893038,
+          "target_best_CCC_mean": 0.009513308573305644
+        },
+        {
+          "index": 56,
+          "session": "session3",
+          "FRC": 0.051899582134073974,
+          "paired_CCC_mean": 0.0045453254286846045,
+          "smse": -0.00014852070146136043,
+          "FRVar": -0.0018356731104870738,
+          "target_best_CCC_mean": -0.0010652359830418123
+        },
+        {
+          "index": 57,
+          "session": "session3",
+          "FRC": -0.018175817564193952,
+          "paired_CCC_mean": 0.004471607973315875,
+          "smse": -4.8986408445569896e-05,
+          "FRVar": 0.0012446089345415218,
+          "target_best_CCC_mean": -0.004232868818885113
+        },
+        {
+          "index": 58,
+          "session": "session3",
+          "FRC": -0.02591059967088105,
+          "paired_CCC_mean": 0.003812820156507718,
+          "smse": 0.002370633598830968,
+          "FRVar": -0.0011613070844173623,
+          "target_best_CCC_mean": 0.002122389942997377
+        },
+        {
+          "index": 59,
+          "session": "session3",
+          "FRC": -0.039549323456553376,
+          "paired_CCC_mean": -0.008095643961996267,
+          "smse": -0.00877015110519197,
+          "FRVar": -0.0036458784524836113,
+          "target_best_CCC_mean": -0.003476084693318046
+        },
+        {
+          "index": 60,
+          "session": "session4",
+          "FRC": -0.044713007535913896,
+          "paired_CCC_mean": -0.006285732091243657,
+          "smse": -0.0010356001555919675,
+          "FRVar": 0.0042312820489436576,
+          "target_best_CCC_mean": -0.0026355824537403205
+        },
+        {
+          "index": 61,
+          "session": "session4",
+          "FRC": -0.002732075505553655,
+          "paired_CCC_mean": 0.0005697175458949863,
+          "smse": 0.0017555315461423582,
+          "FRVar": 0.0016023397669493178,
+          "target_best_CCC_mean": -0.0006348343671224027
+        },
+        {
+          "index": 62,
+          "session": "session4",
+          "FRC": 0.017551101298281302,
+          "paired_CCC_mean": 0.001911647562648014,
+          "smse": -0.00041353416939576143,
+          "FRVar": -0.00021466165053085629,
+          "target_best_CCC_mean": -0.0001360994003406328
+        },
+        {
+          "index": 63,
+          "session": "session4",
+          "FRC": -0.091621075427336,
+          "paired_CCC_mean": 0.004127520358549481,
+          "smse": -0.002760225617223319,
+          "FRVar": -0.0015748478308363414,
+          "target_best_CCC_mean": -0.005023046154235537
+        },
+        {
+          "index": 64,
+          "session": "session5",
+          "FRC": 0.02962150122007856,
+          "paired_CCC_mean": -0.0017620773316135855,
+          "smse": 0.0036220435467031256,
+          "FRVar": 0.003404908393249126,
+          "target_best_CCC_mean": 0.0018556585155055233
+        },
+        {
+          "index": 65,
+          "session": "session5",
+          "FRC": 0.10468238753356063,
+          "paired_CCC_mean": 0.0035937558915362846,
+          "smse": -0.005815813028150131,
+          "FRVar": -0.004180905945636179,
+          "target_best_CCC_mean": 0.0015181515997395034
+        },
+        {
+          "index": 66,
+          "session": "session5",
+          "FRC": 0.014312072062438341,
+          "paired_CCC_mean": -0.010735210642868094,
+          "smse": 0.003683424078755909,
+          "FRVar": 0.0015056621290691213,
+          "target_best_CCC_mean": -0.00037988925014670327
+        },
+        {
+          "index": 67,
+          "session": "session5",
+          "FRC": 0.013313269147670836,
+          "paired_CCC_mean": -0.0025865802764047686,
+          "smse": -0.0010292726258436802,
+          "FRVar": -0.0015856535007650052,
+          "target_best_CCC_mean": 5.080765562347905e-05
+        },
+        {
+          "index": 68,
+          "session": "session6",
+          "FRC": -0.014369969140349936,
+          "paired_CCC_mean": 0.0017779801896446851,
+          "smse": -0.0022965626584159,
+          "FRVar": -0.001570803522910242,
+          "target_best_CCC_mean": -0.0019878431855839297
+        },
+        {
+          "index": 69,
+          "session": "session6",
+          "FRC": -0.04069709163404711,
+          "paired_CCC_mean": -0.00019732405140000884,
+          "smse": -0.0035611920058727306,
+          "FRVar": -0.002164844987285742,
+          "target_best_CCC_mean": -0.0034238206257156747
+        },
+        {
+          "index": 70,
+          "session": "session6",
+          "FRC": 0.010025104210871438,
+          "paired_CCC_mean": -0.0031023283066570735,
+          "smse": -0.0022138526870144754,
+          "FRVar": -0.00028556810959733114,
+          "target_best_CCC_mean": 0.0007735365889384171
+        },
+        {
+          "index": 71,
+          "session": "session6",
+          "FRC": -0.08275954772480432,
+          "paired_CCC_mean": 0.0007013607770195148,
+          "smse": -0.0029887385252449217,
+          "FRVar": -0.003218897349295983,
+          "target_best_CCC_mean": -0.003793538928632729
+        },
+        {
+          "index": 72,
+          "session": "session7",
+          "FRC": 0.0016562412070123544,
+          "paired_CCC_mean": 0.0032016963464806814,
+          "smse": 0.001890892535448066,
+          "FRVar": -0.0013429313186562875,
+          "target_best_CCC_mean": -0.006607954435902598
+        },
+        {
+          "index": 73,
+          "session": "session7",
+          "FRC": -0.024897806084270058,
+          "paired_CCC_mean": -0.0011809009611723747,
+          "smse": 0.003268146763245265,
+          "FRVar": 0.00011389008259839184,
+          "target_best_CCC_mean": -0.002176695016771986
+        },
+        {
+          "index": 74,
+          "session": "session7",
+          "FRC": -0.0682877965372172,
+          "paired_CCC_mean": -0.0035325432506068104,
+          "smse": 0.0018620308902528512,
+          "FRVar": 0.0016641966472817904,
+          "target_best_CCC_mean": -0.00310147528851128
+        },
+        {
+          "index": 75,
+          "session": "session7",
+          "FRC": -0.012983375674318287,
+          "paired_CCC_mean": 0.003347105271924112,
+          "smse": 0.002663056800762814,
+          "FRVar": 0.0007128374582373656,
+          "target_best_CCC_mean": 0.0009330605363320477
+        },
+        {
+          "index": 76,
+          "session": "session9",
+          "FRC": 0.025572297393621102,
+          "paired_CCC_mean": 0.007859733026376839,
+          "smse": -0.003338442080550716,
+          "FRVar": -0.004246552324548909,
+          "target_best_CCC_mean": 0.00039901657137879354
+        },
+        {
+          "index": 77,
+          "session": "session9",
+          "FRC": 0.05529673736538587,
+          "paired_CCC_mean": 0.0070981995945832935,
+          "smse": -0.002016334152883957,
+          "FRVar": 0.0002008715657284138,
+          "target_best_CCC_mean": 0.000716348303394572
+        },
+        {
+          "index": 78,
+          "session": "session9",
+          "FRC": -0.1034281395457507,
+          "paired_CCC_mean": 0.0006818935784720301,
+          "smse": -0.0008040588763025061,
+          "FRVar": -0.0015711065916670028,
+          "target_best_CCC_mean": -0.003906779911635239
+        },
+        {
+          "index": 79,
+          "session": "session9",
+          "FRC": -0.1115147281343869,
+          "paired_CCC_mean": -0.00832087258011353,
+          "smse": 0.00018053071366415374,
+          "FRVar": -0.0007243436920044699,
+          "target_best_CCC_mean": -0.002903566202195562
+        }
+      ],
+      "session_bootstrap": {
+        "FRC": {
+          "session_equal_mean": -0.025001295383070367,
+          "session_cluster_bootstrap_95": [
+            -0.057611985398590686,
+            0.007785222726750176
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "smse": {
+          "session_equal_mean": -0.00060556017069353,
+          "session_cluster_bootstrap_95": [
+            -0.0017645323093747718,
+            0.0005061807282165511
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "FRVar": {
+          "session_equal_mean": -0.002431738785762776,
+          "session_cluster_bootstrap_95": [
+            -0.0034012210876144576,
+            -0.0014755088186371589
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "target_best_CCC_mean": {
+          "session_equal_mean": -0.0012080211303701685,
+          "session_cluster_bootstrap_95": [
+            -0.0027335019953027796,
+            0.00030701528551412206
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        }
+      },
+      "prespecified_screen_pass": false
+    },
+    {
+      "arm": "P2-bert",
+      "metrics": {
+        "FRC": 0.9379011006006148,
+        "FRC_time": 11.53776698303409,
+        "FRVar": 0.055246129631996155,
+        "FRVar_time": 0.07886695396155119,
+        "smse": 0.06772060692310333,
+        "smse_time": 0.09917131497059017,
+        "temporal_smse": 0.05915147811174393,
+        "temporal_smse_time": 0.1317651190329343,
+        "TLCC": 46.29999923706055,
+        "TLCC_time": 5.557330798939802
+      },
+      "FRD20": 130.6886747400594,
+      "FRD_completed": true,
+      "FRD_pairs": 2000,
+      "subgroups": {
+        "all": {
+          "sources": 80,
+          "source_mean": {
+            "FRC": 0.9379011006006148,
+            "paired_CCC_mean": 0.034195010767401376,
+            "smse": 0.0677205993498986,
+            "FRVar": 0.05524613088697876,
+            "target_best_CCC_mean": 0.05984199054228388,
+            "DC": 0.008568634265231025,
+            "slow": 0.05249248679724132,
+            "fast": 0.006660545627503549
+          },
+          "session_equal_mean": {
+            "FRC": 0.9379011006006147,
+            "paired_CCC_mean": 0.034195010767401376,
+            "smse": 0.06772059934989859,
+            "FRVar": 0.05524613088697877,
+            "target_best_CCC_mean": 0.05984199054228388,
+            "DC": 0.008568634265231025,
+            "slow": 0.05249248679724132,
+            "fast": 0.006660545627503549
+          }
+        },
+        "non_null": {
+          "sources": 48,
+          "source_mean": {
+            "FRC": 0.9895857862063152,
+            "paired_CCC_mean": 0.04482297985651937,
+            "smse": 0.06978793764245456,
+            "FRVar": 0.058528375558239976,
+            "target_best_CCC_mean": 0.06149886626444836,
+            "DC": 0.008508667912601709,
+            "slow": 0.05462914677378703,
+            "fast": 0.006651149631763688
+          },
+          "session_equal_mean": {
+            "FRC": 1.0195795471658904,
+            "paired_CCC_mean": 0.047345027541585975,
+            "smse": 0.06930655559768165,
+            "FRVar": 0.05781174831702335,
+            "target_best_CCC_mean": 0.06292302309394313,
+            "DC": 0.008848611257273278,
+            "slow": 0.05389579575244699,
+            "fast": 0.00656315761379397
+          }
+        },
+        "null": {
+          "sources": 32,
+          "source_mean": {
+            "FRC": 0.860374072192064,
+            "paired_CCC_mean": 0.018253057133724403,
+            "smse": 0.06461959191106467,
+            "FRVar": 0.05032276388008695,
+            "target_best_CCC_mean": 0.057356676959037185,
+            "DC": 0.008658583794175001,
+            "slow": 0.049287496832422756,
+            "fast": 0.00667463962111334
+          },
+          "session_equal_mean": {
+            "FRC": 0.8929145476817886,
+            "paired_CCC_mean": 0.021674725925911922,
+            "smse": 0.06772247367891111,
+            "FRVar": 0.05291592496128064,
+            "target_best_CCC_mean": 0.060112548769232076,
+            "DC": 0.008589515156770748,
+            "slow": 0.05184481644751528,
+            "fast": 0.0072893572208740575
+          }
+        },
+        "timed": {
+          "sources": 38,
+          "source_mean": {
+            "FRC": 1.0247332913852818,
+            "paired_CCC_mean": 0.047118099946905134,
+            "smse": 0.0692281685442778,
+            "FRVar": 0.059082812890661494,
+            "target_best_CCC_mean": 0.06422567668576158,
+            "DC": 0.008448845783552247,
+            "slow": 0.054313767724996145,
+            "fast": 0.006466611115124146
+          },
+          "session_equal_mean": {
+            "FRC": 1.006939642801137,
+            "paired_CCC_mean": 0.04492982530322655,
+            "smse": 0.06772838037484039,
+            "FRVar": 0.058128878971827454,
+            "target_best_CCC_mean": 0.061550932881745596,
+            "DC": 0.00819643816486473,
+            "slow": 0.052972575963870124,
+            "fast": 0.006560458860587769
+          }
+        }
+      },
+      "checkpoint_sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+      "parameters": {
+        "arm": "P2-bert",
+        "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+        "base_hash": "27c251bdf2606959b89ceaa9b0f94cdf93073a21d3a8a50c6097ca0479f4abd4",
+        "fusion_hash": "25c9c1690f9b99c7b60041aea0a66042bad33f745acd4a8164ec96ac2264a78a",
+        "optimized_parameters": 9561368,
+        "frozen_in_model": 3681574,
+        "total_in_model": 13242942,
+        "external_frozen_BERT_parameters": 108891648,
+        "initial_optimizer_base_sha256": "fe6d8699bd6bee4b128dfaa0cfd06db71b4377000682b6b0d4004f09be6efca1"
+      },
+      "inference_seconds": 856.6687870025635,
+      "peak_gpu_bytes": 1712187392,
+      "paired_source_deltas": [
+        {
+          "index": 0,
+          "session": "session0",
+          "FRC": 0.04057337642851011,
+          "paired_CCC_mean": 0.025694777107375277,
+          "smse": 0.007032713790734613,
+          "FRVar": -0.008051161448660062,
+          "target_best_CCC_mean": 0.020903692493975227
+        },
+        {
+          "index": 1,
+          "session": "session0",
+          "FRC": -0.11127019207736477,
+          "paired_CCC_mean": -0.02961729372083228,
+          "smse": -0.005298039813836419,
+          "FRVar": -0.0007329833968820476,
+          "target_best_CCC_mean": -0.02492675419776904
+        },
+        {
+          "index": 2,
+          "session": "session0",
+          "FRC": -0.12134469002464887,
+          "paired_CCC_mean": -0.022071285092225112,
+          "smse": 0.00195506355828709,
+          "FRVar": -0.00048316040000769,
+          "target_best_CCC_mean": -0.004426025816535742
+        },
+        {
+          "index": 3,
+          "session": "session0",
+          "FRC": -0.03153570382239912,
+          "paired_CCC_mean": -0.006041561581921009,
+          "smse": 3.490696350733069e-05,
+          "FRVar": -0.0015853995155765688,
+          "target_best_CCC_mean": -0.00725483279901111
+        },
+        {
+          "index": 4,
+          "session": "session1",
+          "FRC": -0.04035408076299429,
+          "paired_CCC_mean": -0.0030131962922233246,
+          "smse": -0.008037312991089285,
+          "FRVar": -0.0027265850436216307,
+          "target_best_CCC_mean": -0.007297193135675964
+        },
+        {
+          "index": 5,
+          "session": "session1",
+          "FRC": -0.1792240164366452,
+          "paired_CCC_mean": 0.11031577879125251,
+          "smse": -0.005743986492355663,
+          "FRVar": 0.0017091007896052057,
+          "target_best_CCC_mean": -0.005779307865398653
+        },
+        {
+          "index": 6,
+          "session": "session1",
+          "FRC": -0.07831825766490241,
+          "paired_CCC_mean": -0.004183743663373707,
+          "smse": -0.0018707340790165838,
+          "FRVar": -0.00035559937336965275,
+          "target_best_CCC_mean": 0.004624883037673777
+        },
+        {
+          "index": 7,
+          "session": "session1",
+          "FRC": 0.026723174315699705,
+          "paired_CCC_mean": -0.00915683077112947,
+          "smse": -0.0008207479284869229,
+          "FRVar": -0.0010272218480354423,
+          "target_best_CCC_mean": 0.0003828405372129917
+        },
+        {
+          "index": 8,
+          "session": "session10",
+          "FRC": 0.11979357095109278,
+          "paired_CCC_mean": 0.014198097453671517,
+          "smse": -0.0012794493801064066,
+          "FRVar": 6.596774220769125e-05,
+          "target_best_CCC_mean": 0.008949006663661635
+        },
+        {
+          "index": 9,
+          "session": "session10",
+          "FRC": 0.3266490515105711,
+          "paired_CCC_mean": 0.06018521703250289,
+          "smse": -0.008009213126367987,
+          "FRVar": -0.010048581173295754,
+          "target_best_CCC_mean": 0.011425615284581712
+        },
+        {
+          "index": 10,
+          "session": "session10",
+          "FRC": 0.1624723320430146,
+          "paired_CCC_mean": 0.023903372271947748,
+          "smse": -0.004851321544912121,
+          "FRVar": -0.004024330859894301,
+          "target_best_CCC_mean": 0.005671545416124468
+        },
+        {
+          "index": 11,
+          "session": "session10",
+          "FRC": 0.19836965725536648,
+          "paired_CCC_mean": 0.017034410479194205,
+          "smse": -0.012988193250364731,
+          "FRVar": 0.0012797071917133307,
+          "target_best_CCC_mean": 0.0071616346692750105
+        },
+        {
+          "index": 12,
+          "session": "session11",
+          "FRC": 0.03000682536120375,
+          "paired_CCC_mean": 0.002010422205458877,
+          "smse": 0.0013171807759337906,
+          "FRVar": -0.001036559622587252,
+          "target_best_CCC_mean": 0.0026181389901615768
+        },
+        {
+          "index": 13,
+          "session": "session11",
+          "FRC": -0.0038873737078697346,
+          "paired_CCC_mean": 0.0021142380464362863,
+          "smse": 0.0034682349198394344,
+          "FRVar": 0.001356215470775947,
+          "target_best_CCC_mean": -0.0002093124664294746
+        },
+        {
+          "index": 14,
+          "session": "session11",
+          "FRC": 0.052565079667306114,
+          "paired_CCC_mean": 0.0005575447150478856,
+          "smse": 0.00018924209806654713,
+          "FRVar": 0.0009832392017259661,
+          "target_best_CCC_mean": 0.0028977275072023037
+        },
+        {
+          "index": 15,
+          "session": "session11",
+          "FRC": 0.07344958232606186,
+          "paired_CCC_mean": -0.004220251917409597,
+          "smse": -0.00885035635696517,
+          "FRVar": -0.0013842210422761736,
+          "target_best_CCC_mean": 0.00244975942191418
+        },
+        {
+          "index": 16,
+          "session": "session12",
+          "FRC": -0.039680534658221966,
+          "paired_CCC_mean": -0.0032942763223590583,
+          "smse": 0.002834653109312052,
+          "FRVar": -0.003366773899140904,
+          "target_best_CCC_mean": -0.003097069534174615
+        },
+        {
+          "index": 17,
+          "session": "session12",
+          "FRC": 0.012687382140682768,
+          "paired_CCC_mean": 0.015153627132665336,
+          "smse": 0.0032967867122756234,
+          "FRVar": 0.002009466850593722,
+          "target_best_CCC_mean": 0.002902665720207913
+        },
+        {
+          "index": 18,
+          "session": "session12",
+          "FRC": 0.10583487809334846,
+          "paired_CCC_mean": 0.004087562548428965,
+          "smse": 0.005796456833680477,
+          "FRVar": 0.003903228128033183,
+          "target_best_CCC_mean": 0.011508411830451218
+        },
+        {
+          "index": 19,
+          "session": "session12",
+          "FRC": 0.11865285390335101,
+          "paired_CCC_mean": 0.01229660001592739,
+          "smse": 0.0018930635518497885,
+          "FRVar": 0.007001838392349136,
+          "target_best_CCC_mean": 0.0035860579817484084
+        },
+        {
+          "index": 20,
+          "session": "session13",
+          "FRC": 0.12439399400348772,
+          "paired_CCC_mean": 0.025808283254897466,
+          "smse": 0.000446193085776439,
+          "FRVar": -0.0017880245211121942,
+          "target_best_CCC_mean": 0.0020583524020346966
+        },
+        {
+          "index": 21,
+          "session": "session13",
+          "FRC": 0.10294181888281861,
+          "paired_CCC_mean": 0.006974004388462199,
+          "smse": 0.0060557074016995005,
+          "FRVar": -7.345796233444724e-05,
+          "target_best_CCC_mean": 0.008104592426045651
+        },
+        {
+          "index": 22,
+          "session": "session13",
+          "FRC": 0.17206732132341807,
+          "paired_CCC_mean": 0.009419198755305851,
+          "smse": 0.0005076721310615512,
+          "FRVar": 0.001594775669139896,
+          "target_best_CCC_mean": -0.00010093450073489496
+        },
+        {
+          "index": 23,
+          "session": "session13",
+          "FRC": -0.04530330127767357,
+          "paired_CCC_mean": 0.015023202255299309,
+          "smse": -0.009522368179427254,
+          "FRVar": -0.0004625431817155967,
+          "target_best_CCC_mean": -0.0033254133480802583
+        },
+        {
+          "index": 24,
+          "session": "session14",
+          "FRC": 0.038743617848734146,
+          "paired_CCC_mean": 0.004692338107621652,
+          "smse": -0.007035212135977215,
+          "FRVar": -0.0031032227795454587,
+          "target_best_CCC_mean": -0.0022326170055497613
+        },
+        {
+          "index": 25,
+          "session": "session14",
+          "FRC": 0.048951508464863736,
+          "paired_CCC_mean": 0.00583390179129685,
+          "smse": 0.0008953378432326881,
+          "FRVar": -0.0034229135300518077,
+          "target_best_CCC_mean": 0.006307855884043728
+        },
+        {
+          "index": 26,
+          "session": "session14",
+          "FRC": -0.010833701541464569,
+          "paired_CCC_mean": -0.010215757754301918,
+          "smse": 0.002876712961329353,
+          "FRVar": -0.0024796841673847547,
+          "target_best_CCC_mean": -4.269455600196259e-05
+        },
+        {
+          "index": 27,
+          "session": "session14",
+          "FRC": 0.005494718821467126,
+          "paired_CCC_mean": -0.002392860424823229,
+          "smse": -0.0036999568757083573,
+          "FRVar": -0.0028278006562299646,
+          "target_best_CCC_mean": 0.0014062578652537516
+        },
+        {
+          "index": 28,
+          "session": "session15",
+          "FRC": -0.08223549202220037,
+          "paired_CCC_mean": -0.0029816912443381104,
+          "smse": -0.0003055956628587597,
+          "FRVar": -0.0026059174235963656,
+          "target_best_CCC_mean": -0.00840058080935012
+        },
+        {
+          "index": 29,
+          "session": "session15",
+          "FRC": -0.013470236917140999,
+          "paired_CCC_mean": 0.001259924440614223,
+          "smse": -0.0028151318223939986,
+          "FRVar": -0.0011964533351934703,
+          "target_best_CCC_mean": -0.0026875395670307722
+        },
+        {
+          "index": 30,
+          "session": "session15",
+          "FRC": -0.023044907057525044,
+          "paired_CCC_mean": 0.0008673922085978558,
+          "smse": -0.0007272958755493164,
+          "FRVar": 0.0011656493325279127,
+          "target_best_CCC_mean": 0.0006840610834252872
+        },
+        {
+          "index": 31,
+          "session": "session15",
+          "FRC": -0.05160891134228096,
+          "paired_CCC_mean": -0.0019404891568154843,
+          "smse": -0.00025500307480494366,
+          "FRVar": -0.002886356583029437,
+          "target_best_CCC_mean": 0.0004870324962395964
+        },
+        {
+          "index": 32,
+          "session": "session16",
+          "FRC": 0.05336408825941685,
+          "paired_CCC_mean": 0.01357275875216188,
+          "smse": -0.005348474242620999,
+          "FRVar": -0.006100043035408592,
+          "target_best_CCC_mean": -0.005102510680443671
+        },
+        {
+          "index": 33,
+          "session": "session16",
+          "FRC": -0.0015571035620266516,
+          "paired_CCC_mean": -0.006398533097143683,
+          "smse": 0.0008034846021069408,
+          "FRVar": -0.0003347079995179858,
+          "target_best_CCC_mean": -0.0019319046593555544
+        },
+        {
+          "index": 34,
+          "session": "session16",
+          "FRC": -0.014412333600039018,
+          "paired_CCC_mean": 0.017152680721918168,
+          "smse": -0.00025956365797255576,
+          "FRVar": -0.0013213846194293083,
+          "target_best_CCC_mean": -0.00532087343442933
+        },
+        {
+          "index": 35,
+          "session": "session16",
+          "FRC": -0.0016732532426761981,
+          "paired_CCC_mean": -0.003842927763598361,
+          "smse": -0.0033328035225470842,
+          "FRVar": -0.00254170299719262,
+          "target_best_CCC_mean": -0.0013095282032087041
+        },
+        {
+          "index": 36,
+          "session": "session17",
+          "FRC": -0.12976760115635955,
+          "paired_CCC_mean": -0.0022297939096323632,
+          "smse": 0.0005235751056008875,
+          "FRVar": -0.002315413771587199,
+          "target_best_CCC_mean": -0.006339954754903551
+        },
+        {
+          "index": 37,
+          "session": "session17",
+          "FRC": -0.17312962020517064,
+          "paired_CCC_mean": -0.0009726524542022705,
+          "smse": 0.0012086393104659143,
+          "FRVar": -0.0046560353283112005,
+          "target_best_CCC_mean": -0.0037677560311081895
+        },
+        {
+          "index": 38,
+          "session": "session17",
+          "FRC": 0.036730419631031186,
+          "paired_CCC_mean": -0.003647433669516975,
+          "smse": 0.0026136410733064025,
+          "FRVar": 0.0015226825727201188,
+          "target_best_CCC_mean": 0.0006466182350133853
+        },
+        {
+          "index": 39,
+          "session": "session17",
+          "FRC": -0.11772478665100206,
+          "paired_CCC_mean": -0.009857268464760927,
+          "smse": 0.005800169706344616,
+          "FRVar": -0.002501252554988037,
+          "target_best_CCC_mean": 0.0010667502296635711
+        },
+        {
+          "index": 40,
+          "session": "session18",
+          "FRC": 0.03204220998236418,
+          "paired_CCC_mean": 0.007608591221529588,
+          "smse": -0.006995943064490959,
+          "FRVar": -0.008087684070953331,
+          "target_best_CCC_mean": 0.007780028486028448
+        },
+        {
+          "index": 41,
+          "session": "session18",
+          "FRC": -0.10051852923560234,
+          "paired_CCC_mean": -0.011887367997569731,
+          "smse": -0.012042827159166339,
+          "FRVar": 0.0023380942788270506,
+          "target_best_CCC_mean": -0.01777340966601547
+        },
+        {
+          "index": 42,
+          "session": "session18",
+          "FRC": -0.11396782441356879,
+          "paired_CCC_mean": -0.010756443993585038,
+          "smse": -0.0020545125007629395,
+          "FRVar": 0.0012629270260502354,
+          "target_best_CCC_mean": -0.0033946650551724064
+        },
+        {
+          "index": 43,
+          "session": "session18",
+          "FRC": -0.16485804398662118,
+          "paired_CCC_mean": -0.018508859275824296,
+          "smse": -0.0016996399395995676,
+          "FRVar": -0.0040792865043859095,
+          "target_best_CCC_mean": 0.0019045830185942109
+        },
+        {
+          "index": 44,
+          "session": "session19",
+          "FRC": 0.14869038886013242,
+          "paired_CCC_mean": 0.007935570388377347,
+          "smse": -0.006530646814240343,
+          "FRVar": -0.01011082208343228,
+          "target_best_CCC_mean": 0.014807486072206395
+        },
+        {
+          "index": 45,
+          "session": "session19",
+          "FRC": -0.15716734845096214,
+          "paired_CCC_mean": -0.010005549613070909,
+          "smse": -0.0049550142553117515,
+          "FRVar": -0.0003554075656668626,
+          "target_best_CCC_mean": -0.009917111541285682
+        },
+        {
+          "index": 46,
+          "session": "session19",
+          "FRC": -0.015557140182018814,
+          "paired_CCC_mean": 0.0016448329027774211,
+          "smse": -0.00031336049238840646,
+          "FRVar": -0.0009508445811752947,
+          "target_best_CCC_mean": -0.006567394959773126
+        },
+        {
+          "index": 47,
+          "session": "session19",
+          "FRC": 0.07259146954566109,
+          "paired_CCC_mean": 0.022162555623016167,
+          "smse": -0.0012984484434127863,
+          "FRVar": -0.001748277226536088,
+          "target_best_CCC_mean": -0.002952634017420727
+        },
+        {
+          "index": 48,
+          "session": "session2",
+          "FRC": 0.24253207859005688,
+          "paired_CCC_mean": 0.0012407070201461146,
+          "smse": -0.012251574960019843,
+          "FRVar": 0.001006215447943902,
+          "target_best_CCC_mean": 0.006627417769205002
+        },
+        {
+          "index": 49,
+          "session": "session2",
+          "FRC": -0.04593601605462139,
+          "paired_CCC_mean": -0.01874376881669772,
+          "smse": -0.0012161406377951267,
+          "FRVar": 0.0024733613825024814,
+          "target_best_CCC_mean": -0.007897041014656447
+        },
+        {
+          "index": 50,
+          "session": "session2",
+          "FRC": 0.022506502889908298,
+          "paired_CCC_mean": 0.006337025793364464,
+          "smse": -0.004297296454509103,
+          "FRVar": -0.001723879790264539,
+          "target_best_CCC_mean": 0.0050648856105267315
+        },
+        {
+          "index": 51,
+          "session": "session2",
+          "FRC": 0.02552210913458719,
+          "paired_CCC_mean": 0.002715756818223546,
+          "smse": -0.008299001471863854,
+          "FRVar": 0.0030615734691597507,
+          "target_best_CCC_mean": 0.004687547770440829
+        },
+        {
+          "index": 52,
+          "session": "session21",
+          "FRC": -0.23042149590884942,
+          "paired_CCC_mean": -0.0219965246054033,
+          "smse": 0.002157914555735052,
+          "FRVar": -0.0016316682664153093,
+          "target_best_CCC_mean": -0.006050629575480193
+        },
+        {
+          "index": 53,
+          "session": "session21",
+          "FRC": -0.33470240727863065,
+          "paired_CCC_mean": 0.004676133357789184,
+          "smse": 0.0001860405007998167,
+          "FRVar": -0.001030248285328661,
+          "target_best_CCC_mean": -0.011362914484995393
+        },
+        {
+          "index": 54,
+          "session": "session21",
+          "FRC": -0.00591162921307431,
+          "paired_CCC_mean": -0.0004298752225485713,
+          "smse": -0.0006832145154476166,
+          "FRVar": -0.007447025474436264,
+          "target_best_CCC_mean": 0.0021935758377256906
+        },
+        {
+          "index": 55,
+          "session": "session21",
+          "FRC": -0.3217425897290477,
+          "paired_CCC_mean": -0.062423608027652525,
+          "smse": -0.0023788377642631614,
+          "FRVar": -0.00833584487012317,
+          "target_best_CCC_mean": -0.01470256366561528
+        },
+        {
+          "index": 56,
+          "session": "session3",
+          "FRC": 0.029876825700220655,
+          "paired_CCC_mean": 0.008195886195835805,
+          "smse": -0.0024895084400971684,
+          "FRVar": 0.00013982034235865415,
+          "target_best_CCC_mean": -0.0015086479711053508
+        },
+        {
+          "index": 57,
+          "session": "session3",
+          "FRC": 0.055732087016208576,
+          "paired_CCC_mean": 0.007897920294332582,
+          "smse": -0.0007834032177925082,
+          "FRVar": 0.003774382798286194,
+          "target_best_CCC_mean": 0.0005025568117257156
+        },
+        {
+          "index": 58,
+          "session": "session3",
+          "FRC": -0.054609952841012,
+          "paired_CCC_mean": -0.0018851169670142665,
+          "smse": 0.008144853429661855,
+          "FRVar": -0.0006120492502597746,
+          "target_best_CCC_mean": -0.0007659789086151142
+        },
+        {
+          "index": 59,
+          "session": "session3",
+          "FRC": 0.04712990278020013,
+          "paired_CCC_mean": 0.003726261621667183,
+          "smse": -0.009121506371431873,
+          "FRVar": -0.0007739142654116932,
+          "target_best_CCC_mean": -0.0008469200502456836
+        },
+        {
+          "index": 60,
+          "session": "session4",
+          "FRC": 0.034859655262676426,
+          "paired_CCC_mean": 0.0022140724219772596,
+          "smse": 0.0015221060978041767,
+          "FRVar": 0.0034378899798107876,
+          "target_best_CCC_mean": 0.0036708429761471567
+        },
+        {
+          "index": 61,
+          "session": "session4",
+          "FRC": -0.009382167431593924,
+          "paired_CCC_mean": -0.0010808466122110214,
+          "smse": 0.002983196907573274,
+          "FRVar": 0.0025722101524803184,
+          "target_best_CCC_mean": 0.001579823528954416
+        },
+        {
+          "index": 62,
+          "session": "session4",
+          "FRC": 0.02566198692767524,
+          "paired_CCC_mean": 0.0009668992182936768,
+          "smse": -0.0013286022676361892,
+          "FRVar": -0.0007894322047398428,
+          "target_best_CCC_mean": -0.00040341304810997264
+        },
+        {
+          "index": 63,
+          "session": "session4",
+          "FRC": -0.06146016339813176,
+          "paired_CCC_mean": 0.0008457903813424601,
+          "smse": 0.0023981655637423105,
+          "FRVar": 0.001741368157949924,
+          "target_best_CCC_mean": -0.003097860723559949
+        },
+        {
+          "index": 64,
+          "session": "session5",
+          "FRC": 0.07289926231804444,
+          "paired_CCC_mean": 0.00019342318461612346,
+          "smse": 0.0026228000720341996,
+          "FRVar": 0.0038657290205765873,
+          "target_best_CCC_mean": 0.003855188343202476
+        },
+        {
+          "index": 65,
+          "session": "session5",
+          "FRC": 0.13956457676687695,
+          "paired_CCC_mean": 0.009614384498690842,
+          "smse": -0.005711944277087842,
+          "FRVar": -0.003392781619468231,
+          "target_best_CCC_mean": 0.0047935386526436405
+        },
+        {
+          "index": 66,
+          "session": "session5",
+          "FRC": 0.025794093411024455,
+          "paired_CCC_mean": 0.0017065857413716135,
+          "smse": 0.0039351528717411904,
+          "FRVar": 0.002563387318609174,
+          "target_best_CCC_mean": 0.0017308831885178497
+        },
+        {
+          "index": 67,
+          "session": "session5",
+          "FRC": 0.11714330567790465,
+          "paired_CCC_mean": 0.006647802399399768,
+          "smse": -0.0054194912314414895,
+          "FRVar": -0.00401315162021372,
+          "target_best_CCC_mean": 0.003985254830929191
+        },
+        {
+          "index": 68,
+          "session": "session6",
+          "FRC": 0.007297858777310429,
+          "paired_CCC_mean": 0.0028184465922256956,
+          "smse": -0.0014671727601024837,
+          "FRVar": -0.0017040936779791592,
+          "target_best_CCC_mean": 0.0006786447169392432
+        },
+        {
+          "index": 69,
+          "session": "session6",
+          "FRC": -0.0028597500829431466,
+          "paired_CCC_mean": 0.0018137909090336374,
+          "smse": -0.003077460287345783,
+          "FRVar": -0.0017365012935587273,
+          "target_best_CCC_mean": -0.001008681630908899
+        },
+        {
+          "index": 70,
+          "session": "session6",
+          "FRC": 0.025061471232457,
+          "paired_CCC_mean": -0.00315502675933189,
+          "smse": -0.00196063613726033,
+          "FRVar": 0.00015316427511491426,
+          "target_best_CCC_mean": 0.0014531591638715646
+        },
+        {
+          "index": 71,
+          "session": "session6",
+          "FRC": -0.033590993842479544,
+          "paired_CCC_mean": 0.0011020863430042075,
+          "smse": -0.0016003214236762764,
+          "FRVar": -0.0021288784791747666,
+          "target_best_CCC_mean": -0.0015601913734088202
+        },
+        {
+          "index": 72,
+          "session": "session7",
+          "FRC": -0.0011692166390776526,
+          "paired_CCC_mean": 0.0002791007847219168,
+          "smse": 0.0028056727515326507,
+          "FRVar": 0.0018301406913168936,
+          "target_best_CCC_mean": 0.002004558553785764
+        },
+        {
+          "index": 73,
+          "session": "session7",
+          "FRC": 0.019113247700762392,
+          "paired_CCC_mean": 0.0009336265233442083,
+          "smse": 0.001367477824290593,
+          "FRVar": -0.001356256491022903,
+          "target_best_CCC_mean": -0.0005511737059668842
+        },
+        {
+          "index": 74,
+          "session": "session7",
+          "FRC": -0.023515407360340856,
+          "paired_CCC_mean": -0.0016387379404971172,
+          "smse": 0.00042481828067037625,
+          "FRVar": 0.0017631069953954887,
+          "target_best_CCC_mean": -0.0011445871615673314
+        },
+        {
+          "index": 75,
+          "session": "session7",
+          "FRC": 0.021553153017217108,
+          "paired_CCC_mean": 0.005661285927776215,
+          "smse": 0.0034927711718612253,
+          "FRVar": 0.0016165972600024336,
+          "target_best_CCC_mean": 0.0043397964234631325
+        },
+        {
+          "index": 76,
+          "session": "session9",
+          "FRC": 0.033162509189793465,
+          "paired_CCC_mean": 0.008871758557694898,
+          "smse": -0.0032562760843170974,
+          "FRVar": -0.005260734054981633,
+          "target_best_CCC_mean": 0.0031850367235301685
+        },
+        {
+          "index": 77,
+          "session": "session9",
+          "FRC": 0.08742191932930599,
+          "paired_CCC_mean": 0.011621765235400336,
+          "smse": -0.0006933512787024171,
+          "FRVar": 0.0006594234008728134,
+          "target_best_CCC_mean": 0.00466050105397383
+        },
+        {
+          "index": 78,
+          "session": "session9",
+          "FRC": -0.07365586661433376,
+          "paired_CCC_mean": 0.0024539510507745957,
+          "smse": 0.0007216662168502835,
+          "FRVar": -0.0007761189025893359,
+          "target_best_CCC_mean": -0.0012529175294260994
+        },
+        {
+          "index": 79,
+          "session": "session9",
+          "FRC": -0.055280359746825325,
+          "paired_CCC_mean": -0.0026576233075472633,
+          "smse": 0.0016232002112600424,
+          "FRVar": 0.0003426389211388728,
+          "target_best_CCC_mean": 2.9313507393081972e-05
+        }
+      ],
+      "session_bootstrap": {
+        "FRC": {
+          "session_equal_mean": 0.0007492358150186687,
+          "session_cluster_bootstrap_95": [
+            -0.035600667902342856,
+            0.037562971567473395
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "smse": {
+          "session_equal_mean": -0.0013630202534194618,
+          "session_cluster_bootstrap_95": [
+            -0.0025691452316435348,
+            -0.00018599126077283149
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "FRVar": {
+          "session_equal_mean": -0.0010786311298538105,
+          "session_cluster_bootstrap_95": [
+            -0.001893056732177649,
+            -0.0002536154609605425
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "target_best_CCC_mean": {
+          "session_equal_mean": -1.1667702910069573e-05,
+          "session_cluster_bootstrap_95": [
+            -0.0014785390889213656,
+            0.0014619909257645987
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        }
+      },
+      "prespecified_screen_pass": true
+    },
+    {
+      "arm": "P3-bert-time",
+      "metrics": {
+        "FRC": 0.9320382208426512,
+        "FRC_time": 11.796959665021859,
+        "FRVar": 0.053571294993162155,
+        "FRVar_time": 0.08232712396420538,
+        "smse": 0.06828509271144867,
+        "smse_time": 0.09792627498973161,
+        "temporal_smse": 0.05922338366508484,
+        "temporal_smse_time": 0.14306448900606483,
+        "TLCC": 46.29999923706055,
+        "TLCC_time": 5.46878413297236
+      },
+      "FRD20": 130.24197014764383,
+      "FRD_completed": true,
+      "FRD_pairs": 2000,
+      "subgroups": {
+        "all": {
+          "sources": 80,
+          "source_mean": {
+            "FRC": 0.9320382208426512,
+            "paired_CCC_mean": 0.03436963399150952,
+            "smse": 0.06828509657333295,
+            "FRVar": 0.053571293026788334,
+            "target_best_CCC_mean": 0.06069115824144655,
+            "DC": 0.009061364087035846,
+            "slow": 0.05292116523948098,
+            "fast": 0.00630366885797354
+          },
+          "session_equal_mean": {
+            "FRC": 0.9320382208426514,
+            "paired_CCC_mean": 0.03436963399150952,
+            "smse": 0.06828509657333295,
+            "FRVar": 0.053571293026788334,
+            "target_best_CCC_mean": 0.060691158241446566,
+            "DC": 0.009061364087035843,
+            "slow": 0.05292116523948097,
+            "fast": 0.0063036688579735396
+          }
+        },
+        "non_null": {
+          "sources": 48,
+          "source_mean": {
+            "FRC": 0.9783145524545342,
+            "paired_CCC_mean": 0.045925625781560536,
+            "smse": 0.06936008544569766,
+            "FRVar": 0.05654564476938245,
+            "target_best_CCC_mean": 0.06150539936448022,
+            "DC": 0.008756057378135706,
+            "slow": 0.05433653024687487,
+            "fast": 0.006268538019204577
+          },
+          "session_equal_mean": {
+            "FRC": 1.0025273923758167,
+            "paired_CCC_mean": 0.04785939068957077,
+            "smse": 0.06927194761522623,
+            "FRVar": 0.0556518378329207,
+            "target_best_CCC_mean": 0.06270553414074682,
+            "DC": 0.009192307023463572,
+            "slow": 0.05390136351675396,
+            "fast": 0.006179301756912897
+          }
+        },
+        "null": {
+          "sources": 32,
+          "source_mean": {
+            "FRC": 0.8626237234248267,
+            "paired_CCC_mean": 0.01703564630643298,
+            "smse": 0.06667261326478587,
+            "FRVar": 0.04910976541289717,
+            "target_best_CCC_mean": 0.05946979655689609,
+            "DC": 0.009519324150386057,
+            "slow": 0.05079811772839016,
+            "fast": 0.006356365116126984
+          },
+          "session_equal_mean": {
+            "FRC": 0.8926995803521726,
+            "paired_CCC_mean": 0.020635090029204963,
+            "smse": 0.06948979760926416,
+            "FRVar": 0.051487784160181446,
+            "target_best_CCC_mean": 0.06247068788767377,
+            "DC": 0.009372253990197164,
+            "slow": 0.05318884840052441,
+            "fast": 0.006929969449443615
+          }
+        },
+        "timed": {
+          "sources": 38,
+          "source_mean": {
+            "FRC": 1.0170658457902402,
+            "paired_CCC_mean": 0.04866773678234189,
+            "smse": 0.06870886097220998,
+            "FRVar": 0.056779958641070084,
+            "target_best_CCC_mean": 0.06439818971305347,
+            "DC": 0.008692896391455533,
+            "slow": 0.05382128123368045,
+            "fast": 0.006195751822155637
+          },
+          "session_equal_mean": {
+            "FRC": 0.9934714904714659,
+            "paired_CCC_mean": 0.04564421631214746,
+            "smse": 0.06766744957347649,
+            "FRVar": 0.05575270846860367,
+            "target_best_CCC_mean": 0.061597761378318135,
+            "DC": 0.008555302877831652,
+            "slow": 0.05286993994573728,
+            "fast": 0.0062433149140580825
+          }
+        }
+      },
+      "checkpoint_sha256": "4cb97f3beae5773226384d1163e9b75c4c8edc3711d8ce720233170147eee954",
+      "parameters": {
+        "arm": "P3-bert-time",
+        "parent_sha256": "e6199183cdc3526e1fc1390c89057e40514af8d2f2101d69a5e1dabb7f43f4d6",
+        "base_hash": "27c251bdf2606959b89ceaa9b0f94cdf93073a21d3a8a50c6097ca0479f4abd4",
+        "fusion_hash": "25c9c1690f9b99c7b60041aea0a66042bad33f745acd4a8164ec96ac2264a78a",
+        "optimized_parameters": 9561368,
+        "frozen_in_model": 3681574,
+        "total_in_model": 13242942,
+        "external_frozen_BERT_parameters": 108891648,
+        "initial_optimizer_base_sha256": "fe6d8699bd6bee4b128dfaa0cfd06db71b4377000682b6b0d4004f09be6efca1"
+      },
+      "inference_seconds": 849.8919501304626,
+      "peak_gpu_bytes": 1712187392,
+      "paired_source_deltas": [
+        {
+          "index": 0,
+          "session": "session0",
+          "FRC": 0.02576223000414879,
+          "paired_CCC_mean": 0.022924557620210114,
+          "smse": 0.006923075020313266,
+          "FRVar": -0.004346265428660588,
+          "target_best_CCC_mean": 0.02305361741328082
+        },
+        {
+          "index": 1,
+          "session": "session0",
+          "FRC": -0.07333827012585437,
+          "paired_CCC_mean": -0.019662225600189077,
+          "smse": -0.00510081210070186,
+          "FRVar": -0.0009824912506669822,
+          "target_best_CCC_mean": -0.010739963611844178
+        },
+        {
+          "index": 2,
+          "session": "session0",
+          "FRC": 0.056608827230644865,
+          "paired_CCC_mean": 0.0031318627984814607,
+          "smse": 0.000433279905054304,
+          "FRVar": -0.002137014589287556,
+          "target_best_CCC_mean": 0.0021877788423481093
+        },
+        {
+          "index": 3,
+          "session": "session0",
+          "FRC": -0.07288350101201957,
+          "paired_CCC_mean": -0.0401003894825856,
+          "smse": -0.00978477841450108,
+          "FRVar": -0.005725049724712404,
+          "target_best_CCC_mean": -0.027344393134551594
+        },
+        {
+          "index": 4,
+          "session": "session1",
+          "FRC": -0.01999560188378613,
+          "paired_CCC_mean": 9.792353437007573e-05,
+          "smse": -0.01492537077930238,
+          "FRVar": -0.004838495226216898,
+          "target_best_CCC_mean": -0.012681006010182433
+        },
+        {
+          "index": 5,
+          "session": "session1",
+          "FRC": -0.16129758642154557,
+          "paired_CCC_mean": 0.12539729463025545,
+          "smse": -0.01868572553826703,
+          "FRVar": 0.004963350173525283,
+          "target_best_CCC_mean": -0.005415383261128975
+        },
+        {
+          "index": 6,
+          "session": "session1",
+          "FRC": -0.0654906020774838,
+          "paired_CCC_mean": -0.005188247498188928,
+          "smse": -0.002231590532594252,
+          "FRVar": -0.0023334344555561437,
+          "target_best_CCC_mean": 0.0018077251589923224
+        },
+        {
+          "index": 7,
+          "session": "session1",
+          "FRC": 0.022469721642166096,
+          "paired_CCC_mean": -0.002447030204013406,
+          "smse": -0.003995693806144923,
+          "FRVar": -0.002937561335651692,
+          "target_best_CCC_mean": -0.0006300821258108796
+        },
+        {
+          "index": 8,
+          "session": "session10",
+          "FRC": 0.1111979085620387,
+          "paired_CCC_mean": 0.010201989352253943,
+          "smse": -0.00027456101444033043,
+          "FRVar": 1.9272425938271498e-05,
+          "target_best_CCC_mean": 0.00965346006386264
+        },
+        {
+          "index": 9,
+          "session": "session10",
+          "FRC": 0.2476591983620159,
+          "paired_CCC_mean": 0.04899683765192053,
+          "smse": -0.006143252054850265,
+          "FRVar": -0.0070453798675055995,
+          "target_best_CCC_mean": 0.009805270432600724
+        },
+        {
+          "index": 10,
+          "session": "session10",
+          "FRC": 0.12076079140127638,
+          "paired_CCC_mean": 0.018642615004345692,
+          "smse": -0.002991497019926709,
+          "FRVar": -0.004707608717475949,
+          "target_best_CCC_mean": 0.003977529038794017
+        },
+        {
+          "index": 11,
+          "session": "session10",
+          "FRC": 0.22684820237684,
+          "paired_CCC_mean": 0.016460265896608837,
+          "smse": -0.013123103065623178,
+          "FRVar": 0.002634638225446906,
+          "target_best_CCC_mean": 0.008639250861908268
+        },
+        {
+          "index": 12,
+          "session": "session11",
+          "FRC": 0.06394296680573858,
+          "paired_CCC_mean": 0.006649069001382971,
+          "smse": 7.83629715442602e-05,
+          "FRVar": -0.0038796886251883725,
+          "target_best_CCC_mean": 0.004987837937047573
+        },
+        {
+          "index": 13,
+          "session": "session11",
+          "FRC": -0.043030925871138326,
+          "paired_CCC_mean": 0.0017049975711378382,
+          "smse": 0.00034173991945055104,
+          "FRVar": -0.001994478748240082,
+          "target_best_CCC_mean": -0.0007089369667078599
+        },
+        {
+          "index": 14,
+          "session": "session11",
+          "FRC": 0.043898744584805305,
+          "paired_CCC_mean": 0.0005974454514614813,
+          "smse": -0.0002260998719268298,
+          "FRVar": -0.0003828155664388766,
+          "target_best_CCC_mean": 0.0028701582774082225
+        },
+        {
+          "index": 15,
+          "session": "session11",
+          "FRC": 0.09127696251050993,
+          "paired_CCC_mean": 0.001285604087904818,
+          "smse": -0.009334728121757507,
+          "FRVar": -0.0064917901846166665,
+          "target_best_CCC_mean": 0.004628893337535585
+        },
+        {
+          "index": 16,
+          "session": "session12",
+          "FRC": -0.053100354610129075,
+          "paired_CCC_mean": -0.0027648456909354253,
+          "smse": 0.002015385114484361,
+          "FRVar": -0.0023581233183499334,
+          "target_best_CCC_mean": -0.005165756764310844
+        },
+        {
+          "index": 17,
+          "session": "session12",
+          "FRC": 0.014460901816771843,
+          "paired_CCC_mean": 0.009296474542782165,
+          "smse": 0.0012438532378938466,
+          "FRVar": -0.000674061502157243,
+          "target_best_CCC_mean": 0.0026262641329311137
+        },
+        {
+          "index": 18,
+          "session": "session12",
+          "FRC": 0.13908129529229118,
+          "paired_CCC_mean": 0.002505902091546719,
+          "smse": 0.002106429802046887,
+          "FRVar": 6.26339460945563e-06,
+          "target_best_CCC_mean": 0.012647067257370928
+        },
+        {
+          "index": 19,
+          "session": "session12",
+          "FRC": 0.12187906228944023,
+          "paired_CCC_mean": 0.008905749073744994,
+          "smse": 0.0029394058717621685,
+          "FRVar": 0.0022613049629359935,
+          "target_best_CCC_mean": 0.009302754253190451
+        },
+        {
+          "index": 20,
+          "session": "session13",
+          "FRC": -0.03746464542723049,
+          "paired_CCC_mean": 0.02176276612637449,
+          "smse": 0.005445269660817251,
+          "FRVar": -0.003396488507649578,
+          "target_best_CCC_mean": 0.00468984579033381
+        },
+        {
+          "index": 21,
+          "session": "session13",
+          "FRC": 0.0841207266067312,
+          "paired_CCC_mean": 0.009309435878167557,
+          "smse": -0.0017666048473782003,
+          "FRVar": -0.004660299602317772,
+          "target_best_CCC_mean": 0.00865105554592871
+        },
+        {
+          "index": 22,
+          "session": "session13",
+          "FRC": -0.08414622265510596,
+          "paired_CCC_mean": 0.003913566821997868,
+          "smse": 0.002199018663830224,
+          "FRVar": -0.005863357299588021,
+          "target_best_CCC_mean": -0.00225510504319279
+        },
+        {
+          "index": 23,
+          "session": "session13",
+          "FRC": -0.0761153803712118,
+          "paired_CCC_mean": 0.016024991562950848,
+          "smse": -0.006880959288941488,
+          "FRVar": -0.002773215003285555,
+          "target_best_CCC_mean": -0.0030902658807654693
+        },
+        {
+          "index": 24,
+          "session": "session14",
+          "FRC": -0.018631854831389516,
+          "paired_CCC_mean": 0.002921062585682477,
+          "smse": -0.00707527804705832,
+          "FRVar": -0.0062459827653714856,
+          "target_best_CCC_mean": -0.0029832712395490707
+        },
+        {
+          "index": 25,
+          "session": "session14",
+          "FRC": -0.00862319591994165,
+          "paired_CCC_mean": -0.0012988315835971848,
+          "smse": 0.003700798501571026,
+          "FRVar": -0.004845942178249504,
+          "target_best_CCC_mean": 0.003036931307037777
+        },
+        {
+          "index": 26,
+          "session": "session14",
+          "FRC": -0.0010003273304446392,
+          "paired_CCC_mean": -0.005703430460526168,
+          "smse": -0.001194313748015291,
+          "FRVar": -0.0018723147864497525,
+          "target_best_CCC_mean": -0.007109865300060095
+        },
+        {
+          "index": 27,
+          "session": "session14",
+          "FRC": -0.05028030177067966,
+          "paired_CCC_mean": -0.00044314225445897526,
+          "smse": 0.0016831203881237239,
+          "FRVar": -0.003964010358672318,
+          "target_best_CCC_mean": -0.0013801536904058387
+        },
+        {
+          "index": 28,
+          "session": "session15",
+          "FRC": 0.028693917245657286,
+          "paired_CCC_mean": -0.010001072358580193,
+          "smse": 0.005961652927928496,
+          "FRVar": -0.0025966135055338,
+          "target_best_CCC_mean": 0.002692229325037765
+        },
+        {
+          "index": 29,
+          "session": "session15",
+          "FRC": -0.05652610929786506,
+          "paired_CCC_mean": 0.0029162424021550374,
+          "smse": 0.0008029217314389075,
+          "FRVar": -0.0013721152429679098,
+          "target_best_CCC_mean": -0.0025550298144260686
+        },
+        {
+          "index": 30,
+          "session": "session15",
+          "FRC": 0.024896645662675243,
+          "paired_CCC_mean": 7.751137570260677e-05,
+          "smse": 0.0029344664679633245,
+          "FRVar": 0.001669028869605578,
+          "target_best_CCC_mean": 0.002609259453493995
+        },
+        {
+          "index": 31,
+          "session": "session15",
+          "FRC": -0.0034038463265251284,
+          "paired_CCC_mean": 0.0003337180058883664,
+          "smse": 0.00450288967953788,
+          "FRVar": -0.003442721462360701,
+          "target_best_CCC_mean": 0.00015218252029561286
+        },
+        {
+          "index": 32,
+          "session": "session16",
+          "FRC": -0.0874120789945656,
+          "paired_CCC_mean": 0.0026429278736775606,
+          "smse": -0.005189631175663734,
+          "FRVar": -0.013990222840870516,
+          "target_best_CCC_mean": -0.008437323966073135
+        },
+        {
+          "index": 33,
+          "session": "session16",
+          "FRC": -0.054738785798499556,
+          "paired_CCC_mean": -0.017232898289701364,
+          "smse": 0.006081899338298377,
+          "FRVar": -0.0040099332335858,
+          "target_best_CCC_mean": -0.005192625297300482
+        },
+        {
+          "index": 34,
+          "session": "session16",
+          "FRC": 0.03183254051338125,
+          "paired_CCC_mean": 0.0018504535786504211,
+          "smse": 0.0035465063320265777,
+          "FRVar": -0.003987216841692731,
+          "target_best_CCC_mean": 0.0014763279140710822
+        },
+        {
+          "index": 35,
+          "session": "session16",
+          "FRC": 0.025042361000838786,
+          "paired_CCC_mean": -0.0028960159620037146,
+          "smse": 0.0022546153929498547,
+          "FRVar": -0.004399243626518071,
+          "target_best_CCC_mean": 0.008775087335141207
+        },
+        {
+          "index": 36,
+          "session": "session17",
+          "FRC": -0.22927511530450895,
+          "paired_CCC_mean": 0.003244926646466695,
+          "smse": 0.005488237986961998,
+          "FRVar": -0.005631515240878959,
+          "target_best_CCC_mean": -0.00592450925712909
+        },
+        {
+          "index": 37,
+          "session": "session17",
+          "FRC": -0.20966492157549577,
+          "paired_CCC_mean": 0.0028861762629660143,
+          "smse": 0.005753088908063031,
+          "FRVar": -0.007355412969124453,
+          "target_best_CCC_mean": -0.0023056877811050633
+        },
+        {
+          "index": 38,
+          "session": "session17",
+          "FRC": -0.0063432588325065264,
+          "paired_CCC_mean": -0.003332290638630629,
+          "smse": 0.009807170513603428,
+          "FRVar": -0.0002077042441023247,
+          "target_best_CCC_mean": 0.008826663425727174
+        },
+        {
+          "index": 39,
+          "session": "session17",
+          "FRC": -0.10758579654765654,
+          "paired_CCC_mean": -0.0036179411557530905,
+          "smse": 0.0038811340928077698,
+          "FRVar": -0.0040157053699269585,
+          "target_best_CCC_mean": 3.07767307909379e-05
+        },
+        {
+          "index": 40,
+          "session": "session18",
+          "FRC": -0.06828146074689839,
+          "paired_CCC_mean": 0.006029851676422011,
+          "smse": 0.003519146599703357,
+          "FRVar": -0.00556312911455048,
+          "target_best_CCC_mean": 0.0008422037542672803
+        },
+        {
+          "index": 41,
+          "session": "session18",
+          "FRC": -0.230548319645002,
+          "paired_CCC_mean": -0.025577222053615845,
+          "smse": -0.00603761821985245,
+          "FRVar": -0.006061536358676484,
+          "target_best_CCC_mean": -0.006230155731586834
+        },
+        {
+          "index": 42,
+          "session": "session18",
+          "FRC": -0.040500269605892925,
+          "paired_CCC_mean": -0.010015952897914043,
+          "smse": 0.0008866249687141808,
+          "FRVar": -0.000345496178855452,
+          "target_best_CCC_mean": 0.0006827807773335179
+        },
+        {
+          "index": 43,
+          "session": "session18",
+          "FRC": -0.16549790030676448,
+          "paired_CCC_mean": -0.02022808072580279,
+          "smse": -0.008583281934261326,
+          "FRVar": -0.008688536713255812,
+          "target_best_CCC_mean": 0.0002354975900216022
+        },
+        {
+          "index": 44,
+          "session": "session19",
+          "FRC": 0.2759240315429897,
+          "paired_CCC_mean": 0.02231396560029225,
+          "smse": -0.010758217175801596,
+          "FRVar": -0.01052027908184977,
+          "target_best_CCC_mean": 0.010435337694054629
+        },
+        {
+          "index": 45,
+          "session": "session19",
+          "FRC": -0.11293649143071438,
+          "paired_CCC_mean": -0.015053641495286742,
+          "smse": -0.005569537894593343,
+          "FRVar": -0.0030546903858539795,
+          "target_best_CCC_mean": -0.004403626576199901
+        },
+        {
+          "index": 46,
+          "session": "session19",
+          "FRC": 0.023340303866228984,
+          "paired_CCC_mean": 0.0031158554479223527,
+          "smse": -0.0016526637805832634,
+          "FRVar": -0.005453483745951324,
+          "target_best_CCC_mean": -0.0033784323640502698
+        },
+        {
+          "index": 47,
+          "session": "session19",
+          "FRC": 0.019347146213520183,
+          "paired_CCC_mean": 0.010450539189986119,
+          "smse": -0.0007709421217441531,
+          "FRVar": -0.002485114729270141,
+          "target_best_CCC_mean": -0.00467490485365625
+        },
+        {
+          "index": 48,
+          "session": "session2",
+          "FRC": 0.07007815339598178,
+          "paired_CCC_mean": -0.0024651376439336764,
+          "smse": -0.0037996634013122976,
+          "FRVar": 0.0008397195356083659,
+          "target_best_CCC_mean": 0.0049095417185047036
+        },
+        {
+          "index": 49,
+          "session": "session2",
+          "FRC": -0.05786932346152951,
+          "paired_CCC_mean": -0.006262097339852286,
+          "smse": -0.00028507038950920105,
+          "FRVar": 0.0009894546293238576,
+          "target_best_CCC_mean": -0.000847129880652199
+        },
+        {
+          "index": 50,
+          "session": "session2",
+          "FRC": -0.028764474743257162,
+          "paired_CCC_mean": 0.003468279559096508,
+          "smse": -0.0030817411012119683,
+          "FRVar": -0.0015696247013730208,
+          "target_best_CCC_mean": 0.0020691981897438677
+        },
+        {
+          "index": 51,
+          "session": "session2",
+          "FRC": -0.02514699755708505,
+          "paired_CCC_mean": 0.0036633711448799174,
+          "smse": -0.006027685685290232,
+          "FRVar": -0.0010921066314070887,
+          "target_best_CCC_mean": 0.0023988968259354634
+        },
+        {
+          "index": 52,
+          "session": "session21",
+          "FRC": -0.12067219791016914,
+          "paired_CCC_mean": -0.005722003090667463,
+          "smse": 0.0014160200125641273,
+          "FRVar": 0.00012201585497421258,
+          "target_best_CCC_mean": -0.0050719279049723925
+        },
+        {
+          "index": 53,
+          "session": "session21",
+          "FRC": -0.2734900308639191,
+          "paired_CCC_mean": 0.003008008046629129,
+          "smse": -0.0015305597749021294,
+          "FRVar": -0.003447026021380764,
+          "target_best_CCC_mean": -0.005390938805247103
+        },
+        {
+          "index": 54,
+          "session": "session21",
+          "FRC": -0.043332487433414446,
+          "paired_CCC_mean": -0.00033062121685109927,
+          "smse": -0.003003252297639855,
+          "FRVar": -0.0037758081356557283,
+          "target_best_CCC_mean": -5.870131684206081e-05
+        },
+        {
+          "index": 55,
+          "session": "session21",
+          "FRC": 0.14896343222382802,
+          "paired_CCC_mean": 0.008814956192228565,
+          "smse": -0.0029596679740482024,
+          "FRVar": -0.015016788675832067,
+          "target_best_CCC_mean": 0.01328062596488954
+        },
+        {
+          "index": 56,
+          "session": "session3",
+          "FRC": 0.0476365517955577,
+          "paired_CCC_mean": 0.01349690161800024,
+          "smse": -0.0006849548882908174,
+          "FRVar": -0.001193428790559184,
+          "target_best_CCC_mean": 0.0009580062492000052
+        },
+        {
+          "index": 57,
+          "session": "session3",
+          "FRC": 0.08351230922263464,
+          "paired_CCC_mean": 0.012438291459160533,
+          "smse": 0.0019616177512539745,
+          "FRVar": 0.00151249382337737,
+          "target_best_CCC_mean": 0.0020113656785164247
+        },
+        {
+          "index": 58,
+          "session": "session3",
+          "FRC": -0.09148117452546867,
+          "paired_CCC_mean": -0.008045509835174547,
+          "smse": 0.008269715723064217,
+          "FRVar": -0.002782154634704409,
+          "target_best_CCC_mean": -0.0028863210057782224
+        },
+        {
+          "index": 59,
+          "session": "session3",
+          "FRC": 0.010804568484731103,
+          "paired_CCC_mean": -0.013436328290017494,
+          "smse": -0.0016478675521082314,
+          "FRVar": -0.002609463641732368,
+          "target_best_CCC_mean": 0.002777476744146537
+        },
+        {
+          "index": 60,
+          "session": "session4",
+          "FRC": 0.01028054837231962,
+          "paired_CCC_mean": -0.0009261136574894892,
+          "smse": 0.0019142048226462455,
+          "FRVar": 0.0009958473486890163,
+          "target_best_CCC_mean": 0.0036289513970361176
+        },
+        {
+          "index": 61,
+          "session": "session4",
+          "FRC": 0.027316038014533972,
+          "paired_CCC_mean": 0.0037585909554745597,
+          "smse": 0.002697774767875666,
+          "FRVar": 0.0001176818644181496,
+          "target_best_CCC_mean": -0.0030993338870206402
+        },
+        {
+          "index": 62,
+          "session": "session4",
+          "FRC": 0.043954526113539893,
+          "paired_CCC_mean": -0.002575112679020542,
+          "smse": -0.00017641029424137616,
+          "FRVar": 0.00015834646666523788,
+          "target_best_CCC_mean": 0.0029664680598886217
+        },
+        {
+          "index": 63,
+          "session": "session4",
+          "FRC": -0.06137663407625504,
+          "paired_CCC_mean": 0.006234734243479825,
+          "smse": 0.003968956735399029,
+          "FRVar": 0.0012070336249062341,
+          "target_best_CCC_mean": -0.003079943533468528
+        },
+        {
+          "index": 64,
+          "session": "session5",
+          "FRC": 0.008705758436969302,
+          "paired_CCC_mean": -0.003495917593989162,
+          "smse": 0.0031190047661463424,
+          "FRVar": 0.002565487779670375,
+          "target_best_CCC_mean": 0.001886774271843944
+        },
+        {
+          "index": 65,
+          "session": "session5",
+          "FRC": 0.08120077055638975,
+          "paired_CCC_mean": 0.0058607834301636404,
+          "smse": -0.004989599684874217,
+          "FRVar": -0.004669048844333834,
+          "target_best_CCC_mean": 0.003810408740575047
+        },
+        {
+          "index": 66,
+          "session": "session5",
+          "FRC": 0.0915819272331333,
+          "paired_CCC_mean": 0.0027337303375351008,
+          "smse": 0.004236408074696871,
+          "FRVar": 0.0024601562579938396,
+          "target_best_CCC_mean": 0.005928923004314822
+        },
+        {
+          "index": 67,
+          "session": "session5",
+          "FRC": 0.07856240850013307,
+          "paired_CCC_mean": 0.0016519432816595372,
+          "smse": -0.0043734030591117,
+          "FRVar": -0.006690241891954066,
+          "target_best_CCC_mean": 0.004146411973419705
+        },
+        {
+          "index": 68,
+          "session": "session6",
+          "FRC": 0.017983668814039233,
+          "paired_CCC_mean": 0.002114908646570352,
+          "smse": -0.0009418624970648007,
+          "FRVar": -0.0012670392059231025,
+          "target_best_CCC_mean": 0.0008121765645896888
+        },
+        {
+          "index": 69,
+          "session": "session6",
+          "FRC": 0.00596500166569508,
+          "paired_CCC_mean": 0.0030533999664847794,
+          "smse": -0.002370967053704792,
+          "FRVar": -0.001525814998530519,
+          "target_best_CCC_mean": 0.00039303077026353606
+        },
+        {
+          "index": 70,
+          "session": "session6",
+          "FRC": 0.040446898339083714,
+          "paired_CCC_mean": -0.002119698130314383,
+          "smse": -0.0021120155437125143,
+          "FRVar": -0.0010733703351454155,
+          "target_best_CCC_mean": 0.0019095722562440173
+        },
+        {
+          "index": 71,
+          "session": "session6",
+          "FRC": 0.002948584885989758,
+          "paired_CCC_mean": 0.000691922882108467,
+          "smse": -0.0024517910761965647,
+          "FRVar": -0.002658393143331609,
+          "target_best_CCC_mean": 0.0006821570231970858
+        },
+        {
+          "index": 72,
+          "session": "session7",
+          "FRC": -0.052816540096110254,
+          "paired_CCC_mean": -0.0036687270925662013,
+          "smse": -0.0008483275771141024,
+          "FRVar": -0.002786398592322055,
+          "target_best_CCC_mean": -0.0023647923023524947
+        },
+        {
+          "index": 73,
+          "session": "session7",
+          "FRC": -0.013705346329471069,
+          "paired_CCC_mean": -0.0015690213231348807,
+          "smse": 0.0037995247377289668,
+          "FRVar": -0.0008099600957979167,
+          "target_best_CCC_mean": -0.0016814260221770308
+        },
+        {
+          "index": 74,
+          "session": "session7",
+          "FRC": -0.006207689143400641,
+          "paired_CCC_mean": 0.0023966314197051237,
+          "smse": 0.0014659057888719712,
+          "FRVar": 0.0010509082593357158,
+          "target_best_CCC_mean": 0.001722347642212456
+        },
+        {
+          "index": 75,
+          "session": "session7",
+          "FRC": 0.02035712188328126,
+          "paired_CCC_mean": 0.007564585037971807,
+          "smse": 0.0033985578351550666,
+          "FRVar": -0.0004283354394773453,
+          "target_best_CCC_mean": 0.006054773711016051
+        },
+        {
+          "index": 76,
+          "session": "session9",
+          "FRC": 0.013529181445618321,
+          "paired_CCC_mean": 0.004776031151704753,
+          "smse": 0.00045845094654295426,
+          "FRVar": -0.00923612297723491,
+          "target_best_CCC_mean": -0.0002908971343448252
+        },
+        {
+          "index": 77,
+          "session": "session9",
+          "FRC": 0.05579593537248584,
+          "paired_CCC_mean": 0.008083332666493111,
+          "smse": -0.002108120256000094,
+          "FRVar": -0.0005805340954770158,
+          "target_best_CCC_mean": 0.004331009589702069
+        },
+        {
+          "index": 78,
+          "session": "session9",
+          "FRC": -0.05918351980708125,
+          "paired_CCC_mean": 0.0050885252102222875,
+          "smse": -0.0012780579427878053,
+          "FRVar": -0.001659794577595415,
+          "target_best_CCC_mean": -0.0005905329454850006
+        },
+        {
+          "index": 79,
+          "session": "session9",
+          "FRC": -0.09559984505422303,
+          "paired_CCC_mean": -0.0065479553765823845,
+          "smse": 0.0018492002454068845,
+          "FRVar": -0.001342527342660639,
+          "target_best_CCC_mean": -0.0010334794374594752
+        }
+      ],
+      "session_bootstrap": {
+        "FRC": {
+          "session_equal_mean": -0.005113643942944805,
+          "session_cluster_bootstrap_95": [
+            -0.03471777914561609,
+            0.0251803478780974
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "smse": {
+          "session_equal_mean": -0.0007985230299851129,
+          "session_cluster_bootstrap_95": [
+            -0.0023723349731687147,
+            0.0007446821091127477
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "FRVar": {
+          "session_equal_mean": -0.0027534689900442404,
+          "session_cluster_bootstrap_95": [
+            -0.0036594284498316482,
+            -0.0018972809269612288
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        },
+        "target_best_CCC_mean": {
+          "session_equal_mean": 0.000837499996252606,
+          "session_cluster_bootstrap_95": [
+            -0.00030768533665404875,
+            0.0020468203392385574
+          ],
+          "sessions": 20,
+          "note": "fixed-checkpoint DEV uncertainty only; not training-seed robustness"
+        }
+      },
+      "prespecified_screen_pass": false
+    }
+  ],
+  "learning_curves": [
+    {
+      "arm": "P0-null",
+      "step": 500,
+      "metrics": {
+        "FRC": 0.8870233869119819,
+        "FRC_time": 11.578451441018842,
+        "FRVar": 0.057581834495067596,
+        "FRVar_time": 0.08365135302301496,
+        "smse": 0.08131420612335205,
+        "smse_time": 0.09704892802983522,
+        "temporal_smse": 0.07277058809995651,
+        "temporal_smse_time": 0.13434413797222078,
+        "TLCC": 46.36249923706055,
+        "TLCC_time": 5.510579027002677
+      }
+    },
+    {
+      "arm": "P0-null",
+      "step": 1000,
+      "metrics": {
+        "FRC": 0.9371518647855959,
+        "FRC_time": 11.636826838948764,
+        "FRVar": 0.05632476136088371,
+        "FRVar_time": 0.0862204390577972,
+        "smse": 0.06908363103866577,
+        "smse_time": 0.09964659693650901,
+        "temporal_smse": 0.06064837425947189,
+        "temporal_smse_time": 0.15922585409134626,
+        "TLCC": 47.0,
+        "TLCC_time": 5.4769286550581455
+      }
+    },
+    {
+      "arm": "P1-byte",
+      "step": 500,
+      "metrics": {
+        "FRC": 0.892512685140914,
+        "FRC_time": 11.443398723029532,
+        "FRVar": 0.05921762064099312,
+        "FRVar_time": 0.0788238929817453,
+        "smse": 0.08435876667499542,
+        "smse_time": 0.09588634106330574,
+        "temporal_smse": 0.07517193257808685,
+        "temporal_smse_time": 0.14727890898939222,
+        "TLCC": 46.349998474121094,
+        "TLCC_time": 5.444878923008218
+      }
+    },
+    {
+      "arm": "P1-byte",
+      "step": 1000,
+      "metrics": {
+        "FRC": 0.9121505694025256,
+        "FRC_time": 12.033300967072137,
+        "FRVar": 0.05389302223920822,
+        "FRVar_time": 0.09020436299033463,
+        "smse": 0.0684780701994896,
+        "smse_time": 0.10075619607232511,
+        "temporal_smse": 0.059793420135974884,
+        "temporal_smse_time": 0.15237376606091857,
+        "TLCC": 46.287498474121094,
+        "TLCC_time": 5.584120843093842
+      }
+    },
+    {
+      "arm": "P2-bert",
+      "step": 500,
+      "metrics": {
+        "FRC": 0.8754657806360922,
+        "FRC_time": 11.775202291086316,
+        "FRVar": 0.058071069419384,
+        "FRVar_time": 0.08061192103195935,
+        "smse": 0.08557789027690887,
+        "smse_time": 0.09291564195882529,
+        "temporal_smse": 0.07619182765483856,
+        "temporal_smse_time": 0.13756551197730005,
+        "TLCC": 46.412498474121094,
+        "TLCC_time": 5.399386282078922
+      }
+    },
+    {
+      "arm": "P2-bert",
+      "step": 1000,
+      "metrics": {
+        "FRC": 0.9379011006006148,
+        "FRC_time": 11.53776698303409,
+        "FRVar": 0.055246129631996155,
+        "FRVar_time": 0.07886695396155119,
+        "smse": 0.06772060692310333,
+        "smse_time": 0.09917131497059017,
+        "temporal_smse": 0.05915147811174393,
+        "temporal_smse_time": 0.1317651190329343,
+        "TLCC": 46.29999923706055,
+        "TLCC_time": 5.557330798939802
+      }
+    },
+    {
+      "arm": "P3-bert-time",
+      "step": 500,
+      "metrics": {
+        "FRC": 0.8708461949341457,
+        "FRC_time": 12.113821555045433,
+        "FRVar": 0.05865143612027168,
+        "FRVar_time": 0.08089448790997267,
+        "smse": 0.08691741526126862,
+        "smse_time": 0.10050401499029249,
+        "temporal_smse": 0.07768300920724869,
+        "temporal_smse_time": 0.129959243000485,
+        "TLCC": 46.42499923706055,
+        "TLCC_time": 5.529295290005393
+      }
+    },
+    {
+      "arm": "P3-bert-time",
+      "step": 1000,
+      "metrics": {
+        "FRC": 0.9320382208426512,
+        "FRC_time": 11.796959665021859,
+        "FRVar": 0.053571294993162155,
+        "FRVar_time": 0.08232712396420538,
+        "smse": 0.06828509271144867,
+        "smse_time": 0.09792627498973161,
+        "temporal_smse": 0.05922338366508484,
+        "temporal_smse_time": 0.14306448900606483,
+        "TLCC": 46.29999923706055,
+        "TLCC_time": 5.46878413297236
+      }
+    }
+  ],
+  "exposure": {
+    "P0-null": {
+      "actual_steps": 1000,
+      "source_visits": 4000,
+      "unique_sources": 48,
+      "event_visits": 8925,
+      "unique_events": 194,
+      "source_repeat_visits": 3952,
+      "valid_source_frames": 2880019,
+      "timed_event_visits": 6545,
+      "content_only_event_visits": 2380,
+      "non_null_before": 3428,
+      "non_null_after": 3119,
+      "active_semantic_samples": 0,
+      "semantic_gradient_updates": 0,
+      "train_seconds": 18876.238532543182
+    },
+    "P1-byte": {
+      "actual_steps": 1000,
+      "source_visits": 4000,
+      "unique_sources": 48,
+      "event_visits": 8925,
+      "unique_events": 194,
+      "source_repeat_visits": 3952,
+      "valid_source_frames": 2880019,
+      "timed_event_visits": 6545,
+      "content_only_event_visits": 2380,
+      "non_null_before": 3428,
+      "non_null_after": 3119,
+      "active_semantic_samples": 3119,
+      "semantic_gradient_updates": 990,
+      "train_seconds": 19933.514253377914
+    },
+    "P2-bert": {
+      "actual_steps": 1000,
+      "source_visits": 4000,
+      "unique_sources": 48,
+      "event_visits": 8925,
+      "unique_events": 194,
+      "source_repeat_visits": 3952,
+      "valid_source_frames": 2880019,
+      "timed_event_visits": 6545,
+      "content_only_event_visits": 2380,
+      "non_null_before": 3428,
+      "non_null_after": 3119,
+      "active_semantic_samples": 3119,
+      "semantic_gradient_updates": 990,
+      "train_seconds": 19961.10614466667
+    },
+    "P3-bert-time": {
+      "actual_steps": 1000,
+      "source_visits": 4000,
+      "unique_sources": 48,
+      "event_visits": 8925,
+      "unique_events": 194,
+      "source_repeat_visits": 3952,
+      "valid_source_frames": 2880019,
+      "timed_event_visits": 6545,
+      "content_only_event_visits": 2380,
+      "non_null_before": 3428,
+      "non_null_after": 3119,
+      "active_semantic_samples": 3119,
+      "semantic_gradient_updates": 990,
+      "train_seconds": 19965.75275850296
+    }
+  },
+  "paired_schedules_match": true,
+  "interventions": [
+    {
+      "arm": "P2-bert",
+      "kind": "text",
+      "measurable_sources": 45,
+      "incorrect_minus_correct": {
+        "FRC": -0.010400202085731551,
+        "paired_CCC_mean": 0.0007972368095173298
+      },
+      "prediction_mean_abs_change": 0.024631108871350685,
+      "paired_deltas": [
+        {
+          "index": 0,
+          "FRC": -0.10757452999220646,
+          "paired_CCC_mean": -0.0194910752335024
+        },
+        {
+          "index": 2,
+          "FRC": -0.14645371186571543,
+          "paired_CCC_mean": -0.014786448419802478
+        },
+        {
+          "index": 3,
+          "FRC": 0.35256730046192486,
+          "paired_CCC_mean": 0.06621255033134649
+        },
+        {
+          "index": 4,
+          "FRC": 0.11858937704790229,
+          "paired_CCC_mean": 0.014673843115119461
+        },
+        {
+          "index": 5,
+          "FRC": 0.050036149579525624,
+          "paired_CCC_mean": -0.02033957700123047
+        },
+        {
+          "index": 7,
+          "FRC": -0.02313465345275656,
+          "paired_CCC_mean": 0.0015632744792997144
+        },
+        {
+          "index": 8,
+          "FRC": 0.020135941152976677,
+          "paired_CCC_mean": 0.0003010690259139387
+        },
+        {
+          "index": 9,
+          "FRC": 0.00041366999592606923,
+          "paired_CCC_mean": -0.0003824629328942966
+        },
+        {
+          "index": 10,
+          "FRC": -0.03931710841200409,
+          "paired_CCC_mean": -0.007174696774178785
+        },
+        {
+          "index": 11,
+          "FRC": 0.037881145097362845,
+          "paired_CCC_mean": 0.0021296245098605115
+        },
+        {
+          "index": 12,
+          "FRC": -0.04370893085599564,
+          "paired_CCC_mean": -0.0029874247901239895
+        },
+        {
+          "index": 14,
+          "FRC": -0.04367520362215521,
+          "paired_CCC_mean": 0.0005422757157058089
+        },
+        {
+          "index": 15,
+          "FRC": 0.0013083470600235847,
+          "paired_CCC_mean": -0.0032711318114696094
+        },
+        {
+          "index": 16,
+          "FRC": 0.10828543659923973,
+          "paired_CCC_mean": 0.004668406533188962
+        },
+        {
+          "index": 18,
+          "FRC": 0.0009758079762295369,
+          "paired_CCC_mean": 0.0030172971261324052
+        },
+        {
+          "index": 19,
+          "FRC": -0.0007592116172148167,
+          "paired_CCC_mean": 0.0003358979610500537
+        },
+        {
+          "index": 20,
+          "FRC": 0.016572885938451742,
+          "paired_CCC_mean": -0.0004913159014827643
+        },
+        {
+          "index": 21,
+          "FRC": 0.025263140517580718,
+          "paired_CCC_mean": -0.00986692011514441
+        },
+        {
+          "index": 22,
+          "FRC": -0.057046644954166226,
+          "paired_CCC_mean": 0.0002133273566907075
+        },
+        {
+          "index": 24,
+          "FRC": -0.10379055878420895,
+          "paired_CCC_mean": -0.010361641423910939
+        },
+        {
+          "index": 26,
+          "FRC": 0.015846570548333494,
+          "paired_CCC_mean": 0.0016261458410841423
+        },
+        {
+          "index": 27,
+          "FRC": 0.02960153410420574,
+          "paired_CCC_mean": -0.0020184665203363955
+        },
+        {
+          "index": 32,
+          "FRC": 0.006785434444207539,
+          "paired_CCC_mean": 0.00017387327432460964
+        },
+        {
+          "index": 33,
+          "FRC": -0.03318642289710849,
+          "paired_CCC_mean": -0.0028060226713747423
+        },
+        {
+          "index": 36,
+          "FRC": 0.003683408317427528,
+          "paired_CCC_mean": 0.0012772465693220852
+        },
+        {
+          "index": 37,
+          "FRC": 0.08858183056587543,
+          "paired_CCC_mean": -0.003614983354080275
+        },
+        {
+          "index": 39,
+          "FRC": -0.2876605618838115,
+          "paired_CCC_mean": -0.004513707653466564
+        },
+        {
+          "index": 41,
+          "FRC": -0.1625125759848336,
+          "paired_CCC_mean": -0.011142145692261463
+        },
+        {
+          "index": 43,
+          "FRC": -0.08855436461176724,
+          "paired_CCC_mean": -0.007212073939027841
+        },
+        {
+          "index": 44,
+          "FRC": 0.12212826627197271,
+          "paired_CCC_mean": 0.0027555308642315396
+        },
+        {
+          "index": 45,
+          "FRC": 0.04777659340093732,
+          "paired_CCC_mean": 0.006093492364208225
+        },
+        {
+          "index": 46,
+          "FRC": -0.07956607480660194,
+          "paired_CCC_mean": 0.02007870897845666
+        },
+        {
+          "index": 47,
+          "FRC": 0.0005487927448180052,
+          "paired_CCC_mean": 0.0013132967619381153
+        },
+        {
+          "index": 49,
+          "FRC": 0.0010372284033808299,
+          "paired_CCC_mean": -0.005328277514655436
+        },
+        {
+          "index": 50,
+          "FRC": -0.03432717280716524,
+          "paired_CCC_mean": 0.010214695488914653
+        },
+        {
+          "index": 52,
+          "FRC": 0.017500748202887384,
+          "paired_CCC_mean": 0.0018869805677158152
+        },
+        {
+          "index": 54,
+          "FRC": -0.06254298784614531,
+          "paired_CCC_mean": 0.0015689047150657907
+        },
+        {
+          "index": 55,
+          "FRC": 0.09177251502668404,
+          "paired_CCC_mean": 0.03931799025882654
+        },
+        {
+          "index": 61,
+          "FRC": 0.014514848557633964,
+          "paired_CCC_mean": -0.0006023054789198734
+        },
+        {
+          "index": 63,
+          "FRC": 0.011186303830569733,
+          "paired_CCC_mean": -0.0033509237996796996
+        },
+        {
+          "index": 64,
+          "FRC": -0.10639411509443086,
+          "paired_CCC_mean": 8.12039415112693e-05
+        },
+        {
+          "index": 65,
+          "FRC": -0.16453655365704112,
+          "paired_CCC_mean": -0.011117881439930526
+        },
+        {
+          "index": 67,
+          "FRC": -0.008085766017160878,
+          "paired_CCC_mean": 0.0018354070765035785
+        },
+        {
+          "index": 72,
+          "FRC": -0.05444265237147439,
+          "paired_CCC_mean": -0.0057030355794347246
+        },
+        {
+          "index": 73,
+          "FRC": -0.003732568170033257,
+          "paired_CCC_mean": 0.0005571316187764388
+        }
+      ]
+    },
+    {
+      "arm": "P2-bert",
+      "kind": "time",
+      "measurable_sources": 25,
+      "incorrect_minus_correct": {
+        "FRC": -0.0017602855859659772,
+        "paired_CCC_mean": -0.0004905555948533511
+      },
+      "prediction_mean_abs_change": 0.004343834682222223,
+      "paired_deltas": [
+        {
+          "index": 2,
+          "FRC": -0.007504578948820395,
+          "paired_CCC_mean": 0.0016505228365217006
+        },
+        {
+          "index": 3,
+          "FRC": -0.08831326386347516,
+          "paired_CCC_mean": -0.022856431583384483
+        },
+        {
+          "index": 5,
+          "FRC": -0.0006122053060741983,
+          "paired_CCC_mean": 0.0027787287734691024
+        },
+        {
+          "index": 8,
+          "FRC": 0.0051475854599125626,
+          "paired_CCC_mean": 0.00031768891865831955
+        },
+        {
+          "index": 10,
+          "FRC": -0.006349685760709489,
+          "paired_CCC_mean": -0.000754950401837734
+        },
+        {
+          "index": 11,
+          "FRC": 0.049052702268262305,
+          "paired_CCC_mean": 0.0013683383898797502
+        },
+        {
+          "index": 14,
+          "FRC": -0.000307040212899401,
+          "paired_CCC_mean": 2.8308405814990445e-06
+        },
+        {
+          "index": 18,
+          "FRC": -0.0001620955092834775,
+          "paired_CCC_mean": -1.3704273310106985e-05
+        },
+        {
+          "index": 19,
+          "FRC": 0.0006367214136786536,
+          "paired_CCC_mean": 4.1374784497116845e-05
+        },
+        {
+          "index": 21,
+          "FRC": 0.01725710373727618,
+          "paired_CCC_mean": 0.0005665840071626127
+        },
+        {
+          "index": 22,
+          "FRC": 0.029210394705760923,
+          "paired_CCC_mean": 0.003575109747963122
+        },
+        {
+          "index": 24,
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0
+        },
+        {
+          "index": 26,
+          "FRC": 0.00870681828669051,
+          "paired_CCC_mean": 0.002260939576364536
+        },
+        {
+          "index": 32,
+          "FRC": 0.04792940544595736,
+          "paired_CCC_mean": 0.009069607747810446
+        },
+        {
+          "index": 41,
+          "FRC": -0.024730761066647622,
+          "paired_CCC_mean": -0.002656552678952734
+        },
+        {
+          "index": 43,
+          "FRC": 0.01713620068089572,
+          "paired_CCC_mean": 0.0028417981614585197
+        },
+        {
+          "index": 44,
+          "FRC": -0.05940085637074799,
+          "paired_CCC_mean": -0.008883222756912806
+        },
+        {
+          "index": 52,
+          "FRC": 0.005474493173186046,
+          "paired_CCC_mean": 0.00034660054694417297
+        },
+        {
+          "index": 54,
+          "FRC": -0.017911442161280267,
+          "paired_CCC_mean": 0.0001937908278247802
+        },
+        {
+          "index": 55,
+          "FRC": -0.0029718017423270293,
+          "paired_CCC_mean": -6.859226573121407e-05
+        },
+        {
+          "index": 58,
+          "FRC": 0.009724609823059005,
+          "paired_CCC_mean": 0.0011241863061773882
+        },
+        {
+          "index": 61,
+          "FRC": 0.0005347974030631697,
+          "paired_CCC_mean": -2.029296529986596e-05
+        },
+        {
+          "index": 64,
+          "FRC": 0.00104524561293462,
+          "paired_CCC_mean": -0.00018071212785872315
+        },
+        {
+          "index": 67,
+          "FRC": 0.003998355751091698,
+          "paired_CCC_mean": 0.001023312876670266
+        },
+        {
+          "index": 76,
+          "FRC": -0.03159784246865316,
+          "paired_CCC_mean": -0.003990845160029441
+        }
+      ]
+    },
+    {
+      "arm": "P3-bert-time",
+      "kind": "text",
+      "measurable_sources": 45,
+      "incorrect_minus_correct": {
+        "FRC": -0.007837674903990606,
+        "paired_CCC_mean": -0.00026980676805435626
+      },
+      "prediction_mean_abs_change": 0.022500824818335888,
+      "paired_deltas": [
+        {
+          "index": 0,
+          "FRC": -0.01685048940851419,
+          "paired_CCC_mean": -0.01786339452556354
+        },
+        {
+          "index": 2,
+          "FRC": -0.2619107795771731,
+          "paired_CCC_mean": -0.041092350004189426
+        },
+        {
+          "index": 3,
+          "FRC": 0.34532492331723297,
+          "paired_CCC_mean": 0.0957858951886158
+        },
+        {
+          "index": 4,
+          "FRC": 0.033955734374346624,
+          "paired_CCC_mean": 0.0069184137630863285
+        },
+        {
+          "index": 5,
+          "FRC": 0.050023504551995224,
+          "paired_CCC_mean": -0.011580709628928473
+        },
+        {
+          "index": 7,
+          "FRC": -0.02981858242705404,
+          "paired_CCC_mean": 0.0003999587361237372
+        },
+        {
+          "index": 8,
+          "FRC": 0.002883078847767062,
+          "paired_CCC_mean": 0.0015788715673850512
+        },
+        {
+          "index": 9,
+          "FRC": 0.035324291307478606,
+          "paired_CCC_mean": 0.002482420417652502
+        },
+        {
+          "index": 10,
+          "FRC": -0.07813003875234581,
+          "paired_CCC_mean": -0.009843853067354046
+        },
+        {
+          "index": 11,
+          "FRC": 0.019928394322418885,
+          "paired_CCC_mean": -5.993094673802102e-05
+        },
+        {
+          "index": 12,
+          "FRC": -0.011257055255291193,
+          "paired_CCC_mean": -1.890841021302825e-05
+        },
+        {
+          "index": 14,
+          "FRC": -0.03510223226307008,
+          "paired_CCC_mean": -0.0001472631768496234
+        },
+        {
+          "index": 15,
+          "FRC": -0.015051423794980923,
+          "paired_CCC_mean": -0.008096288137839651
+        },
+        {
+          "index": 16,
+          "FRC": 0.06716975629708355,
+          "paired_CCC_mean": 0.005797909905590207
+        },
+        {
+          "index": 18,
+          "FRC": -0.014677979483638026,
+          "paired_CCC_mean": 0.0016217723771727657
+        },
+        {
+          "index": 19,
+          "FRC": -0.07202788565399587,
+          "paired_CCC_mean": -0.0021757647807212274
+        },
+        {
+          "index": 20,
+          "FRC": 0.08481014178083335,
+          "paired_CCC_mean": -0.00415440064954939
+        },
+        {
+          "index": 21,
+          "FRC": -0.05850147516908688,
+          "paired_CCC_mean": -0.011236404992262361
+        },
+        {
+          "index": 22,
+          "FRC": 0.11526274629062616,
+          "paired_CCC_mean": 0.005023398084343558
+        },
+        {
+          "index": 24,
+          "FRC": -0.1183584371323323,
+          "paired_CCC_mean": -0.008525672811545981
+        },
+        {
+          "index": 26,
+          "FRC": -0.014491677328076102,
+          "paired_CCC_mean": -0.0033155888898738425
+        },
+        {
+          "index": 27,
+          "FRC": 0.09645122665654893,
+          "paired_CCC_mean": 0.006052160783854857
+        },
+        {
+          "index": 32,
+          "FRC": 0.062170667142793734,
+          "paired_CCC_mean": 0.00801573787112879
+        },
+        {
+          "index": 33,
+          "FRC": 0.059740502300465126,
+          "paired_CCC_mean": 0.006003554250628198
+        },
+        {
+          "index": 36,
+          "FRC": -0.003352484567181069,
+          "paired_CCC_mean": 0.0006814077447671457
+        },
+        {
+          "index": 37,
+          "FRC": 0.13024449592946907,
+          "paired_CCC_mean": -0.0024681821047264022
+        },
+        {
+          "index": 39,
+          "FRC": -0.33697208022815595,
+          "paired_CCC_mean": -0.029154098311719362
+        },
+        {
+          "index": 41,
+          "FRC": -0.02066011563188419,
+          "paired_CCC_mean": -0.0018079444140923218
+        },
+        {
+          "index": 43,
+          "FRC": -0.00293333036467347,
+          "paired_CCC_mean": 0.0017913032028191722
+        },
+        {
+          "index": 44,
+          "FRC": -0.04117280414071711,
+          "paired_CCC_mean": -0.006770196800240116
+        },
+        {
+          "index": 45,
+          "FRC": 0.023552255699363256,
+          "paired_CCC_mean": 0.006122378276526792
+        },
+        {
+          "index": 46,
+          "FRC": -0.03393966127933046,
+          "paired_CCC_mean": 0.0013515090382880887
+        },
+        {
+          "index": 47,
+          "FRC": 0.00899231049665028,
+          "paired_CCC_mean": 0.0019652170245656186
+        },
+        {
+          "index": 49,
+          "FRC": 0.0052772524533239995,
+          "paired_CCC_mean": -0.004442447474759552
+        },
+        {
+          "index": 50,
+          "FRC": -0.06321347071361294,
+          "paired_CCC_mean": 0.012458983595408073
+        },
+        {
+          "index": 52,
+          "FRC": 0.0011976040940049337,
+          "paired_CCC_mean": -0.0012622624530206905
+        },
+        {
+          "index": 54,
+          "FRC": -0.015121216834788509,
+          "paired_CCC_mean": 0.002905126635938454
+        },
+        {
+          "index": 55,
+          "FRC": -0.11094994210895792,
+          "paired_CCC_mean": -0.006118904404254583
+        },
+        {
+          "index": 61,
+          "FRC": 0.010090376122770417,
+          "paired_CCC_mean": 0.001995283720000962
+        },
+        {
+          "index": 63,
+          "FRC": 0.001259792101025392,
+          "paired_CCC_mean": -3.580176553564379e-05
+        },
+        {
+          "index": 64,
+          "FRC": -0.020878947291821714,
+          "paired_CCC_mean": 0.0024450399264438222
+        },
+        {
+          "index": 65,
+          "FRC": -0.0767999396175375,
+          "paired_CCC_mean": -0.008523955963890929
+        },
+        {
+          "index": 67,
+          "FRC": -0.010300691365432657,
+          "paired_CCC_mean": -0.00022095349455796866
+        },
+        {
+          "index": 72,
+          "FRC": -0.042104438956486745,
+          "paired_CCC_mean": -0.004930558499987886
+        },
+        {
+          "index": 73,
+          "FRC": -0.0017772454196360865,
+          "paired_CCC_mean": 0.00030818903562810545
+        }
+      ]
+    },
+    {
+      "arm": "P3-bert-time",
+      "kind": "time",
+      "measurable_sources": 25,
+      "incorrect_minus_correct": {
+        "FRC": -0.0064286584360063095,
+        "paired_CCC_mean": -0.00014971766594663738
+      },
+      "prediction_mean_abs_change": 0.007674488900229335,
+      "paired_deltas": [
+        {
+          "index": 2,
+          "FRC": 0.006494492982306088,
+          "paired_CCC_mean": 0.006985211498367533
+        },
+        {
+          "index": 3,
+          "FRC": 0.023436481376500895,
+          "paired_CCC_mean": -0.0011520838257727019
+        },
+        {
+          "index": 5,
+          "FRC": -0.040861481046546855,
+          "paired_CCC_mean": 0.0052546332646265514
+        },
+        {
+          "index": 8,
+          "FRC": 0.006831740479603554,
+          "paired_CCC_mean": -0.0012998789142402711
+        },
+        {
+          "index": 10,
+          "FRC": 0.00407669885856643,
+          "paired_CCC_mean": 0.0007607634971908764
+        },
+        {
+          "index": 11,
+          "FRC": -0.015140705615435568,
+          "paired_CCC_mean": -0.0013985676021378984
+        },
+        {
+          "index": 14,
+          "FRC": -0.0034285909382813506,
+          "paired_CCC_mean": 0.00030811426450880197
+        },
+        {
+          "index": 18,
+          "FRC": -0.0011841206857853281,
+          "paired_CCC_mean": -3.772001058385127e-05
+        },
+        {
+          "index": 19,
+          "FRC": 0.0019963378513856433,
+          "paired_CCC_mean": 0.00014431668474915865
+        },
+        {
+          "index": 21,
+          "FRC": -0.009389895419333216,
+          "paired_CCC_mean": 0.0006789464133417494
+        },
+        {
+          "index": 22,
+          "FRC": 0.06302637283403723,
+          "paired_CCC_mean": 0.005499592571438696
+        },
+        {
+          "index": 24,
+          "FRC": 0.0,
+          "paired_CCC_mean": 0.0
+        },
+        {
+          "index": 26,
+          "FRC": -0.05894876362887258,
+          "paired_CCC_mean": -0.007125456982795639
+        },
+        {
+          "index": 32,
+          "FRC": 0.2568384808879607,
+          "paired_CCC_mean": 0.02230549984711144
+        },
+        {
+          "index": 41,
+          "FRC": 0.008202607225004765,
+          "paired_CCC_mean": 0.0011648616365587672
+        },
+        {
+          "index": 43,
+          "FRC": -0.14400421819541154,
+          "paired_CCC_mean": -0.016193457759271224
+        },
+        {
+          "index": 44,
+          "FRC": -0.2339218352899013,
+          "paired_CCC_mean": -0.020219391115999588
+        },
+        {
+          "index": 52,
+          "FRC": -0.010219573118390946,
+          "paired_CCC_mean": -0.0011292359710505795
+        },
+        {
+          "index": 54,
+          "FRC": 0.01892238168096716,
+          "paired_CCC_mean": 0.001607498763792516
+        },
+        {
+          "index": 55,
+          "FRC": -0.03097292052816103,
+          "paired_CCC_mean": -0.0026967967995418646
+        },
+        {
+          "index": 58,
+          "FRC": 0.0024301952337826283,
+          "paired_CCC_mean": 0.0008692093102953824
+        },
+        {
+          "index": 61,
+          "FRC": 0.002476977082834231,
+          "paired_CCC_mean": 0.00018973139961057234
+        },
+        {
+          "index": 64,
+          "FRC": 0.002603767270719759,
+          "paired_CCC_mean": 0.001539084222432329
+        },
+        {
+          "index": 67,
+          "FRC": -0.005964885166783507,
+          "paired_CCC_mean": -0.0003975348411973077
+        },
+        {
+          "index": 76,
+          "FRC": -0.004016005030923586,
+          "paired_CCC_mean": 0.000599718799900617
+        }
+      ]
+    }
+  ],
+  "MAM_reference": {
+    "FRC": 0.810962319,
+    "FRD20": 172.576423473,
+    "SMSE": 0.157203704
+  }
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/react2025_new/experiments/mode_runtime/watch.py", line 96, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/experiments/mode_runtime/watch.py", line 88, in main
+    row=snapshot(a.root,pid,initial['start_ticks']);atomic(folder/'heartbeat.json',row);append(folder/'heartbeats.jsonl',row)
+  File "/home/zhengshiyi/react2025_new/experiments/mode_runtime/watch.py", line 16, in append
+    with path.open('a') as f:f.write(json.dumps(dict(at=now(),**row),allow_nan=False)+'\n');f.flush();os.fsync(f.fileno())
+TypeError: dict() got multiple values for keyword argument 'at'

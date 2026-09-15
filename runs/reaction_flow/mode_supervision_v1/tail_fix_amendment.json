@@ -1,0 +1,24 @@
+{
+  "time": 1789398351.4409325,
+  "reason": "one-frame generation block cannot support CCC/task loss",
+  "changes": {
+    "mode_supervision/train.py": {
+      "before": "83a19cec5ba091218b955e4be6bf7534a78205208b7c02ff512c64ff2497e463",
+      "after": "363ea67598e63e75f4ad7e45b21c0d2b8fbb68ddab4e6735e495cf6be97eee38"
+    },
+    "mode_supervision/test_task_mask.py": {
+      "before": null,
+      "after": "c5641aea11398f15ef5efb3494deffa28f74bfef32788a5f00ac2fc77a7ee7bf"
+    },
+    "mode_supervision/task_mask.py": {
+      "before": null,
+      "after": "5be7453604dc377168905cf2ffcd3a52e5afa37c7e857abdc29c6afbf7075bb1"
+    }
+  },
+  "rule": "FM and mode retain all blocks; task supported samples require at least 2 common frames, unsupported contribution zero, reduction by original batch size; identical in M0 and M1",
+  "resume_step": 200,
+  "previous_unsaved_completed_steps": 283,
+  "replayed_updates_per_arm": 83,
+  "protocol_schedule_noise_targets_unchanged": true,
+  "official_evaluation_unchanged": true
+}
