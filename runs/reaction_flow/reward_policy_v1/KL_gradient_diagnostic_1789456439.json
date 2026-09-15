@@ -1,0 +1,75 @@
+{
+  "scope": "fixed final checkpoint, TRAIN diagnostic only; no beta ablation and no updates",
+  "rows": [
+    {
+      "arm": "R-quality",
+      "checkpoint_step": 500,
+      "batch_index": 0,
+      "actor_grad_norm": 16.632243345042887,
+      "weighted_KL_grad_norm": 0.06038506570908491,
+      "KL_to_actor_norm_ratio": 0.003630602586576646,
+      "cosine": 0.12016993039069998,
+      "bonus_grad_norm": 0.0,
+      "quality_grad_norm": 16.632243345042887,
+      "gradient_clip_multiplier": 0.06009757032548102,
+      "KL_sample_estimate": 0.0013716643730553814,
+      "optimizer_updates": 0
+    },
+    {
+      "arm": "R-distance",
+      "checkpoint_step": 500,
+      "batch_index": 0,
+      "actor_grad_norm": 14.867815964594145,
+      "weighted_KL_grad_norm": 0.0655682434775204,
+      "KL_to_actor_norm_ratio": 0.004410079034719223,
+      "cosine": 0.0660456410584673,
+      "bonus_grad_norm": 7.861419344080888,
+      "quality_grad_norm": 18.081358641271734,
+      "gradient_clip_multiplier": 0.06723913904438217,
+      "KL_sample_estimate": 0.004993326750675209,
+      "optimizer_updates": 0
+    },
+    {
+      "arm": "R-coverage",
+      "checkpoint_step": 500,
+      "batch_index": 0,
+      "actor_grad_norm": 16.657734764128428,
+      "weighted_KL_grad_norm": 0.06045074656323895,
+      "KL_to_actor_norm_ratio": 0.0036289896206905944,
+      "cosine": 0.12033769168663923,
+      "bonus_grad_norm": 6.477168048234621e-06,
+      "quality_grad_norm": 16.657736188994303,
+      "gradient_clip_multiplier": 0.06000557816994892,
+      "KL_sample_estimate": 0.0003998663185868168,
+      "optimizer_updates": 0
+    },
+    {
+      "arm": "R-coverage",
+      "checkpoint_step": 500,
+      "batch_index": 1,
+      "actor_grad_norm": 3.2319304970598695,
+      "weighted_KL_grad_norm": 0.049087914821698865,
+      "KL_to_actor_norm_ratio": 0.01518841907842845,
+      "cosine": 0.1486942078118432,
+      "bonus_grad_norm": 4.051214511403219e-90,
+      "quality_grad_norm": 3.2319304970598695,
+      "gradient_clip_multiplier": 0.30868072374422617,
+      "KL_sample_estimate": 0.0009690309620353333,
+      "optimizer_updates": 0
+    },
+    {
+      "arm": "R-coverage",
+      "checkpoint_step": 500,
+      "batch_index": 2,
+      "actor_grad_norm": 24.273120583536233,
+      "weighted_KL_grad_norm": 0.060531180938094765,
+      "KL_to_actor_norm_ratio": 0.002493753562908238,
+      "cosine": 0.004442556245988155,
+      "bonus_grad_norm": 0.04147181802265382,
+      "quality_grad_norm": 24.28230375320979,
+      "gradient_clip_multiplier": 0.04119724980628666,
+      "KL_sample_estimate": 0.01370881541800202,
+      "optimizer_updates": 0
+    }
+  ]
+}

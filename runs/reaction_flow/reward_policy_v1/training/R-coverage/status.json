@@ -1,53 +1,53 @@
 {
   "stage": "training",
-  "actual": 99,
+  "actual": 500,
   "requested": 500,
   "latest": {
-    "step": 99,
-    "actor": -246.5890140767212,
-    "KL_total": 0.003902664008007406,
-    "KL_per_dimension": 4.065275008341048e-05,
-    "gradient_norm": 12.858003399135022,
+    "step": 500,
+    "actor": -212.79231216748525,
+    "KL_total": 0.006435140070129819,
+    "KL_per_dimension": 6.703270906385229e-05,
+    "gradient_norm": 11.130918397141938,
     "dual": [
-      1.0106866159872703,
-      1.0204375700136807,
+      1.027469743176332,
+      1.0309644075441853,
       1.0
     ],
     "constraint_ema": [
-      0.01756683512624608,
-      -0.00010870874006758784,
+      -0.0016214276804864141,
+      0.014282397031655805,
       0.0
     ],
     "episodes": [
       {
-        "record_step": 202196,
-        "mean_CCC": 0.014307797979563474,
-        "mean_DTW": 3.694939688018097,
-        "coverage": 0.07586927232140944,
+        "record_step": 202998,
+        "mean_CCC": 0.05029467586427927,
+        "mean_DTW": 9.050411561750327,
+        "coverage": 4.173670886648373e-257,
         "bad_rate": 0.0,
-        "advantage_min": -0.1547176657390752,
-        "advantage_max": -0.020284428031225543,
-        "metric_seconds": 0.23276495933532715,
-        "reference_CCC": 0.014845803700154647,
-        "reference_DTW": 3.298789337773871
+        "advantage_min": -0.36261489242122114,
+        "advantage_max": -0.07773505654379287,
+        "metric_seconds": 0.24740910530090332,
+        "reference_CCC": 0.053800731617957356,
+        "reference_DTW": 9.18080566897119
       },
       {
-        "record_step": 202197,
-        "mean_CCC": 0.09273623814806342,
-        "mean_DTW": 10.153822475752937,
-        "coverage": 0.0,
+        "record_step": 202999,
+        "mean_CCC": 0.198074546456337,
+        "mean_DTW": 8.801123844457353,
+        "coverage": 3.181575841590789e-22,
         "bad_rate": 0.0,
-        "advantage_min": -0.38809923267761537,
-        "advantage_max": -0.14185469861490274,
-        "metric_seconds": 0.22761154174804688,
-        "reference_CCC": 0.11836978420615196,
-        "reference_DTW": 9.832426532976324
+        "advantage_min": -0.14600775849682224,
+        "advantage_max": 0.08845271844233471,
+        "metric_seconds": 0.2017502784729004,
+        "reference_CCC": 0.1948066771030426,
+        "reference_DTW": 8.51872867655253
       }
     ],
-    "seconds": 3.6544151306152344,
+    "seconds": 3.6053128242492676,
     "generator_frozen": true,
     "reward_actions_detached": true,
     "candidate_rollouts": 20,
-    "peak_gpu_bytes": 522934272
+    "peak_gpu_bytes": 523702272
   }
 }

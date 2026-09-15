@@ -1,0 +1,56 @@
+{
+  "parent": {
+    "FRC": 0.9379011006006148,
+    "smse": 0.06772060692310333,
+    "FRVar": 0.055246129631996155,
+    "exact_FRD20": 130.6886747400594
+  },
+  "arms": {
+    "R-quality": {
+      "FRC": 0.9380028629173335,
+      "smse": 0.06770770251750946,
+      "FRVar": 0.05523165315389633,
+      "exact_FRD20": 130.68739683812055,
+      "working_goal_met": false
+    },
+    "R-distance": {
+      "FRC": 0.9381424248161323,
+      "smse": 0.06781886518001556,
+      "FRVar": 0.05529530718922615,
+      "exact_FRD20": 130.68488300103877,
+      "working_goal_met": false
+    },
+    "R-coverage": {
+      "FRC": 0.9379839216165564,
+      "smse": 0.06770489364862442,
+      "FRVar": 0.05522933974862099,
+      "exact_FRD20": 130.68729906214796,
+      "working_goal_met": false
+    }
+  },
+  "cost": {
+    "R-quality": {
+      "updates": 500,
+      "candidate_rollouts": 10000,
+      "total_update_seconds": 3671.4493865966797,
+      "CPU_metric_seconds": 251.19723677635193,
+      "peak_gpu_bytes": 532677632
+    },
+    "R-distance": {
+      "updates": 500,
+      "candidate_rollouts": 10000,
+      "total_update_seconds": 1854.8806874752045,
+      "CPU_metric_seconds": 254.41850352287292,
+      "peak_gpu_bytes": 523702272
+    },
+    "R-coverage": {
+      "updates": 500,
+      "candidate_rollouts": 10000,
+      "total_update_seconds": 1860.5854065418243,
+      "CPU_metric_seconds": 250.45587134361267,
+      "peak_gpu_bytes": 523702272
+    }
+  },
+  "decision": "joint working goal not met; no automatic reward grid or decoder RL",
+  "development_only": true
+}
