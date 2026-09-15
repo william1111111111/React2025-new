@@ -1,0 +1,53 @@
+{
+  "stage": "training",
+  "actual": 294,
+  "requested": 500,
+  "latest": {
+    "step": 294,
+    "actor": -127.6637592093885,
+    "KL_total": 0.003088564884495071,
+    "KL_per_dimension": 3.217255088015699e-05,
+    "gradient_norm": 7.170714753257461,
+    "dual": [
+      1.0151802280370577,
+      1.027028610502138,
+      1.0
+    ],
+    "constraint_ema": [
+      0.009378548657344093,
+      0.03969775114377526,
+      0.0
+    ],
+    "episodes": [
+      {
+        "record_step": 202586,
+        "mean_CCC": 0.034163402114063504,
+        "mean_DTW": 7.6139170926099125,
+        "coverage": 6.706981424305611e-35,
+        "bad_rate": 0.0,
+        "advantage_min": -0.1559116932114224,
+        "advantage_max": -0.010847438965940981,
+        "metric_seconds": 0.28287696838378906,
+        "reference_CCC": 0.04362673200666904,
+        "reference_DTW": 7.459161695090164
+      },
+      {
+        "record_step": 202587,
+        "mean_CCC": 0.023792167496867477,
+        "mean_DTW": 7.638147093068399,
+        "coverage": 1.2950289572554338e-05,
+        "bad_rate": 0.0,
+        "advantage_min": -0.13503468095311422,
+        "advantage_max": -0.009035557242002668,
+        "metric_seconds": 0.21503806114196777,
+        "reference_CCC": 0.023419373808428644,
+        "reference_DTW": 7.712382157495838
+      }
+    ],
+    "seconds": 3.7201404571533203,
+    "generator_frozen": true,
+    "reward_actions_detached": true,
+    "candidate_rollouts": 20,
+    "peak_gpu_bytes": 523702272
+  }
+}

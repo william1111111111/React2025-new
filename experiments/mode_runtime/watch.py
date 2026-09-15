@@ -33,7 +33,7 @@ def snapshot(root,pid,start):
                 q=proc(int(d.name))
                 if q and q['session']==current['session']:children.append(q)
     arms={}
-    for a in ('M0-control','M1-mode'):
+    for a in json.loads((root/'PROTOCOL.json').read_text()).get('arms', ['M0-control','M1-mode']):
         row={}
         for label,p in [('queue',root/(a+'_queue.json')),('training',root/'training'/a/'status.json')]:
             try:
@@ -45,7 +45,7 @@ def snapshot(root,pid,start):
         logs=list(root.glob(a+'*.log'))
         if logs:
             newest=max(logs,key=lambda p:p.stat().st_mtime);row['latest_log']=dict(path=str(newest),age_s=round(time.time()-newest.stat().st_mtime,1),bytes=newest.stat().st_size)
-        if row.get('queue',{}).get('stage')=='training' and row.get('training',{}).get('age_s',0)>600:row['warning']='training status stale >600s; investigate, not automatic restart'
+        if row.get('queue',{}).get('stage','') in ('training','reward_policy.train') and row.get('training',{}).get('age_s',0)>600:row['warning']='training status stale >600s; investigate, not automatic restart'
         arms[a]=row
     try:
         gpu=subprocess.run(['nvidia-smi','-i','7','--query-gpu=memory.used,memory.total,utilization.gpu','--format=csv,noheader,nounits'],capture_output=True,text=True,timeout=8)

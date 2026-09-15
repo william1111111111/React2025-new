@@ -1,0 +1,4 @@
+{"time": 1789448292.7921197, "event": "queue_start", "pid": 3734207, "arms": ["R-quality", "R-distance", "R-coverage"], "policy": "serial on GPU7, no automatic budget extension"}
+{"time": 1789448292.794895, "event": "child_start", "arm": "R-quality", "pid": 3734302, "command": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "reward_policy.train", "--arm", "R-quality"], "log": "runs/reaction_flow/reward_policy_v1/R-quality_train.log"}
+{"time": 1789451972.160266, "event": "child_exit", "arm": "R-quality", "pid": 3734302, "returncode": 0, "signal": null, "seconds": 3679.366523504257}
+{"time": 1789451972.1616492, "event": "child_start", "arm": "R-distance", "pid": 4031106, "command": ["/home/zhengshiyi/react2025_new/.venv/bin/python", "-m", "reward_policy.train", "--arm", "R-distance"], "log": "runs/reaction_flow/reward_policy_v1/R-distance_train.log"}

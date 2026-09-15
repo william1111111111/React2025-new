@@ -1,0 +1,165 @@
+{
+  "reason": "user requested pause before independent reward-policy experiment",
+  "time": 1789447575.8806543,
+  "queue_pid": 2174315,
+  "arms": [
+    {
+      "arm": "M0-control",
+      "preserved": "runs/reaction_flow/mode_supervision_v1/paused_1789447574/M0-control_latest.pt",
+      "sha256": "d89da7255cf595c5f75cc419e3c842b0ff3a85d95059a0cb2fe9b98009ab306c",
+      "last_status": {
+        "stage": "decoder",
+        "actual": 1725,
+        "requested": 6000,
+        "latest": {
+          "step": 1725,
+          "prior_steps": 0,
+          "FM": 0.6710031032562256,
+          "task": 1.4964916706085205,
+          "mode": 0.0,
+          "prior_FM": null,
+          "lambda_mode": 0,
+          "loss": 2.367734909057617,
+          "gradient_norm": 2.1469388008117676,
+          "prior_decoder_gradients_none": true,
+          "source_indices": [
+            721,
+            736,
+            687,
+            711
+          ],
+          "block_indices": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "target_slots": [
+            0,
+            3,
+            2,
+            3
+          ],
+          "target_ids": [
+            [
+              "listener/session16/Camera-2024-07-16-160716-160749",
+              "listener/session16/Camera-2024-07-22-093331-093420",
+              "listener/session16/Camera-2024-10-22-123739-123750",
+              "listener/session16/Camera-2024-07-24-110700-110644"
+            ],
+            [
+              "listener/session16/Camera-2024-07-24-110700-110644",
+              "listener/session16/Camera-2024-07-22-111042-111140",
+              "listener/session16/Camera-2024-07-31-172208-172241",
+              "listener/session16/Camera-2024-10-22-153434-153503"
+            ],
+            [
+              "listener/session16/Camera-2024-06-26-160214-160213",
+              "listener/session16/Camera-2024-07-31-172208-172241",
+              "listener/session16/Camera-2024-07-26-110838-110914",
+              "listener/session16/Camera-2024-07-09-111741-111806"
+            ],
+            [
+              "listener/session16/Camera-2024-07-11-103159-103100",
+              "listener/session16/Camera-2024-07-31-152258-152337",
+              "listener/session16/Camera-2024-06-26-093649-093642",
+              "listener/session16/Camera-2024-08-08-153226-153307"
+            ]
+          ],
+          "valid_frames": 1838,
+          "seconds": 10.411476373672485,
+          "peak_gpu_bytes": 3844797440,
+          "task_components": {
+            "valid": 0.9818482995033264,
+            "cover": 1.0148918628692627,
+            "paired": 1.0436817407608032,
+            "ccc_cost": 0.9533697366714478,
+            "sdtw_cost": 0.41721034049987793,
+            "task_supported_samples": 4,
+            "task_unsupported_samples": 0,
+            "task_reduction": "supported sum / original batch size"
+          }
+        }
+      }
+    },
+    {
+      "arm": "M1-mode",
+      "preserved": "runs/reaction_flow/mode_supervision_v1/paused_1789447574/M1-mode_latest.pt",
+      "sha256": "b8d6aba00b1e65a384e9fd35d6e3d77192182cd1f9e89347c612648362110481",
+      "last_status": {
+        "stage": "decoder",
+        "actual": 1722,
+        "requested": 6000,
+        "latest": {
+          "step": 1722,
+          "prior_steps": 3722,
+          "FM": 0.9913502931594849,
+          "task": 1.5801095962524414,
+          "mode": 0.5594853758811951,
+          "prior_FM": 1.6710610389709473,
+          "lambda_mode": 0.07533064544995323,
+          "loss": 2.825035333633423,
+          "gradient_norm": 2.8879141807556152,
+          "prior_decoder_gradients_none": true,
+          "source_indices": [
+            1598,
+            1593,
+            1598,
+            1572
+          ],
+          "block_indices": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "target_slots": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "target_ids": [
+            [
+              "listener/session9/Camera-2024-07-16-152105-152147",
+              "listener/session9/Camera-2024-07-31-102814-102840",
+              "listener/session9/Camera-2024-07-19-143058-143036",
+              "listener/session9/Camera-2024-10-23-134159-134313"
+            ],
+            [
+              "listener/session9/Camera-2024-07-11-142837-142758",
+              "listener/session9/Camera-2024-07-11-161602-161527",
+              "listener/session9/Camera-2024-10-14-143533-143358",
+              "listener/session9/Camera-2024-07-19-151039-150947"
+            ],
+            [
+              "listener/session9/Camera-2024-07-16-152105-152147",
+              "listener/session9/Camera-2024-08-08-153226-153307",
+              "listener/session9/Camera-2024-10-14-161029-160925",
+              "listener/session9/Camera-2024-10-23-155518-155524"
+            ],
+            [
+              "listener/session9/Camera-2024-07-04-103805-103835",
+              "listener/session9/Camera-2024-07-11-142837-142758",
+              "listener/session9/Camera-2024-07-22-132508-132549",
+              "listener/session9/Camera-2024-10-22-165256-165322"
+            ]
+          ],
+          "valid_frames": 3000,
+          "seconds": 9.91596794128418,
+          "peak_gpu_bytes": 3884636160,
+          "task_components": {
+            "valid": 1.0383810997009277,
+            "cover": 1.040656328201294,
+            "paired": 1.1262576580047607,
+            "ccc_cost": 0.9932477474212646,
+            "sdtw_cost": 0.3092321753501892,
+            "task_supported_samples": 4,
+            "task_unsupported_samples": 0,
+            "task_reduction": "supported sum / original batch size"
+          }
+        }
+      }
+    }
+  ]
+}

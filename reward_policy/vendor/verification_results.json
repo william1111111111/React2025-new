@@ -1,0 +1,31 @@
+{
+  "scope": "synthetic mathematical checks only; no model experiments",
+  "tests": 9,
+  "passed": 9,
+  "checks": {
+    "identity_policy_preserves_initial_noise_exactly": true,
+    "new_action_is_correct_projected_coefficient": true,
+    "uncontrolled_noise_residual_is_unchanged": true,
+    "duplicate_has_no_extra_reference_coverage": true,
+    "new_qualified_mode_increases_coverage": true,
+    "quality_rejected_outlier_gets_no_coverage_credit": true,
+    "leave_one_out_matches_exact_group_policy_gradient": true,
+    "identical_group_reward_centered_within_group_is_zero": true,
+    "equal_correct_rewards_do_not_remove_reference_skew": true
+  },
+  "max_projected_coefficient_error": 8.881784197001252e-16,
+  "max_residual_error": 4.440892098500626e-16,
+  "exact_gradient_error": 1.6653345369377348e-16,
+  "categorical_group_gradient": [
+    -0.0929904639999998,
+    0.09942855680000016,
+    0.08031564799999992,
+    -0.08675374080000013
+  ],
+  "kl_regularized_equal_quality_probabilities": [
+    0.729160484954391,
+    0.16666525370386065,
+    0.10416578356491296,
+    8.477776835467435e-06
+  ]
+}

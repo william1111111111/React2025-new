@@ -1,90 +1,54 @@
 {
-  "at": "2026-09-15T04:17:48.478618+00:00",
-  "queue_alive": true,
-  "queue": {
-    "pid": 2174315,
-    "state": "S",
-    "ppid": 1,
-    "session": 2174315,
-    "start_ticks": 64400448,
-    "cpu_ticks": 133,
-    "rss_bytes": 362557440
-  },
-  "processes": [
-    {
-      "pid": 2174315,
-      "state": "S",
-      "ppid": 1,
-      "session": 2174315,
-      "start_ticks": 64400448,
-      "cpu_ticks": 133,
-      "rss_bytes": 362557440
-    },
-    {
-      "pid": 2903048,
-      "state": "R",
-      "ppid": 2174315,
-      "session": 2174315,
-      "start_ticks": 64969962,
-      "cpu_ticks": 567765,
-      "rss_bytes": 2251370496
-    },
-    {
-      "pid": 2903700,
-      "state": "R",
-      "ppid": 2174315,
-      "session": 2174315,
-      "start_ticks": 64970813,
-      "cpu_ticks": 572037,
-      "rss_bytes": 2304634880
-    }
-  ],
+  "at": "2026-09-15T04:46:25.051928+00:00",
+  "queue_alive": false,
+  "queue": null,
+  "processes": [],
   "arms": {
     "M0-control": {
       "queue": {
         "stage": "training",
         "target": 3000,
-        "age_s": 5575.4,
+        "age_s": 7292.0,
         "last_loss": null
       },
       "training": {
         "stage": "decoder",
-        "actual": 1556,
-        "age_s": 0.6,
-        "last_loss": 2.3156397342681885
+        "actual": 1725,
+        "age_s": 10.5,
+        "last_loss": 2.367734909057617
       },
       "latest_log": {
         "path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/mode_supervision_v1/M0-control_train.log",
-        "age_s": 0.6,
-        "bytes": 90233
+        "age_s": 10.5,
+        "bytes": 99223
       }
     },
     "M1-mode": {
       "queue": {
         "stage": "training",
         "target": 3000,
-        "age_s": 5566.9,
+        "age_s": 7283.5,
         "last_loss": null
       },
       "training": {
         "stage": "decoder",
-        "actual": 1553,
-        "age_s": 5.3,
-        "last_loss": 2.09338641166687
+        "actual": 1722,
+        "age_s": 15.4,
+        "last_loss": 2.825035333633423
       },
       "latest_log": {
         "path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/mode_supervision_v1/M1-mode_train.log",
-        "age_s": 5.3,
-        "bytes": 88038
+        "age_s": 15.4,
+        "bytes": 96487
       }
     }
   },
-  "gpu7_mib_total_util": "78319, 81920, 100",
+  "gpu7_mib_total_util": "69493, 81920, 0",
   "host_memory": {
-    "MemAvailable": "453591092 kB",
+    "MemAvailable": "457431996 kB",
     "SwapTotal": "8000508 kB",
-    "SwapFree": "4 kB"
+    "SwapFree": "0 kB"
   },
-  "disk_free_bytes": 2822963789824,
+  "disk_free_bytes": 2822539362304,
   "cgroup": {}
 }
