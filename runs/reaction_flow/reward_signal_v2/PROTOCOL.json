@@ -1,0 +1,59 @@
+{
+  "arms": [
+    "R0-baselined",
+    "R1-calibrated"
+  ],
+  "updates": 100,
+  "B": 2,
+  "K": 10,
+  "seed": 123,
+  "lr": 1e-05,
+  "beta_KL": 0.01,
+  "clip_norm": 1.0,
+  "optimizer": "AdamW weight_decay=0",
+  "parent_sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+  "estimator": "other-candidate quality baseline / original K; separate uncentered marginal coverage",
+  "R0_geometry": "old scales, h2=1, valid-mode masks",
+  "R1_geometry": "stratified-generated-real-IQR-v1 plus fitted h2; objective changes feature geometry and bandwidth, not a bandwidth-only causal contrast",
+  "geometry_selection": "all saved-data versions retained; no DEV signals used; pooled-only IQR does not protect minority real-target spread, so stratified max-IQR is used",
+  "probe_indices": [
+    20,
+    21
+  ],
+  "probe_steps": [
+    0,
+    25,
+    50,
+    100
+  ],
+  "probe_visibility": "independent TRAIN calibration episodes only",
+  "training_records": "exact first200 original episodes, 100 updates",
+  "formal_action_rollouts_each": 2000,
+  "probe_rollouts_each": 80,
+  "fresh_reference_rollouts": 0,
+  "old_reference_cost": "original independent parent tables reused; do not claim they cost zero originally",
+  "dual": {
+    "initial": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "lr": 0.01,
+    "range": [
+      0.0,
+      20.0
+    ],
+    "EMA": 0.95
+  },
+  "input_hashes_preserved": true,
+  "inputs": {
+    "runs/reaction_flow/reward_policy_v1/PROTOCOL.json": "f296aeed54191b2dbe7af3a780541e9f57d539c3dc71e7cea756210e43f1469f",
+    "runs/reaction_flow/reward_policy_v1/episodes.json": "fb23346f8a55571342061e45b0fff10c10a638238665aee955fca325c9265a8f",
+    "runs/reaction_flow/reward_policy_v1/scales.json": "872fe6123d15c9830fe4364c04b039f60cd67915c68d6b26bf806bfcc9896f0c",
+    "runs/reaction_flow/reward_signal_v2/GEOMETRY_STRATIFIED.json": "5534a4e17922b62ef7037a4ad4f48389940468a8c77587f8fff6eed32194c637",
+    "runs/reaction_flow/reward_signal_v2/PREFLIGHT.json": "157fd7a2698a44f69fe9f18f94e8d95ffd21184d670bf6f40e0568b194e1c434",
+    "reward_policy/policy.py": "e8b9d3eae8f145e4c4db82ab3352ff0fe120162471d83412fa97897df256d832"
+  },
+  "no_automatic_push": true,
+  "DEV_evaluation": "not scheduled in this signal-chain phase; no final task-performance claim"
+}

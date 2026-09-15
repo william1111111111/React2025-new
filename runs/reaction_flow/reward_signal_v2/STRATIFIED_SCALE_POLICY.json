@@ -1,0 +1,6 @@
+{
+  "version": "stratified-generated-real-IQR-v1",
+  "rule": "max(generated IQR, real-target IQR, pooled IQR), then same group floor; same fit/hold split and bandwidth rule",
+  "reason": "10 generated versus 4 target rows per episode can place real-target variation outside pooled IQR; preserve both marginal scales without deletion or group selection",
+  "new_hyperparameter_search": false
+}

@@ -1,0 +1,60 @@
+{
+  "kernel_single_coordinate_example": {
+    "D2": 104.16666666666667,
+    "similarity": 2.4015726786715922e-23,
+    "description": "Synthetic: a .1 difference / .001 scale in one of 96 dimensions."
+  },
+  "tiny_positive_not_signal": {
+    "u_positive_pass": true,
+    "coverage_gains": [
+      5.000000000000001e-71,
+      1.0000000000000002e-70
+    ],
+    "mixed_gains": [
+      -1.5,
+      -2.0
+    ],
+    "quality_only_gains": [
+      -1.5,
+      -2.0
+    ],
+    "lost_after_adding_quality": true
+  },
+  "all_closed_gates": "bandwidth repair cannot create eligible pairs",
+  "bandwidth_math_only": {
+    "h2": 144.26950408889635,
+    "similarities": [
+      0.7071067811865476,
+      0.5,
+      0.3535533905932738
+    ]
+  },
+  "quality_baseline_exact_enumeration": {
+    "expected_old": 0.20999999999999924,
+    "expected_centered": 0.20999999999999996,
+    "variance_old": 690.2342999999998,
+    "variance_centered": 0.025899999999999992,
+    "caveat": "Illustrative toy distribution; not a measured variance reduction on REACT."
+  },
+  "coverage_LOO_unbiased_toy": {
+    "direct": 0.12599999999999997,
+    "leave_one_out": 0.12599999999999995
+  },
+  "detached_action_policy_update_CPU": {
+    "gradient_norm": 4.458601087117337,
+    "parameter_delta_l2": 0.002225539110413068,
+    "action_requires_grad": false,
+    "caveat": "Transcribed policy, synthetic reward, no REACT generator or checkpoint."
+  },
+  "orthonormal_action_geometry": {
+    "750": {
+      "one_DC_coefficient_shift_point1_per_frame": 0.0036514837167011074,
+      "four_basis_fraction": 0.005333333333333333
+    },
+    "3000": {
+      "one_DC_coefficient_shift_point1_per_frame": 0.0018257418583505537,
+      "four_basis_fraction": 0.0013333333333333333
+    }
+  },
+  "passed_checks": 7
+}

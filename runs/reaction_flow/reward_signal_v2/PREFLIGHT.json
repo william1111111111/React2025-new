@@ -1,0 +1,17 @@
+{
+  "calibration_partition": "ordered saved 64 calibration episodes; alternating 20-session rounds: floor(index/20)%2==0 fits (40), others held out (24)",
+  "bandwidth_floor": 1e-06,
+  "nontrivial_gain": 1e-06,
+  "dominance_stop": "median qualified-pair largest-coordinate share >0.5",
+  "constant_stop": "at least 90% of eligible multi-candidate target columns have affinity std <1e-4",
+  "sparse_gate_stop": "held-out same-pair eligibility <0.001",
+  "B1": "other-candidate quality mean baseline, original K denominator; separate uncentered coverage credits",
+  "next_geometry_if_blocked": "separate version only: generated+real TRAIN features; group floor max(1e-3,0.1*median positive group IQR), no feature deletion",
+  "formal_budget": 100,
+  "arms": [
+    "R0-baselined",
+    "R1-calibrated"
+  ],
+  "parent": "fixed P2 step1000",
+  "no_DEV_tuning": true
+}
