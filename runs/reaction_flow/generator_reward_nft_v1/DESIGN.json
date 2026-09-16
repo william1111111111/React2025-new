@@ -1,0 +1,45 @@
+{
+  "parent_sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+  "reviewed_head": "9336013f300dbd31e2fcfbcdecf6d51ba6f3a924",
+  "seed": 123,
+  "arms": [
+    "N0-quality",
+    "N1-quality-coverage"
+  ],
+  "rounds": 200,
+  "groups_per_round": 16,
+  "K": 10,
+  "updates": 4000,
+  "effective_batch": 8,
+  "microbatch": 1,
+  "replay_per_update": 4,
+  "lr": 2e-05,
+  "weight_decay": 0.01,
+  "warmup": 100,
+  "clip": 1.0,
+  "beta": 1.0,
+  "old_EMA": 0.5,
+  "FM_weight": 0.25,
+  "ref_vector_field_weight": 0.01,
+  "tau": [
+    0.02,
+    0.98
+  ],
+  "precision": "FP64 as native P2; FM reduction FP32 as existing protocol",
+  "dynamic_policy": "domain-invalid penalty; TRAIN per-group motion references diagnostic only, no scenario-validated anomaly labels available",
+  "reference_revision": "cbb14f84b8312b620390dfcbe2fab69c1383b104",
+  "reference_repository": "https://github.com/NVlabs/DiffusionNFT",
+  "source": "scripts/train_nft_sd3.py endpoint normalization; time converted data->noise to noise->data",
+  "evaluation": {
+    "DEV80": [
+      1000,
+      4000
+    ],
+    "exact_FRD20": [
+      4000
+    ],
+    "K": 10,
+    "source_only": true
+  },
+  "no_auto_push": true
+}

@@ -1,0 +1,22 @@
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_test/check_batch_arms.py", line 12, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_test/check_batch_arms.py", line 10, in main
+    saved=torch.load(m['checkpoints'][a]['path'],map_location='cpu',weights_only=True);gen.model.base.velocity.load_state_dict(saved['student']);new=gen.sample([streams[k] for k in ('speaker_audio','speaker_emotion','speaker_3dmm')],s['frame_pts'],[None for _ in range(0,n,750)],noise).float().cpu();row=read(ROOT/'exports'/a/'0000.json');old=torch.from_numpy(np.load(row['export']['path']));error=float((old-new).abs().max());torch.testing.assert_close(old,new,atol=1e-6,rtol=1e-6);result[a]=dict(max_abs_error=error,exact_equal=torch.equal(old,new));print(a,result[a],flush=True)
+  File "/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/testing/_comparison.py", line 1520, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 1020 / 772500 (0.1%)
+Greatest absolute difference: 0.00012934207916259766 at index (7, 270, 7) (up to 1e-06 allowed)
+Greatest relative difference: 0.006215699482709169 at index (7, 270, 4) (up to 1e-06 allowed)
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+N0-quality {'max_abs_error': 0.0, 'exact_equal': True}
+N1-quality-coverage {'max_abs_error': 0.0, 'exact_equal': True}

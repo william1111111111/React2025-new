@@ -1,0 +1,123 @@
+{
+  "split_audit_summary": {
+    "files": 3426,
+    "identical": 3426,
+    "all_equal": true
+  },
+  "models": {
+    "P2": {
+      "checkpoint": {
+        "path": "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_001000.pt",
+        "sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986"
+      },
+      "groups": {
+        "full_local_TEST": {
+          "count": 1142,
+          "FRC": 0.786617944802427,
+          "S_MSE": 0.06601467941302135,
+          "FRVar": 0.05322677816383397,
+          "temporal_S_MSE": 0.056890123947841584,
+          "TLCC": 47.853765323992995,
+          "MAE": 0.18799385246600558,
+          "FRD": 127.92632486437277
+        },
+        "original_speaker_direction": {
+          "count": 571,
+          "FRC": 0.9887039474719697,
+          "S_MSE": 0.06683031364870885,
+          "FRVar": 0.056529287059649484,
+          "temporal_S_MSE": 0.05780340961446487,
+          "TLCC": 47.492119089316986,
+          "MAE": 0.18071949865584197,
+          "FRD": 119.72306887117757
+        },
+        "reverse_direction": {
+          "count": 571,
+          "FRC": 0.5845319421328844,
+          "S_MSE": 0.06519904517733383,
+          "FRVar": 0.049924269268018455,
+          "temporal_S_MSE": 0.05597683828121831,
+          "TLCC": 48.215411558669004,
+          "MAE": 0.19526820627616917,
+          "FRD": 136.12958085756802
+        }
+      }
+    },
+    "N0-quality": {
+      "checkpoint": {
+        "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_001000.pt",
+        "sha256": "a67cfb5b4af959102fefc1f67d71c3986e2688e4386cfec20c6bffff64bf3c21"
+      },
+      "groups": {
+        "full_local_TEST": {
+          "count": 1142,
+          "FRC": 0.6378603962903902,
+          "S_MSE": 0.11739709204627159,
+          "FRVar": 0.06271481392464735,
+          "temporal_S_MSE": 0.10156447960849975,
+          "TLCC": 47.63835376532399,
+          "MAE": 0.19926916591614327,
+          "FRD": 140.0722946126318
+        },
+        "original_speaker_direction": {
+          "count": 571,
+          "FRC": 0.788191024029548,
+          "S_MSE": 0.12148591124447758,
+          "FRVar": 0.0662881173976353,
+          "temporal_S_MSE": 0.1052228827649261,
+          "TLCC": 47.37478108581436,
+          "MAE": 0.19367307904200878,
+          "FRD": 135.88483118547492
+        },
+        "reverse_direction": {
+          "count": 571,
+          "FRC": 0.48752976855123203,
+          "S_MSE": 0.11330827284806559,
+          "FRVar": 0.059141510451659426,
+          "temporal_S_MSE": 0.0979060764520734,
+          "TLCC": 47.90192644483363,
+          "MAE": 0.20486525279027779,
+          "FRD": 144.25975803978866
+        }
+      }
+    },
+    "N1-quality-coverage": {
+      "checkpoint": {
+        "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_001000.pt",
+        "sha256": "ebe7f7fec42c353c9857f76f480d7aafa84e136845d35173bc640a9d67830bb5"
+      },
+      "groups": {
+        "full_local_TEST": {
+          "count": 1142,
+          "FRC": 0.6426719917707224,
+          "S_MSE": 0.11082968536125017,
+          "FRVar": 0.06061913225687257,
+          "temporal_S_MSE": 0.09629727859170732,
+          "TLCC": 47.77145359019264,
+          "MAE": 0.1985808859270999,
+          "FRD": 138.31184231511085
+        },
+        "original_speaker_direction": {
+          "count": 571,
+          "FRC": 0.8009686492753839,
+          "S_MSE": 0.11508331965857337,
+          "FRVar": 0.06411070618680605,
+          "temporal_S_MSE": 0.09999273235268642,
+          "TLCC": 47.481611208406306,
+          "MAE": 0.19276515328555308,
+          "FRD": 133.4920670476121
+        },
+        "reverse_direction": {
+          "count": 571,
+          "FRC": 0.48437533426606083,
+          "S_MSE": 0.10657605106392697,
+          "FRVar": 0.057127558326939096,
+          "temporal_S_MSE": 0.09260182483072822,
+          "TLCC": 48.061295971978986,
+          "MAE": 0.20439661856864674,
+          "FRD": 143.13161758260958
+        }
+      }
+    }
+  }
+}

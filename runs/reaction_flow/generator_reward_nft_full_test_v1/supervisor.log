@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_test/queue.py", line 22, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_test/queue.py", line 16, in main
+    run('prepare','experiments.nft_full_test.prepare');run('targets','experiments.nft_full_test.targets')
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_test/queue.py", line 10, in run
+    write(ROOT/(label+'_exit.json'),dict(returncode=p.returncode));assert p.returncode==0,(label,p.returncode)
+AssertionError: ('targets', 1)

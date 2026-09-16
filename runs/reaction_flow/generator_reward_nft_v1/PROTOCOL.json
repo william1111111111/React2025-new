@@ -1,0 +1,42 @@
+{
+  "version": "generator-reward-nft-v1",
+  "inputs": {
+    "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_001000.pt": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+    "runs/reaction_flow/generator_reward_nft_v1/DESIGN.json": "a9b1eb0fe3039b79a678112d72e6824c11b2fbe5a96bda718d686486f1e7b600",
+    "runs/reaction_flow/generator_reward_nft_v1/SCHEDULE.json": "29b5b69246d50cff079d3f71d123b75e01a85539bd9d9cca7dab4093e40d4588",
+    "runs/reaction_flow/generator_reward_nft_v1/CALIBRATION.json": "9ea60d27714961faff6ba0f098528488e340e6e04c32cdb75407c1308236f864",
+    "runs/reaction_flow/reward_signal_v2/GEOMETRY_STRATIFIED.json": "5534a4e17922b62ef7037a4ad4f48389940468a8c77587f8fff6eed32194c637",
+    "runs/reaction_flow/reward_policy_v1/scales.json": "872fe6123d15c9830fe4364c04b039f60cd67915c68d6b26bf806bfcc9896f0c",
+    "runs/reaction_flow/mode_supervision_v1/cohort.json": "70829aa941857c76a0ed44e8bcaec1a7489d9f33ffec6b1c4e9d117571840522",
+    "runs/reaction_flow/bert_semantic_v1/content/index.json": "191bab95fce2fd201b8af4e9748d67a05e2ba13302673d584a1ed149d2429b71",
+    "runs/reaction_flow/bert_semantic_v1/content/vectors.npy": "f015fd82809d9b70a756b98363d7006a71ea8f0e237830c9b8e55241da4636fe",
+    "generator_reward_nft/vendor/train_nft_sd3.py": "a91116f5a0cd873e4ef63c45eb152de43ed071d0c4c872217d326b9597c5a47a",
+    "generator_reward_nft/vendor/DiffusionNFT_LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "generator_reward_nft/vendor/generator_reward_redesign/CODEX_GENERATOR_NFT.md": "1fbf61a5f54eb6fbe226a1ce1d5183f4af1330103e397d30344497f5dae13fd4"
+  },
+  "acceptance_sha256": "ff5aa4dd05b5a8b02e22b7f43cb7a06e47abbc20565e6f76f23001950264a6e5",
+  "objective": "endpoint self-normalized NFT; core only analytical diagnostics; beta1; native noise->data",
+  "dynamic_scope": "only domain-invalid penalty; per-group empirical motion diagnostic; no unvalidated speed anomaly classifier",
+  "budget": {
+    "updates": 4000,
+    "rounds": 200,
+    "groups_per_round": 16,
+    "K": 10,
+    "real_replay": 16000
+  },
+  "reference_cost": "each new source-episode ref bank K10 shared by arms; creation and reuse logged separately",
+  "checkpoint_steps": [
+    0,
+    500,
+    1000,
+    2000,
+    4000
+  ],
+  "DEV80": [
+    1000,
+    4000
+  ],
+  "exact_FRD20": [
+    4000
+  ]
+}

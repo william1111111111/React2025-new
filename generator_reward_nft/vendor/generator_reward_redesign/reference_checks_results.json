@@ -1,0 +1,16 @@
+{
+  "scope": "CPU synthetic algebra and autograd only; no REACT experiment",
+  "checks_passed": 8,
+  "checks": {
+    "positive_gradient": -2.0,
+    "neutral_gradient": 0.0,
+    "negative_gradient": 2.0,
+    "teacher_target_reward_detached": true,
+    "noise_to_data_endpoint_sign": true,
+    "padding_does_not_enter_loss": true,
+    "toy_vector_field_grad_norm": 2.12602916254693,
+    "toy_fixed_input_output_change_rms": 0.11311056537742174,
+    "orthonormal_input_RMS_ratio_n3000_r4": 0.03651483716701107,
+    "theoretical_RMS_ratio": 0.03651483716701107
+  }
+}

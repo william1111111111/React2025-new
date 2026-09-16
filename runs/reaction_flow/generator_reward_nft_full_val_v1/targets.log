@@ -1,0 +1,74 @@
+/home/zhengshiyi/react2025/dataset/react_2025.py:18: UserWarning: torchaudio._backend.set_audio_backend has been deprecated. With dispatcher enabled, this function is no-op. You can remove the function call.
+  torchaudio.set_audio_backend("sox_io")
+/home/zhengshiyi/react2025/framework/motion_diffusion/diffusion/utils/temos_utils.py:11: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  lengths = torch.tensor(lengths, device=device)
+/home/zhengshiyi/react2025_new/.venv/lib/python3.10/site-packages/torch/nn/modules/transformer.py:380: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)
+Successfully load model checkpoint: /home/zhengshiyi/react2025/pretrained_models/post_processor/checkpoint.pth
+TARGET 1 /571
+TARGET 2 /571
+TARGET 3 /571
+TARGET 4 /571
+TARGET 5 /571
+TARGET 6 /571
+TARGET 7 /571
+TARGET 8 /571
+TARGET 9 /571
+TARGET 10 /571
+TARGET 11 /571
+TARGET 12 /571
+TARGET 13 /571
+TARGET 14 /571
+TARGET 15 /571
+TARGET 16 /571
+TARGET 17 /571
+TARGET 18 /571
+TARGET 19 /571
+TARGET 20 /571
+TARGET 21 /571
+TARGET 22 /571
+TARGET 23 /571
+TARGET 24 /571
+TARGET 25 /571
+TARGET 26 /571
+TARGET 27 /571
+TARGET 28 /571
+TARGET 29 /571
+TARGET 30 /571
+TARGET 31 /571
+TARGET 32 /571
+TARGET 33 /571
+TARGET 34 /571
+TARGET 35 /571
+TARGET 36 /571
+TARGET 37 /571
+TARGET 38 /571
+TARGET 39 /571
+TARGET 40 /571
+TARGET 41 /571
+TARGET 42 /571
+TARGET 43 /571
+TARGET 44 /571
+TARGET 45 /571
+TARGET 46 /571
+TARGET 47 /571
+TARGET 48 /571
+TARGET 49 /571
+TARGET 50 /571
+TARGET 51 /571
+TARGET 52 /571
+TARGET 53 /571
+TARGET 54 /571
+TARGET 55 /571
+TARGET 56 /571
+TARGET 57 /571
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_val/targets.py", line 27, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhengshiyi/react2025_new/experiments/nft_full_val/targets.py", line 21, in main
+    assert y.shape==(10,s['length'],25) and torch.isfinite(y).all();assert torch.equal(y[0],raw[0])
+AssertionError
