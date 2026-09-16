@@ -1,0 +1,44 @@
+{
+  "arms": [
+    "Q0-quality-guarded",
+    "Q1-coverage-guarded"
+  ],
+  "parent_sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+  "max_proposed": 1000,
+  "transaction_steps": 100,
+  "consecutive_rejection_limit": 3,
+  "seed": 123,
+  "lr": 2e-05,
+  "warmup_proposed_steps": 100,
+  "weight_decay": 0.01,
+  "clip": 1.0,
+  "NFT": {
+    "beta": 1.0,
+    "K": 10,
+    "groups_per_round": 16,
+    "batch": 8,
+    "round_updates": 20,
+    "old_EMA": 0.5
+  },
+  "quality_rollout": {
+    "K": 4,
+    "T_max": 750,
+    "Euler": 16,
+    "mu_C": 1.0,
+    "mu_D": 1.0,
+    "fixed": true,
+    "delta_C": 0.0,
+    "delta_D": 0.0
+  },
+  "monitor": {
+    "TRAIN_recordings": 16,
+    "K": 10,
+    "target_K": 10,
+    "delta_C": 0.0,
+    "delta_D": 0.0,
+    "tolerance": "0 initially; any numerical tolerance must be fixed by preflight equivalence before launch"
+  },
+  "rollback": "student/optimizer/old/RNG restored to last acceptance; buffers discarded; proposed counter and next schedule/noise IDs always advance; fixed mu, no LR adaptation",
+  "no_DEV_TEST_control": true,
+  "no_auto_push": true
+}

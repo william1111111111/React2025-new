@@ -60,3 +60,13 @@ __pycache__/
 # Losslessly archived full evaluation manifests (see MANIFEST_ARCHIVE.json)
 /runs/reaction_flow/generator_reward_nft_full_test_v1/manifest.json
 /runs/reaction_flow/generator_reward_nft_full_val_v1/manifest.json
+
+# Reward-model local tensor artifacts and process locks
+/runs/reaction_reward/**/*.pt
+/runs/reaction_reward/**/*.pth
+/runs/reaction_reward/**/*.npy
+/runs/reaction_reward/**/*.npz
+/runs/reaction_reward/**/*.lock
+# Losslessly archived provenance (restore instructions in ARCHIVE_MANIFEST.json)
+/runs/reaction_reward/v1/SPLIT_MANIFEST.json
+/runs/reaction_reward/v1/inventory/

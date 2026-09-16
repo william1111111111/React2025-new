@@ -1,0 +1,14 @@
+{
+  "seed": 123,
+  "updates": 4000,
+  "family_slots": {
+    "base_context": 16,
+    "temporal": 8,
+    "weak_context": 4,
+    "generated": 4
+  },
+  "selection": "random.Random(seed(123|step|family)).choices(fixed RM_fit pool,k=slots)",
+  "dropout": "torch.manual_seed(seed(dropout|123|step|family))",
+  "unknown": "zero weight and no forward; slot is not replaced",
+  "shared_across_arms": true
+}

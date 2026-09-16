@@ -1,0 +1,36 @@
+{
+  "time": 1789540586.2971985,
+  "reason": "User requested pause before reaction reward model stage A",
+  "terminated_pids": [
+    1254182,
+    1254183,
+    1253739
+  ],
+  "resume_from": "atomic latest.pt; no historical artifacts removed",
+  "arms": [
+    {
+      "arm": "Q0-quality-guarded",
+      "status": {
+        "stage": "training",
+        "proposed_updates": 764,
+        "accepted_updates": 500,
+        "rejected_updates": 200,
+        "max_proposed": 1000
+      },
+      "checkpoint": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/latest.pt",
+      "checkpoint_bytes": 348315074
+    },
+    {
+      "arm": "Q1-coverage-guarded",
+      "status": {
+        "stage": "training",
+        "proposed_updates": 764,
+        "accepted_updates": 400,
+        "rejected_updates": 300,
+        "max_proposed": 1000
+      },
+      "checkpoint": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/latest.pt",
+      "checkpoint_bytes": 348315074
+    }
+  ]
+}

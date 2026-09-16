@@ -1,0 +1,30 @@
+{
+  "checkpoints": {
+    "P2": {
+      "path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_001000.pt",
+      "sha256": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986"
+    },
+    "N0": {
+      "path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_001000.pt",
+      "sha256": "a67cfb5b4af959102fefc1f67d71c3986e2688e4386cfec20c6bffff64bf3c21"
+    },
+    "N1": {
+      "path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_001000.pt",
+      "sha256": "ebe7f7fec42c353c9857f76f480d7aafa84e136845d35173bc640a9d67830bb5"
+    }
+  },
+  "condition": "speaker numeric streams only; NULL text for all",
+  "noise_seed": 9610123,
+  "Euler": 16,
+  "K": 16,
+  "fit_cal": [
+    "P2",
+    "N0"
+  ],
+  "audit": [
+    "P2",
+    "N0",
+    "N1"
+  ],
+  "generator_audit_training_overlap": "historical generators may have seen all TRAIN; only judge is group held out"
+}

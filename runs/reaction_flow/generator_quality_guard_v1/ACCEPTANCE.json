@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "real_cases": [
+    {
+      "source": "speaker/session4/Camera-2024-06-28-120152-120208",
+      "frames": 750,
+      "pure_noise_output_exact": true,
+      "DTW_max_error": 2.1316282072803006e-14,
+      "CCC_max_error": 1.189546989556478e-09,
+      "CCC_score_gradient": 1.5324776352887257,
+      "distance_score_gradient": 135.088267860639,
+      "parent_h_C": 0.0,
+      "parent_h_D": 4.1494673959337537e-29
+    },
+    {
+      "source": "speaker/session16/Camera-2024-06-26-093649-093642",
+      "frames": 514,
+      "pure_noise_output_exact": true,
+      "DTW_max_error": 1.0658141036401503e-14,
+      "CCC_max_error": 3.0284725283102887e-09,
+      "CCC_score_gradient": 2.6873591019124183,
+      "distance_score_gradient": 72.67967952684869,
+      "parent_h_C": 0.0,
+      "parent_h_D": 1.6597869583735014e-30
+    }
+  ],
+  "NFT_gradient": 2.5321140272936935,
+  "rollback_optimizer_RNG_next_update_exact": true,
+  "ref_and_old_unchanged": true,
+  "diagnostic_bad_checkpoint_only": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_004000.pt",
+  "bad_model": {
+    "C": 0.0053022753761022105,
+    "D": 9.668892278107988,
+    "C0": 0.010463282012170548,
+    "D0": 9.781796243304996,
+    "h_C": 0.004980791325140536,
+    "h_D": 0.0,
+    "grad_C": 5.562373693066418,
+    "grad_D": 0.0
+  },
+  "formal_initialization": "fresh original P2, never diagnostic N1",
+  "numerical_tolerances": {
+    "CCC_forward": 1e-06,
+    "DTW_forward": 1e-08,
+    "monitor_acceptance": 0.0
+  },
+  "quality_rollouts_for_checks": 24,
+  "paired_noise_identity": true,
+  "student_quality_rollouts": 12,
+  "reference_quality_rollouts": 12,
+  "old_endpoint_rollouts": 2
+}

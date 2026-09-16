@@ -1,0 +1,96 @@
+version: reaction-reward-model-v1
+status: proposed_not_run
+repo: william1111111111/React2025-new
+reviewed_ref: bee7d6cb93e9e2b7653bf1df3d170fe78d464b9d
+stage_to_execute: reward_model_only
+seed: 123
+split:
+  dataset: official_TRAIN_only
+  ratios: [0.70, 0.15, 0.15]
+  names: [RM_fit, RM_cal, RM_audit]
+  unit: verified_original_interaction_group
+  bind_reverse_roles_cameras_crops_duplicates: true
+  prohibit_cross_split_donors: true
+  subject_disjoint_only_if_verified: true
+inputs:
+  speaker: {audio: 768, facial_attributes: 25, coefficients_3d: 58}
+  listener: {attributes: 25, first_differences: 25, delta_t: 1}
+  max_frames: 750
+  use_true_pts: true
+  bert: false
+  learned_P2_encoder_weights: false
+  forbidden_network_inputs: [source_id, target_id, session_id, generator_id, metric_labels, filename]
+model:
+  width: 256
+  heads: 8
+  ffn_width: 1024
+  source_layers: 2
+  listener_layers: 2
+  cross_layers: 2
+  temporal_reduction: 4
+  dropout: 0.1
+  outputs: [context_score, temporal_score]
+evidence:
+  unknown_weight: 0.0
+  automatic_ties: false
+  paired_is_observation_not_unique_truth: true
+  weak_cross_scene_confidence_weight: 0.5
+  weak_same_scene_global_only: true
+  temporal_shifts_seconds: [-4.0, -2.0, 2.0, 4.0]
+  circular_shifts: false
+  static_temporal_case: unknown
+  generated_preference:
+    min_CCC_margin_per_candidate: 0.01
+    min_DTW_margin_reference_fraction: 0.05
+    require_both_metrics: true
+    disagreement: unknown
+    within_generator_fraction_min: 0.5
+candidate_bank:
+  fit_generators: [P2, N0-quality_step1000]
+  unseen_generator: N1-quality-coverage_step1000
+  candidate_count: 16
+  max_windows: {RM_fit: 256, RM_cal: 64, RM_audit: 96}
+  candidate_window_budget_max: 14848
+  lawful_cached_TRAIN_reuse: true
+arms:
+  RM-Paired: {base_context: 1.0, temporal: 0.5, weak_context: 0.0, generated: 0.0}
+  RM-Multi: {base_context: 1.0, temporal: 0.5, weak_context: 0.25, generated: 0.0}
+  RM-Gen: {base_context: 1.0, temporal: 0.5, weak_context: 0.25, generated: 0.5}
+training:
+  updates_each: 4000
+  batch_records: 32
+  family_slots: {base_context: 16, temporal: 8, weak_context: 4, generated: 4}
+  missing_family: zero_loss_mask_no_replacement
+  optimizer: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 200
+  clip_norm: 1.0
+  checkpoints: [1000, 2000, 4000]
+  select_on: RM_cal_macro_hard_pair_NLL
+  freeze_before_audit: true
+screening_proposed:
+  temporal_accuracy_min: 0.70
+  unseen_generator_pareto_accuracy_min: 0.65
+  hard_conditional_gain_over_listener_only_min: 0.10
+  group_bootstrap_lower_bound_min: 0.50
+  require_multiresponse_retention: true
+  thresholds_are_not_human_correctness_guarantees: true
+stage_B:
+  enabled: false
+  arms: [G-metric, G-RM, G-RM-div]
+  common_parent: original_P2
+  freeze_reward_model: true
+  train_full_velocity: true
+  proposal_update_budget_each: 1000
+  independent_fixed_P2_CCC_DTW_guards: true
+  official_metrics_unchanged: true
+  desired_diversity_ratio: 1.5
+  performance_claim_before_results: false
+operations:
+  new_paid_API: false
+  external_media_upload: false
+  human_annotation_required: false
+  auto_push: false
+  overwrite_historical_results: false
+  auto_start_RL: false

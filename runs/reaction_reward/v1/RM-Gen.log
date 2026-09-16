@@ -1,0 +1,178 @@
+Traceback (most recent call last):
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/zhengshiyi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/zhengshiyi/react2025_new/reaction_reward/train.py", line 58, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=ARMS,required=True);main(p.parse_args().arm)
+  File "/home/zhengshiyi/react2025_new/reaction_reward/train.py", line 38, in main
+    batch=active[i:i+4];d=difference(model,data,batch,fam);w=d.new_tensor([r['weight'] for r in batch]);loss=(F.softplus(-d)*w).sum()/den;assert torch.isfinite(loss);(mult*loss).backward();value+=float(loss.detach())
+  File "/home/zhengshiyi/react2025_new/reaction_reward/train.py", line 12, in difference
+    a=score(model,data,rows,'A');b=score(model,data,rows,'B');d=a-b;return d[:,0] if family in ['base_context','weak_context'] else d[:,1] if family=='temporal' else d.sum(-1)
+  File "/home/zhengshiyi/react2025_new/reaction_reward/train.py", line 10, in score
+    def score(model,data,rows,key):return model(*data.batch(rows,key))
+  File "/home/zhengshiyi/react2025_new/reaction_reward/data.py", line 23, in batch
+    n=r['n'];x,t=self.source(r['source'],r['start'],n);y,u=self.target(r[which],n);assert len(x)==len(y)==n;xs.append(x);ys.append(y);xt.append(t);yt.append(u);ns.append(n)
+AssertionError
+RM-Gen step 1 loss {'base_context': 0.6968291699886322, 'temporal': None, 'weak_context': None, 'generated': 0.5641064047813416}
+RM-Gen step 25 loss {'base_context': 0.6448722407221794, 'temporal': None, 'weak_context': 0.6831823587417603, 'generated': 0.5293118953704834}
+RM-Gen step 50 loss {'base_context': 0.7028040140867233, 'temporal': None, 'weak_context': 0.5369130969047546, 'generated': 0.6246764063835144}
+RM-Gen step 75 loss {'base_context': 0.6774502098560333, 'temporal': None, 'weak_context': 0.6680433750152588, 'generated': 0.3927093744277954}
+RM-Gen step 100 loss {'base_context': 0.7101751416921616, 'temporal': None, 'weak_context': 0.4588388204574585, 'generated': 0.4713023900985718}
+RM-Gen step 125 loss {'base_context': 0.7076468169689178, 'temporal': 0.687686026096344, 'weak_context': 0.7612025737762451, 'generated': 0.5890605449676514}
+RM-Gen step 150 loss {'base_context': 0.6755130589008331, 'temporal': None, 'weak_context': 0.6757087707519531, 'generated': 0.7982834577560425}
+RM-Gen step 175 loss {'base_context': 0.6939078718423843, 'temporal': None, 'weak_context': 0.559532105922699, 'generated': 0.4890425205230713}
+RM-Gen step 200 loss {'base_context': 0.6738674752414227, 'temporal': None, 'weak_context': 0.8241822719573975, 'generated': 0.5318610668182373}
+RM-Gen step 225 loss {'base_context': 0.3729676604270935, 'temporal': None, 'weak_context': 0.1773354709148407, 'generated': 0.06612459570169449}
+RM-Gen step 250 loss {'base_context': 0.14045580103993416, 'temporal': None, 'weak_context': 0.4858679473400116, 'generated': 2.604437828063965}
+RM-Gen step 275 loss {'base_context': 0.14121712185442448, 'temporal': None, 'weak_context': 0.8349334001541138, 'generated': 1.8102657794952393}
+RM-Gen step 300 loss {'base_context': 0.37261196598410606, 'temporal': None, 'weak_context': 0.3253980576992035, 'generated': 0.7243852019309998}
+RM-Gen step 325 loss {'base_context': 0.15082282572984695, 'temporal': None, 'weak_context': 0.12429238110780716, 'generated': 0.5751694440841675}
+RM-Gen step 350 loss {'base_context': 0.5648902058601379, 'temporal': None, 'weak_context': 0.6063756346702576, 'generated': 0.6047385931015015}
+RM-Gen step 375 loss {'base_context': 0.10294266045093536, 'temporal': 0.8490062952041626, 'weak_context': 0.11162243783473969, 'generated': 0.53765869140625}
+RM-Gen step 400 loss {'base_context': 0.4059602864435874, 'temporal': 0.6975350975990295, 'weak_context': 0.14886604249477386, 'generated': 0.422865629196167}
+RM-Gen step 425 loss {'base_context': 0.48698196560144424, 'temporal': 0.8652535080909729, 'weak_context': 0.11951558291912079, 'generated': 1.0228168964385986}
+RM-Gen step 450 loss {'base_context': 0.07063651829957962, 'temporal': 0.5785269141197205, 'weak_context': 0.015810610726475716, 'generated': 0.2780841588973999}
+RM-Gen step 475 loss {'base_context': 0.20690612867474556, 'temporal': None, 'weak_context': 0.14014483988285065, 'generated': 0.9027945399284363}
+RM-Gen step 500 loss {'base_context': 0.1779029881581664, 'temporal': None, 'weak_context': 0.06776302307844162, 'generated': 3.425224542617798}
+RM-Gen step 525 loss {'base_context': 0.08443004901346285, 'temporal': None, 'weak_context': 0.2973753809928894, 'generated': 0.36362165212631226}
+RM-Gen step 550 loss {'base_context': 0.1708543747663498, 'temporal': None, 'weak_context': 0.29160547256469727, 'generated': 0.8361181020736694}
+RM-Gen step 575 loss {'base_context': 0.44917097175493836, 'temporal': None, 'weak_context': 0.11680440604686737, 'generated': 0.5212036371231079}
+RM-Gen step 600 loss {'base_context': 0.006403439998393878, 'temporal': 0.6757543087005615, 'weak_context': 0.24741631746292114, 'generated': 1.4109981060028076}
+RM-Gen step 625 loss {'base_context': 0.005349922634195536, 'temporal': None, 'weak_context': 0.04619114100933075, 'generated': 0.39934051036834717}
+RM-Gen step 650 loss {'base_context': 0.3534887534333393, 'temporal': None, 'weak_context': 0.34454256296157837, 'generated': 0.8561192750930786}
+RM-Gen step 675 loss {'base_context': 0.041044347919523716, 'temporal': 0.7017782330513, 'weak_context': None, 'generated': 0.2259967178106308}
+RM-Gen step 700 loss {'base_context': 0.014873161911964417, 'temporal': None, 'weak_context': 0.012686006724834442, 'generated': 0.09499652683734894}
+RM-Gen step 725 loss {'base_context': 0.008178844815120101, 'temporal': None, 'weak_context': 0.06692655384540558, 'generated': 2.098313570022583}
+RM-Gen step 750 loss {'base_context': 0.3706698529422283, 'temporal': 0.757523238658905, 'weak_context': 0.08163195103406906, 'generated': 0.9495092630386353}
+RM-Gen step 775 loss {'base_context': 0.08470103567378828, 'temporal': None, 'weak_context': 0.21533583104610443, 'generated': 0.3230138421058655}
+RM-Gen step 800 loss {'base_context': 0.16014995443401858, 'temporal': 0.8418095111846924, 'weak_context': 0.4483763575553894, 'generated': 1.7587323188781738}
+RM-Gen step 825 loss {'base_context': 0.006132322188932449, 'temporal': None, 'weak_context': 0.20588430762290955, 'generated': None}
+RM-Gen step 850 loss {'base_context': 0.14051886927336454, 'temporal': None, 'weak_context': 0.17407849431037903, 'generated': 0.4587780237197876}
+RM-Gen step 875 loss {'base_context': 0.05467562610283494, 'temporal': None, 'weak_context': 0.006762251257896423, 'generated': None}
+RM-Gen step 900 loss {'base_context': 0.00684705883031711, 'temporal': None, 'weak_context': 0.0026548979803919792, 'generated': 0.41431164741516113}
+RM-Gen step 925 loss {'base_context': 0.09027224367309827, 'temporal': None, 'weak_context': 0.13196000456809998, 'generated': 0.5381129384040833}
+RM-Gen step 950 loss {'base_context': 0.023194035326014273, 'temporal': None, 'weak_context': 0.0964975506067276, 'generated': 1.0061776638031006}
+RM-Gen step 975 loss {'base_context': 0.0021014409721828997, 'temporal': None, 'weak_context': 0.007613219320774078, 'generated': 0.5607104301452637}
+RM-Gen step 1000 loss {'base_context': 0.0022077842731960118, 'temporal': None, 'weak_context': 0.2537960410118103, 'generated': 1.491162657737732}
+RM-Gen step 1025 loss {'base_context': 0.02845278847962618, 'temporal': None, 'weak_context': 1.0048032999038696, 'generated': 0.9209914803504944}
+RM-Gen step 1050 loss {'base_context': 0.14536613458767533, 'temporal': 0.34436893463134766, 'weak_context': 0.5865685939788818, 'generated': 0.02994757704436779}
+RM-Gen step 1075 loss {'base_context': 0.02674467721953988, 'temporal': None, 'weak_context': 0.009203811176121235, 'generated': 2.4036922454833984}
+RM-Gen step 1100 loss {'base_context': 0.20850690896622837, 'temporal': None, 'weak_context': 0.06067832186818123, 'generated': 0.466707319021225}
+RM-Gen step 1125 loss {'base_context': 0.0014813281886745244, 'temporal': 0.04156699404120445, 'weak_context': 0.009889163076877594, 'generated': 0.20879386365413666}
+RM-Gen step 1150 loss {'base_context': 0.11764522004523315, 'temporal': None, 'weak_context': None, 'generated': 0.008266858756542206}
+RM-Gen step 1175 loss {'base_context': 0.22258959181908722, 'temporal': None, 'weak_context': 0.009864464402198792, 'generated': 0.02138042263686657}
+RM-Gen step 1200 loss {'base_context': 0.0016179183585336432, 'temporal': None, 'weak_context': 0.005040125921368599, 'generated': 0.4306813180446625}
+RM-Gen step 1225 loss {'base_context': 0.0020129011827521026, 'temporal': 0.6783447265625, 'weak_context': 0.03617475926876068, 'generated': None}
+RM-Gen step 1250 loss {'base_context': 0.005953475557589627, 'temporal': None, 'weak_context': 0.05215613543987274, 'generated': 0.33537977933883667}
+RM-Gen step 1275 loss {'base_context': 0.06701179075753316, 'temporal': None, 'weak_context': 0.0009853905066847801, 'generated': 0.35824140906333923}
+RM-Gen step 1300 loss {'base_context': 0.0017602488624106627, 'temporal': 0.042581841349601746, 'weak_context': 0.009563945233821869, 'generated': 4.599801540374756}
+RM-Gen step 1325 loss {'base_context': 0.003490158349450212, 'temporal': None, 'weak_context': None, 'generated': 0.04123913496732712}
+RM-Gen step 1350 loss {'base_context': 0.0007310808668989921, 'temporal': None, 'weak_context': 0.0005553723312914371, 'generated': 0.6887679696083069}
+RM-Gen step 1375 loss {'base_context': 0.016528737220085077, 'temporal': None, 'weak_context': 0.017704550176858902, 'generated': 0.6667020320892334}
+RM-Gen step 1400 loss {'base_context': 0.03066518483683467, 'temporal': None, 'weak_context': 5.07039439980872e-05, 'generated': 0.00024209637194871902}
+RM-Gen step 1425 loss {'base_context': 0.17668059388233814, 'temporal': 0.30353060364723206, 'weak_context': 0.0002953181101474911, 'generated': 1.071207046508789}
+RM-Gen step 1450 loss {'base_context': 0.0002895098386943573, 'temporal': None, 'weak_context': 0.007631887681782246, 'generated': 0.012503908947110176}
+RM-Gen step 1475 loss {'base_context': 0.0016007049098334392, 'temporal': None, 'weak_context': 1.8163206050303415e-06, 'generated': None}
+RM-Gen step 1500 loss {'base_context': 0.0025572338490746915, 'temporal': 0.5928502678871155, 'weak_context': 0.17056243121623993, 'generated': 0.007157669868320227}
+RM-Gen step 1525 loss {'base_context': 0.00109247101136134, 'temporal': 0.0034116876777261496, 'weak_context': 0.015230825170874596, 'generated': 3.3002898693084717}
+RM-Gen step 1550 loss {'base_context': 0.02202942330040969, 'temporal': 0.5537862181663513, 'weak_context': 0.01199291367083788, 'generated': 1.646422028541565}
+RM-Gen step 1575 loss {'base_context': 0.0017694979469524696, 'temporal': None, 'weak_context': 1.4373530575539917e-05, 'generated': 0.9743726253509521}
+RM-Gen step 1600 loss {'base_context': 0.1262629052507691, 'temporal': None, 'weak_context': 0.0012673374731093645, 'generated': 1.1367110013961792}
+RM-Gen step 1625 loss {'base_context': 4.756971179631364e-05, 'temporal': 0.0063976505771279335, 'weak_context': 0.044760506600141525, 'generated': 1.211113691329956}
+RM-Gen step 1650 loss {'base_context': 0.026285996951628476, 'temporal': None, 'weak_context': 0.0486236996948719, 'generated': 0.023277027532458305}
+RM-Gen step 1675 loss {'base_context': 0.0026747779920697212, 'temporal': None, 'weak_context': 0.0022904372308403254, 'generated': 0.6332709789276123}
+RM-Gen step 1700 loss {'base_context': 0.0002248553282697685, 'temporal': None, 'weak_context': 2.8338788979453966e-05, 'generated': 1.0886495113372803}
+RM-Gen step 1725 loss {'base_context': 0.006160123739391565, 'temporal': None, 'weak_context': 0.0010105469264090061, 'generated': 3.4949779510498047}
+RM-Gen step 1750 loss {'base_context': 0.00035009432622246095, 'temporal': None, 'weak_context': 0.03309888392686844, 'generated': 0.7991328239440918}
+RM-Gen step 1775 loss {'base_context': 0.00034065943327732384, 'temporal': 0.0012829166371375322, 'weak_context': 0.19008873403072357, 'generated': 0.0072821942158043385}
+RM-Gen step 1800 loss {'base_context': 0.00047509793148492463, 'temporal': None, 'weak_context': 2.257214509882033e-05, 'generated': 6.444526661653072e-05}
+RM-Gen step 1825 loss {'base_context': 0.04236483993008733, 'temporal': 0.2350921779870987, 'weak_context': 0.003343675984069705, 'generated': 1.0176995992660522}
+RM-Gen step 1850 loss {'base_context': 3.945075104638818e-05, 'temporal': None, 'weak_context': 0.0011750174453482032, 'generated': 0.18688732385635376}
+RM-Gen step 1875 loss {'base_context': 0.00043367050697895593, 'temporal': None, 'weak_context': 0.017337556928396225, 'generated': 0.06943891197443008}
+RM-Gen step 1900 loss {'base_context': 0.10605307295918465, 'temporal': 0.2990971505641937, 'weak_context': 0.022169411182403564, 'generated': 0.0851144939661026}
+RM-Gen step 1925 loss {'base_context': 0.08116756135132164, 'temporal': None, 'weak_context': 0.004252397920936346, 'generated': 0.5212982296943665}
+RM-Gen step 1950 loss {'base_context': 0.0001340579991335744, 'temporal': None, 'weak_context': 1.4864624972688034e-05, 'generated': 3.1314161788031925e-06}
+RM-Gen step 1975 loss {'base_context': 2.1814791482333007e-05, 'temporal': None, 'weak_context': 0.00010314775863662362, 'generated': 0.006473114714026451}
+RM-Gen step 2000 loss {'base_context': 0.0005596226649231539, 'temporal': None, 'weak_context': 7.799114428053144e-06, 'generated': 0.021800465881824493}
+RM-Gen step 2025 loss {'base_context': 2.3389801526718657e-06, 'temporal': None, 'weak_context': 0.23077921569347382, 'generated': 2.3918728828430176}
+RM-Gen step 2050 loss {'base_context': 0.0002475013482126087, 'temporal': None, 'weak_context': 0.0016976060578599572, 'generated': 0.0030937273986637592}
+RM-Gen step 2075 loss {'base_context': 0.0010474071844441823, 'temporal': None, 'weak_context': 0.0024796994403004646, 'generated': 0.6016862988471985}
+RM-Gen step 2100 loss {'base_context': 0.0035051736403772793, 'temporal': 5.169553332962096e-05, 'weak_context': 6.336582828225801e-06, 'generated': 1.0561267137527466}
+RM-Gen step 2125 loss {'base_context': 3.3954323185980684e-05, 'temporal': None, 'weak_context': 0.019260823726654053, 'generated': 0.4808654487133026}
+RM-Gen step 2150 loss {'base_context': 6.661377287997539e-06, 'temporal': 0.04528822749853134, 'weak_context': 5.804085230920464e-05, 'generated': 0.7224531173706055}
+RM-Gen step 2175 loss {'base_context': 0.00012600709069765514, 'temporal': None, 'weak_context': 1.04459510485988e-10, 'generated': 0.16382813453674316}
+RM-Gen step 2200 loss {'base_context': 0.0018137065944756614, 'temporal': None, 'weak_context': 2.736950110993064e-10, 'generated': 5.308995246887207}
+RM-Gen step 2225 loss {'base_context': 0.03990395285654813, 'temporal': None, 'weak_context': 0.15820921957492828, 'generated': 0.6765011548995972}
+RM-Gen step 2250 loss {'base_context': 0.06844505517801736, 'temporal': None, 'weak_context': 0.003618591697886586, 'generated': 0.05081864073872566}
+RM-Gen step 2275 loss {'base_context': 0.0006978114834055305, 'temporal': None, 'weak_context': 0.0671224296092987, 'generated': 1.5928746461868286}
+RM-Gen step 2300 loss {'base_context': 0.0021178951719775796, 'temporal': 5.7793742598732933e-05, 'weak_context': 0.01616113819181919, 'generated': 0.19583965837955475}
+RM-Gen step 2325 loss {'base_context': 4.247076731189736e-06, 'temporal': 0.010047455318272114, 'weak_context': 2.9779758392578515e-07, 'generated': 0.004720759578049183}
+RM-Gen step 2350 loss {'base_context': 0.0003143714893099059, 'temporal': 0.06110473722219467, 'weak_context': 0.004187050741165876, 'generated': 0.05086024850606918}
+RM-Gen step 2375 loss {'base_context': 6.971020505730507e-05, 'temporal': 8.631180389784276e-05, 'weak_context': 0.0010930614080280066, 'generated': 2.4004945755004883}
+RM-Gen step 2400 loss {'base_context': 0.0007689059652307151, 'temporal': 3.985463627032004e-05, 'weak_context': 0.0062966737896203995, 'generated': None}
+RM-Gen step 2425 loss {'base_context': 0.016686501399362896, 'temporal': 0.00013751807273365557, 'weak_context': 0.0014507713494822383, 'generated': 6.852771759033203}
+RM-Gen step 2450 loss {'base_context': 0.000398940232116729, 'temporal': None, 'weak_context': 6.885564403091848e-07, 'generated': 0.4203703999519348}
+RM-Gen step 2475 loss {'base_context': 0.00023136218506181194, 'temporal': None, 'weak_context': 2.877311999327503e-06, 'generated': 0.05113510414958}
+RM-Gen step 2500 loss {'base_context': 0.09586571875208932, 'temporal': 0.01580073870718479, 'weak_context': 5.067853336981898e-08, 'generated': 1.8443773984909058}
+RM-Gen step 2525 loss {'base_context': 0.00019751589752559084, 'temporal': None, 'weak_context': 0.002477659611031413, 'generated': 0.31943440437316895}
+RM-Gen step 2550 loss {'base_context': 0.002737161674303934, 'temporal': 0.003108857898041606, 'weak_context': 0.0007012846763245761, 'generated': 0.07118523120880127}
+RM-Gen step 2575 loss {'base_context': 3.708706471172718e-05, 'temporal': None, 'weak_context': None, 'generated': 0.09990473836660385}
+RM-Gen step 2600 loss {'base_context': 2.8993024869805595e-07, 'temporal': 1.28484831662945e-08, 'weak_context': 0.003240548074245453, 'generated': 0.061833783984184265}
+RM-Gen step 2625 loss {'base_context': 0.00010006704762471896, 'temporal': None, 'weak_context': 9.027736814459786e-05, 'generated': 0.8765848875045776}
+RM-Gen step 2650 loss {'base_context': 7.361184640079788e-05, 'temporal': None, 'weak_context': None, 'generated': 0.08558361977338791}
+RM-Gen step 2675 loss {'base_context': 0.00012930345292261336, 'temporal': None, 'weak_context': None, 'generated': 0.009387675672769547}
+RM-Gen step 2700 loss {'base_context': 2.3318175674802433e-06, 'temporal': None, 'weak_context': 0.00797802209854126, 'generated': 0.48458388447761536}
+RM-Gen step 2725 loss {'base_context': 7.635312304188346e-06, 'temporal': None, 'weak_context': 7.750776603643317e-06, 'generated': 0.04991520941257477}
+RM-Gen step 2750 loss {'base_context': 0.001643694819271957, 'temporal': None, 'weak_context': None, 'generated': None}
+RM-Gen step 2775 loss {'base_context': 9.223036113326089e-05, 'temporal': None, 'weak_context': 0.00045539074926637113, 'generated': 1.1772735118865967}
+RM-Gen step 2800 loss {'base_context': 2.3009798270745563e-05, 'temporal': None, 'weak_context': 1.590375831028723e-07, 'generated': None}
+RM-Gen step 2825 loss {'base_context': 0.0019935448972319136, 'temporal': 0.11988599598407745, 'weak_context': 0.019754353910684586, 'generated': 0.023379933089017868}
+RM-Gen step 2850 loss {'base_context': 9.91912951693874e-05, 'temporal': None, 'weak_context': 0.00011343220103299245, 'generated': 0.00042422543629072607}
+RM-Gen step 2875 loss {'base_context': 0.0008564864056097576, 'temporal': 0.12242686748504639, 'weak_context': 0.0001477715850342065, 'generated': 6.753260135650635}
+RM-Gen step 2900 loss {'base_context': 0.001183368726874967, 'temporal': None, 'weak_context': 0.020234229043126106, 'generated': 0.7850031852722168}
+RM-Gen step 2925 loss {'base_context': 9.12329170432713e-07, 'temporal': 0.009623698890209198, 'weak_context': None, 'generated': 0.7954867482185364}
+RM-Gen step 2950 loss {'base_context': 6.45799993181985e-06, 'temporal': None, 'weak_context': 0.00012792643974535167, 'generated': 0.12336157262325287}
+RM-Gen step 2975 loss {'base_context': 0.0024890756882314236, 'temporal': None, 'weak_context': 0.017333950847387314, 'generated': 0.004566007759422064}
+RM-Gen step 3000 loss {'base_context': 2.6282462873616907e-05, 'temporal': 0.06653862446546555, 'weak_context': 0.0008890443132258952, 'generated': 0.007801789790391922}
+RM-Gen step 3025 loss {'base_context': 9.609764526885556e-05, 'temporal': None, 'weak_context': 0.0002836582134477794, 'generated': 0.08760735392570496}
+RM-Gen step 3050 loss {'base_context': 5.220994859556072e-06, 'temporal': None, 'weak_context': 0.006616917904466391, 'generated': 0.00013615078933071345}
+RM-Gen step 3075 loss {'base_context': 9.834685275933452e-06, 'temporal': None, 'weak_context': 0.00011570790957193822, 'generated': 3.7732053897343576e-05}
+RM-Gen step 3100 loss {'base_context': 1.874003612201136e-05, 'temporal': None, 'weak_context': 5.100289399706526e-07, 'generated': 0.05143648386001587}
+RM-Gen step 3125 loss {'base_context': 1.4165930849685537e-05, 'temporal': None, 'weak_context': None, 'generated': 1.855536937713623}
+RM-Gen step 3150 loss {'base_context': 0.005864282458901471, 'temporal': None, 'weak_context': 1.2646898539969698e-05, 'generated': 0.02651442401111126}
+RM-Gen step 3175 loss {'base_context': 0.00026719767083704937, 'temporal': None, 'weak_context': 0.0003820431011263281, 'generated': 0.6244539022445679}
+RM-Gen step 3200 loss {'base_context': 0.038530449345671514, 'temporal': None, 'weak_context': 0.00030533765675500035, 'generated': 1.0765655133582186e-05}
+RM-Gen step 3225 loss {'base_context': 8.574406427896974e-05, 'temporal': None, 'weak_context': 1.0956638334391755e-06, 'generated': 0.004676740150898695}
+RM-Gen step 3250 loss {'base_context': 1.315763850584517e-05, 'temporal': None, 'weak_context': 6.117776138125919e-06, 'generated': 0.0036138095892965794}
+RM-Gen step 3275 loss {'base_context': 5.357570887554175e-05, 'temporal': 0.13351471722126007, 'weak_context': 0.005660620983690023, 'generated': 0.0012218484189361334}
+RM-Gen step 3300 loss {'base_context': 0.002511925224098377, 'temporal': None, 'weak_context': 0.002341035520657897, 'generated': 0.4776706397533417}
+RM-Gen step 3325 loss {'base_context': 4.557395646997975e-05, 'temporal': 0.0035292068496346474, 'weak_context': 2.1283153728290927e-06, 'generated': 1.4890553951263428}
+RM-Gen step 3350 loss {'base_context': 1.946222314766488e-06, 'temporal': None, 'weak_context': 0.002088321140035987, 'generated': 0.0011174243409186602}
+RM-Gen step 3375 loss {'base_context': 0.00023345656788364977, 'temporal': None, 'weak_context': 0.0004668164474423975, 'generated': 2.5760345458984375}
+RM-Gen step 3400 loss {'base_context': 0.008295149212756314, 'temporal': None, 'weak_context': 0.0018519703298807144, 'generated': None}
+RM-Gen step 3425 loss {'base_context': 1.7138610033384793e-06, 'temporal': None, 'weak_context': 4.392761638882803e-06, 'generated': 0.002167867496609688}
+RM-Gen step 3450 loss {'base_context': 3.056584256810879e-06, 'temporal': 6.957611020652621e-08, 'weak_context': None, 'generated': 2.786205768585205}
+RM-Gen step 3475 loss {'base_context': 3.5373969220486856e-07, 'temporal': None, 'weak_context': 1.1969993052307615e-10, 'generated': 0.7309808135032654}
+RM-Gen step 3500 loss {'base_context': 5.865421111916902e-05, 'temporal': 6.005752584314905e-05, 'weak_context': 8.429282871702526e-08, 'generated': None}
+RM-Gen step 3525 loss {'base_context': 7.84109847007386e-06, 'temporal': None, 'weak_context': 0.010375785641372204, 'generated': 0.000555046834051609}
+RM-Gen step 3550 loss {'base_context': 0.0006553474881911825, 'temporal': None, 'weak_context': 0.0014645560877397656, 'generated': 0.14168864488601685}
+RM-Gen step 3575 loss {'base_context': 0.002735339902595335, 'temporal': None, 'weak_context': 2.297945833618087e-09, 'generated': 1.3394510746002197}
+RM-Gen step 3600 loss {'base_context': 0.27195620997645165, 'temporal': 1.0156943972106092e-05, 'weak_context': 9.981881157727912e-05, 'generated': 1.0630567073822021}
+RM-Gen step 3625 loss {'base_context': 0.004455884254184639, 'temporal': None, 'weak_context': 0.03988918662071228, 'generated': None}
+RM-Gen step 3650 loss {'base_context': 0.07871122471988201, 'temporal': None, 'weak_context': 0.004553101025521755, 'generated': 0.04809299856424332}
+RM-Gen step 3675 loss {'base_context': 8.02512205080319e-05, 'temporal': None, 'weak_context': None, 'generated': 1.0109407901763916}
+RM-Gen step 3700 loss {'base_context': 1.1780172783915077e-05, 'temporal': None, 'weak_context': None, 'generated': None}
+RM-Gen step 3725 loss {'base_context': 4.836933132690291e-06, 'temporal': 0.0020502847619354725, 'weak_context': 8.944509204411588e-07, 'generated': 9.3984956741333}
+RM-Gen step 3750 loss {'base_context': 0.00016046959438864583, 'temporal': 2.9633167031306584e-08, 'weak_context': 3.723409491840357e-08, 'generated': 0.00010376307182013988}
+RM-Gen step 3775 loss {'base_context': 5.25980521692837e-07, 'temporal': None, 'weak_context': 1.1078414900111966e-05, 'generated': 0.4054237902164459}
+RM-Gen step 3800 loss {'base_context': 3.9534805651442184e-08, 'temporal': None, 'weak_context': 2.2600292140850797e-05, 'generated': 1.0054121017456055}
+RM-Gen step 3825 loss {'base_context': 3.6580099997962634e-05, 'temporal': None, 'weak_context': 0.00016241213597822934, 'generated': 0.01295375730842352}
+RM-Gen step 3850 loss {'base_context': 1.2979596021978068e-05, 'temporal': None, 'weak_context': 4.865275256239407e-14, 'generated': 0.2492830902338028}
+RM-Gen step 3875 loss {'base_context': 6.040477671964348e-05, 'temporal': None, 'weak_context': 6.184446732504512e-08, 'generated': 0.00022762185835745186}
+RM-Gen step 3900 loss {'base_context': 1.2542251843661312e-05, 'temporal': None, 'weak_context': None, 'generated': 0.000288803392322734}
+RM-Gen step 3925 loss {'base_context': 5.0616878581877245e-06, 'temporal': None, 'weak_context': 8.315186213192494e-12, 'generated': 0.014099090360105038}
+RM-Gen step 3950 loss {'base_context': 1.982543122025504e-05, 'temporal': 0.002276760060340166, 'weak_context': 7.179852445915458e-08, 'generated': 0.0002405004488537088}
+RM-Gen step 3975 loss {'base_context': 6.900054310143844e-07, 'temporal': None, 'weak_context': 0.00024152544210664928, 'generated': 0.001654388732276857}
+RM-Gen step 4000 loss {'base_context': 0.000887438015022017, 'temporal': 4.085826367372647e-05, 'weak_context': 0.00012020247231703252, 'generated': 0.07557067275047302}
+RM-Gen SELECTED 1000

@@ -1,0 +1,51 @@
+{
+  "scope": "Synthetic CPU checks only; no REACT checkpoint or media loaded",
+  "checks_passed": 10,
+  "checks": {
+    "centered_reward_invariance": {
+      "weights": [
+        0.0,
+        0.4624999999999999,
+        1.0,
+        0.6125000000000003
+      ],
+      "degraded_weights": [
+        0.0,
+        0.46249999999999947,
+        1.0,
+        0.6125000000000003
+      ]
+    },
+    "all_worse_can_receive_positive_weight": {
+      "positive_count": 2
+    },
+    "absolute_group_failure_no_positive_promotion": {
+      "weights": [
+        0.0,
+        0.05468131721594077,
+        0.05468131721594077,
+        0.05468131721594077
+      ]
+    },
+    "two_constraints_separate": true,
+    "guard_gradient_directions": {
+      "ccc_grad": -19.999999999999993,
+      "dtw_grad": 1.0
+    },
+    "neutral_NFT_does_not_freeze_FM_replay": {
+      "nft_grad": 0.0,
+      "total_grad": -1.0
+    },
+    "active_DTW_gradient_finite_difference": {
+      "max_error": 3.6557742943976734e-10,
+      "distance": 4.972863599593608
+    },
+    "zero_DTW_finite_gradient": true,
+    "grouped_DTW_nearest_single_target": {
+      "selected_target": 1,
+      "distance": 4.914810668282533,
+      "grad_norm": 0.8291849814997856
+    },
+    "fixed_reference_prevents_budget_ratcheting": true
+  }
+}

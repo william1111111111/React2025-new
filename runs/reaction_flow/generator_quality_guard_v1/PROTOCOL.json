@@ -1,0 +1,28 @@
+{
+  "version": "absolute-quality-guarded-NFT-v1",
+  "inputs": {
+    "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_001000.pt": "780d761e9efd7bfbc5a32dc12009928cc1b686e6df90d92c3b773b886a1d9986",
+    "runs/reaction_flow/generator_quality_guard_v1/DESIGN.json": "cf84ac2eea78964922bb31956038ae2d21a1c5e2fe06d6ed228eb32e67622967",
+    "runs/reaction_flow/generator_quality_guard_v1/SCHEDULE.json": "a21ea45843d3bffa5cac3560f6c2a5eb5a5c60177a6b21b81e314a060f38ec8f",
+    "runs/reaction_flow/generator_quality_guard_v1/CALIBRATION.json": "79eb0ce158bb95217895ee6680893dab0045048183bd39fcd8e5b7456440f185",
+    "runs/reaction_flow/generator_quality_guard_v1/monitor/manifest.json": "e0f5cdaf85d08d8f8b014fefbaf5eb4645ec4c50125335bf16040fd73045f2eb",
+    "runs/reaction_flow/generator_quality_guard_v1/monitor/P2_reference/summary.json": "960c3080cfedb844d460f7ebb95115c174928af8aa7a58d095951daa7eab49dd",
+    "runs/reaction_flow/reward_signal_v2/GEOMETRY_STRATIFIED.json": "5534a4e17922b62ef7037a4ad4f48389940468a8c77587f8fff6eed32194c637",
+    "runs/reaction_flow/reward_policy_v1/scales.json": "872fe6123d15c9830fe4364c04b039f60cd67915c68d6b26bf806bfcc9896f0c",
+    "runs/reaction_flow/bert_semantic_v1/content/index.json": "191bab95fce2fd201b8af4e9748d67a05e2ba13302673d584a1ed149d2429b71",
+    "runs/reaction_flow/bert_semantic_v1/content/vectors.npy": "f015fd82809d9b70a756b98363d7006a71ea8f0e237830c9b8e55241da4636fe",
+    "/home/zhengshiyi/react2025/framework/metrics/FRC.py": "f104754206490234847eea9ecc2a02218d9c4a41bc9fa88635c295023d1520b9",
+    "/home/zhengshiyi/react2025/framework/metrics/FRD.py": "0b01ae09383dfd7b36342186e8afc84f3a3b23b9990183bd654f70cfe12741b0",
+    "/home/zhengshiyi/react2025/framework/modules/post_processor.py": "b33b12035dc5002b10c4acc1ce586d8e9e1efdd01c07ade434f764ac6490ccd6"
+  },
+  "fixed_mu_C": 1.0,
+  "fixed_mu_D": 1.0,
+  "gradient_diagnostics": "first proposal and every20; logs missing diagnostics as null, never fabricated zeros",
+  "no_LR_adaptation": true,
+  "monitor_tolerances": {
+    "FRC": 0.0,
+    "FRD": 0.0
+  },
+  "max_proposed": 1000,
+  "stop_after_consecutive_rejections": 3
+}
