@@ -1,0 +1,50 @@
+{
+  "version": "quality_v2",
+  "stage": "A-only",
+  "user_authorized_new_training": true,
+  "arms": [
+    "A-repaired-RMGen",
+    "B-quality-heads"
+  ],
+  "seed": 123,
+  "updates": 4000,
+  "checkpoints": [
+    250,
+    500,
+    1000,
+    2000,
+    4000
+  ],
+  "input_hashes": {
+    "runs/reaction_reward/quality_v2/RECORDS.json": "6b42a9e8a7ff9d4f8a43126132c413605c385218bc1beaad028c6617a43cc0e8",
+    "runs/reaction_reward/quality_v2/SCHEDULE.json": "a2cae4174eca4f0403e803382fc964a303829fac4491754588020bfbbb36e827",
+    "runs/reaction_reward/quality_v2/QUALITY_RECORDS.json": "a2c62a293c82466b8c5025734ed321def8f77af36a775d44a5651df3df1ce00d",
+    "runs/reaction_reward/quality_v2/QUALITY_SCHEDULE.json": "7c927c7857f00132542a6c621829a0cb7604f85173c0e520c2f9f69c28a22f36",
+    "runs/reaction_reward/quality_v2/QUALITY_SCALE.json": "587ac7e9ca729ed8a913f8619ee304128994c0de3c92907c5ad02766b4ceb091",
+    "runs/reaction_reward/quality_v2/PREPARE_COMPLETE.json": "21010e4e494b6bbceb64e440382723b1d47be763d1e66392c0675b0e126df29b",
+    "runs/reaction_reward/v1/SPLIT_MANIFEST.json": "5436a58c5e425d1e9f04b79bb03ce9816195d5f55aeac74748591245f85a4f58",
+    "runs/reaction_reward/v1/NORMALIZATION.json": "3f4d7dff126242b382226cdef1e7a204fecbaba623c8de9580a3d00445d36141",
+    "runs/reaction_reward/v1/GENERATOR_PROVENANCE.json": "ebf4cb73297db92bad7c46587db299ddf8e77a4930622b7a272340d67df39328",
+    "runs/reaction_reward/review_v2/PTS_POLICY.json": "e129eed3faa5d5f70b6eea084e2628e228fc5be222ffff093660138833f14a39",
+    "reaction_reward/quality_v2/train.py": "78ce119191c0e3bc7c1003ec08a8d8f4ec21340330ad6d70a82da7ebbe8bd87b",
+    "reaction_reward/quality_v2/evaluate.py": "08047e2fe333d8744f39cb05f0eea591439e9189477a206c88274994b6949d16",
+    "reaction_reward/quality_v2/model.py": "8de12d06578b7cf57f17a83caadb00ca77f38ec32fcf7960f1a8810659797529",
+    "reaction_reward/quality_v2/prepare.py": "f77f7c62107c76d6f70c2e43898cb2ee89ae947bc1fc83ca0875c95ad9d5585d",
+    "reaction_reward/quality_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reaction_reward/quality_v2/restore_bank.py": "2eac344007addb032fab5a4e0e49873a9df955feaabcd85ed51d8520be7f2057",
+    "reaction_reward/quality_v2/queue.py": "eb951a8ea0e8b9dc4de28dd7a2318f39f436530d5d8e36d8736b5b6e82ac0344",
+    "reaction_reward/quality_v2/check.py": "6a2cdf8049600ba2c2aee915a33fc4110caa1e3d65207ce14cf4beba92bc84e3"
+  },
+  "shared_initialization": true,
+  "A_quality_heads": "instantiated but permanently frozen and unused, enabling identical main initialization",
+  "B_quality_loss": "Huber zCCC + Huber zlog1p(D/sqrt(n)), weights1/1,delta1",
+  "quality_auxiliary_rank": "same context/time generated ranking in both; B selection uses predicted zCCC-zD",
+  "sampling": "16/8/4/4 effective preferred comparisons and8 quality candidates; UNKNOWN rank weight0",
+  "cal_only_selection": true,
+  "audit_scope": "reused development diagnostic; not independent confirmation",
+  "maximum_recreated_candidates": 14848,
+  "new_candidate_ids": 0,
+  "cache_hash_match_required": true,
+  "original_Q0_Q1": "paused and untouched",
+  "RL": false
+}

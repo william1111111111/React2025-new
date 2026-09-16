@@ -1,0 +1,152 @@
+diff --git a/reaction_reward/review_v2/__init__.py b/reaction_reward/review_v2/__init__.py
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/reaction_reward/review_v2/recompute.py b/reaction_reward/review_v2/recompute.py
+new file mode 100644
+index 000000000..f51f161e5
+--- /dev/null
++++ b/reaction_reward/review_v2/recompute.py
+@@ -0,0 +1,25 @@
++import collections
++import numpy as np
++from reaction_reward.common import OUT as OLD,read,write,sha,ROOT
++from reaction_reward.review_v2.temporal import nearest
++OUT=ROOT/'runs/reaction_reward/review_v2'
++def main():
++ assert not (OUT/'REAL_EVIDENCE.json').exists(),'version already exists; do not overwrite'
++ rows={r['id']:r for r in read(OLD/'SPLIT_MANIFEST.json')['records']};windows=read(OLD/'WINDOWS.json');old=read(OLD/'REAL_EVIDENCE.json');oldtime={(r['window'],r['shift_seconds']):r for r in old if r['family']=='temporal'};threshold=read(OLD/'NORMALIZATION.json')['activity_threshold']
++ medians=[float(np.median(np.diff(r['pts']['listener']))) for r in rows.values() if r['split']=='RM_fit'];nominal=float(np.median(medians));policy=dict(fit_split='RM_fit',interval_statistic='median of recording median listener PTS intervals',nominal_interval=nominal,precision_s=1e-6,residual_limit='0.5*min(local adjacent interval, fit nominal interval)+1e-6',large_gap_limit='1.5*fit nominal interval + 1e-6',activity_threshold=threshold,delay_policy='abs(shift)<=2 remains UNKNOWN; +/-4 weak proxy only',frozen_before_application=True)
++ write(OUT/'PTS_POLICY.json',policy);new=[r for r in old if r['family']!='temporal'];details=[]
++ for w in windows:
++  r=rows[w['source']];p=np.asarray(r['pts']['listener']);yp=np.load(r['files']['facial-attributes/listener']['path']);assert sha(r['files']['facial-attributes/listener']['path'])==r['files']['facial-attributes/listener']['sha256'];indices=np.arange(w['start'],w['start']+w['n'])
++  for shift in [-4.,-2.,2.,4.]:
++   ii,jj,d=nearest(p,indices,shift,nominal);checks=d['checks'].copy();geom=all(checks.values());s=int(ii[0]) if geom else w['start'];v=int(jj[0]) if geom else w['start'];n=len(ii) if geom else w['n'];activity=None;neq=None
++   if geom:
++    a,b=yp[ii],yp[jj];activity=float(np.abs(np.diff(a,axis=0)/np.diff(p[ii])[:,None]).mean());neq=float(np.mean((a-b)**2))
++   checks.update(listener_active=bool(geom and activity>threshold),non_equivalent=bool(geom and neq>1e-4),speaker_active=r['quality']['speaker']['mean_activity']>threshold,delay_unambiguous_by_policy=abs(shift)>2,speaker_listener_origin_supported=bool(geom and abs(r['pts']['speaker'][s]-p[s])<.04))
++   good=all(checks.values());prior=oldtime[w['id'],shift];x=dict(prior,start=s,n=n,A=dict(id=w['source'],start=s),B=dict(id=w['source'],start=v),state='PREFERRED' if good else 'UNKNOWN',weight=.5 if good else 0.,reason='weak active nearest-PTS temporal proxy' if good else ' / '.join(k for k,val in checks.items() if not val));new.append(x);details.append(dict(window=w['id'],source=w['source'],split=w['split'],group=w['group'],shift_seconds=shift,old_state=prior['state'],new_state=x['state'],activity=activity,mean_squared_change=neq,rules=checks,rejections=[k for k,val in checks.items() if not val],mapping=d))
++ for r in new:
++  assert all(rows[z]['split']==r['split'] for z in [r['source'],r['A']['id'],r['B']['id']]);assert r['state']!='UNKNOWN' or r['weight']==0
++ write(OUT/'REAL_EVIDENCE.json',new);write(OUT/'TEMPORAL_MAPPING.json',details);stats={}
++ for split in ['RM_fit','RM_cal','RM_audit']:
++  ds=[r for r in details if r['split']==split];stats[split]=dict(total=len(ds),old_valid=sum(r['old_state']=='PREFERRED' for r in ds),new_valid=sum(r['new_state']=='PREFERRED' for r in ds),recovered=sum(r['old_state']=='UNKNOWN' and r['new_state']=='PREFERRED' for r in ds),lost=sum(r['old_state']=='PREFERRED' and r['new_state']=='UNKNOWN' for r in ds),valid_sources=len({r['source'] for r in ds if r['new_state']=='PREFERRED'}),valid_date_groups=len({r['group'] for r in ds if r['new_state']=='PREFERRED'}),rejection_counts=dict(collections.Counter(k for r in ds for k in r['rejections'])),by_shift={str(s):dict(old=sum(r['old_state']=='PREFERRED' for r in ds if r['shift_seconds']==s),new=sum(r['new_state']=='PREFERRED' for r in ds if r['shift_seconds']==s)) for s in [-4.,-2.,2.,4.]})
++ write(OUT/'TEMPORAL_SUMMARY.json',stats);write(OUT/'MANIFEST.json',dict(old_real_evidence_sha256=sha(OLD/'REAL_EVIDENCE.json'),new_real_evidence_sha256=sha(OUT/'REAL_EVIDENCE.json'),split_sha256=sha(OLD/'SPLIT_MANIFEST.json'),windows_sha256=sha(OLD/'WINDOWS.json'),policy_sha256=sha(OUT/'PTS_POLICY.json'),audit_reuse='development diagnostic; no longer a fresh independent confirmation',synthetic_count_included=False));print(stats)
++if __name__=='__main__':main()
+diff --git a/reaction_reward/review_v2/sampling.py b/reaction_reward/review_v2/sampling.py
+new file mode 100644
+index 000000000..79f0d3bd7
+--- /dev/null
++++ b/reaction_reward/review_v2/sampling.py
+@@ -0,0 +1,31 @@
++"""Prospective sampler only: valid evidence, balanced group/source exposure."""
++import random,collections,json
++from reaction_reward.common import ROOT,OUT as OLD,read,write,sha
++OUT=ROOT/'runs/reaction_reward/review_v2'
++class EffectiveSampler:
++ def __init__(self,records,seed=123):
++  self.records=records;self.rng=random.Random(seed);self.pools=collections.defaultdict(lambda:collections.defaultdict(lambda:collections.defaultdict(list)));self.group_uses=collections.Counter();self.source_uses=collections.Counter();self.row_uses=collections.Counter()
++  for i,r in enumerate(records):
++   if r['split']=='RM_fit' and r['state']=='PREFERRED' and r['weight']>0:self.pools[r['family']][r['group']][r['source']].append(i)
++ def draw(self,family,n):
++  out=[];seen=set();pool=self.pools[family]
++  for _ in range(n):
++   available={g:[s for s in ss if s not in seen] for g,ss in pool.items()};available={g:s for g,s in available.items() if s}
++   if not available:break
++   gs=list(available);self.rng.shuffle(gs);g=min(gs,key=lambda g:self.group_uses[family,g]);ss=available[g];self.rng.shuffle(ss);s=min(ss,key=lambda s:self.source_uses[family,s]);ids=pool[g][s].copy();self.rng.shuffle(ids);i=min(ids,key=lambda i:self.row_uses[i]);out.append(i);seen.add(s);self.group_uses[family,g]+=1;self.source_uses[family,s]+=1;self.row_uses[i]+=1
++  return out
++
++def main():
++ records=read(OUT/'REAL_EVIDENCE.json')+read(OLD/'GENERATED_EVIDENCE.json');sampler=EffectiveSampler(records);families={'base_context':16,'temporal':8,'weak_context':4,'generated':4};schedule=[];used=collections.defaultdict(list)
++ for step in range(4000):
++  batch={f:sampler.draw(f,n) for f,n in families.items()}
++  for f,ids in batch.items():used[f].extend(ids);assert all(records[i]['split']=='RM_fit' and records[i]['state']=='PREFERRED' and records[i]['weight']>0 for i in ids);assert len({records[i]['source'] for i in ids})==len(ids)
++  schedule.append(batch)
++ summary={}
++ for f,n in families.items():
++  pool=[r for r in records if r['family']==f and r['split']=='RM_fit' and r['state']=='PREFERRED' and r['weight']>0];counts=collections.Counter(used[f]);perstep=[len(b[f]) for b in schedule];summary[f]=dict(valid_records=len(pool),independent_sources=len({r['source'] for r in pool}),date_groups=len({r['group'] for r in pool}),scheduled_presentations=len(used[f]),distinct_records_used=len(counts),zero_batches=perstep.count(0),minimum_actual_batch=min(perstep),maximum_actual_batch=max(perstep),max_record_reuse=max(counts.values(),default=0),source_presentations=dict(collections.Counter(records[i]['source'] for i in used[f])),date_group_presentations=dict(collections.Counter(records[i]['group'] for i in used[f])))
++ oldlogs={}
++ for arm in ['RM-Paired','RM-Multi','RM-Gen']:
++  rows=[json.loads(x) for x in (OLD/'training'/arm/'training.jsonl').read_text().splitlines()];rows={r['step']:r for r in rows};nums=[r['exposure']['temporal']['active'] for r in rows.values()];oldlogs[arm]=dict(logged_updates=len(rows),time_zero_batches=nums.count(0),time_active_presentations=sum(nums),mean_time_active=sum(nums)/len(nums))
++ write(OUT/'TRAIN_RECORD_INDEX.json',records);write(OUT/'SAMPLING_SCHEDULE.json',dict(executed_training=False,seed=123,steps=4000,family_slots=families,record_index_sha256=sha(OUT/'TRAIN_RECORD_INDEX.json'),rule='least-used date group then source then record; tie seeded; no repeated source within family batch; shortage stays empty',schedule=schedule));write(OUT/'SAMPLING_SUMMARY.json',dict(prospective=summary,actual_v1_logs=oldlogs,unknown_records_preserved=sum(r['state']=='UNKNOWN' for r in records),new_independent_samples_from_resampling=0));print(oldlogs);print({f:{k:v for k,v in s.items() if not k.endswith('presentations')} for f,s in summary.items()})
++if __name__=='__main__':main()
+diff --git a/reaction_reward/review_v2/summarize.py b/reaction_reward/review_v2/summarize.py
+new file mode 100644
+index 000000000..957c5b108
+--- /dev/null
++++ b/reaction_reward/review_v2/summarize.py
+@@ -0,0 +1,28 @@
++"""Summarize all saved selections; no inference, no new distances."""
++import numpy as np
++from reaction_reward.common import ROOT,OUT as OLD,read,write,sha
++OUT=ROOT/'runs/reaction_reward/review_v2'
++METRICS=['sum_best_CCC','sum_best_native_DTW','S_MSE']
++def aggregate(rows,method,baseline):
++ delta={k:np.array([r['selection'][method][k]-r['selection'][baseline][k] for r in rows]) for k in METRICS};both=(delta['sum_best_CCC']>0)&(delta['sum_best_native_DTW']<0)
++ return dict(windows=len(rows),date_groups=len({r['group'] for r in rows}),mean_delta={k:float(v.mean()) for k,v in delta.items()},joint_quality_improvement_fraction=float(both.mean()),joint_nondegradation_fraction=float(((delta['sum_best_CCC']>=0)&(delta['sum_best_native_DTW']<=0)).mean()),qualified_retention={mode:dict(eligible_windows=sum(r['qualified_total']>0 for r in rows),window_macro_fraction=float(np.mean([r['qualified_retained'][mode]/r['qualified_total'] for r in rows if r['qualified_total']>0])) if any(r['qualified_total'] for r in rows) else None,candidate_micro_fraction=sum(r['qualified_retained'][mode] for r in rows)/sum(r['qualified_total'] for r in rows) if sum(r['qualified_total'] for r in rows) else None) for mode in [baseline,method]})
++def main():
++ results={};hashes={};lines=['# Existing fixed-pool selection: complete saved evidence','','Best-of16 window diagnostic, not full-recording FRC/FRD or native K10. Positive delta CCC and negative delta DTW are improvements. No new candidates or DTW were computed.','','|Arm|Generator|Baseline|ΔCCC sum|Δnative DTW sum|ΔS-MSE|Both quality improved|','|---|---|---|---:|---:|---:|---:|'];allrows=[]
++ for arm in ['RM-Paired','RM-Multi','RM-Gen']:
++  path=OLD/'audit'/arm/'selection_probe.json';rows=read(path);hashes[str(path)]=sha(path);assert len(rows)==288 and len({(r['window'],r['generator']) for r in rows})==288
++  for r in rows:
++   b=OLD/'bank'/r['window'];m=read(b/(r['generator']+'_scores.json'));p=read(b/'P2_scores.json');C=np.array(m['C']).max(1);D=np.array(m['D']).min(1);q=(C>=np.array(p['C']).max(1).mean())&(D<=np.array(p['D']).min(1).mean());assert q.sum()==r['qualified_count'];r['qualified_total']=int(q.sum());r['qualified_retained']={k:int(q[v['selected']].sum()) for k,v in r['selection'].items()}
++   for k,v in r['selection'].items():assert len(v['selected'])==10 and len(set(v['selected']))==10;assert np.isclose(C[v['selected']].sum(),v['sum_best_CCC']);assert np.isclose(D[v['selected']].sum(),v['sum_best_native_DTW'])
++   allrows.append(dict(r,arm=arm))
++  results[arm]={}
++  for gen in ['P2','N0','N1']:
++   rs=[r for r in rows if r['generator']==gen];cell={}
++   for method in ['RM_top10','metric_oracle_diagnostic']:
++    for base in ['first10','random10']:
++     x=aggregate(rs,method,base);x['by_date_group']={g:aggregate([r for r in rs if r['group']==g],method,base) for g in sorted({r['group'] for r in rs})};cell[method+'_vs_'+base]=x
++     if method=='RM_top10':
++      d=x['mean_delta'];lines.append(f"|{arm}|{gen}|{base}|{d[METRICS[0]]:+.6f}|{d[METRICS[1]]:+.6f}|{d[METRICS[2]]:+.6f}|{x['joint_quality_improvement_fraction']:.1%}|")
++   results[arm][gen]=cell
++ write(OUT/'SELECTION_SUMMARY.json',dict(total_saved_records=len(allrows),unique_windows=96,models=3,generators=3,inputs=hashes,results=results,qualification='per candidate bestCCC >= same-window P2 mean bestCCC AND minDTW <= same-window P2 mean minDTW; metric-derived proxy only',oracle='saved Pareto-dominance-count then CCC heuristic, GT-reading diagnostic, not mathematical optimal selection',bootstrap_claim='3 date components only; descriptive stratification, no claim of broad significance'))
++ write(OUT/'SELECTION_RETENTION_PER_WINDOW.json',allrows);(OUT/'SELECTION_SUMMARY.md').write_text('\n'.join(lines)+'\n');print('\n'.join(lines))
++if __name__=='__main__':main()
+diff --git a/reaction_reward/review_v2/temporal.py b/reaction_reward/review_v2/temporal.py
+new file mode 100644
+index 000000000..dd8e5c496
+--- /dev/null
++++ b/reaction_reward/review_v2/temporal.py
+@@ -0,0 +1,17 @@
++"""Nearest real PTS with explicit support, residual and missing-frame checks."""
++import numpy as np
++
++def nearest(pts,indices,shift,nominal_interval,precision=1e-6):
++ pts=np.asarray(pts,dtype=np.float64);indices=np.asarray(indices,dtype=int)
++ if len(pts)<2 or not np.all(np.diff(pts)>0):raise ValueError('PTS must strictly increase')
++ queries=pts[indices]+shift;support=(queries>=pts[0])&(queries<=pts[-1]);ii=indices[support];q=queries[support]
++ # Clipping is only for valid in-support neighbor lookup, never to rescue a query.
++ right=np.searchsorted(pts,q);right=np.minimum(right,len(pts)-1);left=np.maximum(right-1,0)
++ jj=np.where(np.abs(pts[left]-q)<=np.abs(pts[right]-q),left,right)
++ residual=pts[jj]-q
++ prev=np.maximum(jj-1,0);nxt=np.minimum(jj+1,len(pts)-1)
++ local=np.minimum(np.where(jj>0,pts[jj]-pts[prev],np.inf),np.where(jj<len(pts)-1,pts[nxt]-pts[jj],np.inf))
++ tolerance=.5*np.minimum(local,nominal_interval)+precision
++ checks=dict(supported_min60=len(ii)>=60,source_contiguous=bool(len(ii)>0 and np.all(np.diff(ii)==1)),mapped_contiguous=bool(len(jj)>0 and np.all(np.diff(jj)==1)),residual_within_limit=bool(len(jj)>0 and np.all(np.abs(residual)<=tolerance)),source_no_large_gap=bool(len(ii)>1 and np.all(np.diff(pts[ii])<=1.5*nominal_interval+precision)),mapped_no_large_gap=bool(len(jj)>1 and np.all(np.diff(pts[jj])<=1.5*nominal_interval+precision)))
++ diag=dict(expected_frames=len(indices),supported_frames=len(ii),outside_support=int((~support).sum()),original_support=[float(pts[0]),float(pts[-1])],query_range=[float(queries.min()),float(queries.max())],source_indices=ii.tolist(),matched_indices=jj.tolist(),signed_residual_s=residual.tolist(),allowed_residual_s=tolerance.tolist(),max_abs_residual_s=float(np.abs(residual).max()) if len(residual) else None,checks=checks)
++ return ii,jj,diag
+diff --git a/reaction_reward/review_v2/test_repairs.py b/reaction_reward/review_v2/test_repairs.py
+new file mode 100644
+index 000000000..5082a5e1b
+--- /dev/null
++++ b/reaction_reward/review_v2/test_repairs.py
+@@ -0,0 +1,18 @@
++import unittest
++import numpy as np
++import torch
++from .temporal import nearest
++from .sampling import EffectiveSampler
++class Repairs(unittest.TestCase):
++ def test_rounded_pts(self):
++  for fps in [25,30]:
++   p=np.round(7+np.arange(900)/fps,6);i,j,d=nearest(p,np.arange(200,600),4,1/fps);self.assertTrue(all(d['checks'].values()));self.assertTrue(np.all(j-i==4*fps))
++ def test_support(self):
++  p=np.arange(100)/30;i,j,d=nearest(p,np.arange(100),4,1/30);self.assertEqual(len(i),0);self.assertEqual(d['outside_support'],100)
++ def test_missing_frame(self):
++  p=np.delete(np.arange(1000)/30,400);i,j,d=nearest(p,np.arange(200,600),4,1/30);self.assertFalse(all(d['checks'].values()))
++ def test_nearest_residual(self):
++  p=np.arange(1000)/30;i,j,d=nearest(p,np.arange(100,500),4.01,1/30);self.assertLess(d['max_abs_residual_s'],.011)
++ def test_unknown_and_split(self):
++  rows=[dict(family='temporal',split=s,state=state,weight=w,source=f's{i}',group=f'g{i%2}') for i,(s,state,w) in enumerate([('RM_fit','PREFERRED',.5),('RM_fit','UNKNOWN',0),('RM_audit','PREFERRED',1),('RM_fit','PREFERRED',.5)])];ids=EffectiveSampler(rows).draw('temporal',8);self.assertEqual(set(ids),{0,3});x=torch.randn(2,requires_grad=True);(torch.nn.functional.softplus(-x)*0).sum().backward();self.assertTrue(torch.equal(x.grad,torch.zeros_like(x)))
++if __name__=='__main__':unittest.main()

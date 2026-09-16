@@ -1,0 +1,399 @@
+{
+  "time": 1789552134.5146747,
+  "scope": "four completed/paused recent experiment families only",
+  "policy": "keep last + selected best + explicitly used parent/reference checkpoints; no buffers/datasets/reports deleted",
+  "kept": [
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P0-null/checkpoints/step_001000.pt",
+      "reason": "final BERT checkpoint; P2 is immutable parent",
+      "bytes": 132192454
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P1-byte/checkpoints/step_001000.pt",
+      "reason": "final BERT checkpoint; P2 is immutable parent",
+      "bytes": 136237170
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_001000.pt",
+      "reason": "final BERT checkpoint; P2 is immutable parent",
+      "bytes": 133840490
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P3-bert-time/checkpoints/step_001000.pt",
+      "reason": "final BERT checkpoint; P2 is immutable parent",
+      "bytes": 133840490
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/accepted_latest.pt",
+      "reason": "required fixed rollback state",
+      "bytes": 291955658
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000700.pt",
+      "reason": "last accepted formal checkpoint",
+      "bytes": 291955658
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000700.pt",
+      "reason": "last proposal formal checkpoint",
+      "bytes": 349029098
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/latest.pt",
+      "reason": "paused step764 with optimizer/RNG/buffer",
+      "bytes": 348315074
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/accepted_latest.pt",
+      "reason": "required fixed rollback state",
+      "bytes": 291884234
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/accepted_000600.pt",
+      "reason": "last accepted formal checkpoint",
+      "bytes": 291884234
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000700.pt",
+      "reason": "last proposal formal checkpoint",
+      "bytes": 349029098
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/latest.pt",
+      "reason": "paused step764 with optimizer/RNG/buffer",
+      "bytes": 348315074
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_001000.pt",
+      "reason": "1000 used by frozen RM bank/full TEST; 4000 final NFT",
+      "bytes": 348850442
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_004000.pt",
+      "reason": "1000 used by frozen RM bank/full TEST; 4000 final NFT",
+      "bytes": 348815498
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/latest.pt",
+      "reason": "latest resumable NFT state",
+      "bytes": 292134130
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_001000.pt",
+      "reason": "1000 used by frozen RM bank/full TEST; 4000 final NFT",
+      "bytes": 348850442
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_004000.pt",
+      "reason": "1000 used by frozen RM bank/full TEST; 4000 final NFT",
+      "bytes": 348815498
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/latest.pt",
+      "reason": "latest resumable NFT state",
+      "bytes": 292134194
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Gen/checkpoints/step_001000.pt",
+      "reason": "RM_cal-selected checkpoint",
+      "bytes": 88494214
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Gen/checkpoints/step_004000.pt",
+      "reason": "last formal RM checkpoint",
+      "bytes": 89302534
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Gen/latest.pt",
+      "reason": "latest resumable RM state",
+      "bytes": 89294760
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Multi/checkpoints/step_001000.pt",
+      "reason": "RM_cal-selected checkpoint",
+      "bytes": 88486662
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Multi/checkpoints/step_004000.pt",
+      "reason": "last formal RM checkpoint",
+      "bytes": 89272646
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Multi/latest.pt",
+      "reason": "latest resumable RM state",
+      "bytes": 89264872
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Paired/checkpoints/step_001000.pt",
+      "reason": "RM_cal-selected checkpoint",
+      "bytes": 88479686
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Paired/checkpoints/step_004000.pt",
+      "reason": "last formal RM checkpoint",
+      "bytes": 89244486
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Paired/latest.pt",
+      "reason": "latest resumable RM state",
+      "bytes": 89236712
+    }
+  ],
+  "delete": [
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P3-bert-time/checkpoints/step_000100.pt",
+      "bytes": 130209002,
+      "mtime_ns": 1789371559679069451,
+      "sha256": "bb0f79fd6271a122b8655a7dcd0a8ecb307a6de2282aaab6a0763c63ccf256bb"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P3-bert-time/checkpoints/step_000000.pt",
+      "bytes": 126031248,
+      "mtime_ns": 1789369540306766409,
+      "sha256": "b72bde0dc851300c17593065bcc435458a3992ebffb60dd8ff7c4fce8dac4218"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P3-bert-time/checkpoints/step_000500.pt",
+      "bytes": 132047658,
+      "mtime_ns": 1789379766472091328,
+      "sha256": "fccdcbeecb00b6bd16b45ac75ce57a0c7a4d401984d988555338b1342c03c751"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_000100.pt",
+      "bytes": 130209002,
+      "mtime_ns": 1789371559655068922,
+      "sha256": "61a8dc767f00cc0affab0c0aacb85f64c79985af790f39019211ddd0b77bd27a"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_000000.pt",
+      "bytes": 126031248,
+      "mtime_ns": 1789369540262764094,
+      "sha256": "14df1066181aaad15f3e7b2eaaeaeb7203c8211c7f2a260d7b7ba583b2abf293"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P2-bert/checkpoints/step_000500.pt",
+      "bytes": 132047658,
+      "mtime_ns": 1789379766416089446,
+      "sha256": "c32533ff4103f7e452973aad8fe419f3c7e9e68b1be432353f87c24115093985"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P1-byte/checkpoints/step_000100.pt",
+      "bytes": 132582706,
+      "mtime_ns": 1789371551378886893,
+      "sha256": "74357e8981bc1af2e7730116f379edf0d5d28d3a723271697171a31dd9f2b947"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P1-byte/checkpoints/step_000000.pt",
+      "bytes": 126821138,
+      "mtime_ns": 1789369540342768303,
+      "sha256": "f25bc42492721fafed8ae2e56935b83b4e2937e9fa9db9d8602a563794ecda85"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P1-byte/checkpoints/step_000500.pt",
+      "bytes": 134437298,
+      "mtime_ns": 1789379751063573664,
+      "sha256": "b7d12413bfcb571e190c8126aa7e3fe1359cb3b4ec85d6542af34541de749468"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P0-null/checkpoints/step_000100.pt",
+      "bytes": 128603782,
+      "mtime_ns": 1789369518281605974,
+      "sha256": "5b2030cb49129f9bc84b8c1be080e5338d27e9349ea935ac3b6a3bccbd0c90e8"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P0-null/checkpoints/step_000000.pt",
+      "bytes": 126031248,
+      "mtime_ns": 1789368907059192626,
+      "sha256": "68da714299fbc160190525894e81ac8291a435b61f7de8830bd06515c841fd8e"
+    },
+    {
+      "path": "runs/reaction_flow/bert_semantic_v1/training/P0-null/checkpoints/step_000500.pt",
+      "bytes": 130423430,
+      "mtime_ns": 1789377491573394752,
+      "sha256": "85a82c6c8d04dcf5ee5bc3419d1d0b18a20a291bc16bd285d080a5646241b9a4"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_002000.pt",
+      "bytes": 349735242,
+      "mtime_ns": 1789494181824295545,
+      "sha256": "1e55c71c2f5de8d12025e8e4d3cc6885e159e6c98b6c3a7cd14c84434ff40503"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_000000.pt",
+      "bytes": 145695022,
+      "mtime_ns": 1789465453391486238,
+      "sha256": "f9078b84fde22e4eb5283ac0ee44e2e043e255d3505528b037f0cd7bf1f84e81"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N1-quality-coverage/checkpoints/step_000500.pt",
+      "bytes": 350075338,
+      "mtime_ns": 1789471093041638214,
+      "sha256": "6a6682018e40486803e0f5bd8b0e56c345e4bce8a6dcb818788df00a2c2187b2"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_002000.pt",
+      "bytes": 349735242,
+      "mtime_ns": 1789494181320281419,
+      "sha256": "04bda8eb823938eaa5f4da3db2d84e0ee503694fd6349047bd282a54b99a0626"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_000000.pt",
+      "bytes": 145695022,
+      "mtime_ns": 1789465453455488505,
+      "sha256": "629a6f6fc4c5554a1563534de546063837cfa37ee5eeb8ddd6727cb968c3f08c"
+    },
+    {
+      "path": "runs/reaction_flow/generator_reward_nft_v1/training/N0-quality/checkpoints/step_000500.pt",
+      "bytes": 350075338,
+      "mtime_ns": 1789471093133641323,
+      "sha256": "4494dbfe47f5c4e0a124899d0155b63f7842019f2a84c01695a66a35256b34cd"
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Multi/checkpoints/step_002000.pt",
+      "bytes": 88748934,
+      "mtime_ns": 1789547522458117106,
+      "sha256": "4cea01120902c33b462af3e8608c2c9fad0dc88af511d2b824a0014c331083fd"
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Paired/checkpoints/step_002000.pt",
+      "bytes": 88734854,
+      "mtime_ns": 1789547433107375102,
+      "sha256": "ac905490118c7f41983ce686b5af0c2eaa123392205c27ef38d74e591ab8fa7a"
+    },
+    {
+      "path": "runs/reaction_reward/v1/training/RM-Gen/checkpoints/step_002000.pt",
+      "bytes": 88763782,
+      "mtime_ns": 1789548154990963316,
+      "sha256": "78bcea42e9eca01d190bc2e8da7ed14a4465ce81496bb55617c572e713134678"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000000.pt",
+      "bytes": 145696662,
+      "mtime_ns": 1789525270414690578,
+      "sha256": "267fc8c9ec7d13b928f9c463fd5fcae6a60dd2bc567c4c98cab4c08380be4323"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000300.pt",
+      "bytes": 291661450,
+      "mtime_ns": 1789531334104882912,
+      "sha256": "dd05b42dc570fd1cc51ac04caaf7af291da9c5a05723042c2f2c2519d9d90933"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000400.pt",
+      "bytes": 291737418,
+      "mtime_ns": 1789533330449817965,
+      "sha256": "66a8aff1ee9a0bc8d73f055402a7af40bea94fed36dcec09c501a76a05dcd7b2"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000500.pt",
+      "bytes": 291811658,
+      "mtime_ns": 1789535347927843336,
+      "sha256": "ead7a3737a2a73a231e875a21bf892fcf4f06e9133773016dddc7055949f7c37"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/accepted_000600.pt",
+      "bytes": 291884234,
+      "mtime_ns": 1789537368500587165,
+      "sha256": "317006081913badad9559bdda5991938bd11dde45e3c71f0d2fc380356fc9ba3"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000100.pt",
+      "bytes": 349322474,
+      "mtime_ns": 1789527018009029225,
+      "sha256": "ffae76d3f7300a17f43d6b5ead4fe01a8bd9d602f822e063bbddb948a0129ce1"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000200.pt",
+      "bytes": 349523370,
+      "mtime_ns": 1789529030401317100,
+      "sha256": "a8a89d13782b6225149b88b3996fb1cc36a54b26ca27d8593636664fe8e44015"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000300.pt",
+      "bytes": 349370666,
+      "mtime_ns": 1789531040781243934,
+      "sha256": "fc6be9eda384bdf3ae04333a478a4bd8ff12c1de4e950e78e3ff0f1506b9aa03"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000400.pt",
+      "bytes": 349215210,
+      "mtime_ns": 1789533039802315489,
+      "sha256": "3dc437574c2b06e66d54d3f2f6ef4a0b567a61f0b8b79702a51e5a03f81b752d"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000500.pt",
+      "bytes": 350384298,
+      "mtime_ns": 1789535051289189449,
+      "sha256": "510087ef821c88e87f188cbde1178348cb1cd7395a3900a57ffd6cd6baae79c2"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q0-quality-guarded/checkpoints/proposal_000600.pt",
+      "bytes": 349785770,
+      "mtime_ns": 1789537073745556137,
+      "sha256": "ec166a5d350c42cd9d2c5cc7af2a08ca36d8080671e30cb4def42a424fc9f6d2"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/accepted_000000.pt",
+      "bytes": 145696662,
+      "mtime_ns": 1789525270350689229,
+      "sha256": "f40453f7f3dd0ae7d47dbf04cc56796c5d9501c0fc6507f2978a3633c7bd633b"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/accepted_000300.pt",
+      "bytes": 291661450,
+      "mtime_ns": 1789531334528894483,
+      "sha256": "b22bbeef35e572b5dd7dbb57d7a91cad59a25034a1d4bf99e90f17ac085427a9"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/accepted_000400.pt",
+      "bytes": 291737418,
+      "mtime_ns": 1789533333153978412,
+      "sha256": "c429effda42c7d05e1c358047a81203cf7539615a306d475bf9b1565beee352f"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/accepted_000500.pt",
+      "bytes": 291811658,
+      "mtime_ns": 1789535346275819173,
+      "sha256": "13625083f5a00f233fc83e90a90dcf445f5f8a9e6368747b267b862e1c69e128"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000100.pt",
+      "bytes": 349322474,
+      "mtime_ns": 1789527017749012798,
+      "sha256": "7383bb38193ec320f85999273c0e0eb9544e2b584db51e0f4abd0e28f0639949"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000200.pt",
+      "bytes": 349523370,
+      "mtime_ns": 1789529030253314607,
+      "sha256": "3afde05b1836ba12e7ff343a297062419fa4536125bcffa88ae9e7d6582ed4a8"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000300.pt",
+      "bytes": 349370666,
+      "mtime_ns": 1789531041037250216,
+      "sha256": "de8984626ebdcac39e16ce1df676f679315298e9357efd25b0e8daf6f8d03be9"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000400.pt",
+      "bytes": 349215210,
+      "mtime_ns": 1789533039686306622,
+      "sha256": "723f5c876841420cf72827aa87f5492b3b0484fbf1f7ec20b6810740bee6e83c"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000500.pt",
+      "bytes": 350384298,
+      "mtime_ns": 1789535051289189449,
+      "sha256": "50140eb01aa9fb83aa5043d1c61510835ec5bc22f74ae75da4cd0512f4df38ae"
+    },
+    {
+      "path": "runs/reaction_flow/generator_quality_guard_v1/training/Q1-coverage-guarded/checkpoints/proposal_000600.pt",
+      "bytes": 349785770,
+      "mtime_ns": 1789537073565549079,
+      "sha256": "2364d3bd25336b188098cf349733a84d5988b57d2889069d8a6008e8602e37cb"
+    }
+  ],
+  "total_bytes": 10041636378,
+  "executed": true,
+  "deleted_files": 42
+}
