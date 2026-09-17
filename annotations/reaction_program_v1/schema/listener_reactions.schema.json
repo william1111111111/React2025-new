@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:react:reaction-program-v1:listener_reactions",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "reaction-program-annotation-v1"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "fold": {
+      "type": "string"
+    },
+    "clip_id": {
+      "type": "string"
+    },
+    "observation_id": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending_observation",
+        "observed",
+        "UNKNOWN"
+      ]
+    },
+    "reaction_start": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "reaction_peak": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "reaction_end": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "actions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "onset": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "peak": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "offset": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "intensity": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "scale": {
+                "enum": [
+                  "ordinal_visible",
+                  "numeric_from_dataset",
+                  "unavailable"
+                ]
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value",
+              "scale",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          "evidence_frame_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "uncertainty_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "region",
+          "onset",
+          "peak",
+          "offset",
+          "intensity",
+          "evidence_frame_ids",
+          "uncertainty_reasons"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "global_style": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence_calibrated": {
+      "const": false
+    },
+    "human_reviewed": {
+      "type": "boolean"
+    },
+    "training_eligible": {
+      "type": "boolean"
+    },
+    "visible_roles": {
+      "const": [
+        "listener"
+      ]
+    },
+    "numeric_assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "video_asset": {
+      "type": "string"
+    },
+    "linked_candidate_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relation_status": {
+      "enum": [
+        "UNKNOWN",
+        "temporal_support"
+      ]
+    },
+    "time_domain": {
+      "const": "listener_native_pts"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "split",
+    "fold",
+    "clip_id",
+    "observation_id",
+    "event_id",
+    "status",
+    "reaction_start",
+    "reaction_peak",
+    "reaction_end",
+    "actions",
+    "global_style",
+    "confidence",
+    "confidence_calibrated",
+    "human_reviewed",
+    "training_eligible",
+    "visible_roles",
+    "numeric_assets",
+    "video_asset",
+    "linked_candidate_ids",
+    "relation_status",
+    "time_domain",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

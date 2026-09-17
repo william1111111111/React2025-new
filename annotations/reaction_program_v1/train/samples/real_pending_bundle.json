@@ -1,0 +1,138 @@
+{
+  "speaker": {
+    "schema_version": "reaction-program-annotation-v1",
+    "clip_id": "rec_47073548edf5fc48",
+    "session_id": "session0",
+    "fold": "RM_fit",
+    "split": "train",
+    "event_id": "evt_8b77649a15090950b11e",
+    "status": "candidate",
+    "start_frame": 660,
+    "end_frame": 679,
+    "anchor_frame": null,
+    "transcript": "How does that sound?",
+    "transcript_span": [
+      263,
+      283
+    ],
+    "event_type": [
+      "question"
+    ],
+    "prosody": null,
+    "visible_behavior": null,
+    "semantic_summary": "询问对安排的意见",
+    "role_status": "source_speaker_candidate",
+    "time_domain": "speaker_video_pts_under_feature_row_assumption",
+    "timing_evidence": {
+      "start_s": 22.0,
+      "end_s": 22.625,
+      "ctc_mean_score": 0.9673682754238446,
+      "greedy_agreement": 1.0,
+      "independent_verification": false
+    },
+    "sync_evidence": {
+      "status": "estimated",
+      "offset_s": 0.0,
+      "audio_origin_s": 0.0,
+      "video_origin_s": 0.0,
+      "origin_source": "WAV decoded samples and ffprobe video PTS",
+      "offset_source": "bounded source-only ASD lag probe",
+      "effective_audio_range_s": [
+        0.6,
+        26.451249999999998
+      ],
+      "offset_interval_s": [
+        -0.2,
+        0.2
+      ],
+      "sync_verified": false
+    },
+    "confidence": null,
+    "confidence_calibrated": false,
+    "human_reviewed": false,
+    "training_eligible": false,
+    "visible_roles": [
+      "speaker"
+    ],
+    "provenance": {
+      "raw_annotation_asset": "/home/zhengshiyi/react2025_new/runs/reaction_flow/semantic_supervision_pilot_v1/yunwu_deepseek_v4_flash_text_v1/rec_47073548edf5fc48",
+      "raw_result_sha256": "010d26863767ce8772119a78189739261d317a7a22f877d2916050dcb0dafec9",
+      "model": "deepseek-v4-flash",
+      "returned_model": "deepseek-v4-flash",
+      "model_revision": "not supplied by original provider",
+      "prompt_sha256": "9ee71f1faaea218f396e78f0151672e60483923c9c51624a9d9340f37a774cc7",
+      "input_transcript_sha256": "4103d9935475d0989eb10db0eeb110a0d5585cd72ebd94b7e2a11b1fd5e93679",
+      "weak_evidence_sha256": "6157720d17c55e221055ea426df79e653d517a7fa6cbe5524218d27005aa8a8d",
+      "weak_evidence_path": "/home/zhengshiyi/react2025_new/runs/reaction_flow/semantic_auto_weak_v1/cache/rec_47073548edf5fc48.json"
+    }
+  },
+  "listener": {
+    "schema_version": "reaction-program-annotation-v1",
+    "clip_id": "rec_47073548edf5fc48",
+    "split": "train",
+    "fold": "RM_fit",
+    "observation_id": "obs_2568f87229f836da2368",
+    "event_id": null,
+    "status": "pending_observation",
+    "reaction_start": null,
+    "reaction_peak": null,
+    "reaction_end": null,
+    "actions": null,
+    "global_style": null,
+    "confidence": null,
+    "confidence_calibrated": false,
+    "human_reviewed": false,
+    "training_eligible": false,
+    "visible_roles": [
+      "listener"
+    ],
+    "numeric_assets": {
+      "facial-attributes": "asset_959ad5e905939406df95",
+      "coefficients": "asset_99a685adee4d485503fb"
+    },
+    "video_asset": "asset_99d616a442861ab32cc9",
+    "linked_candidate_ids": [
+      "evt_8b77649a15090950b11e"
+    ],
+    "relation_status": "UNKNOWN",
+    "time_domain": "listener_native_pts",
+    "provenance": {
+      "split_manifest_sha256": "5436a58c5e425d1e9f04b79bb03ce9816195d5f55aeac74748591245f85a4f58"
+    }
+  },
+  "equivalence": {
+    "schema_version": "reaction-program-annotation-v1",
+    "split": "train",
+    "fold": "RM_fit",
+    "event_a": "evt_8b77649a15090950b11e",
+    "event_b": "evt_dff2d1e91c6ea02886a2",
+    "equivalence": null,
+    "status": "UNKNOWN",
+    "reason": {
+      "same_intent": null,
+      "same_dialogue_stage": null,
+      "compatible_local_context": null
+    },
+    "visible_roles": [
+      "speaker"
+    ],
+    "confidence_calibrated": false,
+    "human_reviewed": false,
+    "training_eligible": false,
+    "provenance": {
+      "candidate_rule": "same-session proposal only; session excluded from annotator input"
+    }
+  },
+  "support": {
+    "schema_version": "reaction-program-annotation-v1",
+    "split": "train",
+    "fold": "RM_fit",
+    "event_id": "evt_8b77649a15090950b11e",
+    "observed_support": [],
+    "LLM_inferred_support": [],
+    "status": "UNKNOWN",
+    "training_eligible": false,
+    "missing_is_not_no_reaction": true
+  },
+  "notice": "real input provenance, pending annotations; no action or match invented"
+}

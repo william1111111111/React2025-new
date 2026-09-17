@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:react:reaction-program-v1:reaction_support",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "reaction-program-annotation-v1"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "fold": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "observed_support": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "observation_id": {
+            "type": "string"
+          },
+          "program_id": {
+            "type": "string"
+          },
+          "association_evidence": {
+            "type": "string"
+          },
+          "equivalence_evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "observation_id",
+          "program_id",
+          "association_evidence",
+          "equivalence_evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "LLM_inferred_support": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "status": {
+      "enum": [
+        "UNKNOWN",
+        "supported"
+      ]
+    },
+    "training_eligible": {
+      "type": "boolean"
+    },
+    "missing_is_not_no_reaction": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "split",
+    "fold",
+    "event_id",
+    "observed_support",
+    "LLM_inferred_support",
+    "status",
+    "training_eligible",
+    "missing_is_not_no_reaction"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:react:reaction-program-v1:raw_response_receipt",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "request_sha256": {
+      "type": "string"
+    },
+    "input_asset_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prompt_sha256": {
+      "type": "string"
+    },
+    "requested_model": {
+      "type": "string"
+    },
+    "returned_model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision_status": {
+      "enum": [
+        "provider_supplied",
+        "unknown"
+      ]
+    },
+    "raw_response_path": {
+      "type": "string"
+    },
+    "raw_response_sha256": {
+      "type": "string"
+    },
+    "accessed_modalities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "schema_errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_reviewed": {
+      "const": false
+    },
+    "confidence_calibrated": {
+      "const": false
+    }
+  },
+  "required": [
+    "task_id",
+    "split",
+    "request_sha256",
+    "input_asset_hashes",
+    "prompt_sha256",
+    "requested_model",
+    "returned_model",
+    "model_revision",
+    "revision_status",
+    "raw_response_path",
+    "raw_response_sha256",
+    "accessed_modalities",
+    "schema_errors",
+    "human_reviewed",
+    "confidence_calibrated"
+  ],
+  "additionalProperties": false
+}

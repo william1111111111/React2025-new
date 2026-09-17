@@ -1,0 +1,283 @@
+{
+  "scope": "CPU integration smoke only; two TRAIN crops, no validation/full metric or semantic claim",
+  "seed": 123,
+  "codec_config": {
+    "stride": 4,
+    "dim": 128,
+    "codebook_size": 512,
+    "levels": 2,
+    "ccc_weight": 0.1,
+    "velocity_weight": 0.1,
+    "quantization_weight": 1.0
+  },
+  "codec_optimizer_updates": 12,
+  "executor_optimizer_updates": 0,
+  "executor_backward_checks": 1,
+  "executor_program": "explicit diagnostic placeholder, not observed label; never used for formal training",
+  "inputs": [
+    {
+      "path": "/home/zhengshiyi/react2025_new/data/train/facial-attributes/listener/session0/Camera-2024-06-21-103121-103102.npy",
+      "sha256": "73ddd68c844eaf031cad0218b944d9eb8f872e23ac00325092d3a6d443c96007",
+      "role": "listener",
+      "kind": "facial-attributes",
+      "split": "train"
+    },
+    {
+      "path": "/home/zhengshiyi/react2025_new/data/train/facial-attributes/listener/session1/Camera-2024-06-21-103121-103102.npy",
+      "sha256": "3f698d4834079e87627e9cfabd1173dad2cceedc329fc843c85378605edb020a",
+      "role": "listener",
+      "kind": "facial-attributes",
+      "split": "train"
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "total": 2.566805839538574,
+      "AU": 0.6949799656867981,
+      "VA": 0.05588425695896149,
+      "expression": 1.7042181491851807,
+      "CCC": 0.999962568283081,
+      "velocity": 0.011838305741548538,
+      "quantization": 0.010543434880673885,
+      "used_codes": [
+        2,
+        2
+      ]
+    },
+    {
+      "step": 1,
+      "total": 2.5478415489196777,
+      "AU": 0.6931211352348328,
+      "VA": 0.05279548093676567,
+      "expression": 1.6915968656539917,
+      "CCC": 0.9999653100967407,
+      "velocity": 0.011832088232040405,
+      "quantization": 0.009148468263447285,
+      "used_codes": [
+        2,
+        2
+      ]
+    },
+    {
+      "step": 2,
+      "total": 2.5275614261627197,
+      "AU": 0.6910772919654846,
+      "VA": 0.0495968796312809,
+      "expression": 1.6775790452957153,
+      "CCC": 0.9999219179153442,
+      "velocity": 0.011834627948701382,
+      "quantization": 0.00813243817538023,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 3,
+      "total": 2.5037829875946045,
+      "AU": 0.6884863376617432,
+      "VA": 0.04592514783143997,
+      "expression": 1.6598162651062012,
+      "CCC": 0.9998190402984619,
+      "velocity": 0.011838004924356937,
+      "quantization": 0.008389526046812534,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 4,
+      "total": 2.476162910461426,
+      "AU": 0.6849008798599243,
+      "VA": 0.041946567595005035,
+      "expression": 1.6361005306243896,
+      "CCC": 0.9996414184570312,
+      "velocity": 0.011840454302728176,
+      "quantization": 0.012066846713423729,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 5,
+      "total": 2.44665265083313,
+      "AU": 0.679743230342865,
+      "VA": 0.03830236569046974,
+      "expression": 1.6042675971984863,
+      "CCC": 0.9993475675582886,
+      "velocity": 0.011841441504657269,
+      "quantization": 0.023220408707857132,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 6,
+      "total": 2.420959234237671,
+      "AU": 0.6723911762237549,
+      "VA": 0.03599619120359421,
+      "expression": 1.5621349811553955,
+      "CCC": 0.9989084005355835,
+      "velocity": 0.011841057799756527,
+      "quantization": 0.04936183616518974,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 7,
+      "total": 2.410632371902466,
+      "AU": 0.6622335910797119,
+      "VA": 0.03670100122690201,
+      "expression": 1.5076719522476196,
+      "CCC": 0.9977785348892212,
+      "velocity": 0.011840187944471836,
+      "quantization": 0.10306386649608612,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 8,
+      "total": 2.435695171356201,
+      "AU": 0.6487231254577637,
+      "VA": 0.042313870042562485,
+      "expression": 1.439548134803772,
+      "CCC": 0.9936268329620361,
+      "velocity": 0.011839755810797215,
+      "quantization": 0.20456348359584808,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 9,
+      "total": 2.5285708904266357,
+      "AU": 0.6314854025840759,
+      "VA": 0.05239337682723999,
+      "expression": 1.3579362630844116,
+      "CCC": 0.9946889877319336,
+      "velocity": 0.011840134859085083,
+      "quantization": 0.3861030042171478,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 10,
+      "total": 2.738584041595459,
+      "AU": 0.6104933619499207,
+      "VA": 0.06522290408611298,
+      "expression": 1.26544988155365,
+      "CCC": 0.9969820976257324,
+      "velocity": 0.01184111088514328,
+      "quantization": 0.6965352892875671,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 11,
+      "total": 3.1204590797424316,
+      "AU": 0.5862206220626831,
+      "VA": 0.07965917140245438,
+      "expression": 1.1676197052001953,
+      "CCC": 0.9979360699653625,
+      "velocity": 0.011842912994325161,
+      "quantization": 1.1859816312789917,
+      "used_codes": [
+        1,
+        1
+      ]
+    },
+    {
+      "step": 12,
+      "total": 3.725818395614624,
+      "AU": 0.5598781108856201,
+      "VA": 0.09465822577476501,
+      "expression": 1.073163628578186,
+      "CCC": 0.9986154437065125,
+      "velocity": 0.011846470646560192,
+      "quantization": 1.897072196006775,
+      "used_codes": [
+        1,
+        1
+      ]
+    }
+  ],
+  "final_native_block_MSE": {
+    "AU": 0.18521817028522491,
+    "VA": 0.09465822577476501,
+    "expression": 0.0619061104953289
+  },
+  "executor_CE": 6.518587589263916,
+  "executor_gradients": {
+    "action.weight": 0.3456420302391052,
+    "clock.0.weight": 0.12949763238430023,
+    "clock.0.bias": 0.10588917136192322,
+    "clock.2.weight": 0.9876137971878052,
+    "clock.2.bias": 0.3456420302391052,
+    "token.0.weight": 0.20929279923439026,
+    "token.1.weight": 0.20886178314685822,
+    "body.layers.0.self_attn.in_proj_weight": 2.366608142852783,
+    "body.layers.0.self_attn.in_proj_bias": 0.1164778620004654,
+    "body.layers.0.self_attn.out_proj.weight": 2.6811280250549316,
+    "body.layers.0.self_attn.out_proj.bias": 0.19295157492160797,
+    "body.layers.0.linear1.weight": 1.4789668321609497,
+    "body.layers.0.linear1.bias": 0.14703278243541718,
+    "body.layers.0.linear2.weight": 3.273184061050415,
+    "body.layers.0.linear2.bias": 0.37776902318000793,
+    "body.layers.0.norm1.weight": 0.2961384654045105,
+    "body.layers.0.norm1.bias": 0.39387211203575134,
+    "body.layers.0.norm2.weight": 0.30254268646240234,
+    "body.layers.0.norm2.bias": 0.3893531858921051,
+    "body.layers.1.self_attn.in_proj_weight": 1.8765549659729004,
+    "body.layers.1.self_attn.in_proj_bias": 0.19360898435115814,
+    "body.layers.1.self_attn.out_proj.weight": 2.322779417037964,
+    "body.layers.1.self_attn.out_proj.bias": 0.3479892313480377,
+    "body.layers.1.linear1.weight": 1.6072548627853394,
+    "body.layers.1.linear1.bias": 0.15482209622859955,
+    "body.layers.1.linear2.weight": 3.4843716621398926,
+    "body.layers.1.linear2.bias": 0.3998326361179352,
+    "body.layers.1.norm1.weight": 0.3204529285430908,
+    "body.layers.1.norm1.bias": 0.3993162214756012,
+    "body.layers.1.norm2.weight": 0.3794386684894562,
+    "body.layers.1.norm2.bias": 0.4348922669887543,
+    "readout.weight": 7.32621431350708,
+    "readout.bias": 0.7069351077079773
+  },
+  "pending_labels_rejected": 2,
+  "generated_token_shape": [
+    2,
+    2,
+    33,
+    2
+  ],
+  "sampled_output_shape": [
+    2,
+    129,
+    25
+  ],
+  "seconds": 1.2586581707000732,
+  "full_codec_gate_passed": false,
+  "oracle_EXP_C_started": false,
+  "source_hashes": {
+    "reaction_program/reaction_program.py": "439c9a970294a5e86bad541a0eab62a3870d3589b699644c11bc81f2867a43b2",
+    "reaction_program/test_minimal.py": "55357ef814894bb46bf03537dbd56c57534b47f60b1c659900c92aca7165083f",
+    "reaction_program/rvq.py": "da27174979f10a17f31d7beba019f73e36ed4d885eefc86cb03e5878cad2df12",
+    "reaction_program/smoke.py": "7be83ecb4e1b83e6e94722de6dc327eafd31b55b8532982ce2e50c302ccb8f78",
+    "reaction_program/motion_generator.py": "47168454da18e212a5cb942e0dccc41b9b24564b67b32334a92f4e4347d37753",
+    "reaction_program/__init__.py": "3c742f0d778b06045475dae54e4ac39e23f6f5a229f1bcffa4272a0d786bc9d8",
+    "reaction_program/reaction_clock.py": "116a4623a1d8576d868961d9cd57c3b0152a049c4ae11d372827c7fd246557f6",
+    "reaction_program/motion_codec.py": "ab510f17dc4971ecb89b965c54dbe09e523e85d3afc4b602f8d0eb786c0dd7cb"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:react:reaction-program-v1:event_equivalence",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "reaction-program-annotation-v1"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "fold": {
+      "type": "string"
+    },
+    "event_a": {
+      "type": "string"
+    },
+    "event_b": {
+      "type": "string"
+    },
+    "equivalence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "status": {
+      "enum": [
+        "UNKNOWN",
+        "compatible",
+        "incompatible"
+      ]
+    },
+    "reason": {
+      "type": "object",
+      "properties": {
+        "same_intent": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "same_dialogue_stage": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "compatible_local_context": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "same_intent",
+        "same_dialogue_stage",
+        "compatible_local_context"
+      ],
+      "additionalProperties": false
+    },
+    "visible_roles": {
+      "const": [
+        "speaker"
+      ]
+    },
+    "confidence_calibrated": {
+      "const": false
+    },
+    "human_reviewed": {
+      "type": "boolean"
+    },
+    "training_eligible": {
+      "type": "boolean"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "split",
+    "fold",
+    "event_a",
+    "event_b",
+    "equivalence",
+    "status",
+    "reason",
+    "visible_roles",
+    "confidence_calibrated",
+    "human_reviewed",
+    "training_eligible",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

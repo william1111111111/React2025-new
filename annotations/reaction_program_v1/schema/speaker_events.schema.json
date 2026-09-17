@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:react:reaction-program-v1:speaker_events",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "reaction-program-annotation-v1"
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "fold": {
+      "type": "string"
+    },
+    "clip_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "auto_weak",
+        "reviewed"
+      ]
+    },
+    "start_frame": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "end_frame": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "anchor_frame": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "transcript": {
+      "type": "string"
+    },
+    "transcript_span": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "event_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prosody": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "visible_behavior": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "semantic_summary": {
+      "type": "string"
+    },
+    "role_status": {
+      "enum": [
+        "UNKNOWN",
+        "unknown",
+        "source_speaker_candidate",
+        "source_supported",
+        "other_voice"
+      ]
+    },
+    "time_domain": {
+      "type": "string"
+    },
+    "timing_evidence": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "sync_evidence": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence_calibrated": {
+      "const": false
+    },
+    "human_reviewed": {
+      "type": "boolean"
+    },
+    "training_eligible": {
+      "type": "boolean"
+    },
+    "visible_roles": {
+      "const": [
+        "speaker"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "split",
+    "fold",
+    "clip_id",
+    "session_id",
+    "event_id",
+    "status",
+    "start_frame",
+    "end_frame",
+    "anchor_frame",
+    "transcript",
+    "transcript_span",
+    "event_type",
+    "prosody",
+    "visible_behavior",
+    "semantic_summary",
+    "role_status",
+    "time_domain",
+    "timing_evidence",
+    "sync_evidence",
+    "confidence",
+    "confidence_calibrated",
+    "human_reviewed",
+    "training_eligible",
+    "visible_roles",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

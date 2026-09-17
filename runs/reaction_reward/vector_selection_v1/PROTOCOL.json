@@ -1,0 +1,43 @@
+{
+  "checkpoints": {
+    "A-repaired-RMGen": {
+      "path": "/home/zhengshiyi/react2025_new/runs/reaction_reward/quality_v2/training/A-repaired-RMGen/checkpoints/step_000500.pt",
+      "sha256": "c1e94f60a097ddca22d5ac173869566f6fb920f7477e8b84327c5892b904008f"
+    },
+    "B-quality-heads": {
+      "path": "/home/zhengshiyi/react2025_new/runs/reaction_reward/quality_v2/training/B-quality-heads/checkpoints/step_000500.pt",
+      "sha256": "a5aabd1508c96b74634e34412c969749eb695dbf1bb6d3d7118b885eba2fcb82"
+    }
+  },
+  "quality_scale": {
+    "fit_split": "RM_fit",
+    "mean": [
+      0.049670527780668286,
+      0.3061295708381207
+    ],
+    "std": [
+      0.04922934331150428,
+      0.06354767569491183
+    ],
+    "transform": "C; log1p(native_DTW/sqrt(valid_frames))",
+    "weighting": "equal date, equal source within date, equal candidate within source"
+  },
+  "quality_scale_sha256": "587ac7e9ca729ed8a913f8619ee304128994c0de3c92907c5ad02766b4ceb091",
+  "scope": "reused development RM_audit",
+  "K": 10,
+  "pool": 16,
+  "gate_policies": [
+    "RM_fit mean CCC and mean log1p(D/sqrt(n))",
+    "same-pool predicted first10 mean CCC and logD"
+  ],
+  "fallback": "fill by frozen B zC-zD ranking; report separately",
+  "selection": "highest zC-zD eligible seed; greedy mean native squared distance; ties lowest index",
+  "time_axis": "source native PTS for source and generated candidate",
+  "forbidden": [
+    "target-informed selection",
+    "training",
+    "generator updates",
+    "Q0/Q1 resume",
+    "automatic push"
+  ]
+}

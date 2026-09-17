@@ -1,0 +1,17 @@
+{
+  "archives": [
+    {
+      "path": "runs/reaction_program/milestone1_v1/evaluation/manifest.json.gz",
+      "sha256": "1f75cfbb897879fcca379e7facf1ae15cd310350036b18330fb9d873e40c6616",
+      "original_sha256": "61dd1d3fc599a6e9ef324632839d4c8df454bd6d0bc26c5b8d0f97d80df1065d",
+      "restore": "gzip -dk runs/reaction_program/milestone1_v1/evaluation/manifest.json.gz"
+    },
+    {
+      "path": "annotations/reaction_program_v1/train/pts.tar.gz",
+      "sha256": "58d6ab8f5c0d1b97c689c23d955e8f6ccb4cef20af51f7536042d11c6cf72d91",
+      "file_count": 1200,
+      "restore": "tar -xzf annotations/reaction_program_v1/train/pts.tar.gz -C annotations/reaction_program_v1/train"
+    }
+  ],
+  "verification": "Every archived byte compared with original; local originals retained."
+}
