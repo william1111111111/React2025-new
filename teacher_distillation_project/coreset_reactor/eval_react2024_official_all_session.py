@@ -46,6 +46,7 @@ from coreset_reactor.eval_overlap_save_student import (  # noqa: E402
 )
 from coreset_reactor.eval_student_window_gap import window_starts  # noqa: E402
 from coreset_reactor.evaluate import official_prediction  # noqa: E402
+from coreset_reactor.student_spread_probe import expand_predictions  # noqa: E402
 
 
 _TARGETS: list[torch.Tensor] = []
@@ -83,12 +84,19 @@ def main() -> None:
     parser.add_argument("--reference-dir", type=Path, required=True)
     parser.add_argument("--target-cache", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--arm", choices=("powered", "spread"), default="powered",
+        help="Comparison transform applied to the cached soft predictions",
+    )
     parser.add_argument("--power", type=float, default=4.0)
+    parser.add_argument("--spread-alpha", type=float, default=1.5)
     parser.add_argument("--workers", type=int, default=32)
     parser.add_argument("--max-contexts", type=int, default=0)
     args = parser.parse_args()
     if not np.isfinite(args.power) or args.power <= 0:
         raise ValueError("power must be finite and positive")
+    if not np.isfinite(args.spread_alpha) or args.spread_alpha < 1:
+        raise ValueError("spread alpha must be finite and at least one")
     if args.workers < 1:
         raise ValueError("workers must be positive")
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -109,16 +117,21 @@ def main() -> None:
         raise ValueError("Prediction and reference orders differ")
 
     baseline = payload["official_predictions"][:total]
-    powered = []
+    transformed = []
     targets = []
     gt_counts = []
     for index in range(total):
         soft = payload["soft_predictions"][index]
-        starts = window_starts(int(soft.shape[1]))
-        fused = powered_center_overlap(
-            soft.unsqueeze(0), starts, int(soft.shape[1]), args.power
-        )
-        powered.append(official_prediction(fused))
+        if args.arm == "powered":
+            starts = window_starts(int(soft.shape[1]))
+            changed = powered_center_overlap(
+                soft.unsqueeze(0), starts, int(soft.shape[1]), args.power
+            )
+            arm_name = f"powered_p{args.power:g}"
+        else:
+            changed = expand_predictions(soft, args.spread_alpha)
+            arm_name = f"spread_alpha{args.spread_alpha:g}"
+        transformed.append(official_prediction(changed))
         row = reference["rows"][index]
         cached = torch.load(
             args.target_cache / f"{row['target_cache_key']}.pt",
@@ -134,7 +147,8 @@ def main() -> None:
 
     global _TARGETS, _PREDICTIONS
     _TARGETS = targets
-    _PREDICTIONS = {"baseline": baseline, "powered_p4": powered}
+    _PREDICTIONS = {"baseline": baseline, arm_name: transformed}
+    arms = tuple(_PREDICTIONS)
 
     # Compile tslearn's DTW kernel before forking workers.
     dtw(np.zeros((2, 2), dtype=np.float32), np.zeros((2, 2), dtype=np.float32))
@@ -147,7 +161,7 @@ def main() -> None:
     tasks = [
         (index, arm)
         for index in range(total)
-        for arm in ("baseline", "powered_p4")
+        for arm in arms
         if (index, arm) not in completed
     ]
     started = time.time()
@@ -172,7 +186,7 @@ def main() -> None:
 
     ordered = {
         arm: [completed[(index, arm)] for index in range(total)]
-        for arm in ("baseline", "powered_p4")
+        for arm in arms
     }
     metrics = {}
     for arm, predictions in _PREDICTIONS.items():
@@ -185,9 +199,9 @@ def main() -> None:
         }
     delta = {
         key: {
-            "absolute": metrics["powered_p4"][key] - metrics["baseline"][key],
+            "absolute": metrics[arm_name][key] - metrics["baseline"][key],
             "relative_percent": 100 * (
-                metrics["powered_p4"][key] - metrics["baseline"][key]
+                metrics[arm_name][key] - metrics["baseline"][key]
             ) / metrics["baseline"][key],
         }
         for key in ("FRC", "exact_FRD", "FRDiv", "FRVar")
@@ -203,7 +217,12 @@ def main() -> None:
         "protocol": (
             "Official Mam-Reactor metric functions; full REACT2024 VAL1124; "
             "every processed opposite-role GT in the same session; AU-rounded "
-            f"predictions; powered single-window fusion p={args.power:g}"
+            "predictions; "
+            + (
+                f"powered single-window fusion p={args.power:g}"
+                if args.arm == "powered"
+                else f"slot-centered spread scaling alpha={args.spread_alpha:g}"
+            )
         ),
         "official_metric_contract": {
             "FRC": "mean of framework.metrics.FRC._func over contexts",
@@ -222,7 +241,7 @@ def main() -> None:
             "mean_gt_count": float(np.mean(gt_counts)),
         },
         "metrics": metrics,
-        "delta_powered_minus_baseline": delta,
+        f"delta_{arm_name}_minus_baseline": delta,
         "provenance": {
             "reference_json": [str(reference_json.resolve()), sha256(reference_json)],
             "prediction_cache": [str(prediction_path.resolve()), sha256(prediction_path)],
