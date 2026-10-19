@@ -1,0 +1,118 @@
+"""Independent, parallel TCN backbone for ten 25-channel reactions."""
+
+from __future__ import annotations
+
+import torch
+from torch import nn
+from torch.nn import functional as F
+
+
+class TemporalBlock(nn.Module):
+    def __init__(self, width: int, dilation: int, dropout: float):
+        super().__init__()
+        self.norm = nn.LayerNorm(width)
+        self.depthwise = nn.Conv1d(width, width, 5, padding=2 * dilation,
+                                   dilation=dilation, groups=width)
+        self.pointwise = nn.Conv1d(width, width, 1)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, value: torch.Tensor) -> torch.Tensor:
+        # value: [B,T,H]
+        residual = value
+        value = self.norm(value).transpose(1, 2)
+        value = self.pointwise(self.depthwise(value)).transpose(1, 2)
+        return residual + self.dropout(F.gelu(value))
+
+
+class ParallelTCN(nn.Module):
+    def __init__(self, num_predictions: int = 10, hidden_dim: int = 128,
+                 control_point_stride: int = 4, dilations=(1, 2, 4, 8, 16),
+                 dropout: float = 0.1, mode_adapter: bool = False,
+                 mode_dim: int = 16, mode_hidden_dim: int = 64,
+                 mode_alpha: float = 1.0):
+        super().__init__()
+        if num_predictions < 1 or control_point_stride < 1:
+            raise ValueError("num_predictions and control_point_stride must be positive")
+        if hidden_dim != 128:
+            raise ValueError("v1 uses 64+32+32=128 feature channels")
+        if mode_adapter and (mode_dim < 1 or mode_hidden_dim < 1 or mode_alpha < 0):
+            raise ValueError("mode adapter dimensions must be positive and alpha nonnegative")
+        self.num_predictions = num_predictions
+        self.control_point_stride = control_point_stride
+        self.mode_adapter = mode_adapter
+        self.mode_alpha = float(mode_alpha)
+        self.audio = nn.Linear(768, 64)
+        self.face = nn.Linear(25, 32)
+        self.mm = nn.Linear(58, 32)
+        self.blocks = nn.Sequential(*(TemporalBlock(128, d, dropout) for d in dilations))
+        self.head = nn.Sequential(nn.LayerNorm(128), nn.Linear(128, num_predictions * 25))
+        if mode_adapter:
+            self.mode_codes = nn.Parameter(torch.empty(num_predictions, mode_dim))
+            self.mode_h = nn.Linear(hidden_dim, mode_hidden_dim)
+            self.mode_z = nn.Linear(mode_dim, mode_hidden_dim, bias=False)
+            self.mode_out = nn.Linear(mode_hidden_dim, 25)
+            nn.init.normal_(self.mode_codes, std=0.02)
+            # Exact M1 function at initialization; specialization enters only
+            # after mode_out receives its first gradient update.
+            nn.init.zeros_(self.mode_out.weight)
+            nn.init.zeros_(self.mode_out.bias)
+
+    @staticmethod
+    def activate(raw: torch.Tensor) -> torch.Tensor:
+        # Match the repository's AU / VA / expression channel activation.
+        return torch.cat((raw[..., :15].sigmoid(), raw[..., 15:17].tanh(),
+                          raw[..., 17:25].softmax(dim=-1)), dim=-1)
+
+    def forward(self, speaker_audio: torch.Tensor, speaker_emotion: torch.Tensor,
+                speaker_3dmm: torch.Tensor,
+                lengths: torch.Tensor | None = None) -> torch.Tensor:
+        # Inputs: [B,T,768], [B,T,25], [B,T,58]. Output: [B,K,T,25].
+        if speaker_audio.shape[:2] != speaker_emotion.shape[:2] or \
+           speaker_audio.shape[:2] != speaker_3dmm.shape[:2]:
+            raise ValueError("speaker modalities must share [B,T]")
+        batch, frames = speaker_audio.shape[:2]
+        if lengths is None:
+            return self._forward_unpadded(speaker_audio, speaker_emotion, speaker_3dmm)
+        if lengths.shape != (batch,):
+            raise ValueError("lengths must have shape [B]")
+        valid_lengths = [int(length) for length in lengths.detach().cpu().tolist()]
+        if any(length < 1 or length > frames for length in valid_lengths):
+            raise ValueError("lengths must be between 1 and the padded frame count")
+        if all(length == frames for length in valid_lengths):
+            return self._forward_unpadded(speaker_audio, speaker_emotion, speaker_3dmm)
+        # Process short examples at their true length: padded values cannot enter
+        # convolution or control-point interpolation for the valid prefix.
+        pieces = []
+        for index, length in enumerate(valid_lengths):
+            piece = self._forward_unpadded(
+                speaker_audio[index:index + 1, :length],
+                speaker_emotion[index:index + 1, :length],
+                speaker_3dmm[index:index + 1, :length])
+            pieces.append(F.pad(piece, (0, 0, 0, frames - length)))
+        return torch.cat(pieces, dim=0)
+
+    def _forward_unpadded(self, speaker_audio: torch.Tensor,
+                          speaker_emotion: torch.Tensor,
+                          speaker_3dmm: torch.Tensor) -> torch.Tensor:
+        batch, frames = speaker_audio.shape[:2]
+        hidden = torch.cat((self.audio(speaker_audio),
+                            self.face(speaker_emotion),
+                            self.mm(speaker_3dmm)), dim=-1)
+        hidden = self.blocks(hidden)
+        if self.control_point_stride > 1:
+            hidden = F.avg_pool1d(hidden.transpose(1, 2),
+                                  self.control_point_stride,
+                                  stride=self.control_point_stride,
+                                  ceil_mode=True).transpose(1, 2)
+        controls = self.head(hidden).reshape(batch, -1, self.num_predictions, 25)
+        if self.mode_adapter:
+            shared = self.mode_h(hidden)[:, :, None, :]
+            modes = self.mode_z(self.mode_codes)[None, None, :, :]
+            delta = self.mode_out(F.gelu(shared + modes))
+            controls = controls + self.mode_alpha * delta
+        # Interpolate raw logits first; only then apply channel activations.
+        raw = controls.permute(0, 2, 3, 1).reshape(batch * self.num_predictions, 25, -1)
+        if raw.shape[-1] != frames:
+            raw = F.interpolate(raw, size=frames, mode="linear", align_corners=True)
+        raw = raw.transpose(1, 2).reshape(batch, self.num_predictions, frames, 25)
+        return self.activate(raw)
