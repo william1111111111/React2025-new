@@ -1,5 +1,10 @@
 # REACT2025 多时间视图蒸馏 + 边界感知推理
 
+> **历史诊断结果。** 本页只评估 speaker→listener VAL571，不能作为论文消融
+> 主表或 operating point 的最终证据。双方向 VAL1142、完整序列、全部同
+> session GT、官方五指标的统一重评结果见
+> `REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`。
+
 正向 VAL571、全部同 session GT 的完整实验已完成。长训练序列使用开头/中心/结尾三个教师视图，短序列使用一个视图；学生训练 8,820 step。完整推理使用 750 帧窗口、375 帧 stride 和中心加权融合。
 
 | 方法 | FRC ↑ | exact FRD ↓ | FRDiv ↑ | FRVar ↑ | 边界跳变比 ↓ |

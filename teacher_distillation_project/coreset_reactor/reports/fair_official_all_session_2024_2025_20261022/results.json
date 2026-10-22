@@ -7,7 +7,7 @@
       "official sequence duration",
       "official Processor",
       "official AU rounding",
-      "official FRC/FRD/FRDiv/FRVar definitions"
+      "official FRC/exact-FRD/FRDiv/FRVar/TLCC definitions"
     ],
     "scope": "validation, not hidden TEST",
     "selection_note": "p=4 was selected on a REACT2025 VAL120 probe. Alpha=1.5 is the REACT2024 validation operating point. Dataset-specific settings must be frozen before hidden TEST."
@@ -43,34 +43,39 @@
         "FRC": 1.2093297486233658,
         "exact_FRD": 138.00063504849868,
         "FRDiv": 0.17293969326491113,
-        "FRVar": 0.06202657988552663
+        "FRVar": 0.06202657988552663,
+        "TLCC": 49.0
       },
       "listener_to_speaker": {
         "contexts": 571,
         "FRC": 0.9941091023990161,
         "exact_FRD": 134.31869073816273,
         "FRDiv": 0.18544249852463576,
-        "FRVar": 0.05420520613312513
+        "FRVar": 0.05420520613312513,
+        "TLCC": 49.0
       },
       "both_directions": {
         "contexts": 1142,
         "FRC": 1.1017194255111908,
         "exact_FRD": 136.15966289333068,
         "FRDiv": 0.17919109589477344,
-        "FRVar": 0.058115893009325875
+        "FRVar": 0.058115893009325875,
+        "TLCC": 49.0
       }
     },
     "previous_student": {
       "FRC": 1.0392132903008247,
       "exact_FRD": 142.11395930708534,
       "FRDiv": 0.18044333295625897,
-      "FRVar": 0.06742601261364913
+      "FRVar": 0.06742601261364913,
+      "TLCC": 49.0
     },
     "set_matching": {
       "FRC": 1.0885133403885898,
       "exact_FRD": 134.7829832277234,
       "FRDiv": 0.1521227965734886,
-      "FRVar": 0.06004662749287387
+      "FRVar": 0.06004662749287387,
+      "TLCC": null
     },
     "deltas": {
       "speaker_to_listener": {
@@ -216,6 +221,20 @@
         "recorded": 0.05406833440065384
       },
       "note": "Real reverse-direction context; official Mam-Reactor _func bodies called directly."
+    },
+    "unified_official5_ablation": {
+      "methods": [
+        "multiview_nonoverlap",
+        "multiview_power_1",
+        "multiview_power_2",
+        "multiview_power_4",
+        "multiview_power_8",
+        "single_view_nonoverlap"
+      ],
+      "summary": "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/summary.json",
+      "comparison_sha256": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
+      "manifest_sha256": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057",
+      "tlcc_note": "Official implementation is non-discriminative here: all six arms and both directions return boundary lag 49."
     }
   },
   "react2024": {
@@ -310,6 +329,8 @@
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_p4_bidir_official_all_session_20261022/official_metric_parity.json": "e68e595129d4051f15ecf80d5d9d0a539aa105866904a21909264616f754b3f9",
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2024_multiview_boundary_official_all_session_20261019/results.json": "d6a867c54c230d77c9d9e1ad5645351d9c87c532bcd5faab0fa0cbe82240066c",
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2024_spread_alpha15_official_all_session_20261019/results.json": "49cb01c2a9b14d01245938152f1482f794fef47a3ae3fc0a247ffdf43696740b",
-    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/full_sequence_bidir_allgt_20261018/comparison.json": "22f9357c90d1431c6bca6c217fb97111ff6f06df59dd3a96abec7d1359dbfd96"
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/full_sequence_bidir_allgt_20261018/comparison.json": "22f9357c90d1431c6bca6c217fb97111ff6f06df59dd3a96abec7d1359dbfd96",
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/comparison.json": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/manifest.json": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057"
   }
 }

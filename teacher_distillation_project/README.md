@@ -36,17 +36,18 @@ REACT2025 is not changed by that calibration decision.
 
 The 2026-10-18 REACT2025 long-sequence experiment adds deterministic
 head/center/tail teacher views for training clips longer than 750 frames and
-50% overlap, center-weighted full-sequence inference. On forward VAL571 it
-improves the old full non-overlap baseline from FRC 1.120550 / exact FRD
-143.006997 to FRC 1.223777 / exact FRD 135.472731, while FRDiv and FRVar fall
-to 0.167050 and 0.058290. This is a measured quality/continuity versus
-diversity trade-off; see
-`published_results/REACT2025_MULTIVIEW_BOUNDARY_STUDENT_20261018.md`.
+50% overlap, center-weighted full-sequence inference. Its original forward
+VAL571 tables are retained only as diagnostics. Paper ablations now require
+full-sequence VAL1142, both directions, all same-session GT, and all five
+repository metrics; see `coreset_reactor/EVALUATION_CONTRACT.md`.
 
-A minimal follow-up sharpens the triangular fusion weights from `w` to
-normalized `w^4`. It recovers 60.24% of the overlap-induced FRDiv gap while
-retaining 85.99% of the FRC gain, without changing the network or training;
-see `published_results/REACT2025_POWERED_OVERLAP_20261018.md`.
+Under that protocol, the current multi-view student with normalized `w^4`
+fusion gives FRC 1.101719, exact FRD 136.159663, FRDiv 0.179191, FRVar
+0.058116, and official TLCC/FRSyn 49. The official TLCC implementation is
+non-discriminative in this run: every arm reaches the maximum boundary lag.
+The unified six-arm result is in
+`published_results/REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`;
+the older forward-only summaries remain as diagnostics.
 
 Some historical scripts contain provenance paths rooted at
 `/home/zhaowenjie/react2025_new` or `/public/zhaowenjie/react2025_new`.

@@ -1,5 +1,10 @@
 # REACT2025 四次幂中心融合
 
+> **历史诊断结果。** 本页只评估 speaker→listener VAL571，不能作为论文消融
+> 主表或 operating point 的最终证据。`p=1/2/4/8` 的双方向 VAL1142、完整
+> 序列、全部同 session GT、官方五指标统一重评见
+> `REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`。
+
 为减少 50% 重叠推理的多样性收缩，只将原三角中心权重 `w(t)` 改为归一化后的 `w(t)^4`。模型、训练和推理窗口保持不变。
 
 | 新多视图学生推理 | FRC ↑ | exact FRD ↓ | FRDiv ↑ | FRVar ↑ |
