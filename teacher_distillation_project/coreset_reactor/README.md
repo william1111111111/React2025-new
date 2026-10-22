@@ -90,6 +90,11 @@ enforced contract is documented in `EVALUATION_CONTRACT.md`; the active
 multi-view evaluator is `eval_multiview_ablation_bidir_all_session.py`.
 The completed six-arm aggregate is published in
 `../published_results/REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`.
+The selected final `p=4` path is evaluated by
+`eval_multiview_p4_bidir_all_session.py`. After official AU rounding it adds
+one source-aligned transition frame to every constant query-0 AU in eligible
+contexts. This remains a documented output postprocess; the six-arm fusion
+table keeps its raw predictions so the power ablation is not confounded.
 
 ### 750-frame training/inference gap audit
 

@@ -18,7 +18,10 @@ import numpy as np
 import torch
 
 from coreset_reactor.eval_multiview_boundary_student import load_model
-from coreset_reactor.eval_overlap_save_student import powered_center_overlap
+from coreset_reactor.eval_overlap_save_student import (
+    powered_center_overlap,
+    stabilize_query0_au_transitions,
+)
 from coreset_reactor.eval_student_window_gap import (
     WINDOW,
     generate_windows,
@@ -30,12 +33,21 @@ from coreset_reactor.evaluate import official_prediction
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "coreset_reactor/reports/full_sequence_bidir_allgt_20261018"
-FORWARD = (
-    ROOT
-    / "coreset_reactor/reports/multiview_boundary_student_seed1_20261018"
-    / "powered_overlap_p4_forward_val571"
-)
-METRICS = ("FRC", "exact_FRD", "FRDiv", "FRVar")
+QUALITY_METRICS = ("FRC", "exact_FRD", "FRDiv", "FRVar")
+METRICS = (*QUALITY_METRICS, "TLCC")
+
+
+def official_tlcc(prediction: torch.Tensor, source_face: torch.Tensor) -> float:
+    from framework.metrics.TLCC import _func
+
+    previous = np.seterr(divide="ignore", invalid="ignore")
+    try:
+        value = float(_func(prediction, source_face))
+    finally:
+        np.seterr(**previous)
+    if not np.isfinite(value):
+        raise ValueError("Official TLCC returned a non-finite value")
+    return value
 
 
 def sha256(path: Path) -> str:
@@ -63,14 +75,7 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
         raise FileExistsError("Use the existing manifest or a fresh output")
     base_manifest_path = BASE / "manifest.json"
     base_comparison_path = BASE / "comparison.json"
-    forward_manifest_path = FORWARD / "manifest.json"
-    forward_comparison_path = FORWARD / "comparison.json"
     base = json.loads(base_manifest_path.read_text())
-    forward_manifest = json.loads(forward_manifest_path.read_text())
-    if forward_manifest["checkpoint"][1] != sha256(checkpoint):
-        raise ValueError("Forward result and requested checkpoint differ")
-    if float(forward_manifest["power"]) != power:
-        raise ValueError("Forward result and requested power differ")
     entries = base["entries"]
     if len(entries) != 1142:
         raise ValueError("Expected the official 1,142-context population")
@@ -90,6 +95,7 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
         official / "FRD.py",
         official / "S_MSE.py",
         official / "FRVar.py",
+        official / "TLCC.py",
         ROOT / "mam_reactor/framework/modules/post_processor.py",
     ]
     manifest = {
@@ -97,13 +103,12 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
         "protocol": (
             "REACT2025 full VAL1142, both directions, full sequences, K10, "
             "all opposite-role same-session GT, official Processor and AU "
-            f"rounding; multi-view student with powered overlap p={power:g}"
+            f"rounding; multi-view student with powered overlap p={power:g}; "
+            "query-0 constant-AU single-transition postprocess"
         ),
         "only_official_protocol_extension": "all same-session GT",
         "base_manifest": frozen(base_manifest_path),
         "base_comparison": frozen(base_comparison_path),
-        "forward_manifest": frozen(forward_manifest_path),
-        "forward_comparison": frozen(forward_comparison_path),
         "checkpoint": frozen(checkpoint),
         "implementations": [frozen(path) for path in implementations],
         "official_sources": [frozen(path) for path in official_sources],
@@ -112,6 +117,13 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
             "exact_FRD": "unbanded FP64 CUDA DP equivalent to official tslearn.dtw",
             "FRDiv": "official framework.metrics.S_MSE.compute_s_mse",
             "FRVar": "official framework.metrics.FRVar.compute_FRVar",
+            "TLCC": "official framework.metrics.TLCC._func per context",
+        },
+        "postprocess": {
+            "scope": "query 0 constant AU channels only",
+            "rule": "one source-aligned binary transition per constant AU",
+            "source_constant_policy": "leave prediction unchanged",
+            "margin_frames": 49,
         },
         "window": WINDOW,
         "stride": 375,
@@ -121,30 +133,8 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
     }
     write_json(output / "manifest.json", manifest)
 
-    # The complete forward arm is already frozen.  Normalize its rows into the
-    # bidirectional schema and compute only the missing reverse direction.
     (output / "rows").mkdir(exist_ok=True)
-    imported = 0
-    entry_by_index = {entry["index"]: entry for entry in entries}
-    for source in sorted((FORWARD / "rows").glob("*.json")):
-        row = json.loads(source.read_text())
-        entry = entry_by_index[row["index"]]
-        if entry["role"] != "speaker" or row["clip_id"] != entry["clip_id"]:
-            raise ValueError(f"Forward row mismatch: {source}")
-        normalized = {
-            "index": row["index"],
-            "clip_id": row["clip_id"],
-            "role": row["role"],
-            "length": row["length"],
-            "gt_count": row["gt_count"],
-            "metrics": row["powered_center_overlap"],
-            "source": "frozen_forward_p4_result",
-        }
-        write_json(output / "rows" / source.name, normalized)
-        imported += 1
-    if imported != 571:
-        raise ValueError(f"Expected 571 frozen forward rows, found {imported}")
-    print("Prepared VAL1142 manifest and imported 571 frozen forward rows", flush=True)
+    print("Prepared VAL1142 manifest for both-direction evaluation", flush=True)
 
 
 def group_metrics(rows: list[dict]) -> dict:
@@ -163,7 +153,7 @@ def delta(new: dict, old: dict) -> dict:
             "absolute": new[metric] - old[metric],
             "relative_percent": 100 * (new[metric] - old[metric]) / old[metric],
         }
-        for metric in METRICS
+        for metric in QUALITY_METRICS
     }
 
 
@@ -209,12 +199,11 @@ def aggregate(output: Path, manifest: dict) -> None:
             for key in (
                 "base_manifest",
                 "base_comparison",
-                "forward_manifest",
-                "forward_comparison",
                 "checkpoint",
                 "implementations",
                 "official_sources",
                 "metric_execution",
+                "postprocess",
             )
         },
         "limitations": [
@@ -257,8 +246,6 @@ def main() -> None:
     for key in (
         "base_manifest",
         "base_comparison",
-        "forward_manifest",
-        "forward_comparison",
         "checkpoint",
     ):
         if sha256(Path(manifest[key][0])) != manifest[key][1]:
@@ -340,14 +327,17 @@ def main() -> None:
             prediction = official_prediction(powered_center_overlap(
                 windows, starts, length, manifest["power"]
             ))
+            prediction = stabilize_query0_au_transitions(prediction, streams[1])
+            metrics = score(prediction, target)
+            metrics["TLCC"] = official_tlcc(prediction, streams[1])
             row = {
                 "index": entry["index"],
                 "clip_id": entry["clip_id"],
                 "role": entry["role"],
                 "length": length,
                 "gt_count": int(target.shape[0]),
-                "metrics": score(prediction, target),
-                "source": "computed_bidir_p4_result",
+                "metrics": metrics,
+                "source": "computed_bidir_p4_with_query0_au_transitions",
                 "seconds": time.monotonic() - tick,
             }
             write_json(row_path, row)

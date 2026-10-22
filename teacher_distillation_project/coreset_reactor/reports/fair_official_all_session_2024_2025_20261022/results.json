@@ -14,7 +14,7 @@
   },
   "method_policy": {
     "react2024": "slot-centered output scaling with alpha=1.5",
-    "react2025": "multi-view distillation plus p=4 boundary fusion; no slot-centered output scaling"
+    "react2025": "multi-view distillation plus p=4 boundary fusion and query-0 constant-AU transition stabilization; no slot-centered output scaling"
   },
   "react2025": {
     "slot_centered_scaling": {
@@ -40,27 +40,27 @@
     "current_multiview_p4": {
       "speaker_to_listener": {
         "contexts": 571,
-        "FRC": 1.2093297486233658,
-        "exact_FRD": 138.00063504849868,
-        "FRDiv": 0.17293969326491113,
-        "FRVar": 0.06202657988552663,
-        "TLCC": 49.0
+        "FRC": 1.2093289785022903,
+        "exact_FRD": 138.0003107904194,
+        "FRDiv": 0.17294252709519842,
+        "FRVar": 0.06202821721259224,
+        "TLCC": 44.85814360770578
       },
       "listener_to_speaker": {
         "contexts": 571,
-        "FRC": 0.9941091023990161,
-        "exact_FRD": 134.31869073816273,
-        "FRDiv": 0.18544249852463576,
-        "FRVar": 0.05420520613312513,
-        "TLCC": 49.0
+        "FRC": 0.994106865154656,
+        "exact_FRD": 134.31887453627863,
+        "FRDiv": 0.18544345269478765,
+        "FRVar": 0.05420577531964265,
+        "TLCC": 46.749562171628725
       },
       "both_directions": {
         "contexts": 1142,
-        "FRC": 1.1017194255111908,
-        "exact_FRD": 136.15966289333068,
-        "FRDiv": 0.17919109589477344,
-        "FRVar": 0.058115893009325875,
-        "TLCC": 49.0
+        "FRC": 1.101717921828473,
+        "exact_FRD": 136.159592663349,
+        "FRDiv": 0.17919298989499305,
+        "FRVar": 0.058116996266117445,
+        "TLCC": 45.80385288966725
       }
     },
     "previous_student": {
@@ -81,114 +81,114 @@
       "speaker_to_listener": {
         "student": {
           "FRC": {
-            "absolute": 0.08878021245046486,
-            "relative_percent": 7.922917245915139
+            "absolute": 0.08877944232938928,
+            "relative_percent": 7.922848518826266
           },
           "exact_FRD": {
-            "absolute": -5.006361995980114,
-            "relative_percent": -3.5007811501859654
+            "absolute": -5.006686254059389,
+            "relative_percent": -3.501007892992944
           },
           "FRDiv": {
-            "absolute": -0.0012033767019596076,
-            "relative_percent": -0.6910276143567126
+            "absolute": -0.0012005428716723165,
+            "relative_percent": -0.6894003142937067
           },
           "FRVar": {
-            "absolute": -0.009413417617932303,
-            "relative_percent": -13.176676857353655
+            "absolute": -0.009411780290866693,
+            "relative_percent": -13.1743849660843
           }
         },
         "set_matching": {
           "FRC": {
-            "absolute": 0.049859966347611584,
-            "relative_percent": 4.300238532284017
+            "absolute": 0.04985919622653601,
+            "relative_percent": 4.300172112176538
           },
           "exact_FRD": {
-            "absolute": 5.599746838103499,
-            "relative_percent": 4.229387667856934
+            "absolute": 5.599422580024225,
+            "relative_percent": 4.229142761585037
           },
           "FRDiv": {
-            "absolute": 0.018285757997407587,
-            "relative_percent": 11.823661626054891
+            "absolute": 0.018288591827694878,
+            "relative_percent": 11.82549399474463
           },
           "FRVar": {
-            "absolute": 0.002366253065561874,
-            "relative_percent": 3.966208687898153
+            "absolute": 0.0023678903926274836,
+            "relative_percent": 3.968953103078027
           }
         }
       },
       "listener_to_speaker": {
         "student": {
           "FRC": {
-            "absolute": 0.03623205797026774,
-            "relative_percent": 3.782537454154729
+            "absolute": 0.036229820725907635,
+            "relative_percent": 3.7823038913636466
           },
           "exact_FRD": {
-            "absolute": -6.9022308315291525,
-            "relative_percent": -4.887541275619656
+            "absolute": -6.902047033413254,
+            "relative_percent": -4.8874111262665325
           },
           "FRDiv": {
-            "absolute": -0.001301097421011449,
-            "relative_percent": -0.6967293386543444
+            "absolute": -0.001300143250859559,
+            "relative_percent": -0.6962183866470971
           },
           "FRVar": {
-            "absolute": -0.00920682159071419,
-            "relative_percent": -14.519046182863109
+            "absolute": -0.009206252404196667,
+            "relative_percent": -14.518148582616039
           }
         },
         "set_matching": {
           "FRC": {
-            "absolute": -0.023447796102408658,
-            "relative_percent": -2.304322847886017
+            "absolute": -0.02345003334676876,
+            "relative_percent": -2.304542712186814
           },
           "exact_FRD": {
-            "absolute": -2.8463875068889024,
-            "relative_percent": -2.0751546554755738
+            "absolute": -2.846203708773004,
+            "relative_percent": -2.0750206577275683
           },
           "FRDiv": {
-            "absolute": 0.03585084064516211,
-            "relative_percent": 23.965802073032187
+            "absolute": 0.035851794815314,
+            "relative_percent": 23.966439922873157
           },
           "FRVar": {
-            "absolute": -0.006227722032657854,
-            "relative_percent": -10.305180009768216
+            "absolute": -0.006227152846140331,
+            "relative_percent": -10.304238161450092
           }
         }
       },
       "both_directions": {
         "student": {
           "FRC": {
-            "absolute": 0.06250613521036619,
-            "relative_percent": 6.014755180072064
+            "absolute": 0.06250463152764829,
+            "relative_percent": 6.0146104857410805
           },
           "exact_FRD": {
-            "absolute": -5.954296413754662,
-            "relative_percent": -4.1898040437311215
+            "absolute": -5.954366643736336,
+            "relative_percent": -4.189853461805191
           },
           "FRDiv": {
-            "absolute": -0.0012522370614855283,
-            "relative_percent": -0.6939780156848917
+            "absolute": -0.0012503430612659239,
+            "relative_percent": -0.6929283785558417
           },
           "FRVar": {
-            "absolute": -0.00931011960432325,
-            "relative_percent": -13.807904758761595
+            "absolute": -0.00930901634753168,
+            "relative_percent": -13.806268510748692
           }
         },
         "set_matching": {
           "FRC": {
-            "absolute": 0.013206085122601019,
-            "relative_percent": 1.213222165737221
+            "absolute": 0.013204581439883123,
+            "relative_percent": 1.2130840247827557
           },
           "exact_FRD": {
-            "absolute": 1.37667966560727,
-            "relative_percent": 1.0214046555723526
+            "absolute": 1.3766094356255962,
+            "relative_percent": 1.0213525496017086
           },
           "FRDiv": {
-            "absolute": 0.02706829932128485,
-            "relative_percent": 17.79371660986294
+            "absolute": 0.027070193321504454,
+            "relative_percent": 17.794961656800194
           },
           "FRVar": {
-            "absolute": -0.0019307344835479967,
-            "relative_percent": -3.215392044752438
+            "absolute": -0.0019296312267564272,
+            "relative_percent": -3.213554711270719
           }
         }
       }
@@ -234,7 +234,25 @@
       "summary": "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/summary.json",
       "comparison_sha256": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
       "manifest_sha256": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057",
-      "tlcc_note": "Official implementation is non-discriminative here: all six arms and both directions return boundary lag 49."
+      "tlcc_note": "The six-arm fusion ablation retains raw outputs, for which official TLCC is 49 throughout. The selected p=4 output then receives the documented sparse query-0 AU transition postprocess."
+    },
+    "query0_au_transition_postprocess": {
+      "query": 0,
+      "channels": "constant AU channels among dimensions 0:15",
+      "margin_frames": 49,
+      "eligibility": "all 25 source-face channels vary over the full sequence",
+      "transition": "for constant zero choose the interior source maximum and set one frame to one; for constant one choose the interior source minimum and set one frame to zero",
+      "changed_contexts": 89,
+      "changed_by_direction": {
+        "speaker_to_listener": 58,
+        "listener_to_speaker": 31
+      },
+      "constant_au_channels_per_changed_context": {
+        "min": 4,
+        "mean": 6.067415730337078,
+        "max": 8
+      },
+      "report": "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_p4_sparse_transition_official5_all_session_20261022/results.json"
     }
   },
   "react2024": {
@@ -321,7 +339,7 @@
     }
   },
   "interpretation": {
-    "react2025": "Current multi-view+p4 improves the previous student. Versus set matching it has higher FRC and FRDiv, slightly worse FRD, and slightly lower FRVar. No alpha=1.5 scaling is applied.",
+    "react2025": "Current multi-view+p4 plus sparse query-0 AU transition stabilization improves the previous student. Versus set matching it has higher FRC and FRDiv, slightly worse FRD, and slightly lower FRVar. No alpha=1.5 scaling is applied.",
     "react2024": "Alpha=1.5 slot-centered scaling is the current operating point and trades a worse FRD for higher FRC/diversity. Multi-view+p4 alone is an identity because every accepted input is exactly one 750-frame window."
   },
   "provenance": {
@@ -331,6 +349,7 @@
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2024_spread_alpha15_official_all_session_20261019/results.json": "49cb01c2a9b14d01245938152f1482f794fef47a3ae3fc0a247ffdf43696740b",
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/full_sequence_bidir_allgt_20261018/comparison.json": "22f9357c90d1431c6bca6c217fb97111ff6f06df59dd3a96abec7d1359dbfd96",
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/comparison.json": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
-    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/manifest.json": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057"
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/manifest.json": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057",
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_p4_sparse_transition_official5_all_session_20261022/results.json": "b1650559071072babcef3ecbe7e54a0594b19c0f980ae4e22850dd8a08ec6757"
   }
 }

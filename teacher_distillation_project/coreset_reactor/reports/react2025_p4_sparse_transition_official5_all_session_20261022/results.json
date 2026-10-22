@@ -1,0 +1,2736 @@
+{
+  "protocol": "REACT2025 complete VAL1142, both directions, full source duration, all opposite-role same-session GT, official Processor/AU rounding/five metrics; p=4 plus query-0 sparse AU transition postprocess",
+  "postprocess": {
+    "query": 0,
+    "channels": "constant AU channels among dimensions 0:15",
+    "margin_frames": 49,
+    "eligibility": "all 25 source-face channels vary over the full sequence",
+    "transition": "for constant zero choose the interior source maximum and set one frame to one; for constant one choose the interior source minimum and set one frame to zero",
+    "changed_contexts": 89,
+    "changed_by_direction": {
+      "speaker_to_listener": 58,
+      "listener_to_speaker": 31
+    },
+    "constant_au_channels_per_changed_context": {
+      "min": 4,
+      "mean": 6.067415730337078,
+      "max": 8
+    }
+  },
+  "metrics": {
+    "speaker_to_listener": {
+      "contexts": 571,
+      "raw_p4": {
+        "FRC": 1.2093297486233658,
+        "exact_FRD": 138.00063504849868,
+        "FRDiv": 0.17293969326491113,
+        "FRVar": 0.06202657988552663,
+        "TLCC": 49.0
+      },
+      "current_p4_with_postprocess": {
+        "FRC": 1.2093289785022903,
+        "exact_FRD": 138.0003107904194,
+        "FRDiv": 0.17294252709519842,
+        "FRVar": 0.06202821721259224,
+        "TLCC": 44.85814360770578
+      },
+      "delta": {
+        "FRC": {
+          "absolute": -7.701210755772792e-07,
+          "relative_percent": -6.36816448494666e-05
+        },
+        "exact_FRD": {
+          "absolute": -0.00032425807927438655,
+          "relative_percent": -0.0002349685413841972
+        },
+        "FRDiv": {
+          "absolute": 2.833830287291006e-06,
+          "relative_percent": 0.0016386234032172765
+        },
+        "FRVar": {
+          "absolute": 1.637327065609484e-06,
+          "relative_percent": 0.0026397184378556078
+        },
+        "TLCC": {
+          "absolute": -4.141856392294223,
+          "relative_percent": -8.45276814753923
+        }
+      }
+    },
+    "listener_to_speaker": {
+      "contexts": 571,
+      "raw_p4": {
+        "FRC": 0.9941091023990161,
+        "exact_FRD": 134.31869073816273,
+        "FRDiv": 0.18544249852463576,
+        "FRVar": 0.05420520613312513,
+        "TLCC": 49.0
+      },
+      "current_p4_with_postprocess": {
+        "FRC": 0.994106865154656,
+        "exact_FRD": 134.31887453627863,
+        "FRDiv": 0.18544345269478765,
+        "FRVar": 0.05420577531964265,
+        "TLCC": 46.749562171628725
+      },
+      "delta": {
+        "FRC": {
+          "absolute": -2.2372443601037517e-06,
+          "relative_percent": -0.0002250501835970279
+        },
+        "exact_FRD": {
+          "absolute": 0.0001837981158985258,
+          "relative_percent": 0.00013683733431918044
+        },
+        "FRDiv": {
+          "absolute": 9.541701518900325e-07,
+          "relative_percent": 0.000514536937045891
+        },
+        "FRVar": {
+          "absolute": 5.691865175225241e-07,
+          "relative_percent": 0.0010500587639582664
+        },
+        "TLCC": {
+          "absolute": -2.2504378283712754,
+          "relative_percent": -4.592730261982195
+        }
+      }
+    },
+    "both_directions": {
+      "contexts": 1142,
+      "raw_p4": {
+        "FRC": 1.1017194255111908,
+        "exact_FRD": 136.15966289333068,
+        "FRDiv": 0.17919109589477344,
+        "FRVar": 0.058115893009325875,
+        "TLCC": 49.0
+      },
+      "current_p4_with_postprocess": {
+        "FRC": 1.101717921828473,
+        "exact_FRD": 136.159592663349,
+        "FRDiv": 0.17919298989499305,
+        "FRVar": 0.058116996266117445,
+        "TLCC": 45.80385288966725
+      },
+      "delta": {
+        "FRC": {
+          "absolute": -1.5036827178960266e-06,
+          "relative_percent": -0.00013648508713535003
+        },
+        "exact_FRD": {
+          "absolute": -7.022998167371952e-05,
+          "relative_percent": -5.157913891777085e-05
+        },
+        "FRDiv": {
+          "absolute": 1.894000219604397e-06,
+          "relative_percent": 0.0010569722843352732
+        },
+        "FRVar": {
+          "absolute": 1.1032567915694735e-06,
+          "relative_percent": 0.0018983736366099263
+        },
+        "TLCC": {
+          "absolute": -3.1961471103327526,
+          "relative_percent": -6.5227492047607205
+        }
+      }
+    }
+  },
+  "provenance": {
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/comparison.json": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
+    "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/manifest.json": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057",
+    "implementations": {
+      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_overlap_save_student.py": "50aab4865d5898564b646d608fc16d7155dabc2a916bb19739d2dd287e4677e8",
+      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_multiview_p4_bidir_all_session.py": "e503ce3ce60ceab847d694897cb777dedfaf859779b4820f6cf100140f46a171"
+    }
+  },
+  "changed_rows": [
+    {
+      "index": 20,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.06041190848212054,
+      "new_q0_FRC": 0.061035225186630966,
+      "old_q0_exact_FRD": 13.695718085003513,
+      "new_q0_exact_FRD": 13.701258743722894,
+      "frozen_metrics": {
+        "FRC": 0.7232524085997664,
+        "exact_FRD": 139.99547333685376,
+        "FRDiv": 0.17206032574176788,
+        "FRVar": 0.061155594885349274
+      },
+      "new_metrics": {
+        "FRC": 0.7238757253042768,
+        "exact_FRD": 140.00101399557315,
+        "FRDiv": 0.17209681868553162,
+        "FRVar": 0.06117728352546692,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 22,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.08255864485406064,
+      "new_q0_FRC": 0.08247371375783154,
+      "old_q0_exact_FRD": 15.342662647045568,
+      "new_q0_exact_FRD": 15.346025535830012,
+      "frozen_metrics": {
+        "FRC": 0.7073657221567407,
+        "exact_FRD": 167.68839876690305,
+        "FRDiv": 0.1690416932106018,
+        "FRVar": 0.06308403611183167
+      },
+      "new_metrics": {
+        "FRC": 0.7072807910605116,
+        "exact_FRD": 167.69176165568751,
+        "FRDiv": 0.16906598210334778,
+        "FRVar": 0.06309716403484344,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 23,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1529583713238859,
+      "new_q0_FRC": 0.15258706208733785,
+      "old_q0_exact_FRD": 11.744604458946874,
+      "new_q0_exact_FRD": 11.575461861873729,
+      "frozen_metrics": {
+        "FRC": 0.9124539072349165,
+        "exact_FRD": 125.3026873291528,
+        "FRDiv": 0.17561517655849457,
+        "FRVar": 0.06938451528549194
+      },
+      "new_metrics": {
+        "FRC": 0.9120825979983684,
+        "exact_FRD": 125.13354473207967,
+        "FRDiv": 0.17565588653087616,
+        "FRVar": 0.06940741091966629,
+        "TLCC": 10.0
+      }
+    },
+    {
+      "index": 25,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.062048305198534714,
+      "new_q0_FRC": 0.06201419787312558,
+      "old_q0_exact_FRD": 17.01485517378229,
+      "new_q0_exact_FRD": 17.017331863380228,
+      "frozen_metrics": {
+        "FRC": 0.4706583578523892,
+        "exact_FRD": 173.12398989858082,
+        "FRDiv": 0.18090739846229553,
+        "FRVar": 0.05762067064642906
+      },
+      "new_metrics": {
+        "FRC": 0.47062425052698004,
+        "exact_FRD": 173.12646658817877,
+        "FRDiv": 0.18092314898967743,
+        "FRVar": 0.057629309594631195,
+        "TLCC": 20.0
+      }
+    },
+    {
+      "index": 27,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.053925397770103745,
+      "new_q0_FRC": 0.05365100968221319,
+      "old_q0_exact_FRD": 14.699249409694474,
+      "new_q0_exact_FRD": 14.702936310980377,
+      "frozen_metrics": {
+        "FRC": 0.5190572115812673,
+        "exact_FRD": 157.42142698264252,
+        "FRDiv": 0.16864950954914093,
+        "FRVar": 0.05836673825979233
+      },
+      "new_metrics": {
+        "FRC": 0.5187828234933767,
+        "exact_FRD": 157.42511388392842,
+        "FRDiv": 0.1686858832836151,
+        "FRVar": 0.058386169373989105,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 44,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.172575001382451,
+      "new_q0_FRC": 0.17254108331012907,
+      "old_q0_exact_FRD": 12.287425893453591,
+      "new_q0_exact_FRD": 12.292871224521072,
+      "frozen_metrics": {
+        "FRC": 1.089184436234799,
+        "exact_FRD": 151.78137405030765,
+        "FRDiv": 0.15085208415985107,
+        "FRVar": 0.05364922434091568
+      },
+      "new_metrics": {
+        "FRC": 1.0891505181624772,
+        "exact_FRD": 151.78681938137512,
+        "FRDiv": 0.15086877346038818,
+        "FRVar": 0.05365946516394615,
+        "TLCC": 10.0
+      }
+    },
+    {
+      "index": 50,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.17265584191315406,
+      "new_q0_FRC": 0.17256616785867243,
+      "old_q0_exact_FRD": 11.84517706429268,
+      "new_q0_exact_FRD": 11.851775414508172,
+      "frozen_metrics": {
+        "FRC": 1.340789351806154,
+        "exact_FRD": 142.50734133592496,
+        "FRDiv": 0.15236499905586243,
+        "FRVar": 0.056853946298360825
+      },
+      "new_metrics": {
+        "FRC": 1.3406996777516724,
+        "exact_FRD": 142.51393968614047,
+        "FRDiv": 0.15239262580871582,
+        "FRVar": 0.056869763880968094,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 88,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.09938116437190343,
+      "new_q0_FRC": 0.09924216525103043,
+      "old_q0_exact_FRD": 12.118263898662837,
+      "new_q0_exact_FRD": 12.122096076647932,
+      "frozen_metrics": {
+        "FRC": 1.1953575163031331,
+        "exact_FRD": 132.96864317515832,
+        "FRDiv": 0.15182676911354065,
+        "FRVar": 0.058954235166311264
+      },
+      "new_metrics": {
+        "FRC": 1.1952185171822602,
+        "exact_FRD": 132.9724753531434,
+        "FRDiv": 0.151855930685997,
+        "FRVar": 0.05897093564271927,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 104,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.11678788530036742,
+      "new_q0_FRC": 0.11655940736126186,
+      "old_q0_exact_FRD": 11.643891405158593,
+      "new_q0_exact_FRD": 11.65077054243685,
+      "frozen_metrics": {
+        "FRC": 1.144092745802328,
+        "exact_FRD": 147.92703811509358,
+        "FRDiv": 0.14795158803462982,
+        "FRVar": 0.05388687923550606
+      },
+      "new_metrics": {
+        "FRC": 1.1438642678632225,
+        "exact_FRD": 147.93391725237183,
+        "FRDiv": 0.14797726273536682,
+        "FRVar": 0.0539010614156723,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 120,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9
+      ],
+      "old_q0_FRC": 0.13105223908648184,
+      "new_q0_FRC": 0.13100702479044288,
+      "old_q0_exact_FRD": 17.37515900702583,
+      "new_q0_exact_FRD": 17.377657867279503,
+      "frozen_metrics": {
+        "FRC": 0.8683883529315737,
+        "exact_FRD": 170.28212081659552,
+        "FRDiv": 0.15562641620635986,
+        "FRVar": 0.05211726576089859
+      },
+      "new_metrics": {
+        "FRC": 0.8683431386355347,
+        "exact_FRD": 170.2846196768492,
+        "FRDiv": 0.15563854575157166,
+        "FRVar": 0.052123334258794785,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 123,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.11310171929965486,
+      "new_q0_FRC": 0.11304434883680385,
+      "old_q0_exact_FRD": 19.273289543067033,
+      "new_q0_exact_FRD": 19.27653996488853,
+      "frozen_metrics": {
+        "FRC": 0.7937943260986633,
+        "exact_FRD": 215.39240373891397,
+        "FRDiv": 0.15186940133571625,
+        "FRVar": 0.04661276936531067
+      },
+      "new_metrics": {
+        "FRC": 0.7937369556358123,
+        "exact_FRD": 215.3956541607355,
+        "FRDiv": 0.15187601745128632,
+        "FRVar": 0.04661649093031883,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 124,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.05437316463043902,
+      "new_q0_FRC": 0.05434669218320167,
+      "old_q0_exact_FRD": 18.14771122063036,
+      "new_q0_exact_FRD": 18.151737502430265,
+      "frozen_metrics": {
+        "FRC": 0.7139116260994061,
+        "exact_FRD": 204.1160645363344,
+        "FRDiv": 0.14150214195251465,
+        "FRVar": 0.04669122025370598
+      },
+      "new_metrics": {
+        "FRC": 0.7138851536521686,
+        "exact_FRD": 204.12009081813432,
+        "FRDiv": 0.14151041209697723,
+        "FRVar": 0.046695783734321594,
+        "TLCC": 5.0
+      }
+    },
+    {
+      "index": 127,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.10121658194559545,
+      "new_q0_FRC": 0.10095841556274607,
+      "old_q0_exact_FRD": 10.134989753411372,
+      "new_q0_exact_FRD": 10.142542232802423,
+      "frozen_metrics": {
+        "FRC": 0.9145868435060571,
+        "exact_FRD": 127.52297394200176,
+        "FRDiv": 0.14111144840717316,
+        "FRVar": 0.05032343789935112
+      },
+      "new_metrics": {
+        "FRC": 0.9143286771232078,
+        "exact_FRD": 127.5305264213928,
+        "FRDiv": 0.14114448428153992,
+        "FRVar": 0.05034169182181358,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 147,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.14067135928316302,
+      "new_q0_FRC": 0.1405923173013753,
+      "old_q0_exact_FRD": 16.38692046467033,
+      "new_q0_exact_FRD": 16.39050506289811,
+      "frozen_metrics": {
+        "FRC": 0.6330680908551697,
+        "exact_FRD": 191.0304069441159,
+        "FRDiv": 0.15496958792209625,
+        "FRVar": 0.05285509675741196
+      },
+      "new_metrics": {
+        "FRC": 0.632989048873382,
+        "exact_FRD": 191.03399154234367,
+        "FRDiv": 0.15499292314052582,
+        "FRVar": 0.05286721512675285,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 148,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.10743748637200104,
+      "new_q0_FRC": 0.10730971443746469,
+      "old_q0_exact_FRD": 18.574607446578874,
+      "new_q0_exact_FRD": 18.57803943802893,
+      "frozen_metrics": {
+        "FRC": 0.49627949698021295,
+        "exact_FRD": 202.56423253140352,
+        "FRDiv": 0.15014129877090454,
+        "FRVar": 0.04907689988613129
+      },
+      "new_metrics": {
+        "FRC": 0.49615172504567656,
+        "exact_FRD": 202.56766452285356,
+        "FRDiv": 0.15015791356563568,
+        "FRVar": 0.049085866659879684,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 161,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        10
+      ],
+      "old_q0_FRC": 0.06513065012501236,
+      "new_q0_FRC": 0.06503764079796212,
+      "old_q0_exact_FRD": 19.42038042668001,
+      "new_q0_exact_FRD": 19.42364244916757,
+      "frozen_metrics": {
+        "FRC": 0.4386947169005498,
+        "exact_FRD": 212.16214692174805,
+        "FRDiv": 0.1568986177444458,
+        "FRVar": 0.05023371800780296
+      },
+      "new_metrics": {
+        "FRC": 0.4386017075734996,
+        "exact_FRD": 212.16540894423562,
+        "FRDiv": 0.15690702199935913,
+        "FRVar": 0.05023844912648201,
+        "TLCC": 7.0
+      }
+    },
+    {
+      "index": 166,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.09760475465524339,
+      "new_q0_FRC": 0.09746077855113919,
+      "old_q0_exact_FRD": 19.587752326439464,
+      "new_q0_exact_FRD": 19.591298483353327,
+      "frozen_metrics": {
+        "FRC": 0.33899101953244093,
+        "exact_FRD": 233.38555675995303,
+        "FRDiv": 0.16064761579036713,
+        "FRVar": 0.05097069591283798
+      },
+      "new_metrics": {
+        "FRC": 0.3388470434283367,
+        "exact_FRD": 233.38910291686688,
+        "FRDiv": 0.16065986454486847,
+        "FRVar": 0.05097797513008118,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 192,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1305599686920824,
+      "new_q0_FRC": 0.13101040836349015,
+      "old_q0_exact_FRD": 13.313791492799746,
+      "new_q0_exact_FRD": 13.316270852958986,
+      "frozen_metrics": {
+        "FRC": 1.0265267545837677,
+        "exact_FRD": 140.15324656985123,
+        "FRDiv": 0.17841175198554993,
+        "FRVar": 0.06444913148880005
+      },
+      "new_metrics": {
+        "FRC": 1.0269771942551755,
+        "exact_FRD": 140.15572593001048,
+        "FRDiv": 0.17844194173812866,
+        "FRVar": 0.06446611881256104,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 232,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.22448569965156775,
+      "new_q0_FRC": 0.22436684059775686,
+      "old_q0_exact_FRD": 11.142869761199108,
+      "new_q0_exact_FRD": 11.152089504709183,
+      "frozen_metrics": {
+        "FRC": 1.8597782562044942,
+        "exact_FRD": 104.86831394604211,
+        "FRDiv": 0.19724178314208984,
+        "FRVar": 0.08251772820949554
+      },
+      "new_metrics": {
+        "FRC": 1.8596593971506832,
+        "exact_FRD": 104.87753368955218,
+        "FRDiv": 0.19732774794101715,
+        "FRVar": 0.08256210386753082,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 257,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        14
+      ],
+      "old_q0_FRC": 0.1724222191714964,
+      "new_q0_FRC": 0.17223398913490967,
+      "old_q0_exact_FRD": 9.25708309085565,
+      "new_q0_exact_FRD": 9.263177373119788,
+      "frozen_metrics": {
+        "FRC": 1.8167267384692107,
+        "exact_FRD": 92.76103607949918,
+        "FRDiv": 0.1717064380645752,
+        "FRVar": 0.07152105867862701
+      },
+      "new_metrics": {
+        "FRC": 1.816538508432624,
+        "exact_FRD": 92.76713036176332,
+        "FRDiv": 0.17176185548305511,
+        "FRVar": 0.07154983282089233,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 312,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.13735999380238198,
+      "new_q0_FRC": 0.13722494242164923,
+      "old_q0_exact_FRD": 9.054037819824556,
+      "new_q0_exact_FRD": 9.061724342251546,
+      "frozen_metrics": {
+        "FRC": 1.809606002893838,
+        "exact_FRD": 99.46080134902768,
+        "FRDiv": 0.16355106234550476,
+        "FRVar": 0.06667394936084747
+      },
+      "new_metrics": {
+        "FRC": 1.8094709515131053,
+        "exact_FRD": 99.46848787145467,
+        "FRDiv": 0.1636057198047638,
+        "FRVar": 0.0667041465640068,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 322,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.07411734603638846,
+      "new_q0_FRC": 0.0742293114487727,
+      "old_q0_exact_FRD": 11.964594722519777,
+      "new_q0_exact_FRD": 11.969538604137895,
+      "frozen_metrics": {
+        "FRC": 1.0771949005771861,
+        "exact_FRD": 118.40412732021733,
+        "FRDiv": 0.17724420130252838,
+        "FRVar": 0.06109368056058884
+      },
+      "new_metrics": {
+        "FRC": 1.0773068659895704,
+        "exact_FRD": 118.40907120183545,
+        "FRDiv": 0.17727679014205933,
+        "FRVar": 0.06111234426498413,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 328,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1666474021320064,
+      "new_q0_FRC": 0.1667781286162618,
+      "old_q0_exact_FRD": 12.662869826801174,
+      "new_q0_exact_FRD": 12.667772070326624,
+      "frozen_metrics": {
+        "FRC": 1.5229352171829742,
+        "exact_FRD": 116.01278726972659,
+        "FRDiv": 0.19437693059444427,
+        "FRVar": 0.06860660761594772
+      },
+      "new_metrics": {
+        "FRC": 1.5230659436672296,
+        "exact_FRD": 116.01768951325204,
+        "FRDiv": 0.1944129765033722,
+        "FRVar": 0.0686265155673027,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 332,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.2502418371397031,
+      "new_q0_FRC": 0.25038926221898655,
+      "old_q0_exact_FRD": 7.0326520131412265,
+      "new_q0_exact_FRD": 7.033536743751815,
+      "frozen_metrics": {
+        "FRC": 2.296910444056529,
+        "exact_FRD": 72.27218538409672,
+        "FRDiv": 0.2083369493484497,
+        "FRVar": 0.08061166852712631
+      },
+      "new_metrics": {
+        "FRC": 2.2970578691358123,
+        "exact_FRD": 72.2730701147073,
+        "FRDiv": 0.2084202766418457,
+        "FRVar": 0.08067000657320023,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 334,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.257956392492279,
+      "new_q0_FRC": 0.2574623358987413,
+      "old_q0_exact_FRD": 9.662919893113585,
+      "new_q0_exact_FRD": 9.67035263678345,
+      "frozen_metrics": {
+        "FRC": 2.1435350359001237,
+        "exact_FRD": 89.12902156868375,
+        "FRDiv": 0.19921070337295532,
+        "FRVar": 0.07901593297719955
+      },
+      "new_metrics": {
+        "FRC": 2.143040979306586,
+        "exact_FRD": 89.13645431235362,
+        "FRDiv": 0.19928467273712158,
+        "FRVar": 0.07905988395214081,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 342,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.23279647023111624,
+      "new_q0_FRC": 0.2326393962365422,
+      "old_q0_exact_FRD": 8.842781835711689,
+      "new_q0_exact_FRD": 8.615350548909516,
+      "frozen_metrics": {
+        "FRC": 2.0236977837170307,
+        "exact_FRD": 88.23471453098158,
+        "FRDiv": 0.1957291066646576,
+        "FRVar": 0.07751511037349701
+      },
+      "new_metrics": {
+        "FRC": 2.0235407097224565,
+        "exact_FRD": 88.0072832441794,
+        "FRDiv": 0.1957898885011673,
+        "FRVar": 0.07755766063928604,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 352,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.11965598829339287,
+      "new_q0_FRC": 0.11956809903446591,
+      "old_q0_exact_FRD": 15.941475125506667,
+      "new_q0_exact_FRD": 15.945410335077554,
+      "frozen_metrics": {
+        "FRC": 0.7386990814352081,
+        "exact_FRD": 197.29657830062152,
+        "FRDiv": 0.1640232503414154,
+        "FRVar": 0.052915699779987335
+      },
+      "new_metrics": {
+        "FRC": 0.7386111921762812,
+        "exact_FRD": 197.30051351019242,
+        "FRDiv": 0.16403736174106598,
+        "FRVar": 0.05292477086186409,
+        "TLCC": 6.0
+      }
+    },
+    {
+      "index": 359,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1300200875069407,
+      "new_q0_FRC": 0.12992469260057155,
+      "old_q0_exact_FRD": 20.677055534122317,
+      "new_q0_exact_FRD": 20.67941468753111,
+      "frozen_metrics": {
+        "FRC": 0.6751657724604218,
+        "exact_FRD": 223.819020685614,
+        "FRDiv": 0.1643732339143753,
+        "FRVar": 0.057550545781850815
+      },
+      "new_metrics": {
+        "FRC": 0.6750703775540525,
+        "exact_FRD": 223.82137983902277,
+        "FRDiv": 0.16438506543636322,
+        "FRVar": 0.057557202875614166,
+        "TLCC": 13.0
+      }
+    },
+    {
+      "index": 361,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.09943975899086524,
+      "new_q0_FRC": 0.09962503163001939,
+      "old_q0_exact_FRD": 16.988043552731774,
+      "new_q0_exact_FRD": 16.991024976867415,
+      "frozen_metrics": {
+        "FRC": 0.5208616390204833,
+        "exact_FRD": 180.09547911563467,
+        "FRDiv": 0.15645362436771393,
+        "FRVar": 0.05077216774225235
+      },
+      "new_metrics": {
+        "FRC": 0.5210469116596375,
+        "exact_FRD": 180.09846053977031,
+        "FRDiv": 0.1564725786447525,
+        "FRVar": 0.05078282952308655,
+        "TLCC": 11.0
+      }
+    },
+    {
+      "index": 376,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.17977707621600003,
+      "new_q0_FRC": 0.17991454330677173,
+      "old_q0_exact_FRD": 12.897276526135771,
+      "new_q0_exact_FRD": 12.902485851443842,
+      "frozen_metrics": {
+        "FRC": 1.3872644802641116,
+        "exact_FRD": 130.69989011470597,
+        "FRDiv": 0.16324292123317719,
+        "FRVar": 0.05901120975613594
+      },
+      "new_metrics": {
+        "FRC": 1.3874019473548833,
+        "exact_FRD": 130.70509944001404,
+        "FRDiv": 0.16326767206192017,
+        "FRVar": 0.059025734663009644,
+        "TLCC": 10.0
+      }
+    },
+    {
+      "index": 377,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1496842651686168,
+      "new_q0_FRC": 0.1494786322498716,
+      "old_q0_exact_FRD": 8.033238634337039,
+      "new_q0_exact_FRD": 8.011052407579907,
+      "frozen_metrics": {
+        "FRC": 1.5427711784528952,
+        "exact_FRD": 91.31735274913397,
+        "FRDiv": 0.17124773561954498,
+        "FRVar": 0.06663200259208679
+      },
+      "new_metrics": {
+        "FRC": 1.54256554553415,
+        "exact_FRD": 91.29516652237685,
+        "FRDiv": 0.1713150143623352,
+        "FRVar": 0.06666918098926544,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 385,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        14
+      ],
+      "old_q0_FRC": 0.16001385536585577,
+      "new_q0_FRC": 0.16045284901363785,
+      "old_q0_exact_FRD": 11.08583765070385,
+      "new_q0_exact_FRD": 11.089410077105393,
+      "frozen_metrics": {
+        "FRC": 1.3038847856386235,
+        "exact_FRD": 128.32878382711277,
+        "FRDiv": 0.17740276455879211,
+        "FRVar": 0.06650564819574356
+      },
+      "new_metrics": {
+        "FRC": 1.3043237792864057,
+        "exact_FRD": 128.33235625351432,
+        "FRDiv": 0.17743177711963654,
+        "FRVar": 0.06652197241783142,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 390,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1851137107973717,
+      "new_q0_FRC": 0.18501046211343602,
+      "old_q0_exact_FRD": 11.923356803751178,
+      "new_q0_exact_FRD": 11.92880415423076,
+      "frozen_metrics": {
+        "FRC": 1.5829582482110491,
+        "exact_FRD": 120.22118775167294,
+        "FRDiv": 0.17110416293144226,
+        "FRVar": 0.06217574700713158
+      },
+      "new_metrics": {
+        "FRC": 1.5828549995271135,
+        "exact_FRD": 120.22663510215253,
+        "FRDiv": 0.17113250494003296,
+        "FRVar": 0.0621931366622448,
+        "TLCC": 5.0
+      }
+    },
+    {
+      "index": 423,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        14
+      ],
+      "old_q0_FRC": 0.12873640496710823,
+      "new_q0_FRC": 0.12864924639961794,
+      "old_q0_exact_FRD": 12.890510374237554,
+      "new_q0_exact_FRD": 12.894635358366806,
+      "frozen_metrics": {
+        "FRC": 1.2907403382946627,
+        "exact_FRD": 137.8325630746517,
+        "FRDiv": 0.17242170870304108,
+        "FRVar": 0.0657363012433052
+      },
+      "new_metrics": {
+        "FRC": 1.2906531797271725,
+        "exact_FRD": 137.83668805878094,
+        "FRDiv": 0.17243993282318115,
+        "FRVar": 0.06574737280607224,
+        "TLCC": 37.0
+      }
+    },
+    {
+      "index": 424,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.11178270674923586,
+      "new_q0_FRC": 0.11171966411813465,
+      "old_q0_exact_FRD": 14.329182354687362,
+      "new_q0_exact_FRD": 14.332436285127029,
+      "frozen_metrics": {
+        "FRC": 0.8353040832819733,
+        "exact_FRD": 145.00780392570434,
+        "FRDiv": 0.16687114536762238,
+        "FRVar": 0.058535825461149216
+      },
+      "new_metrics": {
+        "FRC": 0.835241040650872,
+        "exact_FRD": 145.011057856144,
+        "FRDiv": 0.1668955534696579,
+        "FRVar": 0.05854930356144905,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 435,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.07398240245696272,
+      "new_q0_FRC": 0.07391426220536734,
+      "old_q0_exact_FRD": 13.064082126431455,
+      "new_q0_exact_FRD": 13.067085007823867,
+      "frozen_metrics": {
+        "FRC": 1.08101820886832,
+        "exact_FRD": 143.8116332459891,
+        "FRDiv": 0.16697391867637634,
+        "FRVar": 0.05433608591556549
+      },
+      "new_metrics": {
+        "FRC": 1.0809500686167248,
+        "exact_FRD": 143.8146361273815,
+        "FRDiv": 0.16699667274951935,
+        "FRVar": 0.054348237812519073,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 438,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.09864625023487125,
+      "new_q0_FRC": 0.10145890507943328,
+      "old_q0_exact_FRD": 12.059773393096368,
+      "new_q0_exact_FRD": 12.06618234921108,
+      "frozen_metrics": {
+        "FRC": 1.2971741648598454,
+        "exact_FRD": 127.92918463208704,
+        "FRDiv": 0.1756233125925064,
+        "FRVar": 0.06038434058427811
+      },
+      "new_metrics": {
+        "FRC": 1.2999868197044073,
+        "exact_FRD": 127.93559358820175,
+        "FRDiv": 0.17565293610095978,
+        "FRVar": 0.06040194630622864,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 448,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.16896576501636837,
+      "new_q0_FRC": 0.16886833487259761,
+      "old_q0_exact_FRD": 14.19761305095215,
+      "new_q0_exact_FRD": 14.201718694236378,
+      "frozen_metrics": {
+        "FRC": 1.1444308732926283,
+        "exact_FRD": 142.55669384453756,
+        "FRDiv": 0.14821356534957886,
+        "FRVar": 0.05361020565032959
+      },
+      "new_metrics": {
+        "FRC": 1.1443334431488574,
+        "exact_FRD": 142.56079948782178,
+        "FRDiv": 0.14823080599308014,
+        "FRVar": 0.05362033471465111,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 451,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.19572294603914467,
+      "new_q0_FRC": 0.1955667326877244,
+      "old_q0_exact_FRD": 12.054412276917295,
+      "new_q0_exact_FRD": 12.06051158727233,
+      "frozen_metrics": {
+        "FRC": 0.9937493462388464,
+        "exact_FRD": 131.40713229929318,
+        "FRDiv": 0.16565872728824615,
+        "FRVar": 0.06038297340273857
+      },
+      "new_metrics": {
+        "FRC": 0.9935931328874261,
+        "exact_FRD": 131.41323160964822,
+        "FRDiv": 0.16568879783153534,
+        "FRVar": 0.0604015551507473,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 456,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.10245050998643751,
+      "new_q0_FRC": 0.10234436260606465,
+      "old_q0_exact_FRD": 13.104670369405065,
+      "new_q0_exact_FRD": 13.107770910135482,
+      "frozen_metrics": {
+        "FRC": 1.063172453929558,
+        "exact_FRD": 144.16971452377936,
+        "FRDiv": 0.16768893599510193,
+        "FRVar": 0.05694270506501198
+      },
+      "new_metrics": {
+        "FRC": 1.0630663065491852,
+        "exact_FRD": 144.1728150645098,
+        "FRDiv": 0.16770775616168976,
+        "FRVar": 0.05695480480790138,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 457,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.12679084866884027,
+      "new_q0_FRC": 0.12675055578912023,
+      "old_q0_exact_FRD": 16.264399313639075,
+      "new_q0_exact_FRD": 16.268574143138025,
+      "frozen_metrics": {
+        "FRC": 0.7554159893204194,
+        "exact_FRD": 176.40904531835758,
+        "FRDiv": 0.16709531843662262,
+        "FRVar": 0.056869976222515106
+      },
+      "new_metrics": {
+        "FRC": 0.7553756964406994,
+        "exact_FRD": 176.41322014785652,
+        "FRDiv": 0.1671101301908493,
+        "FRVar": 0.0568779781460762,
+        "TLCC": 8.0
+      }
+    },
+    {
+      "index": 458,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.17687847493504613,
+      "new_q0_FRC": 0.17685724997271593,
+      "old_q0_exact_FRD": 10.155967010109318,
+      "new_q0_exact_FRD": 10.160079418023539,
+      "frozen_metrics": {
+        "FRC": 1.6384944884623531,
+        "exact_FRD": 113.50235508569523,
+        "FRDiv": 0.17835336923599243,
+        "FRVar": 0.0649925023317337
+      },
+      "new_metrics": {
+        "FRC": 1.638473263500023,
+        "exact_FRD": 113.50646749360945,
+        "FRDiv": 0.17838990688323975,
+        "FRVar": 0.06501422077417374,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 459,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.15087105656879995,
+      "new_q0_FRC": 0.15071176347751214,
+      "old_q0_exact_FRD": 11.717470257200205,
+      "new_q0_exact_FRD": 11.723426791148704,
+      "frozen_metrics": {
+        "FRC": 1.1067252824519163,
+        "exact_FRD": 125.14301927586177,
+        "FRDiv": 0.1698278933763504,
+        "FRVar": 0.06017734482884407
+      },
+      "new_metrics": {
+        "FRC": 1.1065659893606283,
+        "exact_FRD": 125.14897580981028,
+        "FRDiv": 0.16986101865768433,
+        "FRVar": 0.06019631773233414,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 460,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.17274963232392884,
+      "new_q0_FRC": 0.17265275452491782,
+      "old_q0_exact_FRD": 10.159413466010854,
+      "new_q0_exact_FRD": 10.165311149273993,
+      "frozen_metrics": {
+        "FRC": 1.2496928865715298,
+        "exact_FRD": 129.7129763744828,
+        "FRDiv": 0.16709506511688232,
+        "FRVar": 0.06705595552921295
+      },
+      "new_metrics": {
+        "FRC": 1.2495960087725189,
+        "exact_FRD": 129.71887405774595,
+        "FRDiv": 0.16712526977062225,
+        "FRVar": 0.06707225739955902,
+        "TLCC": 19.0
+      }
+    },
+    {
+      "index": 469,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.19756878476439563,
+      "new_q0_FRC": 0.19756080612137772,
+      "old_q0_exact_FRD": 13.929366076204708,
+      "new_q0_exact_FRD": 13.934149447006039,
+      "frozen_metrics": {
+        "FRC": 1.2931381523918721,
+        "exact_FRD": 139.96362174515815,
+        "FRDiv": 0.178000345826149,
+        "FRVar": 0.06360690295696259
+      },
+      "new_metrics": {
+        "FRC": 1.293130173748854,
+        "exact_FRD": 139.96840511595948,
+        "FRDiv": 0.1780250519514084,
+        "FRVar": 0.06362216174602509,
+        "TLCC": 30.0
+      }
+    },
+    {
+      "index": 478,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.13698555393974188,
+      "new_q0_FRC": 0.13691308732469218,
+      "old_q0_exact_FRD": 21.53832715751575,
+      "new_q0_exact_FRD": 21.54132057938519,
+      "frozen_metrics": {
+        "FRC": 0.5705029326865719,
+        "exact_FRD": 253.80174959466223,
+        "FRDiv": 0.14950062334537506,
+        "FRVar": 0.04865318164229393
+      },
+      "new_metrics": {
+        "FRC": 0.5704304660715223,
+        "exact_FRD": 253.8047430165317,
+        "FRDiv": 0.14950929582118988,
+        "FRVar": 0.048658061772584915,
+        "TLCC": 37.0
+      }
+    },
+    {
+      "index": 483,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.08085823449459621,
+      "new_q0_FRC": 0.08081478615979315,
+      "old_q0_exact_FRD": 17.78461965450984,
+      "new_q0_exact_FRD": 17.78779181329665,
+      "frozen_metrics": {
+        "FRC": 0.5147303185822987,
+        "exact_FRD": 232.3674701274097,
+        "FRDiv": 0.158612459897995,
+        "FRVar": 0.05421685427427292
+      },
+      "new_metrics": {
+        "FRC": 0.5146868702474956,
+        "exact_FRD": 232.3706422861965,
+        "FRDiv": 0.1586235612630844,
+        "FRVar": 0.05422240123152733,
+        "TLCC": 10.0
+      }
+    },
+    {
+      "index": 485,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.10847952498483555,
+      "new_q0_FRC": 0.1084238736997895,
+      "old_q0_exact_FRD": 25.368570196656037,
+      "new_q0_exact_FRD": 25.37150661434847,
+      "frozen_metrics": {
+        "FRC": 0.37340490627088435,
+        "exact_FRD": 292.0189386780355,
+        "FRDiv": 0.16566509008407593,
+        "FRVar": 0.051220525056123734
+      },
+      "new_metrics": {
+        "FRC": 0.3733492549858383,
+        "exact_FRD": 292.0218750957279,
+        "FRDiv": 0.16567286849021912,
+        "FRVar": 0.051224734634160995,
+        "TLCC": 30.0
+      }
+    },
+    {
+      "index": 486,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.07322768714596697,
+      "new_q0_FRC": 0.07327594217997623,
+      "old_q0_exact_FRD": 21.663828117037713,
+      "new_q0_exact_FRD": 21.666443642864458,
+      "frozen_metrics": {
+        "FRC": 0.3405403337676604,
+        "exact_FRD": 284.5587484298422,
+        "FRDiv": 0.17415685951709747,
+        "FRVar": 0.05255667865276337
+      },
+      "new_metrics": {
+        "FRC": 0.34058858880166965,
+        "exact_FRD": 284.5613639556689,
+        "FRDiv": 0.1741636097431183,
+        "FRVar": 0.05256004258990288,
+        "TLCC": 39.0
+      }
+    },
+    {
+      "index": 492,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.1346507291056173,
+      "new_q0_FRC": 0.1343435078071002,
+      "old_q0_exact_FRD": 10.372759621747507,
+      "new_q0_exact_FRD": 10.3759520834944,
+      "frozen_metrics": {
+        "FRC": 1.1093483863120617,
+        "exact_FRD": 121.85602089690468,
+        "FRDiv": 0.17314019799232483,
+        "FRVar": 0.07133661210536957
+      },
+      "new_metrics": {
+        "FRC": 1.1090411650135445,
+        "exact_FRD": 121.85921335865157,
+        "FRDiv": 0.17318783700466156,
+        "FRVar": 0.07136491686105728,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 497,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.17078545915881674,
+      "new_q0_FRC": 0.17063726405768478,
+      "old_q0_exact_FRD": 10.000794345945721,
+      "new_q0_exact_FRD": 10.00348973703439,
+      "frozen_metrics": {
+        "FRC": 0.9135521312254241,
+        "exact_FRD": 127.94843278769952,
+        "FRDiv": 0.17083877325057983,
+        "FRVar": 0.06795792281627655
+      },
+      "new_metrics": {
+        "FRC": 0.9134039361242922,
+        "exact_FRD": 127.95112817878818,
+        "FRDiv": 0.170879065990448,
+        "FRVar": 0.06798157095909119,
+        "TLCC": 9.0
+      }
+    },
+    {
+      "index": 506,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.08924559192071295,
+      "new_q0_FRC": 0.08918875304841882,
+      "old_q0_exact_FRD": 25.3551300055395,
+      "new_q0_exact_FRD": 25.357480670407917,
+      "frozen_metrics": {
+        "FRC": 0.38467058125360026,
+        "exact_FRD": 268.0448799182454,
+        "FRDiv": 0.15252277255058289,
+        "FRVar": 0.05086303502321243
+      },
+      "new_metrics": {
+        "FRC": 0.38461374238130613,
+        "exact_FRD": 268.0472305831138,
+        "FRDiv": 0.15253008902072906,
+        "FRVar": 0.050867337733507156,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 520,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.10196675203857959,
+      "new_q0_FRC": 0.10191729122643048,
+      "old_q0_exact_FRD": 15.681625973392233,
+      "new_q0_exact_FRD": 15.6860478157946,
+      "frozen_metrics": {
+        "FRC": 0.7024653627804227,
+        "exact_FRD": 167.98305144103244,
+        "FRDiv": 0.16001242399215698,
+        "FRVar": 0.04997635632753372
+      },
+      "new_metrics": {
+        "FRC": 0.7024159019682735,
+        "exact_FRD": 167.9874732834348,
+        "FRDiv": 0.16003112494945526,
+        "FRVar": 0.0499870702624321,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 524,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.06460515077310372,
+      "new_q0_FRC": 0.06456476423152252,
+      "old_q0_exact_FRD": 13.937634340763916,
+      "new_q0_exact_FRD": 13.942170434230517,
+      "frozen_metrics": {
+        "FRC": 0.5917590668409731,
+        "exact_FRD": 156.53042234352137,
+        "FRDiv": 0.15976682305335999,
+        "FRVar": 0.04811260849237442
+      },
+      "new_metrics": {
+        "FRC": 0.5917186802993919,
+        "exact_FRD": 156.53495843698798,
+        "FRDiv": 0.15978838503360748,
+        "FRVar": 0.04812474176287651,
+        "TLCC": 9.0
+      }
+    },
+    {
+      "index": 526,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.07525780754965337,
+      "new_q0_FRC": 0.07524384252723268,
+      "old_q0_exact_FRD": 15.132910298656514,
+      "new_q0_exact_FRD": 15.136052123338334,
+      "frozen_metrics": {
+        "FRC": 0.6343740002832605,
+        "exact_FRD": 149.7114836543296,
+        "FRDiv": 0.16061563789844513,
+        "FRVar": 0.04892677068710327
+      },
+      "new_metrics": {
+        "FRC": 0.6343600352608398,
+        "exact_FRD": 149.71462547901143,
+        "FRDiv": 0.16063857078552246,
+        "FRVar": 0.048939671367406845,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 548,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.06593098186984057,
+      "new_q0_FRC": 0.06590643078369228,
+      "old_q0_exact_FRD": 20.54812425962504,
+      "new_q0_exact_FRD": 20.54980011635209,
+      "frozen_metrics": {
+        "FRC": 0.4515228102499735,
+        "exact_FRD": 237.01728528420094,
+        "FRDiv": 0.1514124870300293,
+        "FRVar": 0.0494583435356617
+      },
+      "new_metrics": {
+        "FRC": 0.4514982591638252,
+        "exact_FRD": 237.01896114092798,
+        "FRDiv": 0.1514233499765396,
+        "FRVar": 0.04946501553058624,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 562,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.09956632641198883,
+      "new_q0_FRC": 0.0994946920968186,
+      "old_q0_exact_FRD": 15.880103887406346,
+      "new_q0_exact_FRD": 15.884766412996857,
+      "frozen_metrics": {
+        "FRC": 0.6588146186319906,
+        "exact_FRD": 162.9536873680764,
+        "FRDiv": 0.14778092503547668,
+        "FRVar": 0.052457746118307114
+      },
+      "new_metrics": {
+        "FRC": 0.6587429843168204,
+        "exact_FRD": 162.95834989366693,
+        "FRDiv": 0.14780046045780182,
+        "FRVar": 0.05246873199939728,
+        "TLCC": 5.0
+      }
+    },
+    {
+      "index": 568,
+      "role": "speaker",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.06960082680951286,
+      "new_q0_FRC": 0.06953445474917985,
+      "old_q0_exact_FRD": 17.00013348313872,
+      "new_q0_exact_FRD": 17.004203629518237,
+      "frozen_metrics": {
+        "FRC": 0.44391142512957643,
+        "exact_FRD": 208.80517649779915,
+        "FRDiv": 0.16497458517551422,
+        "FRVar": 0.049102116376161575
+      },
+      "new_metrics": {
+        "FRC": 0.44384505306924343,
+        "exact_FRD": 208.80924664417867,
+        "FRDiv": 0.16498838365077972,
+        "FRVar": 0.04911001771688461,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 638,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.19469619578594138,
+      "new_q0_FRC": 0.19458559405667958,
+      "old_q0_exact_FRD": 15.448261356591726,
+      "new_q0_exact_FRD": 15.451452647651713,
+      "frozen_metrics": {
+        "FRC": 1.0938966906174823,
+        "exact_FRD": 145.85981603190623,
+        "FRDiv": 0.14962099492549896,
+        "FRVar": 0.052830882370471954
+      },
+      "new_metrics": {
+        "FRC": 1.0937860888882205,
+        "exact_FRD": 145.8630073229662,
+        "FRDiv": 0.14963561296463013,
+        "FRVar": 0.05283890292048454,
+        "TLCC": 7.0
+      }
+    },
+    {
+      "index": 644,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.15205031008019665,
+      "new_q0_FRC": 0.1519722118565095,
+      "old_q0_exact_FRD": 13.727881677458402,
+      "new_q0_exact_FRD": 13.734139044532856,
+      "frozen_metrics": {
+        "FRC": 1.0978633186260656,
+        "exact_FRD": 153.78733536469937,
+        "FRDiv": 0.16514629125595093,
+        "FRVar": 0.052125267684459686
+      },
+      "new_metrics": {
+        "FRC": 1.0977852204023784,
+        "exact_FRD": 153.79359273177383,
+        "FRDiv": 0.1651635766029358,
+        "FRVar": 0.05213424190878868,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 649,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.1168853349823777,
+      "new_q0_FRC": 0.11675666707037712,
+      "old_q0_exact_FRD": 14.60642400579399,
+      "new_q0_exact_FRD": 14.611082735049141,
+      "frozen_metrics": {
+        "FRC": 0.8814483834885893,
+        "exact_FRD": 155.901090041498,
+        "FRDiv": 0.159663587808609,
+        "FRVar": 0.05030851066112518
+      },
+      "new_metrics": {
+        "FRC": 0.8813197155765887,
+        "exact_FRD": 155.90574877075315,
+        "FRDiv": 0.15967854857444763,
+        "FRVar": 0.05031692609190941,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 667,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.08804648807849795,
+      "new_q0_FRC": 0.08800360261950352,
+      "old_q0_exact_FRD": 21.441807102310136,
+      "new_q0_exact_FRD": 21.444671949884203,
+      "frozen_metrics": {
+        "FRC": 0.7154497070193037,
+        "exact_FRD": 216.25708829656838,
+        "FRDiv": 0.16918301582336426,
+        "FRVar": 0.04987609386444092
+      },
+      "new_metrics": {
+        "FRC": 0.7154068215603093,
+        "exact_FRD": 216.25995314414246,
+        "FRDiv": 0.16918811202049255,
+        "FRVar": 0.04987919330596924,
+        "TLCC": 10.0
+      }
+    },
+    {
+      "index": 670,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.07729903347797898,
+      "new_q0_FRC": 0.07727122363648671,
+      "old_q0_exact_FRD": 28.03510367943829,
+      "new_q0_exact_FRD": 28.037802242786974,
+      "frozen_metrics": {
+        "FRC": 0.5056361451768628,
+        "exact_FRD": 263.83933871474215,
+        "FRDiv": 0.1770804077386856,
+        "FRVar": 0.048537593334913254
+      },
+      "new_metrics": {
+        "FRC": 0.5056083353353706,
+        "exact_FRD": 263.84203727809086,
+        "FRDiv": 0.17708362638950348,
+        "FRVar": 0.048539888113737106,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 683,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.07810932101557794,
+      "new_q0_FRC": 0.0778496302542696,
+      "old_q0_exact_FRD": 10.624109895475664,
+      "new_q0_exact_FRD": 10.632988946078425,
+      "frozen_metrics": {
+        "FRC": 1.036918471852254,
+        "exact_FRD": 129.18355082828086,
+        "FRDiv": 0.14858128130435944,
+        "FRVar": 0.048037078231573105
+      },
+      "new_metrics": {
+        "FRC": 1.0366587810909456,
+        "exact_FRD": 129.19242987888362,
+        "FRDiv": 0.14861537516117096,
+        "FRVar": 0.04805462062358856,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 686,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.13131571380779308,
+      "new_q0_FRC": 0.1314828348975225,
+      "old_q0_exact_FRD": 11.597021473902151,
+      "new_q0_exact_FRD": 11.602314038062266,
+      "frozen_metrics": {
+        "FRC": 1.3394970961104036,
+        "exact_FRD": 120.66489811128686,
+        "FRDiv": 0.17630091309547424,
+        "FRVar": 0.05855274200439453
+      },
+      "new_metrics": {
+        "FRC": 1.339664217200133,
+        "exact_FRD": 120.67019067544697,
+        "FRDiv": 0.1763285994529724,
+        "FRVar": 0.05856972560286522,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 732,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.13102686460700766,
+      "new_q0_FRC": 0.1309198636211578,
+      "old_q0_exact_FRD": 18.405850596064926,
+      "new_q0_exact_FRD": 18.408864258075006,
+      "frozen_metrics": {
+        "FRC": 0.5760576655474616,
+        "exact_FRD": 185.3924308270603,
+        "FRDiv": 0.17975758016109467,
+        "FRVar": 0.05301642790436745
+      },
+      "new_metrics": {
+        "FRC": 0.5759506645616118,
+        "exact_FRD": 185.39544448907037,
+        "FRDiv": 0.17976675927639008,
+        "FRVar": 0.05302233621478081,
+        "TLCC": 13.0
+      }
+    },
+    {
+      "index": 737,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.04007126597886061,
+      "new_q0_FRC": 0.04004516704249132,
+      "old_q0_exact_FRD": 16.89259768790057,
+      "new_q0_exact_FRD": 16.897158409235498,
+      "frozen_metrics": {
+        "FRC": 0.4490076216581433,
+        "exact_FRD": 191.9169860628421,
+        "FRDiv": 0.18011243641376495,
+        "FRVar": 0.050446517765522
+      },
+      "new_metrics": {
+        "FRC": 0.448981522721774,
+        "exact_FRD": 191.92154678417702,
+        "FRDiv": 0.18012283742427826,
+        "FRVar": 0.0504537969827652,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 779,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.08884901848778613,
+      "new_q0_FRC": 0.08883708332499013,
+      "old_q0_exact_FRD": 11.911716957099094,
+      "new_q0_exact_FRD": 11.913643063829175,
+      "frozen_metrics": {
+        "FRC": 0.6933753850640961,
+        "exact_FRD": 121.80658091876762,
+        "FRDiv": 0.20100730657577515,
+        "FRVar": 0.05579507350921631
+      },
+      "new_metrics": {
+        "FRC": 0.6933634499013002,
+        "exact_FRD": 121.8085070254977,
+        "FRDiv": 0.2010325789451599,
+        "FRVar": 0.0558113232254982,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 871,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.08963878944770606,
+      "new_q0_FRC": 0.08989976371453146,
+      "old_q0_exact_FRD": 13.333783383504022,
+      "new_q0_exact_FRD": 13.337272876685075,
+      "frozen_metrics": {
+        "FRC": 0.8297915071191633,
+        "exact_FRD": 121.88054040286504,
+        "FRDiv": 0.18281672894954681,
+        "FRVar": 0.05591787397861481
+      },
+      "new_metrics": {
+        "FRC": 0.8300524813859886,
+        "exact_FRD": 121.88402989604609,
+        "FRDiv": 0.18283918499946594,
+        "FRVar": 0.055931661278009415,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 877,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.14394913778861163,
+      "new_q0_FRC": 0.14388611628811365,
+      "old_q0_exact_FRD": 10.054820463975371,
+      "new_q0_exact_FRD": 10.059242561321675,
+      "frozen_metrics": {
+        "FRC": 1.6884441953272447,
+        "exact_FRD": 82.20322681856793,
+        "FRDiv": 0.20148518681526184,
+        "FRVar": 0.05568946152925491
+      },
+      "new_metrics": {
+        "FRC": 1.6883811738267465,
+        "exact_FRD": 82.20764891591423,
+        "FRDiv": 0.20150910317897797,
+        "FRVar": 0.055705778300762177,
+        "TLCC": 5.0
+      }
+    },
+    {
+      "index": 920,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.05497081364102385,
+      "new_q0_FRC": 0.05492223540375358,
+      "old_q0_exact_FRD": 23.928251515934164,
+      "new_q0_exact_FRD": 23.930248204210294,
+      "frozen_metrics": {
+        "FRC": 0.3999102485025036,
+        "exact_FRD": 227.13499757409858,
+        "FRDiv": 0.20232394337654114,
+        "FRVar": 0.04750275984406471
+      },
+      "new_metrics": {
+        "FRC": 0.39986167026523334,
+        "exact_FRD": 227.1369942623747,
+        "FRDiv": 0.20233064889907837,
+        "FRVar": 0.0475076287984848,
+        "TLCC": 3.0
+      }
+    },
+    {
+      "index": 927,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.08456916868705376,
+      "new_q0_FRC": 0.08451096019954361,
+      "old_q0_exact_FRD": 19.5494126560526,
+      "new_q0_exact_FRD": 19.552064345976103,
+      "frozen_metrics": {
+        "FRC": 0.3625561797311337,
+        "exact_FRD": 235.77573817696546,
+        "FRDiv": 0.20472100377082825,
+        "FRVar": 0.047917690128088
+      },
+      "new_metrics": {
+        "FRC": 0.36249797124362354,
+        "exact_FRD": 235.77838986688897,
+        "FRDiv": 0.20473040640354156,
+        "FRVar": 0.04792311415076256,
+        "TLCC": 12.0
+      }
+    },
+    {
+      "index": 936,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.09278061622607148,
+      "new_q0_FRC": 0.09272933747734348,
+      "old_q0_exact_FRD": 11.668107626857834,
+      "new_q0_exact_FRD": 11.671095992137024,
+      "frozen_metrics": {
+        "FRC": 0.8450848243952829,
+        "exact_FRD": 124.67764878606856,
+        "FRDiv": 0.19675570726394653,
+        "FRVar": 0.04703022912144661
+      },
+      "new_metrics": {
+        "FRC": 0.8450335456465549,
+        "exact_FRD": 124.68063715134775,
+        "FRDiv": 0.19677378237247467,
+        "FRVar": 0.04704334959387779,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 937,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.08337245272482682,
+      "new_q0_FRC": 0.08310851431629496,
+      "old_q0_exact_FRD": 12.558361874026057,
+      "new_q0_exact_FRD": 12.562492836795759,
+      "frozen_metrics": {
+        "FRC": 0.9106399078721262,
+        "exact_FRD": 124.09058889320076,
+        "FRDiv": 0.1677333116531372,
+        "FRVar": 0.05589977651834488
+      },
+      "new_metrics": {
+        "FRC": 0.9103759694635943,
+        "exact_FRD": 124.09471985597045,
+        "FRDiv": 0.16776058077812195,
+        "FRVar": 0.05591577664017677,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 946,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.09122439341178541,
+      "new_q0_FRC": 0.09108523496332077,
+      "old_q0_exact_FRD": 13.108292307010718,
+      "new_q0_exact_FRD": 13.111877988316465,
+      "frozen_metrics": {
+        "FRC": 0.9154841805675875,
+        "exact_FRD": 134.6978098655121,
+        "FRDiv": 0.1844571828842163,
+        "FRVar": 0.05268965661525726
+      },
+      "new_metrics": {
+        "FRC": 0.9153450221191228,
+        "exact_FRD": 134.70139554681788,
+        "FRDiv": 0.184470996260643,
+        "FRVar": 0.05269854515790939,
+        "TLCC": 11.0
+      }
+    },
+    {
+      "index": 953,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.15855119208294396,
+      "new_q0_FRC": 0.1585087181392189,
+      "old_q0_exact_FRD": 12.75744241811441,
+      "new_q0_exact_FRD": 12.760679122096674,
+      "frozen_metrics": {
+        "FRC": 1.0366738725392306,
+        "exact_FRD": 115.45327345282995,
+        "FRDiv": 0.19664275646209717,
+        "FRVar": 0.055929217487573624
+      },
+      "new_metrics": {
+        "FRC": 1.0366313985955056,
+        "exact_FRD": 115.45651015681221,
+        "FRDiv": 0.19666609168052673,
+        "FRVar": 0.055945128202438354,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 983,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.11303683703310423,
+      "new_q0_FRC": 0.11329843396757847,
+      "old_q0_exact_FRD": 11.463004845849586,
+      "new_q0_exact_FRD": 11.466463211835958,
+      "frozen_metrics": {
+        "FRC": 1.0451268483823277,
+        "exact_FRD": 115.6828745771685,
+        "FRDiv": 0.17545786499977112,
+        "FRVar": 0.060684554278850555
+      },
+      "new_metrics": {
+        "FRC": 1.045388445316802,
+        "exact_FRD": 115.68633294315488,
+        "FRDiv": 0.17549119889736176,
+        "FRVar": 0.060701221227645874,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 991,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.14985067000340638,
+      "new_q0_FRC": 0.15001168645355872,
+      "old_q0_exact_FRD": 11.769586665089001,
+      "new_q0_exact_FRD": 11.774958821328624,
+      "frozen_metrics": {
+        "FRC": 1.2311390375915536,
+        "exact_FRD": 119.51227017227355,
+        "FRDiv": 0.1722320318222046,
+        "FRVar": 0.05963705852627754
+      },
+      "new_metrics": {
+        "FRC": 1.231300054041706,
+        "exact_FRD": 119.51764232851318,
+        "FRDiv": 0.17226681113243103,
+        "FRVar": 0.05965445190668106,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1010,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.1887232086158734,
+      "new_q0_FRC": 0.1887232086158734,
+      "old_q0_exact_FRD": 11.972209154255145,
+      "new_q0_exact_FRD": 11.977550874379203,
+      "frozen_metrics": {
+        "FRC": 0.9247236079819086,
+        "exact_FRD": 130.41773383166222,
+        "FRDiv": 0.17071309685707092,
+        "FRVar": 0.052690088748931885
+      },
+      "new_metrics": {
+        "FRC": 0.9247236079819086,
+        "exact_FRD": 130.42307555178627,
+        "FRDiv": 0.17073071002960205,
+        "FRVar": 0.052699752151966095,
+        "TLCC": 7.0
+      }
+    },
+    {
+      "index": 1016,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.12285548528979151,
+      "new_q0_FRC": 0.12263584756760583,
+      "old_q0_exact_FRD": 14.098633830919916,
+      "new_q0_exact_FRD": 14.102737745146765,
+      "frozen_metrics": {
+        "FRC": 0.9999266165837997,
+        "exact_FRD": 134.20752575915836,
+        "FRDiv": 0.15510118007659912,
+        "FRVar": 0.05653933063149452
+      },
+      "new_metrics": {
+        "FRC": 0.999706978861614,
+        "exact_FRD": 134.2116296733852,
+        "FRDiv": 0.15512922406196594,
+        "FRVar": 0.05655335634946823,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1033,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.1888466479291766,
+      "new_q0_FRC": 0.188754445861212,
+      "old_q0_exact_FRD": 10.404181345857312,
+      "new_q0_exact_FRD": 10.408518772867572,
+      "frozen_metrics": {
+        "FRC": 1.1590466776354658,
+        "exact_FRD": 98.53204014969319,
+        "FRDiv": 0.20141851902008057,
+        "FRVar": 0.056642185896635056
+      },
+      "new_metrics": {
+        "FRC": 1.1589544755675012,
+        "exact_FRD": 98.53637757670344,
+        "FRDiv": 0.20145443081855774,
+        "FRVar": 0.05666525289416313,
+        "TLCC": 49.0
+      }
+    },
+    {
+      "index": 1045,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.09174203794326054,
+      "new_q0_FRC": 0.09175271189463752,
+      "old_q0_exact_FRD": 25.148630173430295,
+      "new_q0_exact_FRD": 25.14929382731119,
+      "frozen_metrics": {
+        "FRC": 0.36502705976112626,
+        "exact_FRD": 262.2602213906947,
+        "FRDiv": 0.16622363030910492,
+        "FRVar": 0.05133933201432228
+      },
+      "new_metrics": {
+        "FRC": 0.36503773371250325,
+        "exact_FRD": 262.2608850445756,
+        "FRDiv": 0.16622969508171082,
+        "FRVar": 0.05134284123778343,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1056,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.08889254763563628,
+      "new_q0_FRC": 0.08891881795843741,
+      "old_q0_exact_FRD": 24.774277452259327,
+      "new_q0_exact_FRD": 24.774277452259327,
+      "frozen_metrics": {
+        "FRC": 0.39841311280714836,
+        "exact_FRD": 261.7933098023664,
+        "FRDiv": 0.1513240486383438,
+        "FRVar": 0.045340780168771744
+      },
+      "new_metrics": {
+        "FRC": 0.3984393831299495,
+        "exact_FRD": 261.7933098023664,
+        "FRDiv": 0.1513318419456482,
+        "FRVar": 0.045344989746809006,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1057,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10,
+        14
+      ],
+      "old_q0_FRC": 0.04874905869452575,
+      "new_q0_FRC": 0.04871294075688769,
+      "old_q0_exact_FRD": 25.492040054563873,
+      "new_q0_exact_FRD": 25.493030663529993,
+      "frozen_metrics": {
+        "FRC": 0.2709571059854694,
+        "exact_FRD": 276.36140536679864,
+        "FRDiv": 0.18941110372543335,
+        "FRVar": 0.04921473562717438
+      },
+      "new_metrics": {
+        "FRC": 0.2709209880478313,
+        "exact_FRD": 276.3623959757648,
+        "FRDiv": 0.18941828608512878,
+        "FRVar": 0.04921877384185791,
+        "TLCC": 13.0
+      }
+    },
+    {
+      "index": 1071,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        10
+      ],
+      "old_q0_FRC": 0.09608984861997373,
+      "new_q0_FRC": 0.0960154681679537,
+      "old_q0_exact_FRD": 11.583981471725362,
+      "new_q0_exact_FRD": 11.586606243443516,
+      "frozen_metrics": {
+        "FRC": 0.6936453552841593,
+        "exact_FRD": 138.66924821795942,
+        "FRDiv": 0.2052176296710968,
+        "FRVar": 0.05814395472407341
+      },
+      "new_metrics": {
+        "FRC": 0.6935709748321393,
+        "exact_FRD": 138.67187298967758,
+        "FRDiv": 0.20524372160434723,
+        "FRVar": 0.05816289409995079,
+        "TLCC": 1.0
+      }
+    },
+    {
+      "index": 1075,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.077121665072475,
+      "new_q0_FRC": 0.07701177405514568,
+      "old_q0_exact_FRD": 20.779740658315042,
+      "new_q0_exact_FRD": 20.78231685735102,
+      "frozen_metrics": {
+        "FRC": 0.42401051760630337,
+        "exact_FRD": 206.7286052706681,
+        "FRDiv": 0.18211515247821808,
+        "FRVar": 0.053094442933797836
+      },
+      "new_metrics": {
+        "FRC": 0.4239006265889741,
+        "exact_FRD": 206.7311814697041,
+        "FRDiv": 0.18212801218032837,
+        "FRVar": 0.05310139060020447,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1085,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        10
+      ],
+      "old_q0_FRC": 0.06563616242496206,
+      "new_q0_FRC": 0.06561681852754683,
+      "old_q0_exact_FRD": 22.13784336258952,
+      "new_q0_exact_FRD": 22.138682817408977,
+      "frozen_metrics": {
+        "FRC": 0.2924639783241209,
+        "exact_FRD": 221.61976587855418,
+        "FRDiv": 0.18776710331439972,
+        "FRVar": 0.052884723991155624
+      },
+      "new_metrics": {
+        "FRC": 0.29244463442670565,
+        "exact_FRD": 221.62060533337362,
+        "FRDiv": 0.18777313828468323,
+        "FRVar": 0.05288859084248543,
+        "TLCC": 5.0
+      }
+    },
+    {
+      "index": 1114,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.05506242193562296,
+      "new_q0_FRC": 0.05501309063430728,
+      "old_q0_exact_FRD": 22.80339967906319,
+      "new_q0_exact_FRD": 22.805306084401543,
+      "frozen_metrics": {
+        "FRC": 0.33942726037801024,
+        "exact_FRD": 230.88565387199054,
+        "FRDiv": 0.16319279372692108,
+        "FRVar": 0.051404234021902084
+      },
+      "new_metrics": {
+        "FRC": 0.33937792907669456,
+        "exact_FRD": 230.88756027732887,
+        "FRDiv": 0.1632014811038971,
+        "FRVar": 0.051409829407930374,
+        "TLCC": 0.0
+      }
+    },
+    {
+      "index": 1127,
+      "role": "listener",
+      "constant_prediction_channels": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10
+      ],
+      "old_q0_FRC": 0.0948495571963549,
+      "new_q0_FRC": 0.09474478883380973,
+      "old_q0_exact_FRD": 19.368818615464377,
+      "new_q0_exact_FRD": 19.371708077093064,
+      "frozen_metrics": {
+        "FRC": 0.3888409797784459,
+        "exact_FRD": 220.42036908510104,
+        "FRDiv": 0.19065390527248383,
+        "FRVar": 0.05618248134851456
+      },
+      "new_metrics": {
+        "FRC": 0.3887362114159007,
+        "exact_FRD": 220.42325854672973,
+        "FRDiv": 0.1906675547361374,
+        "FRVar": 0.056190479546785355,
+        "TLCC": 0.0
+      }
+    }
+  ]
+}

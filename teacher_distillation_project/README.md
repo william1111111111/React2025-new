@@ -42,10 +42,12 @@ full-sequence VAL1142, both directions, all same-session GT, and all five
 repository metrics; see `coreset_reactor/EVALUATION_CONTRACT.md`.
 
 Under that protocol, the current multi-view student with normalized `w^4`
-fusion gives FRC 1.101719, exact FRD 136.159663, FRDiv 0.179191, FRVar
-0.058116, and official TLCC/FRSyn 49. The official TLCC implementation is
-non-discriminative in this run: every arm reaches the maximum boundary lag.
-The unified six-arm result is in
+fusion and the final query-0 constant-AU transition postprocess gives FRC
+1.101718, exact FRD 136.159593, FRDiv 0.179193, FRVar 0.058117, and official
+TLCC/FRSyn 45.803853. The postprocess changes one frame in each constant AU
+of query 0 for 89/1142 eligible contexts; it is an implementation detail, not
+a model contribution. The unified six-arm fusion ablation retains raw outputs,
+for which TLCC reaches the boundary lag 49 throughout. Its result is in
 `published_results/REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`;
 the older forward-only summaries remain as diagnostics.
 

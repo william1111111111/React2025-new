@@ -3,6 +3,7 @@ import torch
 from coreset_reactor.eval_overlap_save_student import (
     overlap_save,
     powered_center_overlap,
+    stabilize_query0_au_transitions,
 )
 from coreset_reactor.eval_student_window_gap import (
     WINDOW,
@@ -46,3 +47,34 @@ def test_power_one_matches_original_center_weighting():
     expected = overlap_add(predictions, starts, WINDOW + 375, "center")
     actual = powered_center_overlap(predictions, starts, WINDOW + 375, 1)
     torch.testing.assert_close(actual, expected)
+
+
+def test_query0_transition_changes_each_constant_au_once():
+    length = 12
+    prediction = torch.zeros(10, length, 25)
+    ramp = torch.linspace(0, 1, length)
+    prediction[:, :, 2:] = ramp[None, :, None]
+    prediction[0, :, 1] = 1
+    source = torch.stack([
+        ramp + channel / 100 for channel in range(25)
+    ], dim=1)
+    source[:, 0] = torch.tensor([0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0])
+    source[:, 1] = torch.tensor([1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1])
+
+    result = stabilize_query0_au_transitions(prediction, source, margin=2)
+
+    difference = result != prediction
+    assert int(difference[0, :, 0].sum()) == 1
+    assert int(difference[0, :, 1].sum()) == 1
+    assert not difference[1:].any()
+    assert not difference[:, :, 2:].any()
+    assert result[0, 3, 0] == 1
+    assert result[0, 5, 1] == 0
+
+
+def test_query0_transition_is_noop_when_source_has_constant_channel():
+    prediction = torch.zeros(10, 12, 25)
+    source = torch.arange(12, dtype=torch.float32)[:, None].repeat(1, 25)
+    source[:, 7] = 0
+    result = stabilize_query0_au_transitions(prediction, source, margin=2)
+    assert torch.equal(result, prediction)
