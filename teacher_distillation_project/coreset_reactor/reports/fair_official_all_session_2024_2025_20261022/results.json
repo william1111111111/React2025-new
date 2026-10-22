@@ -10,9 +10,17 @@
       "official FRC/FRD/FRDiv/FRVar definitions"
     ],
     "scope": "validation, not hidden TEST",
-    "selection_note": "p=4 was selected on a VAL120 probe and alpha=1.5 is a VAL diagnostic operating point; both must be frozen before hidden TEST."
+    "selection_note": "p=4 was selected on a REACT2025 VAL120 probe. Alpha=1.5 is the REACT2024 validation operating point. Dataset-specific settings must be frozen before hidden TEST."
+  },
+  "method_policy": {
+    "react2024": "slot-centered output scaling with alpha=1.5",
+    "react2025": "multi-view distillation plus p=4 boundary fusion; no slot-centered output scaling"
   },
   "react2025": {
+    "slot_centered_scaling": {
+      "enabled": false,
+      "alpha": 1.0
+    },
     "population": {
       "contexts": 1142,
       "directions": {
@@ -211,6 +219,10 @@
     }
   },
   "react2024": {
+    "slot_centered_scaling": {
+      "enabled": true,
+      "alpha": 1.5
+    },
     "population": {
       "contexts": 1124,
       "length_frames": [
@@ -223,7 +235,15 @@
       ],
       "mean_gt_count": 32.03914590747331
     },
-    "current_p4": {
+    "current": {
+      "method": "slot_centered_spread_alpha1.5",
+      "contexts": 1124,
+      "FRC": 0.7032010927831159,
+      "exact_FRD": 93.94501281524329,
+      "FRDiv": 0.1686205118894577,
+      "FRVar": 0.07123173028230667
+    },
+    "p4_single_window_identity": {
       "contexts": 1124,
       "FRC": 0.6553481896550946,
       "exact_FRD": 86.02576286752208,
@@ -255,14 +275,14 @@
         "relative_percent": 0.0
       }
     },
-    "optional_spread_alpha1.5": {
+    "spread_alpha1.5": {
       "contexts": 1124,
       "FRC": 0.7032010927831159,
       "exact_FRD": 93.94501281524329,
       "FRDiv": 0.1686205118894577,
       "FRVar": 0.07123173028230667
     },
-    "delta_spread_minus_unmodified": {
+    "delta_current_minus_unmodified": {
       "FRC": {
         "absolute": 0.04785290317244073,
         "relative_percent": 7.30190514463294
@@ -282,8 +302,8 @@
     }
   },
   "interpretation": {
-    "react2025": "Current multi-view+p4 improves the previous student. Versus set matching it has higher FRC and FRDiv, slightly worse FRD, and slightly lower FRVar.",
-    "react2024": "The current multi-view+p4 route is an identity because every accepted input is exactly one 750-frame window. Alpha=1.5 slot spread is optional and trades a worse FRD for higher FRC/diversity."
+    "react2025": "Current multi-view+p4 improves the previous student. Versus set matching it has higher FRC and FRDiv, slightly worse FRD, and slightly lower FRVar. No alpha=1.5 scaling is applied.",
+    "react2024": "Alpha=1.5 slot-centered scaling is the current operating point and trades a worse FRD for higher FRC/diversity. Multi-view+p4 alone is an identity because every accepted input is exactly one 750-frame window."
   },
   "provenance": {
     "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_p4_bidir_official_all_session_20261022/comparison.json": "eea26a52891c59869001fcad4bb2deb811979ba5612bf907374c0d698d2effb2",
