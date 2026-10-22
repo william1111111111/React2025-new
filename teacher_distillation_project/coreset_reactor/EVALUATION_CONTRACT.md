@@ -11,9 +11,9 @@ must use one frozen protocol:
 - official Processor behavior and AU rounding;
 - FRC, exact FRD, FRDiv, FRVar, and official TLCC/FRSyn definitions.
 
-A 571-context direction, a cropped 750-frame view, a sampled-GT pool, or a
-surrogate FRD may be retained as a debugging diagnostic. It cannot be used to
-rank an ablation, select a paper operating point, or populate the main result
+A single-direction subset, a cropped 750-frame view, a sampled-GT pool, or a
+surrogate FRD must not be published as an ablation result. It cannot be used
+to rank an ablation, select a paper operating point, or populate a result
 table. Direction-specific values may be shown only alongside the VAL1142
 average produced from the same run.
 

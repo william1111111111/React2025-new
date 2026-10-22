@@ -36,10 +36,9 @@ REACT2025 is not changed by that calibration decision.
 
 The 2026-10-18 REACT2025 long-sequence experiment adds deterministic
 head/center/tail teacher views for training clips longer than 750 frames and
-50% overlap, center-weighted full-sequence inference. Its original forward
-VAL571 tables are retained only as diagnostics. Paper ablations now require
-full-sequence VAL1142, both directions, all same-session GT, and all five
-repository metrics; see `coreset_reactor/EVALUATION_CONTRACT.md`.
+50% overlap, center-weighted full-sequence inference. Published paper
+ablations require full-sequence VAL1142, both directions, all same-session GT,
+and all five repository metrics; see `coreset_reactor/EVALUATION_CONTRACT.md`.
 
 Under that protocol, the current multi-view student with normalized `w^4`
 fusion and the final query-0 constant-AU transition postprocess gives FRC
@@ -49,7 +48,7 @@ of query 0 for 89/1142 eligible contexts; it is an implementation detail, not
 a model contribution. The unified six-arm fusion ablation retains raw outputs,
 for which TLCC reaches the boundary lag 49 throughout. Its result is in
 `published_results/REACT2025_BIDIRECTIONAL_OFFICIAL5_ABLATIONS_20261022.md`;
-the older forward-only summaries remain as diagnostics.
+single-direction result tables are not published.
 
 Some historical scripts contain provenance paths rooted at
 `/home/zhaowenjie/react2025_new` or `/public/zhaowenjie/react2025_new`.

@@ -86,6 +86,6 @@ REACT2025 不应用 `alpha=1.5`；上面的 REACT2025 主结果使用多视图�
 独立测试集泛化结论。
 
 机器可读汇总在 `results.json`；转换后处理的逐上下文变化与精确五指标在
-`../react2025_p4_sparse_transition_official5_all_session_20261022/`。原始
-`p=4` 的 1,142 条逐样本结果、完整 manifest 和真实样本官方直调核验位于
-`../react2025_multiview_p4_bidir_official_all_session_20261022/`。
+`../react2025_p4_sparse_transition_official5_all_session_20261022/`。真实样本
+官方函数直调一致性核验位于
+`../react2025_multiview_p4_bidir_official_all_session_20261022/official_metric_parity.json`。

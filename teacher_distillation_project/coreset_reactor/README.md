@@ -84,8 +84,8 @@ the official hidden test or the released loader's sampled GT policy.
 REACT2025 ablations that report FRC, exact FRD, FRDiv, FRVar, or TLCC/FRSyn
 must use complete full-sequence VAL1142: 571 contexts in each direction, all
 opposite-role same-session GT, official Processor behavior, and official AU
-rounding. Forward VAL571 and center-750 results are diagnostics only and must
-not enter the main ablation table or drive an operating-point claim. The
+rounding. Single-direction and center-750 result tables must not be published
+or drive an operating-point claim. The
 enforced contract is documented in `EVALUATION_CONTRACT.md`; the active
 multi-view evaluator is `eval_multiview_ablation_bidir_all_session.py`.
 The completed six-arm aggregate is published in
@@ -95,14 +95,4 @@ The selected final `p=4` path is evaluated by
 one source-aligned transition frame to every constant query-0 AU in eligible
 contexts. This remains a documented output postprocess; the six-arm fusion
 table keeps its raw predictions so the power ablation is not confounded.
-
-### 750-frame training/inference gap audit
-
-`eval_student_window_gap.py` evaluates the frozen student on forward VAL with
-all same-session GT under three controlled protocols: standalone head/center/
-tail windows, a matched center interval from standalone versus stitched
-inference, and non-overlap versus 50%-overlap full-sequence inference.  The
-frozen completed audit is under
-`reports/window_gap_audit_20261018/`; see its `REPORT.md` for the quality versus
-diversity tradeoff and the training-cache coverage audit.
 

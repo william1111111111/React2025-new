@@ -65,9 +65,5 @@ FRDiv 和 FRVar 分别提高 0.116%、0.605% 和 0.369%。重叠融合形成明�
 后处理后的分方向五指标、89 条变化记录和实现哈希位于
 `coreset_reactor/reports/react2025_p4_sparse_transition_official5_all_session_20261022/results.json`。
 
-此前发布的正向 VAL571 表仅保留为诊断和候选产生历史，不再作为论文消融
-证据。可复核的紧凑机器结果位于
-`coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/summary.json`，
-完整本地逐 context 结果与 manifest 的 SHA256 分别为
-`5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc` 和
-`4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057`。
+可复核的紧凑机器结果位于
+`coreset_reactor/reports/react2025_multiview_ablation_bidir_official5_all_session_20261022_v2/summary.json`。

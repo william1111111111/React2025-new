@@ -1,7 +1,6 @@
 {
   "protocol": "REACT2025 complete VAL1142, both directions, full source duration, K10, all opposite-role same-session GT, official Processor and AU rounding, official FRC/exact-FRD/FRDiv/FRVar/TLCC definitions",
   "only_official_protocol_extension": "all same-session GT",
-  "manifest_sha256": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057",
   "metrics": {
     "speaker_to_listener": {
       "contexts": 571,
@@ -348,109 +347,15 @@
     }
   },
   "selection": {
-    "historical_candidate": "p=4 was proposed by the earlier forward VAL120 diagnostic before this rerun.",
     "final_decision": "Retain p=4 as the quality/diversity compromise on the complete bidirectional VAL1142 curve.",
-    "evidence_policy": "The forward diagnostic records candidate generation only; it is not the final paper evidence."
+    "evidence_policy": "Only complete bidirectional VAL1142 evidence is published."
   },
   "limitations": [
     "Validation data, not hidden TEST.",
     "The target pool deliberately retains every same-session target.",
     "Official TLCC returns after query zero and can select the boundary lag when channels are constant; it is reproduced without redefining it.",
-    "Single-direction and cropped-window results remain diagnostics and are excluded from the main ablation table."
+    "Single-direction and cropped-window result tables are not published."
   ],
-  "provenance": {
-    "base_manifest": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/full_sequence_bidir_allgt_20261018/manifest.json",
-      "2b608514e3c833db00dd24997ba05f2a781363485f0893eb5cbd38a978357d33"
-    ],
-    "base_comparison": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/full_sequence_bidir_allgt_20261018/comparison.json",
-      "22f9357c90d1431c6bca6c217fb97111ff6f06df59dd3a96abec7d1359dbfd96"
-    ],
-    "p4_manifest": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_p4_bidir_official_all_session_20261022/manifest.json",
-      "d7144082ff51b5827e938a3c9e99471bc04db3da7ff4c174c6c2a295929e70c5"
-    ],
-    "p4_comparison": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/react2025_multiview_p4_bidir_official_all_session_20261022/comparison.json",
-      "eea26a52891c59869001fcad4bb2deb811979ba5612bf907374c0d698d2effb2"
-    ],
-    "forward_manifest": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/multiview_boundary_student_seed1_20261018/eval_forward_val571/manifest.json",
-      "e4b4b2136d327e457579fb7870420ef645d39dccff88c1a7d061e3b35a1cdef1"
-    ],
-    "forward_comparison": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/multiview_boundary_student_seed1_20261018/eval_forward_val571/comparison.json",
-      "53c561be18505f5256bcc9e454fcc2b864c858dc4d71d72f3b6eb509f9b7ce41"
-    ],
-    "multiview_checkpoint": [
-      "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/reports/multiview_boundary_student_seed1_20261018/student_compute_matched_4epochs/student.pth",
-      "c126a2bd8febc039ef36887b98de02c2ddd78f541b45b6e6464cb735ba2ca21c"
-    ],
-    "implementations": [
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_multiview_ablation_bidir_all_session.py",
-        "6a958f012858909bd6b19a7b569eff6891cfefadeae5db86564c5fe6f9b067e5"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_full_sequence_all_session.py",
-        "0f481d4ab72fc520fb0bf0105008e9d5e060ea069cb18a2f5f92aa91e03c70fa"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_multiview_boundary_student.py",
-        "2575e9fcaa693032c6956f7c58c555c2a1bdae3281fdc260d578692bab0865f2"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_overlap_save_student.py",
-        "b724442529e0ae07cc63530df3f03241496ef4a2ec89b4b86323aa7eee2c81e6"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/eval_student_window_gap.py",
-        "3c570666b72b77cfd4f5f996caa58f07e8e34e6bbe2a328dd27be49938000deb"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/exact_dtw_cuda.py",
-        "70bb0fa53b11c8214be4ebc3840296d697e429feb1c1820d6a48a665b7f13182"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/coreset_reactor/fast_frc.py",
-        "55ac20a26b71dd8053a566451bcc2dfa8053e76a2cb0837fe4ef9f199e24ff40"
-      ]
-    ],
-    "official_sources": [
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/metrics/FRC.py",
-        "f104754206490234847eea9ecc2a02218d9c4a41bc9fa88635c295023d1520b9"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/metrics/FRD.py",
-        "0b01ae09383dfd7b36342186e8afc84f3a3b23b9990183bd654f70cfe12741b0"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/metrics/S_MSE.py",
-        "0e4e9280ea676abf5ce34bbd78a303a93e9b3714e72fe88a169b47e0d57f4b40"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/metrics/FRVar.py",
-        "e306cfe7a7d31572e86004ddd097804c5aec128624de646042775063dfe924f9"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/metrics/TLCC.py",
-        "ce9ed5db7d74774e1fa5c40ec47a5cdeb331b3d9c856981063da4a94d78e61cf"
-      ],
-      [
-        "/public/zhaowenjie/react2025_new/teacher_distillation_project/mam_reactor/framework/modules/post_processor.py",
-        "b33b12035dc5002b10c4acc1ce586d8e9e1efdd01c07ade434f764ac6490ccd6"
-      ]
-    ],
-    "metric_execution": {
-      "FRC": "vectorized scalar-equivalent official CCC/best-GT formula",
-      "exact_FRD": "unbanded FP64 CUDA DP equivalent to official tslearn.dtw",
-      "FRDiv": "official framework.metrics.S_MSE.compute_s_mse",
-      "FRVar": "official framework.metrics.FRVar.compute_FRVar",
-      "TLCC": "official framework.metrics.TLCC._func per context"
-    }
-  },
   "population_validation": {
     "contexts": 1142,
     "directions": {
@@ -474,8 +379,5 @@
     ],
     "status": "complete"
   },
-  "full_artifact_sha256": {
-    "comparison.json": "5e3e3c8cdecc28b416223a4369363e9e330931ff0975fddef81c162393974dfc",
-    "manifest.json": "4536a1267a0ddb9bbfd56bb2310ab1cdca0a90ec5118d746939b9500b4d1c057"
-  }
+  "reproduction_policy": "Use the active evaluator to compute every multi-view arm over all 1,142 contexts; importing a single-direction result cache is prohibited."
 }

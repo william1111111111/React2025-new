@@ -6,10 +6,9 @@ context uses the full source duration and every opposite-role target from the
 same session.  The five repository metrics are FRC, exact FRD, FRDiv, FRVar,
 and the official TLCC/FRSyn implementation.
 
-Historical 571-context forward results are diagnostics only and are not
-imported into the ablation table.  The frozen old-student non-overlap scores
-and final multi-view p=4 scores are imported from their complete bidirectional
-evaluations; TLCC and boundary diagnostics are computed here from predictions.
+Single-direction results are rejected.  Only the frozen old-student baseline
+is imported from a complete bidirectional evaluation; every multi-view arm is
+computed over the complete population by this evaluator.
 """
 from __future__ import annotations
 
@@ -42,12 +41,6 @@ from coreset_reactor.evaluate import official_prediction
 ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / "coreset_reactor/reports"
 BASE = REPORTS / "full_sequence_bidir_allgt_20261018"
-P4 = REPORTS / "react2025_multiview_p4_bidir_official_all_session_20261022"
-FORWARD = (
-    REPORTS
-    / "multiview_boundary_student_seed1_20261018"
-    / "eval_forward_val571"
-)
 POWERS = (1.0, 2.0, 4.0, 8.0)
 METHODS = (
     "single_view_nonoverlap",
@@ -124,24 +117,16 @@ def prepare(output: Path, checkpoint: Path) -> None:
         raise FileExistsError("Use the existing manifest or a fresh output directory")
     base_manifest_path = BASE / "manifest.json"
     base_comparison_path = BASE / "comparison.json"
-    p4_manifest_path = P4 / "manifest.json"
-    p4_comparison_path = P4 / "comparison.json"
-    forward_manifest_path = FORWARD / "manifest.json"
-    forward_comparison_path = FORWARD / "comparison.json"
     base_manifest = json.loads(base_manifest_path.read_text())
     entries = base_manifest["entries"]
     validate_bidirectional_population(entries)
 
     base = json.loads(base_comparison_path.read_text())
-    p4 = json.loads(p4_comparison_path.read_text())
-    forward = json.loads(forward_comparison_path.read_text())
     base_rows = {row["index"]: row for row in base["rows"]}
-    p4_rows = {row["index"]: row for row in p4["rows"]}
-    forward_rows = {row["index"]: row for row in forward["rows"]}
-    if set(base_rows) != set(p4_rows) or set(base_rows) != {
+    if set(base_rows) != {
         entry["index"] for entry in entries
     }:
-        raise ValueError("Frozen bidirectional result populations differ")
+        raise ValueError("Frozen baseline population differs from VAL1142")
 
     implementation_paths = [
         Path(__file__).resolve(),
@@ -174,15 +159,11 @@ def prepare(output: Path, checkpoint: Path) -> None:
             "listener_to_speaker": 571,
             "target_policy": "all opposite-role same-session GT",
             "sequence_policy": "full duration",
-            "single_direction_allowed": "diagnostic only",
+            "single_direction_policy": "reject",
         },
         "only_official_protocol_extension": "all same-session GT",
         "base_manifest": frozen(base_manifest_path),
         "base_comparison": frozen(base_comparison_path),
-        "p4_manifest": frozen(p4_manifest_path),
-        "p4_comparison": frozen(p4_comparison_path),
-        "forward_manifest": frozen(forward_manifest_path),
-        "forward_comparison": frozen(forward_comparison_path),
         "multiview_checkpoint": frozen(checkpoint),
         "implementations": [frozen(path) for path in implementation_paths],
         "official_sources": [frozen(path) for path in official_paths],
@@ -203,10 +184,9 @@ def prepare(output: Path, checkpoint: Path) -> None:
     (output / "rows").mkdir(exist_ok=True)
     for entry in entries:
         base_row = base_rows[entry["index"]]
-        p4_row = p4_rows[entry["index"]]
         if not (
-            base_row["clip_id"] == p4_row["clip_id"] == entry["clip_id"]
-            and base_row["role"] == p4_row["role"] == entry["role"]
+            base_row["clip_id"] == entry["clip_id"]
+            and base_row["role"] == entry["role"]
         ):
             raise ValueError(f"Frozen row mismatch at index {entry['index']}")
         row = {
@@ -220,32 +200,10 @@ def prepare(output: Path, checkpoint: Path) -> None:
                     "metrics": scalar_metrics(base_row["models"]["student"]),
                     "source": "frozen_complete_bidirectional_baseline",
                 },
-                "multiview_power_4": {
-                    "metrics": scalar_metrics(p4_row["metrics"]),
-                    "source": "frozen_complete_bidirectional_p4",
-                },
             },
         }
-        if entry["role"] == "speaker":
-            forward_row = forward_rows[entry["index"]]
-            if forward_row["clip_id"] != entry["clip_id"]:
-                raise ValueError(f"Frozen forward row mismatch at {entry['index']}")
-            row["methods"].update({
-                "multiview_nonoverlap": {
-                    "metrics": scalar_metrics(
-                        forward_row["full_sequence"]["nonoverlap"]
-                    ),
-                    "source": "frozen_forward_component_of_val1142",
-                },
-                "multiview_power_1": {
-                    "metrics": scalar_metrics(
-                        forward_row["full_sequence"]["overlap_center_weighted"]
-                    ),
-                    "source": "frozen_forward_component_of_val1142",
-                },
-            })
         write_json(output / "rows" / f"{entry['index']:04d}.json", row)
-    print("Prepared VAL1142 ablation manifest and imported two frozen arms", flush=True)
+    print("Prepared VAL1142 ablation manifest with one bidirectional baseline", flush=True)
 
 
 def metric_means(rows: list[dict], method: str) -> dict:
@@ -346,25 +304,18 @@ def aggregate(output: Path, manifest: dict) -> None:
         "manifest_sha256": sha256(output / "manifest.json"),
         "metrics": groups,
         "deltas": comparisons,
-        "selection": (
-            "p=4 was selected on the earlier forward VAL120 diagnostic. "
-            "All paper ablation values here are complete bidirectional VAL1142."
-        ),
+        "selection": "p=4 is the quality/diversity compromise on VAL1142.",
         "limitations": [
             "Validation data, not hidden TEST.",
             "The target pool deliberately retains every same-session target.",
             "Official TLCC returns after query zero and can select the boundary lag when channels are constant; it is reproduced without redefining it.",
-            "Single-direction and cropped-window results remain diagnostics and are excluded from the main ablation table.",
+            "Single-direction and cropped-window result tables are rejected.",
         ],
         "provenance": {
             key: manifest[key]
             for key in (
                 "base_manifest",
                 "base_comparison",
-                "p4_manifest",
-                "p4_comparison",
-                "forward_manifest",
-                "forward_comparison",
                 "multiview_checkpoint",
                 "implementations",
                 "official_sources",
@@ -394,7 +345,7 @@ def write_report(path: Path, result: dict) -> None:
         "",
         result["protocol"] + "。",
         "",
-        "所有论文消融主结果均为双方向等权 VAL1142。单方向或中心裁剪结果只保留为诊断，不进入主表。",
+        "所有论文消融主结果均为双方向等权 VAL1142；不发布单方向或中心裁剪结果表。",
         "",
         "| 方法 | FRC ↑ | exact FRD ↓ | FRDiv ↑ | FRVar ↑ | TLCC/FRSyn ↓ | 边界跳变比 ↓ |",
         "|---|---:|---:|---:|---:|---:|---:|",
@@ -409,7 +360,7 @@ def write_report(path: Path, result: dict) -> None:
         )
     lines.extend([
         "",
-        "方向拆分及逐上下文结果见 `comparison.json`。`p=4` 由早先的正向 VAL120 诊断固定；上表的最终数值全部重新按双方向协议汇总。",
+        "方向拆分及逐上下文结果见 `comparison.json`。`p=4` 按完整 VAL1142 的质量/多样性曲线确定。",
         "",
         "TLCC 按仓库官方实现原样复现。该实现只返回 query 0，并且常量通道可能使其选择边界 lag，因此报告该值是为了协议完整性，不把它解释成十个输出的稳健同步性。",
         "",
@@ -442,10 +393,6 @@ def main() -> None:
     for key in (
         "base_manifest",
         "base_comparison",
-        "p4_manifest",
-        "p4_comparison",
-        "forward_manifest",
-        "forward_comparison",
         "multiview_checkpoint",
     ):
         if sha256(Path(manifest[key][0])) != manifest[key][1]:
@@ -535,16 +482,11 @@ def main() -> None:
             )
 
             nonoverlap_prediction = full_student(model, streams, device)
-            if "multiview_nonoverlap" in row["methods"]:
-                nonoverlap_metrics = row["methods"]["multiview_nonoverlap"][
-                    "metrics"
-                ]
-            else:
-                nonoverlap_scored = score(nonoverlap_prediction, target)
-                nonoverlap_metrics = {
-                    metric: nonoverlap_scored[metric]
-                    for metric in OFFICIAL_SCALARS
-                }
+            nonoverlap_scored = score(nonoverlap_prediction, target)
+            nonoverlap_metrics = {
+                metric: nonoverlap_scored[metric]
+                for metric in OFFICIAL_SCALARS
+            }
             nonoverlap_metrics["TLCC"] = official_tlcc(
                 nonoverlap_prediction, source_face
             )
@@ -553,11 +495,7 @@ def main() -> None:
                 "boundary_jump": boundary_jump(
                     nonoverlap_prediction, list(range(WINDOW, length, WINDOW))
                 ),
-                "source": (
-                    "frozen_forward_component_plus_computed_tlcc"
-                    if entry["role"] == "speaker"
-                    else "computed_reverse_component"
-                ),
+                "source": "computed_complete_bidirectional_ablation",
             }
 
             starts = window_starts(length)
@@ -569,22 +507,15 @@ def main() -> None:
                 prediction = official_prediction(
                     powered_center_overlap(windows, starts, length, power)
                 )
-                if method in row["methods"]:
-                    metrics = row["methods"][method]["metrics"]
-                else:
-                    scored = score(prediction, target)
-                    metrics = {metric: scored[metric] for metric in OFFICIAL_SCALARS}
+                scored = score(prediction, target)
+                metrics = {
+                    metric: scored[metric] for metric in OFFICIAL_SCALARS
+                }
                 metrics["TLCC"] = official_tlcc(prediction, source_face)
                 row["methods"][method] = {
                     "metrics": {metric: metrics[metric] for metric in METRICS},
                     "boundary_jump": boundary_jump(prediction, switch_boundaries),
-                    "source": (
-                        "frozen_complete_bidirectional_p4_plus_computed_tlcc"
-                        if power == 4
-                        else "frozen_forward_component_plus_computed_tlcc"
-                        if power == 1 and entry["role"] == "speaker"
-                        else "computed_complete_bidirectional_ablation"
-                    ),
+                    "source": "computed_complete_bidirectional_ablation",
                 }
             row["seconds"] = time.monotonic() - tick
             write_json(row_path, row)

@@ -2,7 +2,7 @@
 
 REACT2025 complete VAL1142, both directions, full source duration, K10, all opposite-role same-session GT, official Processor and AU rounding, official FRC/exact-FRD/FRDiv/FRVar/TLCC definitions。
 
-所有论文消融主结果均为双方向等权 VAL1142。单方向或中心裁剪结果只保留为诊断，不进入主表。
+所有论文消融主结果均为双方向等权 VAL1142；不发布单方向或中心裁剪结果表。
 
 | 方法 | FRC ↑ | exact FRD ↓ | FRDiv ↑ | FRVar ↑ | TLCC/FRSyn ↓ | 边界跳变比 ↓ |
 |---|---:|---:|---:|---:|---:|---:|
