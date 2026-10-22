@@ -18,10 +18,7 @@ import numpy as np
 import torch
 
 from coreset_reactor.eval_multiview_boundary_student import load_model
-from coreset_reactor.eval_overlap_save_student import (
-    powered_center_overlap,
-    stabilize_query0_au_transitions,
-)
+from coreset_reactor.eval_overlap_save_student import powered_center_overlap
 from coreset_reactor.eval_student_window_gap import (
     WINDOW,
     generate_windows,
@@ -29,6 +26,7 @@ from coreset_reactor.eval_student_window_gap import (
     window_starts,
 )
 from coreset_reactor.evaluate import official_prediction
+from coreset_reactor.query0_au_transition import stabilize_query0_au_transitions
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,6 +82,7 @@ def prepare(output: Path, checkpoint: Path, power: float) -> None:
     implementations = [
         Path(__file__).resolve(),
         Path(__file__).with_name("eval_overlap_save_student.py").resolve(),
+        Path(__file__).with_name("query0_au_transition.py").resolve(),
         Path(__file__).with_name("eval_student_window_gap.py").resolve(),
         Path(__file__).with_name("eval_multiview_boundary_student.py").resolve(),
         Path(__file__).with_name("exact_dtw_cuda.py").resolve(),

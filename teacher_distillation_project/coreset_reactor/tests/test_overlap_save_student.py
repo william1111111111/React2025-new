@@ -3,8 +3,8 @@ import torch
 from coreset_reactor.eval_overlap_save_student import (
     overlap_save,
     powered_center_overlap,
-    stabilize_query0_au_transitions,
 )
+from coreset_reactor.query0_au_transition import stabilize_query0_au_transitions
 from coreset_reactor.eval_student_window_gap import (
     WINDOW,
     center_weights,
