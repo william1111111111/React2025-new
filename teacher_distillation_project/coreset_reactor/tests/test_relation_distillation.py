@@ -1,7 +1,12 @@
 import pytest
 import torch
 from coreset_reactor.relation_distillation import relation_loss, slot_distances
-from coreset_reactor.relation_distillation import centered_residual_loss, au_decision_loss, GROUPS
+from coreset_reactor.relation_distillation import (
+    GROUPS,
+    au_decision_loss,
+    centered_residual_loss,
+    group_weighted_mse_loss,
+)
 from coreset_reactor.relation_distillation import au_logit_contrast_loss
 
 
@@ -74,6 +79,34 @@ def test_centered_residual_shift_padding_direction_and_gradients():
     assert teacher.grad is None
     assert torch.isfinite(student.grad).all() and student.grad.abs().sum() > 0
     assert not student.grad[1, :, 5:].any()
+
+
+def test_group_weighted_mse_is_same_scaled_formula_without_centering():
+    torch.manual_seed(9)
+    teacher = torch.randn(2, 4, 5, 25, requires_grad=True)
+    student = (teacher.detach() + torch.randn_like(teacher) * .2).requires_grad_()
+    mask = torch.ones(2, 4, 5, dtype=torch.bool)
+    mask[1, :, 3:] = False
+    scale = torch.tensor([.5, .75, 1.25])
+    actual = group_weighted_mse_loss(student, teacher, mask, scale)
+    manual = []
+    error = student - teacher.detach()
+    for group, (start, end) in enumerate(GROUPS):
+        value = (error[..., start:end].square() * mask[..., None]).sum((1, 2, 3))
+        value = value / (mask.sum((1, 2)) * (end - start))
+        manual.append(value / scale[group].square())
+    torch.testing.assert_close(actual, torch.stack(manual, -1).mean())
+    actual.backward()
+    assert student.grad is not None and torch.isfinite(student.grad).all()
+    assert teacher.grad is None
+
+
+def test_group_weighted_mse_retains_common_slot_shift():
+    teacher = torch.zeros(1, 3, 4, 25)
+    mask = torch.ones(1, 3, 4, dtype=torch.bool)
+    shifted = teacher + .25
+    assert group_weighted_mse_loss(shifted, teacher, mask, [1, 1, 1]) > .01
+    assert centered_residual_loss(shifted, teacher, mask, [1, 1, 1]) < 1e-12
 
 
 def test_au_decision_gradient_and_mask():

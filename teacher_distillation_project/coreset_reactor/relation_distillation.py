@@ -110,6 +110,32 @@ def centered_residual_loss(prediction, teacher, mask, scale):
     return torch.stack(losses, -1).mean()
 
 
+def group_weighted_mse_loss(prediction, teacher, mask, scale):
+    """Matched A3 control: scaled AU/VA/EX MSE without slot centering.
+
+    This intentionally retains the same group boundaries, TRAIN-only scales,
+    valid-frame normalization and coefficient as centered_residual_loss.  The
+    sole formula change is that the per-time slot mean is not subtracted.
+    """
+    if prediction.shape != teacher.shape or prediction.ndim != 4 or prediction.shape[-1] != 25:
+        raise ValueError('Expected matching [B,K,T,25] predictions and teachers')
+    if prediction.shape[1] < 2 or mask.shape != prediction.shape[:3] or mask.dtype != torch.bool:
+        raise ValueError('Need >=2 slots and boolean [B,K,T] masks')
+    if not torch.equal(mask, mask[:, :1].expand_as(mask)) or not mask.any(-1).all():
+        raise ValueError('Group-weighted MSE requires the same nonempty valid frames for every slot')
+    scale = torch.as_tensor(scale, device=prediction.device, dtype=torch.float32)
+    if scale.shape != (3,) or not torch.isfinite(scale).all() or (scale <= 0).any():
+        raise ValueError('Need three positive fixed TRAIN scales')
+    error = (prediction.float() - teacher.detach().float()).masked_fill(
+        ~mask[..., None], 0)
+    losses = []
+    for group, (start, end) in enumerate(GROUPS):
+        per_context = error[..., start:end].square().sum((1, 2, 3))
+        per_context = per_context / (mask.sum((1, 2)) * (end - start))
+        losses.append(per_context / scale[group].square())
+    return torch.stack(losses, -1).mean()
+
+
 def au_decision_loss(prediction, teacher, mask):
     """Confidence-weighted distillation of teacher AU rounding decisions.
 
@@ -161,6 +187,8 @@ def distillation_relation(prediction, teacher, mask, scale, objective='distance'
         return relation_loss(prediction, teacher, mask, scale)
     if objective == 'centered_residual':
         loss = centered_residual_loss(prediction, teacher, mask, scale)
+    elif objective == 'group_weighted_mse':
+        loss = group_weighted_mse_loss(prediction, teacher, mask, scale)
     elif objective == 'centered_direction':
         loss = centered_direction_loss(prediction, teacher, mask)
     elif objective == 'au_decision':
